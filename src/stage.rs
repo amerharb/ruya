@@ -9,17 +9,26 @@
 //! What is shown: whatever the mouse is over, else whatever was last tapped,
 //! clicked or reached with the keyboard. Tapping anywhere else, or Escape,
 //! clears it.
+//!
+//! One stage shows one style of the scene; switching style builds a new one.
 
 use crate::lang::Lang;
-use crate::scene::Scene;
+use crate::scene::{Rendering, Scene};
+use crate::style::Style;
 use leptos::ev;
 use leptos::html::Div;
 use leptos::prelude::*;
 use wasm_bindgen::JsCast;
 
 #[component]
-pub fn Stage(scene: &'static Scene, lang: ReadSignal<Lang>) -> impl IntoView {
-    let (w, h) = (scene.picture.width, scene.picture.height);
+pub fn Stage(
+    scene: &'static Scene,
+    style: Style,
+    rendering: &'static Rendering,
+    lang: ReadSignal<Lang>,
+) -> impl IntoView {
+    let (w, h) = (rendering.picture.width, rendering.picture.height);
+    let name = move |i: usize, l: Lang| scene.thing(&rendering.regions[i].thing).name.get(l);
 
     // from a mouse or pen only: a finger has nothing to hover with, and its
     // enter and leave come as one with the tap
@@ -37,12 +46,15 @@ pub fn Stage(scene: &'static Scene, lang: ReadSignal<Lang>) -> impl IntoView {
         }
     });
 
-    let _ = window_event_listener(ev::keydown, move |ev| {
+    // removed with the stage, so a stage left behind by a style switch does
+    // not keep listening
+    let escape = window_event_listener(ev::keydown, move |ev| {
         if ev.key() == "Escape" {
             hovered.set(None);
             picked.set(None);
         }
     });
+    on_cleanup(move || escape.remove());
 
     // One handler for every tap: on a thing it picks it, anywhere else it
     // clears. `click`, not `pointerdown`, so a finger dragging the picture
@@ -71,19 +83,19 @@ pub fn Stage(scene: &'static Scene, lang: ReadSignal<Lang>) -> impl IntoView {
         }
     });
 
-    let regions = scene
-        .items
+    let regions = rendering
+        .regions
         .iter()
         .enumerate()
-        .map(|(i, item)| {
+        .map(|(i, region)| {
             view! {
                 <path
                     class="region"
-                    d=item.d.clone()
+                    d=region.d.clone()
                     data-item=i.to_string()
                     tabindex="0"
                     role="button"
-                    aria-label=move || item.name.get(lang.get()).to_string()
+                    aria-label=move || name(i, lang.get()).to_string()
                     on:pointerenter=move |ev: ev::PointerEvent| {
                         if ev.pointer_type() != "touch" {
                             hovered.set(Some(i));
@@ -104,10 +116,10 @@ pub fn Stage(scene: &'static Scene, lang: ReadSignal<Lang>) -> impl IntoView {
 
     let label = move || {
         last.get().map(|i| {
-            let item = &scene.items[i];
+            let region = &rendering.regions[i];
             let l = lang.get();
-            // above the item, at its anchor's x
-            let (x, y) = percent((item.anchor.0, item.top));
+            // above the region, at its anchor's x
+            let (x, y) = percent((region.anchor.0, region.top));
             // near an edge the label turns inward instead of running off
             let edge = if y < 12.0 {
                 "below"
@@ -128,7 +140,7 @@ pub fn Stage(scene: &'static Scene, lang: ReadSignal<Lang>) -> impl IntoView {
                     style=format!("left:{x:.3}%;top:{y:.3}%")
                     aria-hidden="true"
                 >
-                    {item.name.get(l).to_string()}
+                    {name(i, l).to_string()}
                 </div>
             }
         })
@@ -136,9 +148,14 @@ pub fn Stage(scene: &'static Scene, lang: ReadSignal<Lang>) -> impl IntoView {
 
     view! {
         <div class="viewport" node_ref=viewport on:click=on_click>
-            <div class="stage" data-scene=scene.id.clone() style=format!("--w:{w};--h:{h}")>
+            <div
+                class="stage"
+                data-scene=scene.id.clone()
+                data-style=style.code()
+                style=format!("--w:{w};--h:{h}")
+            >
                 <img
-                    src=scene.picture.src.clone()
+                    src=rendering.picture.src.clone()
                     alt=""
                     draggable="false"
                     width=w.to_string()
@@ -158,14 +175,16 @@ pub fn Stage(scene: &'static Scene, lang: ReadSignal<Lang>) -> impl IntoView {
                         class:on=move || shown().is_some()
                         d=move || {
                             last.get()
-                                .map(|i| format!("M0 0H{w}V{h}H0Z {}", scene.items[i].d))
+                                .map(|i| format!("M0 0H{w}V{h}H0Z {}", rendering.regions[i].d))
                                 .unwrap_or_default()
                         }
                     />
                     <path
                         class="outline"
                         class:on=move || shown().is_some()
-                        d=move || last.get().map(|i| scene.items[i].d.clone()).unwrap_or_default()
+                        d=move || {
+                            last.get().map(|i| rendering.regions[i].d.clone()).unwrap_or_default()
+                        }
                     />
                 </svg>
                 {label}

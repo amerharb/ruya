@@ -10,7 +10,12 @@
   point at — window, cabinet, frying pan, clock, fridge, stove, sink, faucet,
   pot, kettle, table, two chairs, plate, fork, spoon, cup, glass and bowl.
   ChatGPT's boxes for them were approximate; each region was redrawn by eye
-  over the picture. A flat SVG kitchen drawn by hand stood in until it came.
+  over the picture.
+- **Two styles** — the kitchen as a realistic picture, the default, and as a
+  basic drawing: flat shapes in a few colours, drawn by hand in SVG. A
+  thumbnail of each in the bar switches between them, the choice kept in the
+  address as `?s=`. The names belong to the scene's things, written once for
+  every style; each style has its own regions over its own picture.
 - **Names in seven languages** — English, Arabic, German, Swedish, Spanish,
   Ukrainian and Hebrew. German and Spanish carry their article and Swedish en
   or ett; Arabic is Modern Standard without vowel marks; Spanish is Spain's

@@ -4,6 +4,7 @@ mod lang;
 mod picker;
 mod scene;
 mod stage;
+mod style;
 mod url;
 
 fn main() {

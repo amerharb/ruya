@@ -1,32 +1,44 @@
-//! The language in the address: `?l=sv` opens Ruya in Swedish, and picking a
-//! language writes it back, so a link shows what the person sharing it saw.
+//! The choices in the address: `?l=sv` opens Ruya in Swedish and `?s=basic`
+//! on the drawing, and picking either writes it back, so a link shows what the
+//! person sharing it saw.
 
 use crate::lang::Lang;
+use crate::style::Style;
 use wasm_bindgen::JsValue;
 
-/// `?l=` from a query string, or None when it is absent or not a language
-/// Ruya has — an unknown value is ignored rather than leaving a blank page.
-pub fn lang_from_search(search: &str) -> Option<Lang> {
+/// A parameter's value from a query string.
+fn param<'a>(search: &'a str, key: &str) -> Option<&'a str> {
     search
         .trim_start_matches('?')
         .split('&')
-        .find_map(|pair| pair.strip_prefix("l="))
-        .and_then(Lang::from_tag)
+        .find_map(|pair| pair.strip_prefix(key)?.strip_prefix('='))
+}
+
+/// `?l=`, or None when it is absent or not a language Ruya has — an unknown
+/// value is ignored rather than leaving a blank page.
+pub fn lang_from_search(search: &str) -> Option<Lang> {
+    param(search, "l").and_then(Lang::from_tag)
+}
+
+/// `?s=`, or None when it is absent or not a style Ruya has.
+pub fn style_from_search(search: &str) -> Option<Style> {
+    param(search, "s").and_then(Style::from_code)
+}
+
+fn search() -> String {
+    web_sys::window()
+        .and_then(|w| w.location().search().ok())
+        .unwrap_or_default()
 }
 
 /// The language to open in: the address, then the browser's own list, then
 /// English.
 pub fn initial_lang() -> Lang {
-    let window = web_sys::window().expect("a browser window");
-    if let Some(lang) = window
-        .location()
-        .search()
-        .ok()
-        .and_then(|s| lang_from_search(&s))
-    {
+    if let Some(lang) = lang_from_search(&search()) {
         return lang;
     }
-    window
+    web_sys::window()
+        .expect("a browser window")
         .navigator()
         .languages()
         .iter()
@@ -35,9 +47,14 @@ pub fn initial_lang() -> Lang {
         .unwrap_or(Lang::En)
 }
 
-/// Write `?l=` into the address without a new history entry: changing the
-/// language is not a place to go back to.
-pub fn write_lang(lang: Lang) {
+/// The style to open in: the address, else the default.
+pub fn initial_style() -> Style {
+    style_from_search(&search()).unwrap_or(Style::DEFAULT)
+}
+
+/// Write a parameter into the address without a new history entry: changing
+/// the language or the style is not a place to go back to.
+pub fn write(key: &str, value: &str) {
     let Some(window) = web_sys::window() else {
         return;
     };
@@ -46,7 +63,7 @@ pub fn write_lang(lang: Lang) {
     let Ok(params) = web_sys::UrlSearchParams::new_with_str(&search) else {
         return;
     };
-    params.set("l", lang.code());
+    params.set(key, value);
     let url = format!(
         "{}?{}{}",
         location.pathname().unwrap_or_default(),
@@ -75,5 +92,13 @@ mod tests {
         assert_eq!(lang_from_search("?l="), None);
         assert_eq!(lang_from_search(""), None);
         assert_eq!(lang_from_search("?lang=sv"), None);
+    }
+
+    #[test]
+    fn reads_s_for_the_style() {
+        assert_eq!(style_from_search("?l=sv&s=basic"), Some(Style::Basic));
+        assert_eq!(style_from_search("?s=realistic"), Some(Style::Realistic));
+        assert_eq!(style_from_search("?s=photo"), None);
+        assert_eq!(style_from_search("?l=sv"), None);
     }
 }

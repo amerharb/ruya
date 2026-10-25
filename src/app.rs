@@ -1,13 +1,15 @@
 use crate::lang::Lang;
-use crate::picker::Picker;
+use crate::picker::{Picker, StylePicker};
 use crate::scene::{KITCHEN, Scene};
 use crate::stage::Stage;
+use crate::style::Style;
 use crate::url;
 use leptos::prelude::*;
 
 #[component]
 pub fn App() -> impl IntoView {
     let (lang, set_lang) = signal(url::initial_lang());
+    let (style, set_style) = signal(url::initial_style());
 
     // <html lang> follows the language, so a screen reader reads the names in
     // the right voice and a browser does not offer to translate them. The
@@ -20,11 +22,16 @@ pub fn App() -> impl IntoView {
         }
     });
 
-    // written only when someone picks; a language guessed from the browser
-    // stays out of the address
+    // written only when someone picks; a language guessed from the browser,
+    // or the default style, stays out of the address
     Effect::watch(
         move || lang.get(),
-        |l: &Lang, _, _| url::write_lang(*l),
+        |l: &Lang, _, _| url::write("l", l.code()),
+        false,
+    );
+    Effect::watch(
+        move || style.get(),
+        |s: &Style, _, _| url::write("s", s.code()),
         false,
     );
 
@@ -40,10 +47,15 @@ pub fn App() -> impl IntoView {
             >
                 {move || scene.name.get(lang.get()).to_string()}
             </h1>
+            <StylePicker scene=scene style=style set_style=set_style lang=lang />
             <Picker lang=lang set_lang=set_lang />
         </header>
         <main class="main">
-            <Stage scene=scene lang=lang />
+            // a new stage per style: its own picture, regions and state
+            {move || {
+                let (s, rendering) = scene.rendering_or_first(style.get());
+                view! { <Stage scene=scene style=s rendering=rendering lang=lang /> }
+            }}
         </main>
     }
 }

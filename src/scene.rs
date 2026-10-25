@@ -1,9 +1,14 @@
-//! A scene: one picture, and the things in it that have a name.
+//! A scene: a place, the things in it that have a name, and the styles it
+//! can be shown in.
 //!
-//! The picture is only ever shown as an image — an SVG drawn by hand today,
-//! a bitmap later — and the things are separate polygons in the picture's own
-//! coordinates, laid over it. So a drawn scene and a painted one take the same
-//! path through the app.
+//! Names belong to the things, once per scene. Each style — a flat drawing, a
+//! realistic picture — has its own picture and its own regions over it, since
+//! the same fridge stands somewhere else in each; a region says which thing it
+//! is. Two regions may be the same thing: the realistic kitchen has two chairs.
+//!
+//! The picture is only ever shown as an image, and the regions are polygons in
+//! the picture's own coordinates laid over it, so an SVG and a bitmap take the
+//! same path through the app.
 //!
 //! Scene files are embedded at compile time: one less request before the
 //! picture appears, and `cargo test` checks every file, so the parse below
@@ -11,7 +16,9 @@
 
 use crate::geometry::{self, Ring};
 use crate::lang::Names;
+use crate::style::Style;
 use serde::Deserialize;
+use std::collections::BTreeMap;
 use std::sync::LazyLock;
 
 #[derive(Debug, Deserialize)]
@@ -19,9 +26,39 @@ use std::sync::LazyLock;
 pub struct Scene {
     pub id: String,
     pub name: Names,
+    /// Every thing with a name, by id.
+    pub things: BTreeMap<String, Thing>,
+    pub styles: Styles,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Thing {
+    pub name: Names,
+    /// Why a word was chosen, where that is not obvious. JSON has no comments.
+    #[serde(default)]
+    #[allow(dead_code)]
+    pub note: Option<String>,
+}
+
+/// One field per style, like the names: a style the app does not know fails
+/// to parse. Any of them may be left out.
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Styles {
+    #[serde(default)]
+    pub basic: Option<Rendering>,
+    #[serde(default)]
+    pub realistic: Option<Rendering>,
+}
+
+/// The scene in one style.
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Rendering {
     pub picture: Picture,
     /// In paint order: where two overlap, the later one is the one tapped.
-    pub items: Vec<Item>,
+    pub regions: Vec<Region>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -30,6 +67,8 @@ pub struct Picture {
     /// Relative to the page, no leading slash, so Ruya also works under a
     /// sub-path. A redrawn picture gets a new name: it is not content-hashed.
     pub src: String,
+    /// A small copy for the style switch, the same shape.
+    pub thumb: String,
     /// The coordinate space every region is written in, and the picture's
     /// aspect ratio. The file may have more pixels than this, in proportion.
     pub width: f64,
@@ -38,24 +77,20 @@ pub struct Picture {
 
 #[derive(Debug, Deserialize)]
 #[serde(deny_unknown_fields)]
-pub struct Item {
-    pub id: String,
+pub struct Region {
+    /// The id of the thing this is.
+    pub thing: String,
     /// The region, polygons only — see [`geometry`].
     pub d: String,
-    /// A point on the item the name belongs to. Left out, it is the middle of
-    /// the item's largest part; given where that middle falls off the item,
-    /// as it does for a chair seen between its legs.
+    /// A point on the region whose x the name is centred on. Left out, it is
+    /// the middle of the region's largest part; given where that middle falls
+    /// off it, as it does for a chair seen between its legs.
     #[serde(default)]
     pub at: Option<[f64; 2]>,
-    pub name: Names,
-    /// Why a word was chosen, where that is not obvious. JSON has no comments.
-    #[serde(default)]
-    #[allow(dead_code)]
-    pub note: Option<String>,
     #[serde(skip)]
     pub anchor: (f64, f64),
-    /// The item's highest point. The name is shown above it, at the
-    /// anchor's x, so the label never hides the thing it names.
+    /// The region's highest point. The name is shown above it, so the label
+    /// never hides the thing it names.
     #[serde(skip)]
     pub top: f64,
 }
@@ -63,17 +98,62 @@ pub struct Item {
 impl Scene {
     pub fn parse(json: &str) -> Result<Scene, String> {
         let mut scene: Scene = serde_json::from_str(json).map_err(|e| e.to_string())?;
-        for item in &mut scene.items {
-            let rings = geometry::parse_path(&item.d).map_err(|e| format!("{}: {e}", item.id))?;
-            item.anchor = match item.at {
-                Some([x, y]) => (x, y),
-                None => largest(&rings)
-                    .map(geometry::centroid)
-                    .unwrap_or((0.0, 0.0)),
+        for style in Style::ALL {
+            let Some(rendering) = scene.styles.get_mut(style) else {
+                continue;
             };
-            item.top = geometry::bounds(&rings).1;
+            for region in &mut rendering.regions {
+                let rings = geometry::parse_path(&region.d)
+                    .map_err(|e| format!("{} {}: {e}", style.code(), region.thing))?;
+                region.anchor = match region.at {
+                    Some([x, y]) => (x, y),
+                    None => largest(&rings)
+                        .map(geometry::centroid)
+                        .unwrap_or((0.0, 0.0)),
+                };
+                region.top = geometry::bounds(&rings).1;
+            }
         }
         Ok(scene)
+    }
+
+    /// The styles this scene has, in the switch's order.
+    pub fn renderings(&self) -> impl Iterator<Item = (Style, &Rendering)> {
+        Style::ALL
+            .into_iter()
+            .filter_map(|s| self.styles.get(s).map(|r| (s, r)))
+    }
+
+    /// The scene in the style asked for, or in its first style when it does
+    /// not have that one.
+    pub fn rendering_or_first(&self, style: Style) -> (Style, &Rendering) {
+        self.styles
+            .get(style)
+            .map(|r| (style, r))
+            .or_else(|| self.renderings().next())
+            .expect("every scene has a style — checked by cargo test")
+    }
+
+    pub fn thing(&self, id: &str) -> &Thing {
+        self.things
+            .get(id)
+            .expect("every region names a thing — checked by cargo test")
+    }
+}
+
+impl Styles {
+    pub fn get(&self, style: Style) -> Option<&Rendering> {
+        match style {
+            Style::Basic => self.basic.as_ref(),
+            Style::Realistic => self.realistic.as_ref(),
+        }
+    }
+
+    fn get_mut(&mut self, style: Style) -> Option<&mut Rendering> {
+        match style {
+            Style::Basic => self.basic.as_mut(),
+            Style::Realistic => self.realistic.as_mut(),
+        }
     }
 }
 
@@ -100,7 +180,7 @@ mod tests {
     use std::collections::HashSet;
     use std::path::Path;
 
-    /// The shortest side an item may have, in picture units. On a phone held
+    /// The shortest side a region may have, in picture units. On a phone held
     /// upright the picture fills the screen's height and scrolls sideways, at
     /// about three quarters of picture size, so 48 is a target of about 36 CSS
     /// pixels — a fingertip, roughly.
@@ -127,6 +207,19 @@ mod tests {
         out
     }
 
+    /// Every (file and style, rendering) pair, for the checks that run per
+    /// picture.
+    fn renderings(scenes: &[(String, Scene)]) -> Vec<(String, &Rendering)> {
+        scenes
+            .iter()
+            .flat_map(|(file, scene)| {
+                scene
+                    .renderings()
+                    .map(move |(s, r)| (format!("{file} {}", s.code()), r))
+            })
+            .collect()
+    }
+
     #[test]
     fn every_file_is_embedded_and_every_embedded_scene_has_a_file() {
         let files: HashSet<String> = scenes().into_iter().map(|(_, s)| s.id).collect();
@@ -138,20 +231,38 @@ mod tests {
     }
 
     #[test]
-    fn ids_are_unique_and_plain() {
+    fn every_scene_has_a_style() {
         for (file, scene) in scenes() {
-            let mut seen = HashSet::new();
-            for item in &scene.items {
+            assert!(scene.renderings().next().is_some(), "{file}: no style");
+        }
+    }
+
+    #[test]
+    fn regions_name_things_and_every_thing_is_somewhere() {
+        for (file, scene) in scenes() {
+            let mut used = HashSet::new();
+            for (style, rendering) in scene.renderings() {
+                for region in &rendering.regions {
+                    assert!(
+                        scene.things.contains_key(&region.thing),
+                        "{file} {}: '{}' is not a thing in the scene",
+                        style.code(),
+                        region.thing
+                    );
+                    used.insert(region.thing.as_str());
+                }
+            }
+            for id in scene.things.keys() {
                 assert!(
-                    !item.id.is_empty()
-                        && item
-                            .id
-                            .chars()
-                            .all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '-'),
-                    "{file}: id '{}' is not [a-z0-9-]",
-                    item.id
+                    id.chars()
+                        .all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '-')
+                        && !id.is_empty(),
+                    "{file}: id '{id}' is not [a-z0-9-]"
                 );
-                assert!(seen.insert(&item.id), "{file}: '{}' twice", item.id);
+                assert!(
+                    used.contains(id.as_str()),
+                    "{file}: '{id}' has names but no region in any style"
+                );
             }
         }
     }
@@ -197,52 +308,54 @@ mod tests {
     fn every_name_is_there_and_in_its_script() {
         for (file, scene) in scenes() {
             check_names(&file, "the scene", &scene.name);
-            for item in &scene.items {
-                check_names(&file, &item.id, &item.name);
+            for (id, thing) in &scene.things {
+                check_names(&file, id, &thing.name);
             }
         }
     }
 
     #[test]
-    fn shapes_are_inside_the_picture_and_big_enough() {
-        for (file, scene) in scenes() {
-            let (w, h) = (scene.picture.width, scene.picture.height);
-            for item in &scene.items {
-                let rings = parse_path(&item.d).unwrap();
+    fn regions_are_inside_the_picture_and_big_enough() {
+        let scenes = scenes();
+        for (what, r) in renderings(&scenes) {
+            let (w, h) = (r.picture.width, r.picture.height);
+            for region in &r.regions {
+                let rings = parse_path(&region.d).unwrap();
                 for ring in &rings {
                     assert!(
                         ring.len() >= 3,
-                        "{file}: {} has a ring of {} points",
-                        item.id,
+                        "{what}: {} has a ring of {} points",
+                        region.thing,
                         ring.len()
                     );
                 }
                 let (x0, y0, x1, y1) = bounds(&rings);
                 assert!(
                     x0 >= 0.0 && y0 >= 0.0 && x1 <= w && y1 <= h,
-                    "{file}: {} reaches outside the {w}×{h} picture",
-                    item.id
+                    "{what}: {} reaches outside the {w}×{h} picture",
+                    region.thing
                 );
                 let side = (x1 - x0).min(y1 - y0);
                 assert!(
                     side >= MIN_SIDE,
-                    "{file}: {} is {side} across at its narrowest, under {MIN_SIDE}",
-                    item.id
+                    "{what}: {} is {side} across at its narrowest, under {MIN_SIDE}",
+                    region.thing
                 );
             }
         }
     }
 
     #[test]
-    fn every_label_point_is_on_its_item() {
-        for (file, scene) in scenes() {
-            for item in &scene.items {
-                let rings = parse_path(&item.d).unwrap();
+    fn every_label_point_is_on_its_region() {
+        let scenes = scenes();
+        for (what, r) in renderings(&scenes) {
+            for region in &r.regions {
+                let rings = parse_path(&region.d).unwrap();
                 assert!(
-                    contains(&rings, item.anchor),
-                    "{file}: {}'s label point {:?} is off the item — give it an \"at\"",
-                    item.id,
-                    item.anchor
+                    contains(&rings, region.anchor),
+                    "{what}: {}'s label point {:?} is off it — give it an \"at\"",
+                    region.thing,
+                    region.anchor
                 );
             }
         }
@@ -252,11 +365,12 @@ mod tests {
     fn a_thing_lying_on_another_comes_after_it() {
         // the plate on the table: drawn after it, so a tap on the plate is the
         // plate's, not the table's
-        for (file, scene) in scenes() {
-            let rings: Vec<_> = scene
-                .items
+        let scenes = scenes();
+        for (what, r) in renderings(&scenes) {
+            let rings: Vec<_> = r
+                .regions
                 .iter()
-                .map(|i| parse_path(&i.d).unwrap())
+                .map(|g| parse_path(&g.d).unwrap())
                 .collect();
             for (a, outer) in rings.iter().enumerate() {
                 for (b, inner) in rings.iter().enumerate() {
@@ -266,54 +380,48 @@ mod tests {
                     let within = inner.iter().flatten().all(|&p| contains(outer, p));
                     assert!(
                         !within || b > a,
-                        "{file}: {} lies on {} but comes before it",
-                        scene.items[b].id,
-                        scene.items[a].id
+                        "{what}: {} lies on {} but comes before it",
+                        r.regions[b].thing,
+                        r.regions[a].thing
                     );
                 }
             }
         }
     }
 
-    #[test]
-    fn the_picture_exists_and_matches_the_scene() {
-        for (file, scene) in scenes() {
-            let pic = &scene.picture;
+    /// The file is there and has the scene's shape: an SVG with the scene's
+    /// viewBox, or a bitmap of the same proportions and at least its size —
+    /// more pixels for big screens is fine, a different shape would move every
+    /// region off its thing.
+    fn check_file(what: &str, src: &str, w: f64, h: f64, at_least_full_size: bool) {
+        assert!(!src.starts_with('/'), "{what}: {src} must be relative");
+        let path = root().join("public").join(src);
+        assert!(path.exists(), "{what}: no file at {}", path.display());
+        if src.ends_with(".svg") {
+            let svg = std::fs::read_to_string(&path).unwrap();
+            let view_box = format!("viewBox=\"0 0 {w} {h}\"");
+            assert!(svg.contains(&view_box), "{what}: {src} has no {view_box}");
+        } else {
+            let size = imagesize::size(&path).unwrap();
+            let (pw, ph) = (size.width as f64, size.height as f64);
             assert!(
-                !pic.src.starts_with('/'),
-                "{file}: picture src must be relative"
+                (pw / ph - w / h).abs() < 0.002,
+                "{what}: {src} is {pw}×{ph}, not the shape of {w}×{h}"
             );
-            let path = root().join("public").join(&pic.src);
-            assert!(path.exists(), "{file}: no picture at {}", path.display());
-            if pic.src.ends_with(".svg") {
-                let svg = std::fs::read_to_string(&path).unwrap();
-                let view_box = format!("viewBox=\"0 0 {} {}\"", pic.width, pic.height);
-                assert!(
-                    svg.contains(&view_box),
-                    "{file}: {} has no {view_box}",
-                    pic.src
-                );
-            } else {
-                // a bitmap may have more pixels than the coordinate space — a
-                // sharper copy for big screens — but never a different shape,
-                // or every region would drift off its thing
-                let size = imagesize::size(&path).unwrap();
-                let (pw, ph) = (size.width as f64, size.height as f64);
-                assert!(
-                    (pw / ph - pic.width / pic.height).abs() < 0.002,
-                    "{file}: {} is {pw}×{ph}, not the shape of {}×{}",
-                    pic.src,
-                    pic.width,
-                    pic.height
-                );
-                assert!(
-                    pw >= pic.width,
-                    "{file}: {} is smaller than the scene's {}×{}",
-                    pic.src,
-                    pic.width,
-                    pic.height
-                );
-            }
+            assert!(
+                !at_least_full_size || pw >= w,
+                "{what}: {src} is smaller than {w}×{h}"
+            );
+        }
+    }
+
+    #[test]
+    fn pictures_and_thumbnails_exist_and_match_the_scene() {
+        let scenes = scenes();
+        for (what, r) in renderings(&scenes) {
+            let p = &r.picture;
+            check_file(&what, &p.src, p.width, p.height, true);
+            check_file(&what, &p.thumb, p.width, p.height, false);
         }
     }
 }
