@@ -1,0 +1,92 @@
+{
+	"id": "living-room",
+	"name": { "en": "living room", "ar": "غرفة معيشة", "de": "das Wohnzimmer", "sv": "ett vardagsrum", "es": "el salón", "uk": "вітальня", "he": "סלון" },
+	"things": {
+		"window": {
+			"name": { "en": "window", "ar": "نافذة", "de": "das Fenster", "sv": "ett fönster", "es": "la ventana", "uk": "вікно", "he": "חלון" }
+		},
+		"curtain": {
+			"name": { "en": "curtain", "ar": "ستارة", "de": "der Vorhang", "sv": "en gardin", "es": "la cortina", "uk": "штора", "he": "וילון" },
+			"note": "a heavy one that draws shut: de Vorhang and uk штора; a sheer one is Gardine and фіранка"
+		},
+		"picture": {
+			"name": { "en": "picture", "ar": "لوحة", "de": "das Bild", "sv": "en tavla", "es": "el cuadro", "uk": "картина", "he": "תמונה" },
+			"note": "a framed picture on the wall: tavla and cuadro are that word; a painting as such is Gemälde, målning, pintura"
+		},
+		"door": {
+			"name": { "en": "door", "ar": "باب", "de": "die Tür", "sv": "en dörr", "es": "la puerta", "uk": "двері", "he": "דלת" },
+			"note": "uk: двері has no singular"
+		},
+		"bookshelf": {
+			"name": { "en": "bookshelf", "ar": "مكتبة", "de": "das Bücherregal", "sv": "en bokhylla", "es": "la estantería", "uk": "книжкова шафа", "he": "ספרייה" },
+			"note": "ar مكتبة and he ספרייה are the bookcase at home as well as the library"
+		},
+		"lamp": {
+			"name": { "en": "lamp", "ar": "مصباح", "de": "die Lampe", "sv": "en lampa", "es": "la lámpara", "uk": "лампа", "he": "מנורה" },
+			"note": "a floor lamp, named with the general word; Stehlampe, golvlampa, lámpara de pie and торшер are this kind"
+		},
+		"couch": {
+			"name": { "en": "couch", "ar": "أريكة", "de": "das Sofa", "sv": "en soffa", "es": "el sofá", "uk": "диван", "he": "ספה" },
+			"note": "couch, the everyday American word; sofa is as right"
+		},
+		"pillow": {
+			"name": { "en": "pillow", "ar": "وسادة", "de": "das Kissen", "sv": "en kudde", "es": "el cojín", "uk": "подушка", "he": "כרית" },
+			"note": "American pillow, a throw pillow on the couch, where British English says cushion; es cojín, as almohada is the bed's"
+		},
+		"tv": {
+			"name": { "en": "TV", "ar": "تلفاز", "de": "der Fernseher", "sv": "en tv", "es": "el televisor", "uk": "телевізор", "he": "טלוויזיה" },
+			"note": "TV, as it is said, capitals and all; sv writes tv in small letters; es televisor is the set, televisión also what is on it"
+		},
+		"plant": {
+			"name": { "en": "plant", "ar": "نبتة", "de": "die Pflanze", "sv": "en växt", "es": "la planta", "uk": "рослина", "he": "צמח" }
+		},
+		"rug": {
+			"name": { "en": "rug", "ar": "سجادة", "de": "der Teppich", "sv": "en matta", "es": "la alfombra", "uk": "килим", "he": "שטיח" },
+			"note": "a rug, not wall-to-wall carpet; the other languages have one word for both"
+		},
+		"armchair": {
+			"name": { "en": "armchair", "ar": "كرسي بذراعين", "de": "der Sessel", "sv": "en fåtölj", "es": "el sillón", "uk": "крісло", "he": "כורסה" }
+		},
+		"coffee-table": {
+			"name": { "en": "coffee table", "ar": "طاولة قهوة", "de": "der Couchtisch", "sv": "ett soffbord", "es": "la mesa de centro", "uk": "журнальний столик", "he": "שולחן סלון" }
+		},
+		"book": {
+			"name": { "en": "book", "ar": "كتاب", "de": "das Buch", "sv": "en bok", "es": "el libro", "uk": "книга", "he": "ספר" }
+		},
+		"vase": {
+			"name": { "en": "vase", "ar": "مزهرية", "de": "die Vase", "sv": "en vas", "es": "el jarrón", "uk": "ваза", "he": "אגרטל" }
+		},
+		"flower": {
+			"name": { "en": "flower", "ar": "زهرة", "de": "die Blume", "sv": "en blomma", "es": "la flor", "uk": "квітка", "he": "פרח" }
+		},
+		"cat": {
+			"name": { "en": "cat", "ar": "قطة", "de": "die Katze", "sv": "en katt", "es": "el gato", "uk": "кіт", "he": "חתול" }
+		}
+	},
+	"styles": {
+		"basic": {
+			"picture": { "src": "scenes/living-room-basic.svg", "thumb": "scenes/living-room-basic.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "window", "d": "M600 110H920V410H600Z" },
+				{ "thing": "curtain", "d": "M560 92H646L656 470H550Z" },
+				{ "thing": "curtain", "d": "M874 92H960L970 470H864Z" },
+				{ "thing": "picture", "d": "M1115 210H1315V360H1115Z" },
+				{ "thing": "door", "d": "M1368 248H1532V802H1368Z" },
+				{ "thing": "bookshelf", "d": "M40 190H300V802H40Z" },
+				{ "thing": "lamp", "d": "M340 300H410L432 392H389V788H409V804H341V788H361V392H318Z", "at": [375, 350] },
+				{ "thing": "couch", "d": "M560 470H960V590H1000V790H520V590H560Z" },
+				{ "thing": "pillow", "d": "M594 567L683 554L696 643L607 656Z" },
+				{ "thing": "pillow", "d": "M837 554L926 567L913 656L824 643Z" },
+				{ "thing": "tv", "d": "M1100 462H1330V624H1100Z" },
+				{ "thing": "plant", "d": "M1040 572L1056 600L1072 622L1092 650L1107 690L1090 716H1068L1060 800H1020L1012 716H990L973 690L988 650L1008 622L1024 600Z" },
+				{ "thing": "rug", "d": "M420 840H1180L1250 990H350Z" },
+				{ "thing": "armchair", "d": "M240 590H440V690H480V930H200V690H240Z" },
+				{ "thing": "coffee-table", "d": "M650 770H930L962 836V934H618V836Z" },
+				{ "thing": "book", "d": "M676 778H776L784 830H668Z" },
+				{ "thing": "vase", "d": "M846 812L834 784L838 764L852 746V732H876V746L890 764L894 784L882 812Z" },
+				{ "thing": "flower", "d": "M828 676L842 662L864 645L886 664L902 678L888 692L868 736H860L840 690Z" },
+				{ "thing": "cat", "d": "M1016 914L1022 866L1048 884L1070 864L1078 896H1180L1196 898L1218 920L1210 950L1180 962L1110 968H1046L1020 944Z" }
+			]
+		}
+	}
+}

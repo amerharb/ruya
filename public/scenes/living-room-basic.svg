@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024">
+	<!-- Drawn for Ruya: a flat living room, no text in it, so it serves every
+	     language. Each named thing sits where its region in living-room.json
+	     is. -->
+
+	<!-- wall, skirting and floor -->
+	<rect width="1536" height="1024" fill="#e3e9ec" />
+	<rect y="802" width="1536" height="222" fill="#c99c6e" />
+	<path d="M0 850H1536M0 905H1536M0 965H1536" stroke="#b88a5c" stroke-width="3" />
+	<path d="M260 802V850M900 850V905M1300 802V850M120 905V965M700 905V965M1180 965V1024M400 965V1024" stroke="#b88a5c" stroke-width="3" />
+	<rect y="788" width="1536" height="16" fill="#f5f3ee" />
+
+	<!-- window, with sky, a tree and a hill -->
+	<rect x="610" y="110" width="300" height="290" rx="4" fill="#ffffff" />
+	<rect x="628" y="128" width="264" height="254" fill="#bfe3f5" />
+	<ellipse cx="700" cy="190" rx="40" ry="15" fill="#ffffff" />
+	<ellipse cx="728" cy="180" rx="28" ry="17" fill="#ffffff" />
+	<path d="M628 350C700 330 780 345 892 334V382H628Z" fill="#9fcf8f" />
+	<rect x="826" y="300" width="10" height="44" fill="#8a6a4a" />
+	<circle cx="831" cy="286" r="40" fill="#6fb07f" />
+	<rect x="756" y="128" width="8" height="254" fill="#ffffff" />
+	<rect x="628" y="251" width="264" height="8" fill="#ffffff" />
+	<rect x="600" y="396" width="320" height="14" rx="3" fill="#f1ece4" />
+
+	<!-- curtains, on a rod -->
+	<rect x="540" y="84" width="440" height="8" rx="4" fill="#5a4632" />
+	<circle cx="540" cy="88" r="9" fill="#5a4632" />
+	<circle cx="980" cy="88" r="9" fill="#5a4632" />
+	<path d="M560 92H646L656 470H550Z" fill="#d98c5f" />
+	<path d="M874 92H960L970 470H864Z" fill="#d98c5f" />
+	<path d="M586 100L584 464M618 100L622 464M900 100L898 464M932 100L936 464" stroke="#c47a4e" stroke-width="4" />
+
+	<!-- picture, over the TV -->
+	<path d="M1175 210L1215 182L1255 210" fill="none" stroke="#8a6a3a" stroke-width="3" />
+	<circle cx="1215" cy="182" r="4" fill="#6b5030" />
+	<rect x="1115" y="210" width="200" height="150" rx="3" fill="#8a6a3a" />
+	<rect x="1129" y="224" width="172" height="122" fill="#f7d9a8" />
+	<circle cx="1255" cy="262" r="18" fill="#e26d5a" />
+	<path d="M1129 326C1170 290 1200 300 1230 314C1260 298 1282 300 1301 310V346H1129Z" fill="#7fa7a0" />
+	<path d="M1129 346C1160 326 1214 322 1252 346Z" fill="#5f8c84" />
+
+	<!-- door -->
+	<rect x="1368" y="248" width="164" height="554" fill="#e9e2d4" />
+	<rect x="1382" y="262" width="136" height="528" fill="#fbf8f2" />
+	<rect x="1398" y="282" width="104" height="200" rx="4" fill="none" stroke="#e2dace" stroke-width="4" />
+	<rect x="1398" y="510" width="104" height="256" rx="4" fill="none" stroke="#e2dace" stroke-width="4" />
+	<circle cx="1404" cy="560" r="9" fill="#c9a24a" />
+
+	<!-- bookshelf, full of books -->
+	<rect x="40" y="190" width="260" height="612" rx="4" fill="#8a5a3b" />
+	<rect x="56" y="206" width="228" height="580" fill="#6f472d" />
+	<rect x="62" y="234" width="20" height="96" rx="2" fill="#c94f3d" />
+	<rect x="84" y="222" width="26" height="108" rx="2" fill="#6fb07f" />
+	<rect x="112" y="242" width="18" height="88" rx="2" fill="#3d5a73" />
+	<rect x="132" y="230" width="24" height="100" rx="2" fill="#5b8db8" />
+	<rect x="158" y="316" width="0" height="14" rx="2" fill="#7d5ba6" />
+	<rect x="160" y="226" width="30" height="104" rx="2" fill="#d9cfc0" />
+	<rect x="192" y="238" width="22" height="92" rx="2" fill="#e0a84a" />
+	<rect x="216" y="220" width="20" height="110" rx="2" fill="#e26d5a" />
+	<rect x="238" y="234" width="28" height="96" rx="2" fill="#c94f3d" />
+	<rect x="62" y="370" width="28" height="100" rx="2" fill="#6fb07f" />
+	<rect x="92" y="380" width="20" height="90" rx="2" fill="#3d5a73" />
+	<rect x="114" y="362" width="24" height="108" rx="2" fill="#5b8db8" />
+	<rect x="140" y="374" width="18" height="96" rx="2" fill="#7d5ba6" />
+	<rect x="160" y="368" width="26" height="102" rx="2" fill="#d9cfc0" />
+	<rect x="188" y="440" width="0" height="30" rx="2" fill="#e0a84a" />
+	<rect x="190" y="376" width="22" height="94" rx="2" fill="#e26d5a" />
+	<rect x="214" y="364" width="30" height="106" rx="2" fill="#c94f3d" />
+	<rect x="62" y="506" width="22" height="104" rx="2" fill="#6fb07f" />
+	<rect x="86" y="518" width="26" height="92" rx="2" fill="#3d5a73" />
+	<rect x="114" y="600" width="0" height="10" rx="2" fill="#5b8db8" />
+	<rect x="116" y="502" width="20" height="108" rx="2" fill="#7d5ba6" />
+	<rect x="138" y="510" width="28" height="100" rx="2" fill="#d9cfc0" />
+	<rect x="168" y="514" width="24" height="96" rx="2" fill="#e0a84a" />
+	<rect x="194" y="522" width="18" height="88" rx="2" fill="#e26d5a" />
+	<rect x="214" y="506" width="30" height="104" rx="2" fill="#c94f3d" />
+	<rect x="62" y="656" width="30" height="130" rx="2" fill="#6fb07f" />
+	<rect x="94" y="646" width="24" height="140" rx="2" fill="#3d5a73" />
+	<rect x="120" y="662" width="28" height="124" rx="2" fill="#5b8db8" />
+	<rect x="150" y="650" width="22" height="136" rx="2" fill="#7d5ba6" />
+	<rect x="174" y="774" width="0" height="12" rx="2" fill="#d9cfc0" />
+	<rect x="176" y="658" width="26" height="128" rx="2" fill="#e0a84a" />
+	<rect x="204" y="646" width="30" height="140" rx="2" fill="#e26d5a" />
+	<g fill="#8a5a3b">
+		<rect x="56" y="330" width="228" height="14" />
+		<rect x="56" y="470" width="228" height="14" />
+		<rect x="56" y="610" width="228" height="14" />
+	</g>
+
+	<!-- lamp, standing -->
+	<rect x="371" y="390" width="8" height="404" fill="#5d5d5d" />
+	<ellipse cx="375" cy="796" rx="34" ry="8" fill="#4a4a4a" />
+	<path d="M340 300H410L432 392H318Z" fill="#f3d9a4" />
+	<rect x="318" y="386" width="114" height="6" fill="#e6c482" />
+
+	<!-- couch -->
+	<rect x="560" y="470" width="400" height="180" rx="24" fill="#4f7d9a" />
+	<rect x="580" y="640" width="360" height="62" rx="10" fill="#5d8fae" />
+	<path d="M760 644V700" stroke="#4f7d9a" stroke-width="4" />
+	<rect x="540" y="700" width="440" height="62" rx="8" fill="#41687f" />
+	<rect x="560" y="760" width="16" height="30" fill="#5a3e2a" />
+	<rect x="944" y="760" width="16" height="30" fill="#5a3e2a" />
+	<rect x="520" y="590" width="70" height="172" rx="22" fill="#41687f" />
+	<rect x="930" y="590" width="70" height="172" rx="22" fill="#41687f" />
+
+	<!-- pillows, on the couch -->
+	<rect x="600" y="560" width="90" height="90" rx="14" transform="rotate(-8 645 605)" fill="#e0a84a" />
+	<circle cx="645" cy="605" r="5" fill="#c98f35" />
+	<rect x="830" y="560" width="90" height="90" rx="14" transform="rotate(8 875 605)" fill="#e26d5a" />
+	<circle cx="875" cy="605" r="5" fill="#c9584a" />
+
+	<!-- TV, on a low cabinet -->
+	<rect x="1080" y="650" width="270" height="130" rx="6" fill="#a0785a" />
+	<rect x="1096" y="668" width="115" height="96" rx="4" fill="none" stroke="#8a6448" stroke-width="4" />
+	<rect x="1219" y="668" width="115" height="96" rx="4" fill="none" stroke="#8a6448" stroke-width="4" />
+	<circle cx="1200" cy="716" r="5" fill="#6b4a33" />
+	<circle cx="1230" cy="716" r="5" fill="#6b4a33" />
+	<rect x="1092" y="780" width="14" height="14" fill="#6b4a33" />
+	<rect x="1324" y="780" width="14" height="14" fill="#6b4a33" />
+	<rect x="1205" y="622" width="20" height="24" fill="#2a2f36" />
+	<rect x="1170" y="642" width="90" height="8" rx="3" fill="#2a2f36" />
+	<rect x="1100" y="462" width="230" height="162" rx="8" fill="#1d232b" />
+	<rect x="1110" y="472" width="210" height="142" rx="4" fill="#33414f" />
+	<path d="M1114 476H1190L1134 610H1114Z" fill="#3b4a59" />
+
+	<!-- plant, in a pot on the floor -->
+	<g fill="#4a8350">
+		<ellipse cx="1016" cy="664" rx="13" ry="52" transform="rotate(-28 1016 664)" />
+		<ellipse cx="1064" cy="664" rx="13" ry="52" transform="rotate(28 1064 664)" />
+	</g>
+	<g fill="#5c9b62">
+		<ellipse cx="1040" cy="640" rx="15" ry="68" />
+		<ellipse cx="1004" cy="698" rx="11" ry="36" transform="rotate(-58 1004 698)" />
+		<ellipse cx="1076" cy="698" rx="11" ry="36" transform="rotate(58 1076 698)" />
+	</g>
+	<path d="M1012 724H1068L1060 800H1020Z" fill="#c4704f" />
+	<rect x="1008" y="714" width="64" height="14" rx="4" fill="#b0603f" />
+
+	<!-- rug -->
+	<path d="M420 840H1180L1250 990H350Z" fill="#d7c4a3" />
+	<path d="M438 852H1162L1218 976H382Z" fill="none" stroke="#b85c50" stroke-width="6" />
+	<path d="M800 880L900 915L800 950L700 915Z" fill="#c9a07a" />
+
+	<!-- armchair, in front of the bookshelf -->
+	<rect x="240" y="590" width="200" height="190" rx="26" fill="#e0a84a" />
+	<rect x="236" y="760" width="208" height="60" rx="10" fill="#eab65e" />
+	<rect x="214" y="820" width="252" height="64" rx="8" fill="#c98f35" />
+	<rect x="230" y="884" width="16" height="46" fill="#5a3e2a" />
+	<rect x="434" y="884" width="16" height="46" fill="#5a3e2a" />
+	<rect x="200" y="690" width="62" height="170" rx="22" fill="#c98f35" />
+	<rect x="418" y="690" width="62" height="170" rx="22" fill="#c98f35" />
+
+	<!-- coffee table -->
+	<path d="M650 770H930L962 836H618Z" fill="#b07a4c" />
+	<rect x="618" y="836" width="344" height="18" fill="#96643b" />
+	<rect x="634" y="854" width="18" height="80" fill="#96643b" />
+	<rect x="928" y="854" width="18" height="80" fill="#96643b" />
+
+	<!-- book, lying on the coffee table -->
+	<path d="M668 822H784V830H668Z" fill="#f4f1ea" />
+	<path d="M676 778H776L784 822H668Z" fill="#3d5a73" />
+	<path d="M676 778H690L683 822H668Z" fill="#2f4a60" />
+
+	<!-- vase, with flowers -->
+	<g stroke="#5c9b62" stroke-width="4" fill="none">
+		<path d="M864 736L844 684M864 736V668M864 736L886 686" />
+	</g>
+	<circle cx="842" cy="676" r="14" fill="#e26d5a" />
+	<circle cx="864" cy="660" r="15" fill="#f3c74e" />
+	<circle cx="888" cy="678" r="14" fill="#e26d5a" />
+	<path d="M846 812C832 790 834 762 852 746V732H876V746C894 762 896 790 882 812Z" fill="#5b8db8" />
+
+	<!-- cat, asleep on the rug -->
+	<path d="M1176 950C1214 950 1218 914 1194 904" fill="none" stroke="#8a8f98" stroke-width="14" stroke-linecap="round" />
+	<ellipse cx="1110" cy="930" rx="70" ry="34" fill="#8a8f98" />
+	<path d="M1100 900V914M1122 898V914M1144 901V916" stroke="#7a7f88" stroke-width="5" stroke-linecap="round" />
+	<ellipse cx="1062" cy="958" rx="16" ry="7" fill="#9aa0a8" />
+	<ellipse cx="1092" cy="961" rx="16" ry="7" fill="#9aa0a8" />
+	<path d="M1022 900L1026 866L1048 886ZM1050 884L1070 864L1076 896Z" fill="#9aa0a8" />
+	<path d="M1027 893L1029 875L1041 886ZM1055 884L1067 872L1070 890Z" fill="#e8b4a8" />
+	<circle cx="1046" cy="914" r="30" fill="#9aa0a8" />
+	<path d="M1030 912Q1036 918 1042 912M1052 912Q1058 918 1064 912" fill="none" stroke="#4a4f57" stroke-width="3" stroke-linecap="round" />
+	<path d="M1044 922H1052L1048 927Z" fill="#d98c8c" />
+</svg>

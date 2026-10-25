@@ -15,7 +15,7 @@
 //! cannot fail in a browser.
 
 use crate::geometry::{self, Ring};
-use crate::lang::Names;
+use crate::lang::{Lang, Names};
 use crate::style::Style;
 use serde::Deserialize;
 use std::collections::BTreeMap;
@@ -139,6 +139,27 @@ impl Scene {
             .get(id)
             .expect("every region names a thing — checked by cargo test")
     }
+
+    pub fn find(id: &str) -> Option<&'static Scene> {
+        SCENES.iter().find(|s| s.id == id.trim())
+    }
+
+    pub fn first() -> &'static Scene {
+        &SCENES[0]
+    }
+
+    /// The word for "place", the scene picker's accessible name.
+    pub fn label(lang: Lang) -> &'static str {
+        match lang {
+            Lang::En => "Place",
+            Lang::Ar => "المكان",
+            Lang::De => "Ort",
+            Lang::Sv => "Plats",
+            Lang::Es => "Lugar",
+            Lang::Uk => "Місце",
+            Lang::He => "מקום",
+        }
+    }
 }
 
 impl Styles {
@@ -164,19 +185,28 @@ fn largest(rings: &[Ring]) -> Option<&[(f64, f64)]> {
         .map(Vec::as_slice)
 }
 
-/// Every scene, by id, as embedded. A file in `scenes/` that is not listed
-/// here fails `cargo test`.
-pub const SOURCES: &[(&str, &str)] = &[("kitchen", include_str!("../scenes/kitchen.json"))];
+/// Every scene, by id, as embedded, in the order the picker lists them; the
+/// first is the one Ruya opens on. A file in `scenes/` that is not listed here
+/// fails `cargo test`.
+pub const SOURCES: &[(&str, &str)] = &[
+    ("kitchen", include_str!("../scenes/kitchen.json")),
+    ("living-room", include_str!("../scenes/living-room.json")),
+];
 
-pub static KITCHEN: LazyLock<Scene> = LazyLock::new(|| {
-    Scene::parse(SOURCES[0].1).expect("scenes/kitchen.json is checked by cargo test")
+pub static SCENES: LazyLock<Vec<Scene>> = LazyLock::new(|| {
+    SOURCES
+        .iter()
+        .map(|(id, json)| {
+            Scene::parse(json)
+                .unwrap_or_else(|e| panic!("scenes/{id}.json is checked by cargo test: {e}"))
+        })
+        .collect()
 });
 
 #[cfg(test)]
 mod tests {
     use super::*;
     use crate::geometry::{bounds, contains, parse_path};
-    use crate::lang::Lang;
     use std::collections::HashSet;
     use std::path::Path;
 
@@ -222,6 +252,13 @@ mod tests {
 
     #[test]
     fn every_file_is_embedded_and_every_embedded_scene_has_a_file() {
+        for (file, scene) in scenes() {
+            assert_eq!(
+                file,
+                format!("{}.json", scene.id),
+                "a scene's file is named by its id"
+            );
+        }
         let files: HashSet<String> = scenes().into_iter().map(|(_, s)| s.id).collect();
         let listed: HashSet<String> = SOURCES.iter().map(|(id, _)| id.to_string()).collect();
         assert_eq!(files, listed);

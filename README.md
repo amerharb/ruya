@@ -1,8 +1,8 @@
 # Ruya
 
 Ruya — رؤية, "sight" — is a picture dictionary. A big picture of a place, a
-kitchen to begin with, fills the screen; point at a thing in it and its name
-appears, in the language you picked. Change the language and every name
+kitchen or a living room, fills the screen; point at a thing in it and its
+name appears, in the language you picked. Change the language and every name
 changes with it.
 
 It is written in Rust with [Leptos](https://leptos.dev), compiled to
@@ -19,8 +19,11 @@ start WebAssembly.
 - The thing shown is outlined and the rest of the picture dims.
 - On a phone held upright the picture fills the height and scrolls sideways,
   so a spoon is still big enough to tap. It opens at the middle.
+- **Place:** the scene's name in the bar is a list of the scenes.
 - **Style:** the little pictures in the bar switch between the styles the
   scene comes in (below).
+- On a phone held upright the bar takes two rows: the scene's name, then
+  the style and the language.
 
 ## Styles
 
@@ -34,7 +37,9 @@ The bar shows a thumbnail of each, the one shown ringed; a scene in one
 style only shows none. Each style has its own regions, since the fridge
 stands somewhere else in each, but the names belong to the scene's things,
 so they are written once and the same in every style. More styles can come
-later — a line drawing, a photo.
+later — a line drawing, a photo. The living room is basic only until its
+realistic picture is made (below); a scene opens in the style picked if it
+has it, else in its first.
 
 ## Languages
 
@@ -65,6 +70,8 @@ browser's languages it has, else English.
 - `l` — the language, e.g. `?l=sv`. Picking a language writes it, so a link
   opens on what its sender saw. An unknown value is ignored. A language
   guessed from the browser is not written.
+- `p` — the place, the scene's id, e.g. `?p=living-room`. Written when one
+  is picked; absent, or unknown, is the kitchen. (`p`, as `s` was taken.)
 - `s` — the style, `basic` or `realistic`, e.g. `?s=basic`. Written when
   one is picked; absent, or unknown, is realistic. A scene without the
   style asked for opens in its first.
@@ -134,8 +141,8 @@ or a bitmap of the scene's shape — the picture at least its size.
 - **A thing:** add it to `things` with its names, and a region for it to
   each style it is in; run `cargo test`.
 - **A scene:** its pictures and thumbnails in `public/scenes/`, its file in
-  `scenes/`, and a line in `SOURCES` in `src/scene.rs`. (For now the app
-  shows the kitchen only.)
+  `scenes/`, named by its id, and a line in `SOURCES` in `src/scene.rs`,
+  which is the order of the list in the bar.
 - **A style:** a variant in `Style` with its code and its name in each
   language (`src/style.rs`), a field in `Styles` (`src/scene.rs`), then the
   picture, thumbnail and regions in each scene that has it.
@@ -153,15 +160,20 @@ or a bitmap of the scene's shape — the picture at least its size.
   flat shapes, no text.
 - **Thumbnails** are made from the picture with
   `cwebp -q 75 -m 6 -resize 96 64 <picture>.png -o public/scenes/<scene>-<style>.thumb.webp`;
-  an SVG is first saved as a PNG, in a browser or any viewer.
+  an SVG is first made a PNG, with
+  `rsvg-convert -w 192 -h 128 <picture>.svg -o <picture>.png`
+  (`brew install librsvg`).
 
 Record each realistic picture's date and prompt here, so it can be remade
-or extended in the same style.
+or extended in the same style; a prompt written before the picture is
+kept in `art/` beside it.
 
 | Scene | Style | Original | Made | Prompt |
 | --- | --- | --- | --- | --- |
 | kitchen | realistic | `art/kitchen-realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | not recorded |
 | kitchen | basic | `public/scenes/kitchen-basic.svg` | drawn by hand, 2026-10-25 | — |
+| living room | realistic | not made yet | — | `art/living-room-realistic.prompt.md` |
+| living room | basic | `public/scenes/living-room-basic.svg` | drawn by hand, 2026-10-25 | — |
 
 ChatGPT gave the realistic kitchen's things as boxes too, kept in
 `art/kitchen-realistic.boxes.json`. They were approximate — the fork and
@@ -182,7 +194,8 @@ trace it into polygons with a script.
 - `trunk serve` — http://127.0.0.1:8090, rebuilding on every change.
 - `trunk build --release` — the site in `dist/`: `index.html`, the
   WebAssembly, its loader, the stylesheet and `scenes/`. The release
-  WebAssembly is about 240 KB, 110 KB compressed.
+  WebAssembly is about 250 KB, 115 KB compressed, the scene files
+  included.
 - `cargo test`, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`
   — run on the host, no browser needed. CI runs them and a release build.
 

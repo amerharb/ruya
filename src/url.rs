@@ -1,8 +1,10 @@
-//! The choices in the address: `?l=sv` opens Ruya in Swedish and `?s=basic`
-//! on the drawing, and picking either writes it back, so a link shows what the
-//! person sharing it saw.
+//! The choices in the address: `?p=living-room` opens Ruya on the living
+//! room, `?l=sv` in Swedish and `?s=basic` on the drawing, and picking any of
+//! them writes it back, so a link shows what the person sharing it saw. `p` is
+//! for place, as `s` was taken.
 
 use crate::lang::Lang;
+use crate::scene::Scene;
 use crate::style::Style;
 use wasm_bindgen::JsValue;
 
@@ -23,6 +25,11 @@ pub fn lang_from_search(search: &str) -> Option<Lang> {
 /// `?s=`, or None when it is absent or not a style Ruya has.
 pub fn style_from_search(search: &str) -> Option<Style> {
     param(search, "s").and_then(Style::from_code)
+}
+
+/// `?p=`, or None when it is absent or not a scene Ruya has.
+pub fn scene_from_search(search: &str) -> Option<&'static Scene> {
+    param(search, "p").and_then(Scene::find)
 }
 
 fn search() -> String {
@@ -52,8 +59,13 @@ pub fn initial_style() -> Style {
     style_from_search(&search()).unwrap_or(Style::DEFAULT)
 }
 
-/// Write a parameter into the address without a new history entry: changing
-/// the language or the style is not a place to go back to.
+/// The scene to open on: the address, else the first.
+pub fn initial_scene() -> &'static Scene {
+    scene_from_search(&search()).unwrap_or_else(Scene::first)
+}
+
+/// Write a parameter into the address without a new history entry: a
+/// language, style or scene picked is a choice, not a page to go back to.
 pub fn write(key: &str, value: &str) {
     let Some(window) = web_sys::window() else {
         return;
@@ -100,5 +112,14 @@ mod tests {
         assert_eq!(style_from_search("?s=realistic"), Some(Style::Realistic));
         assert_eq!(style_from_search("?s=photo"), None);
         assert_eq!(style_from_search("?l=sv"), None);
+    }
+
+    #[test]
+    fn reads_p_for_the_scene() {
+        let id = |search| scene_from_search(search).map(|s| s.id.as_str());
+        assert_eq!(id("?p=living-room&l=sv"), Some("living-room"));
+        assert_eq!(id("?l=sv&p=kitchen"), Some("kitchen"));
+        assert_eq!(id("?p=garage"), None);
+        assert_eq!(id("?s=basic"), None);
     }
 }

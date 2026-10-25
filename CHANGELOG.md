@@ -16,6 +16,14 @@
   thumbnail of each in the bar switches between them, the choice kept in the
   address as `?s=`. The names belong to the scene's things, written once for
   every style; each style has its own regions over its own picture.
+- **The living room** — the second scene, drawn as a basic picture for now,
+  with seventeen things — window, two curtains, picture, door, bookshelf,
+  lamp, couch, two pillows, TV, plant, rug, armchair, coffee table, book,
+  vase, flower and a sleeping cat. Its realistic picture is to be made in
+  ChatGPT, with the prompt kept in `art/`.
+- **A choice of scene** — the scene's name in the bar is a list of the
+  scenes, each named in the chosen language, the choice kept in the address
+  as `?p=`.
 - **Names in seven languages** — English, Arabic, German, Swedish, Spanish,
   Ukrainian and Hebrew. German and Spanish carry their article and Swedish en
   or ett; Arabic is Modern Standard without vowel marks; Spanish is Spain's
@@ -29,6 +37,6 @@
   Hebrew names read right to left.
 - **Phones held upright** see the picture at the screen's full height,
   scrolling sideways and opening at the middle, so the smallest thing is a
-  fingertip wide.
+  fingertip wide, and the bar in two rows.
 - **Checks** run by `cargo test` on every scene file, and CI running format,
   lint, tests and a release build.

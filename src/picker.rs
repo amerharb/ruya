@@ -1,11 +1,55 @@
-//! The two choices in the bar: the style, as a little picture of each, and the
-//! language, as the browser's own `<select>`, which every phone turns into its
-//! best native chooser.
+//! The choices in the bar: the scene, as its name; the style, as a little
+//! picture of each; and the language. The scene and the language are the
+//! browser's own `<select>`, which every phone turns into its best native
+//! chooser.
 
 use crate::lang::Lang;
-use crate::scene::Scene;
+use crate::scene::{SCENES, Scene};
 use crate::style::Style;
 use leptos::prelude::*;
+
+/// The scene's name, as the page's heading. With more than one scene the name
+/// is a list of them, each named in the chosen language.
+#[component]
+pub fn ScenePicker(
+    scene: ReadSignal<&'static Scene>,
+    set_scene: WriteSignal<&'static Scene>,
+    lang: ReadSignal<Lang>,
+) -> impl IntoView {
+    let picker = (SCENES.len() > 1).then(|| {
+        view! {
+            <select
+                class="scene-picker"
+                aria-label=move || Scene::label(lang.get())
+                on:change=move |ev| {
+                    if let Some(s) = Scene::find(&event_target_value(&ev)) {
+                        set_scene.set(s);
+                    }
+                }
+            >
+                // as in the language picker, each option says whether it is
+                // the one chosen
+                {SCENES
+                    .iter()
+                    .map(|s| {
+                        view! {
+                            <option value=s.id.clone() selected=move || scene.get().id == s.id>
+                                {move || s.name.get(lang.get()).to_string()}
+                            </option>
+                        }
+                    })
+                    .collect_view()}
+            </select>
+        }
+    });
+    let alone = picker.is_none();
+    view! {
+        <h1 class="scene-name" lang=move || lang.get().code() dir=move || lang.get().dir()>
+            {picker}
+            {move || alone.then(|| scene.get().name.get(lang.get()).to_string())}
+        </h1>
+    }
+}
 
 /// A thumbnail per style the scene has; none at all when it has only one.
 #[component]

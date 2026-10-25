@@ -1,6 +1,6 @@
 use crate::lang::Lang;
-use crate::picker::{Picker, StylePicker};
-use crate::scene::{KITCHEN, Scene};
+use crate::picker::{Picker, ScenePicker, StylePicker};
+use crate::scene::Scene;
 use crate::stage::Stage;
 use crate::style::Style;
 use crate::url;
@@ -8,6 +8,7 @@ use leptos::prelude::*;
 
 #[component]
 pub fn App() -> impl IntoView {
+    let (scene, set_scene) = signal(url::initial_scene());
     let (lang, set_lang) = signal(url::initial_lang());
     let (style, set_style) = signal(url::initial_style());
 
@@ -23,7 +24,12 @@ pub fn App() -> impl IntoView {
     });
 
     // written only when someone picks; a language guessed from the browser,
-    // or the default style, stays out of the address
+    // or the first scene or the default style, stays out of the address
+    Effect::watch(
+        move || scene.get(),
+        |s: &&'static Scene, _, _| url::write("p", &s.id),
+        false,
+    );
     Effect::watch(
         move || lang.get(),
         |l: &Lang, _, _| url::write("l", l.code()),
@@ -35,24 +41,23 @@ pub fn App() -> impl IntoView {
         false,
     );
 
-    let scene: &'static Scene = &KITCHEN;
-
     view! {
         <header class="bar">
             <span class="brand">"Ruya"</span>
-            <h1
-                class="scene-name"
-                lang=move || lang.get().code()
-                dir=move || lang.get().dir()
-            >
-                {move || scene.name.get(lang.get()).to_string()}
-            </h1>
-            <StylePicker scene=scene style=style set_style=set_style lang=lang />
+            <ScenePicker scene=scene set_scene=set_scene lang=lang />
+            // the scene's own styles
+            {move || {
+                view! {
+                    <StylePicker scene=scene.get() style=style set_style=set_style lang=lang />
+                }
+            }}
             <Picker lang=lang set_lang=set_lang />
         </header>
         <main class="main">
-            // a new stage per style: its own picture, regions and state
+            // a new stage per scene and style: its own picture, regions and
+            // state
             {move || {
+                let scene = scene.get();
                 let (s, rendering) = scene.rendering_or_first(style.get());
                 view! { <Stage scene=scene style=s rendering=rendering lang=lang /> }
             }}

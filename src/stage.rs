@@ -10,7 +10,7 @@
 //! clicked or reached with the keyboard. Tapping anywhere else, or Escape,
 //! clears it.
 //!
-//! One stage shows one style of the scene; switching style builds a new one.
+//! One stage shows one scene in one style; switching either builds a new one.
 
 use crate::lang::Lang;
 use crate::scene::{Rendering, Scene};
