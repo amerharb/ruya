@@ -5,10 +5,12 @@
 ## [0.1.0] (unreleased)
 
 ### Added
-- **The kitchen** — the first scene: a flat SVG kitchen drawn for Ruya, with
-  eighteen things to point at — window, cabinet, frying pan, clock, fridge,
-  stove, sink, faucet, pot, kettle, table, chair, plate, fork, spoon, cup,
-  glass and bowl.
+- **The kitchen** — the first scene, a picture made in ChatGPT and shown as
+  WebP (127 KB, from a 3.6 MB PNG kept in `art/`), with nineteen things to
+  point at — window, cabinet, frying pan, clock, fridge, stove, sink, faucet,
+  pot, kettle, table, two chairs, plate, fork, spoon, cup, glass and bowl.
+  ChatGPT's boxes for them were approximate; each region was redrawn by eye
+  over the picture. A flat SVG kitchen drawn by hand stood in until it came.
 - **Names in seven languages** — English, Arabic, German, Swedish, Spanish,
   Ukrainian and Hebrew. German and Spanish carry their article and Swedish en
   or ett; Arabic is Modern Standard without vowel marks; Spanish is Spain's

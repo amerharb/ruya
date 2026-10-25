@@ -58,11 +58,11 @@ A scene is a picture plus a file in `scenes/` naming the things in it:
 {
 	"id": "kitchen",
 	"name": { "en": "kitchen", "ar": "مطبخ", "de": "die Küche", … },
-	"picture": { "src": "scenes/kitchen.svg", "width": 1536, "height": 1024 },
+	"picture": { "src": "scenes/kitchen.webp", "width": 1536, "height": 1024 },
 	"items": [
 		{
 			"id": "fridge",
-			"d": "M1180 230H1420V860H1180Z",
+			"d": "M1300 92L1520 66L1520 846L1300 740Z",
 			"name": { "en": "fridge", "ar": "ثلاجة", … },
 			"note": "es: nevera, the everyday word in Spain"
 		}
@@ -70,10 +70,10 @@ A scene is a picture plus a file in `scenes/` naming the things in it:
 }
 ```
 
-- The **picture** is in `public/scenes/` and is always shown as an image —
-  the SVG drawing today, a bitmap later. `width` and `height` are the
-  coordinate space the regions are written in and the picture's shape; the
-  file may have more pixels, in proportion.
+- The **picture** is in `public/scenes/`, shown as an image: a WebP for a
+  painted scene, or an SVG. `width` and `height` are the coordinate space the
+  regions are written in and the picture's shape; the file may have more
+  pixels, in the same proportion.
 - Each item's **`d`** is its region over the picture: an SVG path made of
   polygons only (M, L, H, V, Z). A ring inside another is a hole.
 - **Order matters**: where two regions overlap, the later one is the one
@@ -87,12 +87,13 @@ A scene is a picture plus a file in `scenes/` naming the things in it:
 `cargo test` checks every scene: every name present and in its language's
 script; ids unique; every region inside the picture and at least 48 units
 across, so it can be tapped on a phone; every label point on its item; a
-thing lying on another after it; and the picture there, with an SVG's
-`viewBox` matching the scene.
+thing lying on another after it; and the picture there, an SVG with the
+scene's `viewBox` or a bitmap of the scene's shape and at least its size.
 
 ### Adding a thing, a scene or a language
 
-- **A thing:** draw it, add an item to the scene file, run `cargo test`.
+- **A thing:** add an item to the scene file with its outline and names,
+  run `cargo test`.
 - **A scene:** its picture in `public/scenes/`, its file in `scenes/`, and a
   line in `SOURCES` in `src/scene.rs`. (For now the app shows the kitchen
   only.)
@@ -102,13 +103,28 @@ thing lying on another after it; and the picture there, with an SVG's
 
 ## Pictures and licences
 
-- `public/scenes/kitchen.svg` was drawn for Ruya, as SVG by hand: flat, and
-  with no text in it, so it serves every language.
-- Later scenes are planned as bitmaps made in ChatGPT in one fixed style.
-  Record each one's date and prompt here when it is added, so a scene can be
-  remade or extended in the same style. Their regions are planned to be
-  painted as a flat colour per thing on a mask layer and traced into
-  polygons by a script.
+Scenes are made in ChatGPT. Each one's original is kept in `art/`, as it
+came, and the WebP the app shows is made from it with
+`cwebp -q 80 -m 6 -metadata none art/<scene>.png -o public/scenes/<scene>.webp`:
+about a thirtieth of the bytes, and the same picture to the eye. Record each
+scene's date and prompt here, so it can be remade or extended in the same
+style.
+
+| Scene | Original | Made | Prompt |
+| --- | --- | --- | --- |
+| kitchen | `art/kitchen.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | not recorded |
+
+ChatGPT gave the kitchen's things as boxes too, kept in
+`art/kitchen.boxes.json`. They were approximate — the fork and spoon about
+50 px low, the window short of its sill — so each region in
+`scenes/kitchen.json` was redrawn by eye over the picture: rectangles where
+they fit, polygons for the fork, spoon, chairs and table. The second chair,
+nearest the viewer, is not in ChatGPT's list and was added as `chair-front`.
+
+The drawn SVG kitchen that stood in before this picture is in the git
+history. For later scenes, the plan is to paint a flat colour per thing on
+a mask layer, as a PNG — never a lossy format, which smears the colours —
+and trace it into polygons with a script.
 
 ## Development
 

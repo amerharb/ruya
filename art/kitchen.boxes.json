@@ -1,0 +1,375 @@
+{
+	"scene_id": "kitchen",
+	"scene_name": "kitchen",
+	"image": {
+		"filename": "kitchen.png",
+		"format": "PNG",
+		"width": 1536,
+		"height": 1024,
+		"coordinate_system": "pixel coordinates; origin (0,0) at top-left",
+		"bbox_convention": "bbox uses x,y,width,height; bbox_xyxy uses [x_min,y_min,x_max,y_max]",
+		"note": "Bounding boxes are approximate locations of the visible objects in the generated image."
+	},
+	"items": [
+		{
+			"id": "window",
+			"name": "window",
+			"bbox": {
+				"x": 360,
+				"y": 49,
+				"width": 359,
+				"height": 270
+			},
+			"bbox_xyxy": [
+				360,
+				49,
+				719,
+				319
+			],
+			"center": {
+				"x": 539.5,
+				"y": 184.0
+			}
+		},
+		{
+			"id": "cabinet",
+			"name": "cabinet",
+			"bbox": {
+				"x": 12,
+				"y": 40,
+				"width": 320,
+				"height": 260
+			},
+			"bbox_xyxy": [
+				12,
+				40,
+				332,
+				300
+			],
+			"center": {
+				"x": 172.0,
+				"y": 170.0
+			}
+		},
+		{
+			"id": "frying-pan",
+			"name": "frying pan",
+			"bbox": {
+				"x": 1131,
+				"y": 94,
+				"width": 107,
+				"height": 190
+			},
+			"bbox_xyxy": [
+				1131,
+				94,
+				1238,
+				284
+			],
+			"center": {
+				"x": 1184.5,
+				"y": 189.0
+			}
+		},
+		{
+			"id": "clock",
+			"name": "clock",
+			"bbox": {
+				"x": 746,
+				"y": 69,
+				"width": 133,
+				"height": 144
+			},
+			"bbox_xyxy": [
+				746,
+				69,
+				879,
+				213
+			],
+			"center": {
+				"x": 812.5,
+				"y": 141.0
+			}
+		},
+		{
+			"id": "fridge",
+			"name": "fridge",
+			"bbox": {
+				"x": 1325,
+				"y": 87,
+				"width": 192,
+				"height": 723
+			},
+			"bbox_xyxy": [
+				1325,
+				87,
+				1517,
+				810
+			],
+			"center": {
+				"x": 1421.0,
+				"y": 448.5
+			}
+		},
+		{
+			"id": "stove",
+			"name": "stove",
+			"bbox": {
+				"x": 924,
+				"y": 342,
+				"width": 249,
+				"height": 385
+			},
+			"bbox_xyxy": [
+				924,
+				342,
+				1173,
+				727
+			],
+			"center": {
+				"x": 1048.5,
+				"y": 534.5
+			}
+		},
+		{
+			"id": "sink",
+			"name": "sink",
+			"bbox": {
+				"x": 399,
+				"y": 400,
+				"width": 221,
+				"height": 64
+			},
+			"bbox_xyxy": [
+				399,
+				400,
+				620,
+				464
+			],
+			"center": {
+				"x": 509.5,
+				"y": 432.0
+			}
+		},
+		{
+			"id": "faucet",
+			"name": "faucet",
+			"bbox": {
+				"x": 460,
+				"y": 324,
+				"width": 81,
+				"height": 100
+			},
+			"bbox_xyxy": [
+				460,
+				324,
+				541,
+				424
+			],
+			"center": {
+				"x": 500.5,
+				"y": 374.0
+			}
+		},
+		{
+			"id": "pot",
+			"name": "pot",
+			"bbox": {
+				"x": 1034,
+				"y": 374,
+				"width": 102,
+				"height": 66
+			},
+			"bbox_xyxy": [
+				1034,
+				374,
+				1136,
+				440
+			],
+			"center": {
+				"x": 1085.0,
+				"y": 407.0
+			}
+		},
+		{
+			"id": "kettle",
+			"name": "kettle",
+			"bbox": {
+				"x": 39,
+				"y": 328,
+				"width": 106,
+				"height": 105
+			},
+			"bbox_xyxy": [
+				39,
+				328,
+				145,
+				433
+			],
+			"center": {
+				"x": 92.0,
+				"y": 380.5
+			}
+		},
+		{
+			"id": "table",
+			"name": "table",
+			"bbox": {
+				"x": 38,
+				"y": 569,
+				"width": 875,
+				"height": 282
+			},
+			"bbox_xyxy": [
+				38,
+				569,
+				913,
+				851
+			],
+			"center": {
+				"x": 475.5,
+				"y": 710.0
+			}
+		},
+		{
+			"id": "chair",
+			"name": "chair",
+			"bbox": {
+				"x": 968,
+				"y": 575,
+				"width": 155,
+				"height": 327
+			},
+			"bbox_xyxy": [
+				968,
+				575,
+				1123,
+				902
+			],
+			"center": {
+				"x": 1045.5,
+				"y": 738.5
+			}
+		},
+		{
+			"id": "plate",
+			"name": "plate",
+			"bbox": {
+				"x": 195,
+				"y": 668,
+				"width": 160,
+				"height": 77
+			},
+			"bbox_xyxy": [
+				195,
+				668,
+				355,
+				745
+			],
+			"center": {
+				"x": 275.0,
+				"y": 706.5
+			}
+		},
+		{
+			"id": "fork",
+			"name": "fork",
+			"bbox": {
+				"x": 132,
+				"y": 732,
+				"width": 52,
+				"height": 71
+			},
+			"bbox_xyxy": [
+				132,
+				732,
+				184,
+				803
+			],
+			"center": {
+				"x": 158.0,
+				"y": 767.5
+			}
+		},
+		{
+			"id": "spoon",
+			"name": "spoon",
+			"bbox": {
+				"x": 359,
+				"y": 711,
+				"width": 61,
+				"height": 87
+			},
+			"bbox_xyxy": [
+				359,
+				711,
+				420,
+				798
+			],
+			"center": {
+				"x": 389.5,
+				"y": 754.5
+			}
+		},
+		{
+			"id": "cup",
+			"name": "cup",
+			"bbox": {
+				"x": 427,
+				"y": 638,
+				"width": 93,
+				"height": 92
+			},
+			"bbox_xyxy": [
+				427,
+				638,
+				520,
+				730
+			],
+			"center": {
+				"x": 473.5,
+				"y": 684.0
+			}
+		},
+		{
+			"id": "glass",
+			"name": "glass",
+			"bbox": {
+				"x": 556,
+				"y": 641,
+				"width": 77,
+				"height": 102
+			},
+			"bbox_xyxy": [
+				556,
+				641,
+				633,
+				743
+			],
+			"center": {
+				"x": 594.5,
+				"y": 692.0
+			}
+		},
+		{
+			"id": "bowl",
+			"name": "bowl",
+			"bbox": {
+				"x": 670,
+				"y": 660,
+				"width": 158,
+				"height": 95
+			},
+			"bbox_xyxy": [
+				670,
+				660,
+				828,
+				755
+			],
+			"center": {
+				"x": 749.0,
+				"y": 707.5
+			}
+		}
+	]
+}

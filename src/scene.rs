@@ -293,6 +293,26 @@ mod tests {
                     "{file}: {} has no {view_box}",
                     pic.src
                 );
+            } else {
+                // a bitmap may have more pixels than the coordinate space — a
+                // sharper copy for big screens — but never a different shape,
+                // or every region would drift off its thing
+                let size = imagesize::size(&path).unwrap();
+                let (pw, ph) = (size.width as f64, size.height as f64);
+                assert!(
+                    (pw / ph - pic.width / pic.height).abs() < 0.002,
+                    "{file}: {} is {pw}×{ph}, not the shape of {}×{}",
+                    pic.src,
+                    pic.width,
+                    pic.height
+                );
+                assert!(
+                    pw >= pic.width,
+                    "{file}: {} is smaller than the scene's {}×{}",
+                    pic.src,
+                    pic.width,
+                    pic.height
+                );
             }
         }
     }

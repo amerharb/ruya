@@ -30,6 +30,10 @@ web-sys = { version = "0.3", features = [
 	"Window",
 ] }
 
+[dev-dependencies]
+# the scene checks read a bitmap's size from its header
+imagesize = "0.15"
+
 [profile.release]
 # size over speed: the whole app is a picture and a few labels
 opt-level = "z"
