@@ -1,0 +1,19 @@
+<!doctype html>
+<!-- lang is set from the chosen language once the app runs -->
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+	<title>Ruya</title>
+	<meta name="description" content="A picture dictionary: point at a thing in the picture and read its name in your language." />
+	<link data-trunk rel="rust" data-bin="ruya" data-wasm-opt="z" />
+	<link data-trunk rel="css" href="style.css" />
+	<link data-trunk rel="copy-dir" href="public/scenes" />
+	<link data-trunk rel="icon" href="public/favicon.svg" />
+	<!-- fetched while the wasm downloads, rather than after it starts -->
+	<link rel="preload" as="image" href="scenes/kitchen.svg" />
+</head>
+<body>
+	<noscript>Ruya needs JavaScript to run: it is written in Rust and loaded as WebAssembly.</noscript>
+</body>
+</html>

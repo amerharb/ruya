@@ -1,0 +1,13 @@
+trunk-version = "^0.22"
+
+[build]
+target = "index.html"
+dist = "dist"
+public_url = "/"
+filehash = true
+minify = "on_release"
+
+[serve]
+addresses = ["127.0.0.1"]
+# 8080 is baab's local default and 3000 is sawt's Vite
+port = 8090

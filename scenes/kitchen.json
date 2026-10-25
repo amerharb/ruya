@@ -1,0 +1,108 @@
+{
+	"id": "kitchen",
+	"name": { "en": "kitchen", "ar": "مطبخ", "de": "die Küche", "sv": "ett kök", "es": "la cocina", "uk": "кухня", "he": "מטבח" },
+	"picture": { "src": "scenes/kitchen.svg", "width": 1536, "height": 1024 },
+	"items": [
+		{
+			"id": "window",
+			"d": "M570 100H890V400H570Z",
+			"name": { "en": "window", "ar": "نافذة", "de": "das Fenster", "sv": "ett fönster", "es": "la ventana", "uk": "вікно", "he": "חלון" }
+		},
+		{
+			"id": "cabinet",
+			"d": "M100 90H400V300H100Z",
+			"name": { "en": "cabinet", "ar": "خزانة", "de": "der Schrank", "sv": "ett skåp", "es": "el armario", "uk": "шафа", "he": "ארון" },
+			"note": "a wall cabinet; American cabinet, where British English says cupboard"
+		},
+		{
+			"id": "frying-pan",
+			"d": "M470 136H490V200H470Z M480 200L499 204L515 215L526 231L530 250L526 269L515 285L499 296L480 300L461 296L445 285L434 269L430 250L434 231L445 215L461 204Z",
+			"name": { "en": "frying pan", "ar": "مقلاة", "de": "die Pfanne", "sv": "en stekpanna", "es": "la sartén", "uk": "сковорода", "he": "מחבת" }
+		},
+		{
+			"id": "clock",
+			"d": "M1020 100L1043 105L1062 118L1075 137L1080 160L1075 183L1062 202L1043 215L1020 220L997 215L978 202L965 183L960 160L965 137L978 118L997 105Z",
+			"name": { "en": "clock", "ar": "ساعة", "de": "die Uhr", "sv": "en klocka", "es": "el reloj", "uk": "годинник", "he": "שעון" }
+		},
+		{
+			"id": "fridge",
+			"d": "M1180 230H1420V860H1180Z",
+			"name": { "en": "fridge", "ar": "ثلاجة", "de": "der Kühlschrank", "sv": "ett kylskåp", "es": "la nevera", "uk": "холодильник", "he": "מקרר" },
+			"note": "es: nevera, the everyday word in Spain; refrigerador is Latin American"
+		},
+		{
+			"id": "stove",
+			"d": "M880 540H1120V860H880Z",
+			"name": { "en": "stove", "ar": "موقد", "de": "der Herd", "sv": "en spis", "es": "la cocina", "uk": "плита", "he": "כיריים" },
+			"note": "es: in Spain la cocina is both the room and the cooker, as here"
+		},
+		{
+			"id": "sink",
+			"d": "M600 543H820V642H600Z",
+			"name": { "en": "sink", "ar": "حوض", "de": "die Spüle", "sv": "en diskho", "es": "el fregadero", "uk": "мийка", "he": "כיור" },
+			"note": "ar: حوض, the kitchen sink; مغسلة is more the washbasin"
+		},
+		{
+			"id": "faucet",
+			"d": "M692 548V468L704 452L732 446L758 454L770 474V500H750V478L740 468L728 466L716 470V548Z",
+			"at": [704, 500],
+			"name": { "en": "faucet", "ar": "صنبور", "de": "der Wasserhahn", "sv": "en kran", "es": "el grifo", "uk": "кран", "he": "ברז" },
+			"note": "American faucet, where British English says tap"
+		},
+		{
+			"id": "pot",
+			"d": "M901 468H1009V542H901Z",
+			"name": { "en": "pot", "ar": "قدر", "de": "der Topf", "sv": "en gryta", "es": "la olla", "uk": "каструля", "he": "סיר" },
+			"note": "two handles, so a pot (gryta, olla), not a saucepan with one long handle (kastrull, cazo)"
+		},
+		{
+			"id": "kettle",
+			"d": "M438 450H548V546H438Z",
+			"name": { "en": "kettle", "ar": "غلاية", "de": "der Wasserkocher", "sv": "en vattenkokare", "es": "el hervidor", "uk": "чайник", "he": "קומקום" },
+			"note": "electric, on the counter: Wasserkocher, vattenkokare and hervidor are the electric words"
+		},
+		{
+			"id": "table",
+			"d": "M200 700L740 700L780 800V822H160V800Z M175 822H200V1000H175Z M740 822H765V1000H740Z",
+			"name": { "en": "table", "ar": "طاولة", "de": "der Tisch", "sv": "ett bord", "es": "la mesa", "uk": "стіл", "he": "שולחן" }
+		},
+		{
+			"id": "chair",
+			"d": "M826 640H954V800H964V832H952V1000H932V832H848V1000H828V832H816V800H826Z",
+			"at": [890, 690],
+			"name": { "en": "chair", "ar": "كرسي", "de": "der Stuhl", "sv": "en stol", "es": "la silla", "uk": "стілець", "he": "כיסא" }
+		},
+		{
+			"id": "plate",
+			"d": "M330 726L358 728L382 734L398 742L404 752L398 762L382 770L358 776L330 778L302 776L278 770L262 762L256 752L262 742L278 734L302 728Z",
+			"name": { "en": "plate", "ar": "صحن", "de": "der Teller", "sv": "en tallrik", "es": "el plato", "uk": "тарілка", "he": "צלחת" }
+		},
+		{
+			"id": "fork",
+			"d": "M202 716L226 700L280 784L258 798Z",
+			"name": { "en": "fork", "ar": "شوكة", "de": "die Gabel", "sv": "en gaffel", "es": "el tenedor", "uk": "виделка", "he": "מזלג" }
+		},
+		{
+			"id": "spoon",
+			"d": "M398 712L424 698L470 784L448 798Z",
+			"name": { "en": "spoon", "ar": "ملعقة", "de": "der Löffel", "sv": "en sked", "es": "la cuchara", "uk": "ложка", "he": "כף" }
+		},
+		{
+			"id": "cup",
+			"d": "M478 692H550V756H478Z",
+			"name": { "en": "cup", "ar": "كوب", "de": "die Tasse", "sv": "en kopp", "es": "la taza", "uk": "чашка", "he": "ספל" },
+			"note": "ar: كوب is the cup with a handle, كأس the glass"
+		},
+		{
+			"id": "glass",
+			"d": "M560 672H616V756H560Z",
+			"name": { "en": "glass", "ar": "كأس", "de": "das Glas", "sv": "ett glas", "es": "el vaso", "uk": "склянка", "he": "כוס" },
+			"note": "es: vaso is a drinking glass; un cristal is the material"
+		},
+		{
+			"id": "bowl",
+			"d": "M626 700H736V756H626Z",
+			"name": { "en": "bowl", "ar": "وعاء", "de": "die Schüssel", "sv": "en skål", "es": "el cuenco", "uk": "миска", "he": "קערה" }
+		}
+	]
+}

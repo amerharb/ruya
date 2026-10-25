@@ -1,0 +1,37 @@
+[package]
+name = "ruya"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+description = "Ruya — رؤية, a picture dictionary: point at a thing, read its name"
+license = "MIT"
+publish = false
+
+[dependencies]
+# csr: rendered in the browser; it also switches on effects, which nothing
+# reactive runs without
+leptos = { version = "0.8.22", features = ["csr"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+console_error_panic_hook = "0.1"
+wasm-bindgen = "0.2.129"
+# navigator.languages comes back as a JS array
+js-sys = "0.3"
+web-sys = { version = "0.3", features = [
+	"Document",
+	"Element",
+	"History",
+	"KeyboardEvent",
+	"Location",
+	"MouseEvent",
+	"Navigator",
+	"PointerEvent",
+	"UrlSearchParams",
+	"Window",
+] }
+
+[profile.release]
+# size over speed: the whole app is a picture and a few labels
+opt-level = "z"
+lto = true
+codegen-units = 1
