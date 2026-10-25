@@ -113,6 +113,30 @@
 				{ "thing": "glass", "d": "M570 594H646V708H570Z" },
 				{ "thing": "bowl", "d": "M678 638H832V740H678Z" }
 			]
+		},
+		"ghibli": {
+			"picture": { "src": "scenes/kitchen-ghibli.webp", "thumb": "scenes/kitchen-ghibli.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "window", "d": "M340 22H744V398H340Z" },
+				{ "thing": "cabinet", "d": "M0 16H334V290H0Z" },
+				{ "thing": "frying-pan", "d": "M1176 110H1200V172H1176Z M1189 172L1205 175L1219 185L1229 199L1232 215L1229 231L1219 245L1205 255L1189 258L1173 255L1159 245L1149 231L1146 215L1149 199L1159 185L1173 175Z" },
+				{ "thing": "clock", "d": "M825 76L850 81L871 95L885 117L890 142L885 167L871 189L850 203L825 208L800 203L779 189L765 167L760 142L765 117L779 95L800 81Z" },
+				{ "thing": "fridge", "d": "M1314 100L1526 58V866H1490L1314 750Z" },
+				{ "thing": "stove", "d": "M892 406H1166V436H1162V718H930V436H892Z" },
+				{ "thing": "sink", "d": "M336 410H628V460H336Z" },
+				{ "thing": "faucet", "d": "M466 314H514V424H466Z" },
+				{ "thing": "pot", "d": "M1006 364H1108V428H1006Z" },
+				{ "thing": "kettle", "d": "M28 338H128V436H28Z" },
+				{ "thing": "table", "d": "M0 642L48 598H868L1048 788V836L902 840V1024H838V902L300 904H0Z" },
+				{ "thing": "chair", "d": "M998 556L1050 566L1166 604L1146 760L1120 1024H980L960 986H902V842L1048 836V790L982 716V580Z", "at": [1080, 620] },
+				{ "thing": "chair", "d": "M0 766L276 774L282 762L324 768L342 912L570 962V1024H0Z", "at": [150, 790] },
+				{ "thing": "plate", "d": "M242 671L282 674L316 682L339 694L347 709L339 724L316 736L282 744L242 747L202 744L168 736L145 724L137 709L145 694L168 682L202 674Z" },
+				{ "thing": "fork", "d": "M82 749L102 763L152 691L132 677Z" },
+				{ "thing": "spoon", "d": "M354 680H404V762H354Z" },
+				{ "thing": "cup", "d": "M434 618H534V720H434Z" },
+				{ "thing": "glass", "d": "M560 604H638V722H560Z" },
+				{ "thing": "bowl", "d": "M668 646H818V746H668Z" }
+			]
 		}
 	}
 }

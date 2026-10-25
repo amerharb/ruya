@@ -16,6 +16,9 @@
   thumbnail of each in the bar switches between them, the choice kept in the
   address as `?s=`. The names belong to the scene's things, written once for
   every style; each style has its own regions over its own picture.
+- **A Ghibli kitchen** — a third style: the kitchen painted again in the
+  manner of Studio Ghibli's films, made in ChatGPT (133 KB as WebP, from a
+  2 MB PNG kept in `art/`), with its regions redrawn by eye.
 - **The living room** — the second scene, drawn as a basic picture for now,
   with seventeen things — window, two curtains, picture, door, bookshelf,
   lamp, couch, two pillows, TV, plant, rug, armchair, coffee table, book,

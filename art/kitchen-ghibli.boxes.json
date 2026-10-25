@@ -1,0 +1,376 @@
+{
+  "scene_id": "kitchen",
+  "scene_name": "kitchen",
+  "style": "Ghibli-inspired",
+  "image": {
+    "filename": "a_warm_cozy_detailed_hand_drawn_studio_ghibli_s.png",
+    "format": "PNG",
+    "width": 1536,
+    "height": 1024,
+    "coordinate_system": "pixel coordinates; origin (0,0) at top-left",
+    "bbox_convention": "bbox uses x,y,width,height; bbox_xyxy uses [x_min,y_min,x_max,y_max]",
+    "note": "Bounding boxes are approximate locations of the visible objects in the generated Ghibli-inspired image."
+  },
+  "items": [
+    {
+      "id": "window",
+      "name": "window",
+      "bbox": {
+        "x": 337,
+        "y": 30,
+        "width": 409,
+        "height": 367
+      },
+      "bbox_xyxy": [
+        337,
+        30,
+        746,
+        397
+      ],
+      "center": {
+        "x": 541.5,
+        "y": 213.5
+      }
+    },
+    {
+      "id": "cabinet",
+      "name": "cabinet",
+      "bbox": {
+        "x": 0,
+        "y": 15,
+        "width": 333,
+        "height": 276
+      },
+      "bbox_xyxy": [
+        0,
+        15,
+        333,
+        291
+      ],
+      "center": {
+        "x": 166.5,
+        "y": 153.0
+      }
+    },
+    {
+      "id": "frying-pan",
+      "name": "frying pan",
+      "bbox": {
+        "x": 1148,
+        "y": 112,
+        "width": 81,
+        "height": 147
+      },
+      "bbox_xyxy": [
+        1148,
+        112,
+        1229,
+        259
+      ],
+      "center": {
+        "x": 1188.5,
+        "y": 185.5
+      }
+    },
+    {
+      "id": "clock",
+      "name": "clock",
+      "bbox": {
+        "x": 757,
+        "y": 75,
+        "width": 133,
+        "height": 135
+      },
+      "bbox_xyxy": [
+        757,
+        75,
+        890,
+        210
+      ],
+      "center": {
+        "x": 823.5,
+        "y": 142.5
+      }
+    },
+    {
+      "id": "fridge",
+      "name": "fridge",
+      "bbox": {
+        "x": 1295,
+        "y": 0,
+        "width": 240,
+        "height": 869
+      },
+      "bbox_xyxy": [
+        1295,
+        0,
+        1535,
+        869
+      ],
+      "center": {
+        "x": 1415.0,
+        "y": 434.5
+      }
+    },
+    {
+      "id": "stove",
+      "name": "stove",
+      "bbox": {
+        "x": 920,
+        "y": 410,
+        "width": 248,
+        "height": 303
+      },
+      "bbox_xyxy": [
+        920,
+        410,
+        1168,
+        713
+      ],
+      "center": {
+        "x": 1044.0,
+        "y": 561.5
+      }
+    },
+    {
+      "id": "sink",
+      "name": "sink",
+      "bbox": {
+        "x": 337,
+        "y": 414,
+        "width": 287,
+        "height": 30
+      },
+      "bbox_xyxy": [
+        337,
+        414,
+        624,
+        444
+      ],
+      "center": {
+        "x": 480.5,
+        "y": 429.0
+      }
+    },
+    {
+      "id": "faucet",
+      "name": "faucet",
+      "bbox": {
+        "x": 469,
+        "y": 317,
+        "width": 39,
+        "height": 110
+      },
+      "bbox_xyxy": [
+        469,
+        317,
+        508,
+        427
+      ],
+      "center": {
+        "x": 488.5,
+        "y": 372.0
+      }
+    },
+    {
+      "id": "pot",
+      "name": "pot",
+      "bbox": {
+        "x": 1008,
+        "y": 367,
+        "width": 100,
+        "height": 51
+      },
+      "bbox_xyxy": [
+        1008,
+        367,
+        1108,
+        418
+      ],
+      "center": {
+        "x": 1058.0,
+        "y": 392.5
+      }
+    },
+    {
+      "id": "kettle",
+      "name": "kettle",
+      "bbox": {
+        "x": 28,
+        "y": 342,
+        "width": 97,
+        "height": 91
+      },
+      "bbox_xyxy": [
+        28,
+        342,
+        125,
+        433
+      ],
+      "center": {
+        "x": 76.5,
+        "y": 387.5
+      }
+    },
+    {
+      "id": "table",
+      "name": "table",
+      "bbox": {
+        "x": 0,
+        "y": 594,
+        "width": 1051,
+        "height": 429
+      },
+      "bbox_xyxy": [
+        0,
+        594,
+        1051,
+        1023
+      ],
+      "center": {
+        "x": 525.5,
+        "y": 808.5
+      }
+    },
+    {
+      "id": "chair",
+      "name": "chair",
+      "bbox": {
+        "x": 973,
+        "y": 565,
+        "width": 194,
+        "height": 458
+      },
+      "bbox_xyxy": [
+        973,
+        565,
+        1167,
+        1023
+      ],
+      "center": {
+        "x": 1070.0,
+        "y": 794.0
+      }
+    },
+    {
+      "id": "plate",
+      "name": "plate",
+      "bbox": {
+        "x": 138,
+        "y": 672,
+        "width": 211,
+        "height": 77
+      },
+      "bbox_xyxy": [
+        138,
+        672,
+        349,
+        749
+      ],
+      "center": {
+        "x": 243.5,
+        "y": 710.5
+      }
+    },
+    {
+      "id": "fork",
+      "name": "fork",
+      "bbox": {
+        "x": 88,
+        "y": 685,
+        "width": 49,
+        "height": 75
+      },
+      "bbox_xyxy": [
+        88,
+        685,
+        137,
+        760
+      ],
+      "center": {
+        "x": 112.5,
+        "y": 722.5
+      }
+    },
+    {
+      "id": "spoon",
+      "name": "spoon",
+      "bbox": {
+        "x": 361,
+        "y": 682,
+        "width": 37,
+        "height": 78
+      },
+      "bbox_xyxy": [
+        361,
+        682,
+        398,
+        760
+      ],
+      "center": {
+        "x": 379.5,
+        "y": 721.0
+      }
+    },
+    {
+      "id": "cup",
+      "name": "cup",
+      "bbox": {
+        "x": 435,
+        "y": 620,
+        "width": 97,
+        "height": 100
+      },
+      "bbox_xyxy": [
+        435,
+        620,
+        532,
+        720
+      ],
+      "center": {
+        "x": 483.5,
+        "y": 670.0
+      }
+    },
+    {
+      "id": "glass",
+      "name": "glass",
+      "bbox": {
+        "x": 558,
+        "y": 605,
+        "width": 79,
+        "height": 115
+      },
+      "bbox_xyxy": [
+        558,
+        605,
+        637,
+        720
+      ],
+      "center": {
+        "x": 597.5,
+        "y": 662.5
+      }
+    },
+    {
+      "id": "bowl",
+      "name": "bowl",
+      "bbox": {
+        "x": 669,
+        "y": 648,
+        "width": 148,
+        "height": 97
+      },
+      "bbox_xyxy": [
+        669,
+        648,
+        817,
+        745
+      ],
+      "center": {
+        "x": 743.0,
+        "y": 696.5
+      }
+    }
+  ]
+}

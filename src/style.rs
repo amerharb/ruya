@@ -1,6 +1,7 @@
-//! The styles a scene can be shown in: the same kitchen as a flat drawing or
-//! as a realistic picture. The things and their names are the same in every
-//! style; each style has its own picture and its own regions over it.
+//! The styles a scene can be shown in: the same kitchen as a flat drawing, a
+//! realistic picture or a painting in the manner of Studio Ghibli's films.
+//! The things and their names are the same in every style; each style has its
+//! own picture and its own regions over it.
 //!
 //! Adding one: a variant here, a field in `scene::Styles`, and an arm in each
 //! match. A scene need not have every style; the switch shows those it has.
@@ -11,11 +12,12 @@ use crate::lang::Lang;
 pub enum Style {
     Basic,
     Realistic,
+    Ghibli,
 }
 
 impl Style {
     /// In the order the switch shows them.
-    pub const ALL: [Style; 2] = [Style::Basic, Style::Realistic];
+    pub const ALL: [Style; 3] = [Style::Basic, Style::Realistic, Style::Ghibli];
 
     /// What a scene opens in when nothing was chosen.
     pub const DEFAULT: Style = Style::Realistic;
@@ -25,6 +27,7 @@ impl Style {
         match self {
             Style::Basic => "basic",
             Style::Realistic => "realistic",
+            Style::Ghibli => "ghibli",
         }
     }
 
@@ -63,6 +66,14 @@ impl Style {
             (Style::Realistic, Lang::Es) => "realista",
             (Style::Realistic, Lang::Uk) => "реалістичний",
             (Style::Realistic, Lang::He) => "מציאותי",
+            // the studio's name, as each language writes it
+            (Style::Ghibli, Lang::En) => "Ghibli",
+            (Style::Ghibli, Lang::Ar) => "جيبلي",
+            (Style::Ghibli, Lang::De) => "Ghibli",
+            (Style::Ghibli, Lang::Sv) => "Ghibli",
+            (Style::Ghibli, Lang::Es) => "Ghibli",
+            (Style::Ghibli, Lang::Uk) => "Гіблі",
+            (Style::Ghibli, Lang::He) => "ג'יבלי",
         }
     }
 }

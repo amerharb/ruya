@@ -30,15 +30,18 @@ start WebAssembly.
 A scene can be shown in more than one style, each its own picture of the
 same place:
 
-- **Realistic** — a painted picture, made in ChatGPT. The default.
 - **Basic** — a flat drawing in a few colours, with less to look at.
+- **Realistic** — a painted picture, made in ChatGPT. The default.
+- **Ghibli** — the realistic picture painted again in the manner of Studio
+  Ghibli's films, warm and hand-drawn, made in ChatGPT. The kitchen only,
+  for now.
 
 The bar shows a thumbnail of each, the one shown ringed; a scene in one
 style only shows none. Each style has its own regions, since the fridge
 stands somewhere else in each, but the names belong to the scene's things,
 so they are written once and the same in every style. More styles can come
 later — a line drawing, a photo. The living room is basic only until its
-realistic picture is made (below); a scene opens in the style picked if it
+other pictures are made (below); a scene opens in the style picked if it
 has it, else in its first.
 
 ## Languages
@@ -72,8 +75,8 @@ browser's languages it has, else English.
   guessed from the browser is not written.
 - `p` — the place, the scene's id, e.g. `?p=living-room`. Written when one
   is picked; absent, or unknown, is the kitchen. (`p`, as `s` was taken.)
-- `s` — the style, `basic` or `realistic`, e.g. `?s=basic`. Written when
-  one is picked; absent, or unknown, is realistic. A scene without the
+- `s` — the style, `basic`, `realistic` or `ghibli`, e.g. `?s=basic`.
+  Written when one is picked; absent, or unknown, is realistic. A scene without the
   style asked for opens in its first.
 
 ## Scenes
@@ -111,8 +114,8 @@ per style and the regions over it:
 - **`things`** are named once, by an id of `a-z`, `0-9` and `-`. Names are
   a fixed set of fields, one per language; a file missing one does not
   parse. `note`, optional, says why a word was chosen.
-- **`styles`** holds `basic`, `realistic` or both. A style the scene lacks
-  is left out.
+- **`styles`** holds any of `basic`, `realistic` and `ghibli`. A style the
+  scene lacks is left out.
 - The **picture** is in `public/scenes/`, shown as an image: a WebP for a
   painted scene, an SVG for a drawn one. `width` and `height` are the
   coordinate space the regions are written in and the picture's shape; the
@@ -152,10 +155,11 @@ or a bitmap of the scene's shape — the picture at least its size.
 
 ## Pictures and licences
 
-- **Realistic** pictures are made in ChatGPT. Each one's original is kept
-  in `art/`, as it came, and the WebP the app shows is made from it with
-  `cwebp -q 80 -m 6 -metadata none art/<scene>-realistic.png -o public/scenes/<scene>-realistic.webp`:
-  about a thirtieth of the bytes, and the same picture to the eye.
+- **Realistic** and **Ghibli** pictures are made in ChatGPT. Each one's
+  original is kept in `art/`, as it came, and the WebP the app shows is
+  made from it with
+  `cwebp -q 80 -m 6 -metadata none art/<scene>-<style>.png -o public/scenes/<scene>-<style>.webp`:
+  a sixteenth to a thirtieth of the bytes, and the same picture to the eye.
 - **Basic** pictures are SVG, drawn by hand in a 1536 × 1024 `viewBox`:
   flat shapes, no text.
 - **Thumbnails** are made from the picture with
@@ -164,7 +168,7 @@ or a bitmap of the scene's shape — the picture at least its size.
   `rsvg-convert -w 192 -h 128 <picture>.svg -o <picture>.png`
   (`brew install librsvg`).
 
-Record each realistic picture's date and prompt here, so it can be remade
+Record each ChatGPT picture's date and prompt here, so it can be remade
 or extended in the same style; a prompt written before the picture is
 kept in `art/` beside it.
 
@@ -172,6 +176,7 @@ kept in `art/` beside it.
 | --- | --- | --- | --- | --- |
 | kitchen | realistic | `art/kitchen-realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | not recorded |
 | kitchen | basic | `public/scenes/kitchen-basic.svg` | drawn by hand, 2026-10-25 | — |
+| kitchen | ghibli | `art/kitchen-ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | not recorded |
 | living room | realistic | not made yet | — | `art/living-room-realistic.prompt.md` |
 | living room | basic | `public/scenes/living-room-basic.svg` | drawn by hand, 2026-10-25 | — |
 
@@ -181,6 +186,12 @@ spoon about 50 px low, the window short of its sill — so each region was
 redrawn by eye over the picture: rectangles where they fit, polygons for
 the fork, spoon, chairs and table. The second chair, nearest the viewer, is
 not in ChatGPT's list and has a second `chair` region.
+
+The Ghibli kitchen's boxes, in `art/kitchen-ghibli.boxes.json`, were
+closer, but a box cannot follow the table or the chair behind its corner,
+and the sink's was 30 px tall, under the 48 a region needs; its regions
+were redrawn the same way. The far chair's region follows the table's edge
+rather than overlapping it, so a tap on the table's corner is the table's.
 
 For later scenes, the plan is to paint a flat colour per thing on a mask
 layer, as a PNG — never a lossy format, which smears the colours — and

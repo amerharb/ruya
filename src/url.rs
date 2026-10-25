@@ -110,6 +110,7 @@ mod tests {
     fn reads_s_for_the_style() {
         assert_eq!(style_from_search("?l=sv&s=basic"), Some(Style::Basic));
         assert_eq!(style_from_search("?s=realistic"), Some(Style::Realistic));
+        assert_eq!(style_from_search("?s=ghibli"), Some(Style::Ghibli));
         assert_eq!(style_from_search("?s=photo"), None);
         assert_eq!(style_from_search("?l=sv"), None);
     }

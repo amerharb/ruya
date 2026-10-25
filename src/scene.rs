@@ -2,9 +2,10 @@
 //! can be shown in.
 //!
 //! Names belong to the things, once per scene. Each style — a flat drawing, a
-//! realistic picture — has its own picture and its own regions over it, since
-//! the same fridge stands somewhere else in each; a region says which thing it
-//! is. Two regions may be the same thing: the realistic kitchen has two chairs.
+//! realistic picture, a Ghibli-like painting — has its own picture and its own
+//! regions over it, since the same fridge stands somewhere else in each; a
+//! region says which thing it is. Two regions may be the same thing: the
+//! realistic kitchen has two chairs.
 //!
 //! The picture is only ever shown as an image, and the regions are polygons in
 //! the picture's own coordinates laid over it, so an SVG and a bitmap take the
@@ -50,6 +51,8 @@ pub struct Styles {
     pub basic: Option<Rendering>,
     #[serde(default)]
     pub realistic: Option<Rendering>,
+    #[serde(default)]
+    pub ghibli: Option<Rendering>,
 }
 
 /// The scene in one style.
@@ -167,6 +170,7 @@ impl Styles {
         match style {
             Style::Basic => self.basic.as_ref(),
             Style::Realistic => self.realistic.as_ref(),
+            Style::Ghibli => self.ghibli.as_ref(),
         }
     }
 
@@ -174,6 +178,7 @@ impl Styles {
         match style {
             Style::Basic => self.basic.as_mut(),
             Style::Realistic => self.realistic.as_mut(),
+            Style::Ghibli => self.ghibli.as_mut(),
         }
     }
 }
