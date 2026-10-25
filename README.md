@@ -40,9 +40,8 @@ The bar shows a thumbnail of each, the one shown ringed; a scene in one
 style only shows none. Each style has its own regions, since the fridge
 stands somewhere else in each, but the names belong to the scene's things,
 so they are written once and the same in every style. More styles can come
-later — a line drawing, a photo. The living room is basic only until its
-other pictures are made (below); a scene opens in the style picked if it
-has it, else in its first.
+later — a line drawing, a photo. The living room has no Ghibli picture
+yet; a scene opens in the style picked if it has it, else in its first.
 
 ## Languages
 
@@ -177,7 +176,7 @@ kept in `art/` beside it.
 | kitchen | realistic | `art/kitchen-realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | not recorded |
 | kitchen | basic | `public/scenes/kitchen-basic.svg` | drawn by hand, 2026-10-25 | — |
 | kitchen | ghibli | `art/kitchen-ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | not recorded |
-| living room | realistic | not made yet | — | `art/living-room-realistic.prompt.md` |
+| living room | realistic | `art/living-room-realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | `art/living-room-realistic.prompt.md` |
 | living room | basic | `public/scenes/living-room-basic.svg` | drawn by hand, 2026-10-25 | — |
 
 ChatGPT gave the realistic kitchen's things as boxes too, kept in
@@ -192,6 +191,14 @@ closer, but a box cannot follow the table or the chair behind its corner,
 and the sink's was 30 px tall, under the 48 a region needs; its regions
 were redrawn the same way. The far chair's region follows the table's edge
 rather than overlapping it, so a tap on the table's corner is the table's.
+
+The realistic living room's boxes, in
+`art/living-room-realistic.boxes.json`, put both curtains in one box and
+all the pillows in another, though the prompt asked for one each. The
+picture has four pillows, three on the couch and one in the armchair,
+each its own `pillow` region; the armchair's comes after the armchair, as
+it lies on it. The book on the coffee table is a stack of two, its spine
+the one piece of text in the picture.
 
 For later scenes, the plan is to paint a flat colour per thing on a mask
 layer, as a PNG — never a lossy format, which smears the colours — and

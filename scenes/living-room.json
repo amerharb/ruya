@@ -87,6 +87,32 @@
 				{ "thing": "flower", "d": "M828 676L842 662L864 645L886 664L902 678L888 692L868 736H860L840 690Z" },
 				{ "thing": "cat", "d": "M1016 914L1022 866L1048 884L1070 864L1078 896H1180L1196 898L1218 920L1210 950L1180 962L1110 968H1046L1020 944Z" }
 			]
+		},
+		"realistic": {
+			"picture": { "src": "scenes/living-room-realistic.webp", "thumb": "scenes/living-room-realistic.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "window", "d": "M494 118H814V458H494Z" },
+				{ "thing": "curtain", "d": "M326 82H498V512H330Z" },
+				{ "thing": "curtain", "d": "M810 84H980V515H812Z" },
+				{ "thing": "picture", "d": "M1118 174L1248 112V296L1120 322Z" },
+				{ "thing": "door", "d": "M1398 56L1536 16V836L1398 790Z" },
+				{ "thing": "bookshelf", "d": "M0 72H154V590H0Z" },
+				{ "thing": "lamp", "d": "M206 304H298L308 385H262L292 586H208L238 385H197Z" },
+				{ "thing": "couch", "d": "M370 448H906V505H976V690H298V505H370Z" },
+				{ "thing": "pillow", "d": "M351 470L454 469L473 562L383 570Z" },
+				{ "thing": "pillow", "d": "M443 483L532 488L554 557L476 562Z" },
+				{ "thing": "pillow", "d": "M802 475L925 479L893 566L776 557Z" },
+				{ "thing": "tv", "d": "M1128 352L1292 330V560L1128 534Z" },
+				{ "thing": "plant", "d": "M1002 334L1052 348L1098 372L1128 394L1112 436L1094 492L1064 538L1058 642H994L990 548L982 508L944 478L940 440L956 404L978 376Z" },
+				{ "thing": "rug", "d": "M468 690H1146L1402 986L1360 1004L110 1018L230 880Z" },
+				{ "thing": "armchair", "d": "M0 536L60 544L108 584L304 584L312 626L462 618L492 720L484 860L456 966H418L412 906L118 952L112 1022H74L56 940L0 880Z" },
+				{ "thing": "pillow", "d": "M88 582L165 612L225 656L150 682L108 668Z" },
+				{ "thing": "coffee-table", "d": "M530 608H884L914 664V838H502V664Z" },
+				{ "thing": "book", "d": "M578 598H702V648H578Z" },
+				{ "thing": "flower", "d": "M660 500L700 476L760 478L812 488L808 520L770 548L740 570H720L690 548L652 520Z" },
+				{ "thing": "vase", "d": "M704 560H762V636H704Z" },
+				{ "thing": "cat", "d": "M908 770L960 752L1010 742L1018 724L1062 726L1068 760L1094 812L1060 820H930L908 805Z" }
+			]
 		}
 	}
 }

@@ -19,11 +19,11 @@
 - **A Ghibli kitchen** — a third style: the kitchen painted again in the
   manner of Studio Ghibli's films, made in ChatGPT (133 KB as WebP, from a
   2 MB PNG kept in `art/`), with its regions redrawn by eye.
-- **The living room** — the second scene, drawn as a basic picture for now,
-  with seventeen things — window, two curtains, picture, door, bookshelf,
-  lamp, couch, two pillows, TV, plant, rug, armchair, coffee table, book,
-  vase, flower and a sleeping cat. Its realistic picture is to be made in
-  ChatGPT, with the prompt kept in `art/`.
+- **The living room** — the second scene, with seventeen things — window,
+  curtains, picture, door, bookshelf, lamp, couch, pillows, TV, plant, rug,
+  armchair, coffee table, book, vase, flower and a sleeping cat. Realistic,
+  made in ChatGPT from the prompt kept in `art/` (191 KB as WebP, from a
+  2.8 MB PNG), and basic, drawn by hand in SVG.
 - **A choice of scene** — the scene's name in the bar is a list of the
   scenes, each named in the chosen language, the choice kept in the address
   as `?p=`.

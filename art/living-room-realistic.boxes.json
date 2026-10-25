@@ -1,0 +1,356 @@
+{
+  "scene_id": "living-room",
+  "scene_name": "living room",
+  "style": "realistic",
+  "image": {
+    "filename": "a_bright_cozy_modern_living_room_interior_scene.png",
+    "format": "PNG",
+    "width": 1536,
+    "height": 1024,
+    "coordinate_system": "pixel coordinates; origin (0,0) at top-left",
+    "bbox_convention": "bbox uses x,y,width,height; bbox_xyxy uses [x_min,y_min,x_max,y_max]",
+    "note": "Bounding boxes are approximate. Both curtain panels are represented by one combined bounding box; both couch pillows are represented by one combined bounding box."
+  },
+  "items": [
+    {
+      "id": "window",
+      "name": "window",
+      "bbox": {
+        "x": 492,
+        "y": 126,
+        "width": 324,
+        "height": 329
+      },
+      "bbox_xyxy": [
+        492,
+        126,
+        816,
+        455
+      ],
+      "center": {
+        "x": 654.0,
+        "y": 290.5
+      }
+    },
+    {
+      "id": "curtain",
+      "name": "curtain",
+      "bbox": {
+        "x": 325,
+        "y": 83,
+        "width": 653,
+        "height": 376
+      },
+      "bbox_xyxy": [
+        325,
+        83,
+        978,
+        459
+      ],
+      "center": {
+        "x": 651.5,
+        "y": 271.0
+      }
+    },
+    {
+      "id": "picture",
+      "name": "picture",
+      "bbox": {
+        "x": 1118,
+        "y": 111,
+        "width": 133,
+        "height": 211
+      },
+      "bbox_xyxy": [
+        1118,
+        111,
+        1251,
+        322
+      ],
+      "center": {
+        "x": 1184.5,
+        "y": 216.5
+      }
+    },
+    {
+      "id": "door",
+      "name": "door",
+      "bbox": {
+        "x": 1398,
+        "y": 20,
+        "width": 137,
+        "height": 801
+      },
+      "bbox_xyxy": [
+        1398,
+        20,
+        1535,
+        821
+      ],
+      "center": {
+        "x": 1466.5,
+        "y": 420.5
+      }
+    },
+    {
+      "id": "bookshelf",
+      "name": "bookshelf",
+      "bbox": {
+        "x": 0,
+        "y": 40,
+        "width": 165,
+        "height": 550
+      },
+      "bbox_xyxy": [
+        0,
+        40,
+        165,
+        590
+      ],
+      "center": {
+        "x": 82.5,
+        "y": 315.0
+      }
+    },
+    {
+      "id": "lamp",
+      "name": "lamp",
+      "bbox": {
+        "x": 194,
+        "y": 303,
+        "width": 114,
+        "height": 282
+      },
+      "bbox_xyxy": [
+        194,
+        303,
+        308,
+        585
+      ],
+      "center": {
+        "x": 251.0,
+        "y": 444.0
+      }
+    },
+    {
+      "id": "couch",
+      "name": "couch",
+      "bbox": {
+        "x": 293,
+        "y": 449,
+        "width": 685,
+        "height": 245
+      },
+      "bbox_xyxy": [
+        293,
+        449,
+        978,
+        694
+      ],
+      "center": {
+        "x": 635.5,
+        "y": 571.5
+      }
+    },
+    {
+      "id": "pillow",
+      "name": "pillow",
+      "bbox": {
+        "x": 351,
+        "y": 464,
+        "width": 574,
+        "height": 90
+      },
+      "bbox_xyxy": [
+        351,
+        464,
+        925,
+        554
+      ],
+      "center": {
+        "x": 638.0,
+        "y": 509.0
+      }
+    },
+    {
+      "id": "tv",
+      "name": "TV",
+      "bbox": {
+        "x": 1128,
+        "y": 331,
+        "width": 163,
+        "height": 223
+      },
+      "bbox_xyxy": [
+        1128,
+        331,
+        1291,
+        554
+      ],
+      "center": {
+        "x": 1209.5,
+        "y": 442.5
+      }
+    },
+    {
+      "id": "plant",
+      "name": "plant",
+      "bbox": {
+        "x": 938,
+        "y": 328,
+        "width": 177,
+        "height": 297
+      },
+      "bbox_xyxy": [
+        938,
+        328,
+        1115,
+        625
+      ],
+      "center": {
+        "x": 1026.5,
+        "y": 476.5
+      }
+    },
+    {
+      "id": "rug",
+      "name": "rug",
+      "bbox": {
+        "x": 351,
+        "y": 671,
+        "width": 1054,
+        "height": 347
+      },
+      "bbox_xyxy": [
+        351,
+        671,
+        1405,
+        1018
+      ],
+      "center": {
+        "x": 878.0,
+        "y": 844.5
+      }
+    },
+    {
+      "id": "armchair",
+      "name": "armchair",
+      "bbox": {
+        "x": 0,
+        "y": 536,
+        "width": 493,
+        "height": 431
+      },
+      "bbox_xyxy": [
+        0,
+        536,
+        493,
+        967
+      ],
+      "center": {
+        "x": 246.5,
+        "y": 751.5
+      }
+    },
+    {
+      "id": "coffee-table",
+      "name": "coffee table",
+      "bbox": {
+        "x": 499,
+        "y": 604,
+        "width": 418,
+        "height": 225
+      },
+      "bbox_xyxy": [
+        499,
+        604,
+        917,
+        829
+      ],
+      "center": {
+        "x": 708.0,
+        "y": 716.5
+      }
+    },
+    {
+      "id": "book",
+      "name": "book",
+      "bbox": {
+        "x": 579,
+        "y": 602,
+        "width": 125,
+        "height": 38
+      },
+      "bbox_xyxy": [
+        579,
+        602,
+        704,
+        640
+      ],
+      "center": {
+        "x": 641.5,
+        "y": 621.0
+      }
+    },
+    {
+      "id": "vase",
+      "name": "vase",
+      "bbox": {
+        "x": 708,
+        "y": 548,
+        "width": 61,
+        "height": 88
+      },
+      "bbox_xyxy": [
+        708,
+        548,
+        769,
+        636
+      ],
+      "center": {
+        "x": 738.5,
+        "y": 592.0
+      }
+    },
+    {
+      "id": "flower",
+      "name": "flower",
+      "bbox": {
+        "x": 660,
+        "y": 473,
+        "width": 116,
+        "height": 94
+      },
+      "bbox_xyxy": [
+        660,
+        473,
+        776,
+        567
+      ],
+      "center": {
+        "x": 718.0,
+        "y": 520.0
+      }
+    },
+    {
+      "id": "cat",
+      "name": "cat",
+      "bbox": {
+        "x": 908,
+        "y": 716,
+        "width": 188,
+        "height": 110
+      },
+      "bbox_xyxy": [
+        908,
+        716,
+        1096,
+        826
+      ],
+      "center": {
+        "x": 1002.0,
+        "y": 771.0
+      }
+    }
+  ]
+}
