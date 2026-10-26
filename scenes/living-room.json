@@ -113,6 +113,32 @@
 				{ "thing": "vase", "d": "M704 560H762V636H704Z" },
 				{ "thing": "cat", "d": "M908 770L960 752L1010 742L1018 724L1062 726L1068 760L1094 812L1060 820H930L908 805Z" }
 			]
+		},
+		"ghibli": {
+			"picture": { "src": "scenes/living-room-ghibli.webp", "thumb": "scenes/living-room-ghibli.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "window", "d": "M474 100H780V444H474Z" },
+				{ "thing": "curtain", "d": "M316 66H480V520H316Z" },
+				{ "thing": "curtain", "d": "M776 70H938V520H778Z" },
+				{ "thing": "picture", "d": "M1091 171L1212 114V285L1093 308Z" },
+				{ "thing": "door", "d": "M1388 50L1536 0V848L1388 794Z" },
+				{ "thing": "bookshelf", "d": "M0 64H150V584H0Z" },
+				{ "thing": "lamp", "d": "M190 286H279L296 368H250L282 586H186L222 368H174Z" },
+				{ "thing": "couch", "d": "M372 442H898V498H974V688H292V498H372Z" },
+				{ "thing": "pillow", "d": "M339 464L427 457L461 550L382 562Z" },
+				{ "thing": "pillow", "d": "M429 478L507 469L548 546L464 557Z" },
+				{ "thing": "pillow", "d": "M802 463L911 474L880 562L774 546Z" },
+				{ "thing": "tv", "d": "M1125 334L1312 309V548L1127 522Z" },
+				{ "thing": "plant", "d": "M1006 276L1040 300L1074 330L1100 370L1108 420L1094 470L1064 520L1060 544L1058 654H980L978 546L968 520L936 500L926 440L940 380L968 340L990 310Z" },
+				{ "thing": "rug", "d": "M454 690H1064L1442 990L1400 1006L24 1010L16 984Z" },
+				{ "thing": "armchair", "d": "M0 522L60 534L104 578H302L312 648L446 638L466 680L468 860L458 962H424L410 900L130 950L104 1024H76L58 940L0 880Z" },
+				{ "thing": "pillow", "d": "M86 558L160 588L216 656L150 674L112 662Z" },
+				{ "thing": "coffee-table", "d": "M500 608H904L914 664V842H478V664Z" },
+				{ "thing": "book", "d": "M558 600H678V650H558Z" },
+				{ "thing": "flower", "d": "M646 492L690 466L750 462L806 486L800 520L766 548L740 566H714L684 548L640 520Z" },
+				{ "thing": "vase", "d": "M693 558H755V642H693Z" },
+				{ "thing": "cat", "d": "M906 778L950 758L1000 746L1008 718L1050 716L1062 752L1096 822L1060 836H926L904 816Z" }
+			]
 		}
 	}
 }

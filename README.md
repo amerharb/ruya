@@ -33,15 +33,14 @@ same place:
 - **Basic** — a flat drawing in a few colours, with less to look at.
 - **Realistic** — a painted picture, made in ChatGPT. The default.
 - **Ghibli** — the realistic picture painted again in the manner of Studio
-  Ghibli's films, warm and hand-drawn, made in ChatGPT. The kitchen only,
-  for now.
+  Ghibli's films, warm and hand-drawn, made in ChatGPT.
 
 The bar shows a thumbnail of each, the one shown ringed; a scene in one
 style only shows none. Each style has its own regions, since the fridge
 stands somewhere else in each, but the names belong to the scene's things,
 so they are written once and the same in every style. More styles can come
-later — a line drawing, a photo. The living room has no Ghibli picture
-yet; a scene opens in the style picked if it has it, else in its first.
+later — a line drawing, a photo. A scene opens in the style picked if it
+has it, else in its first.
 
 ## Languages
 
@@ -178,6 +177,7 @@ kept in `art/` beside it.
 | kitchen | ghibli | `art/kitchen-ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | not recorded |
 | living room | realistic | `art/living-room-realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | `art/living-room-realistic.prompt.md` |
 | living room | basic | `public/scenes/living-room-basic.svg` | drawn by hand, 2026-10-25 | — |
+| living room | ghibli | `art/living-room-ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-26 | `art/living-room-ghibli.prompt.md` |
 
 ChatGPT gave the realistic kitchen's things as boxes too, kept in
 `art/kitchen-realistic.boxes.json`. They were approximate — the fork and
@@ -199,6 +199,11 @@ picture has four pillows, three on the couch and one in the armchair,
 each its own `pillow` region; the armchair's comes after the armchair, as
 it lies on it. The book on the coffee table is a stack of two, its spine
 the one piece of text in the picture.
+
+The Ghibli living room is the realistic one repainted, every thing a few
+pixels off where it was, so its regions were redrawn over it the same way.
+Its boxes, in `art/living-room-ghibli.boxes.json`, again merged the
+curtains and the pillows.
 
 For later scenes, the plan is to paint a flat colour per thing on a mask
 layer, as a PNG — never a lossy format, which smears the colours — and

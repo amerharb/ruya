@@ -16,14 +16,15 @@
   thumbnail of each in the bar switches between them, the choice kept in the
   address as `?s=`. The names belong to the scene's things, written once for
   every style; each style has its own regions over its own picture.
-- **A Ghibli kitchen** — a third style: the kitchen painted again in the
-  manner of Studio Ghibli's films, made in ChatGPT (133 KB as WebP, from a
-  2 MB PNG kept in `art/`), with its regions redrawn by eye.
+- **A Ghibli style** — a third style: each scene's realistic picture painted
+  again in the manner of Studio Ghibli's films, made in ChatGPT (133 KB and
+  177 KB as WebP, from PNGs kept in `art/`), with its regions redrawn by
+  eye.
 - **The living room** — the second scene, with seventeen things — window,
   curtains, picture, door, bookshelf, lamp, couch, pillows, TV, plant, rug,
-  armchair, coffee table, book, vase, flower and a sleeping cat. Realistic,
-  made in ChatGPT from the prompt kept in `art/` (191 KB as WebP, from a
-  2.8 MB PNG), and basic, drawn by hand in SVG.
+  armchair, coffee table, book, vase, flower and a sleeping cat. Realistic
+  and Ghibli, made in ChatGPT from the prompts kept in `art/` (191 KB and
+  177 KB as WebP), and basic, drawn by hand in SVG.
 - **A choice of scene** — the scene's name in the bar is a list of the
   scenes, each named in the chosen language, the choice kept in the address
   as `?p=`.
