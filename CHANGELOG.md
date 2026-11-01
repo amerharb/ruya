@@ -2,7 +2,14 @@
 
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
-## [0.1.0] (unreleased)
+## [0.2.0] (unreleased)
+
+## [0.1.0] 2026-11-01
+
+The first version of ruya.info, a picture dictionary: two scenes, the
+kitchen and the living room, each in three styles, where pointing at a thing
+shows its name in one of seven languages. Published by GitHub Pages from
+amerharb/ruya, over HTTPS; nothing needs a server.
 
 ### Added
 - **The kitchen** — the first scene, a picture made in ChatGPT and shown as
@@ -43,4 +50,5 @@
   scrolling sideways and opening at the middle, so the smallest thing is a
   fingertip wide, and the bar in two rows.
 - **Checks** run by `cargo test` on every scene file, and CI running format,
-  lint, tests and a release build.
+  lint, tests and a release build; on `main`, once they pass, that build is
+  deployed to ruya.info.
