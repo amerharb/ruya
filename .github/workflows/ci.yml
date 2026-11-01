@@ -1,4 +1,5 @@
-# fmt, clippy as errors, the scene checks, and a release build of the site.
+# fmt, clippy as errors, the scene checks, and a release build of the site;
+# on main, that build is then published to ruya.info by GitHub Pages.
 name: CI
 
 on:
@@ -23,3 +24,29 @@ jobs:
         with:
           version: v0.22.0
       - run: trunk build --release
+      # the site just built, kept for the deploy below; a pull request's is
+      # only checked
+      - if: github.event_name == 'push'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  # main, once every check has passed, is what ruya.info serves
+  deploy:
+    if: github.event_name == 'push'
+    needs: checks
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    # one deploy at a time, and a newer push waits rather than cutting one
+    # short
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -224,8 +224,20 @@ trace it into polygons with a script.
 
 ## Deploying
 
-Not yet: ruya.info is to be registered, and the host chosen then. `dist/` is
-plain static files — any host that serves `.wasm` as `application/wasm`
-will do. Vercel cannot build Rust itself, so the plan is to build in GitHub
-Actions and upload `dist/`. Hashed files can be cached forever;
-`index.html` and `scenes/` should not be.
+Ruya is published by GitHub Pages at https://ruya.info, from the repository
+amerharb/ruya. Every push to `main` runs CI; when every check passes, the
+release build it made is deployed. A pull request is checked and built but
+not deployed. The site is `dist/` as Trunk builds it: plain static files,
+built for the domain's root.
+
+- **Pages settings:** source "GitHub Actions", custom domain `ruya.info`,
+  HTTPS enforced.
+- **DNS** at Squarespace Domains, where ruya.info is registered (2026-11-01):
+  - `A` records for `@`: 185.199.108.153, 185.199.109.153,
+    185.199.110.153 and 185.199.111.153.
+  - `AAAA` records for `@`: 2606:50c0:8000::153, 2606:50c0:8001::153,
+    2606:50c0:8002::153 and 2606:50c0:8003::153.
+  - `CNAME` for `www`: `amerharb.github.io`.
+- Pages caches every file for ten minutes and cannot be told otherwise, so
+  a redeploy reaches everyone within ten minutes; the hashed WebAssembly,
+  loader and stylesheet could be kept forever on a host that allowed it.
