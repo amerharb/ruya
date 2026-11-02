@@ -3,6 +3,7 @@ mod geometry;
 mod lang;
 mod picker;
 mod scene;
+mod spread;
 mod stage;
 mod style;
 mod url;

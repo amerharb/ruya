@@ -10,10 +10,15 @@
 //! clicked or reached with the keyboard. Tapping anywhere else, or Escape,
 //! clears it.
 //!
+//! With every name asked for, each thing also carries a small tag with its
+//! name, on the thing itself; pointing works as before, the thing pointed at
+//! getting the big label while the other tags step back.
+//!
 //! One stage shows one scene in one style; switching either builds a new one.
 
 use crate::lang::Lang;
 use crate::scene::{Rendering, Scene};
+use crate::spread::{Tag, spread};
 use crate::style::Style;
 use leptos::ev;
 use leptos::html::Div;
@@ -26,6 +31,7 @@ pub fn Stage(
     style: Style,
     rendering: &'static Rendering,
     lang: ReadSignal<Lang>,
+    all: ReadSignal<bool>,
 ) -> impl IntoView {
     let (w, h) = (rendering.picture.width, rendering.picture.height);
     let name = move |i: usize, l: Lang| scene.thing(&rendering.regions[i].thing).name.get(l);
@@ -114,6 +120,77 @@ pub fn Stage(
 
     let percent = move |(x, y): (f64, f64)| (x / w * 100.0, y / h * 100.0);
 
+    // a tag per thing, on its biggest region, centred on the point its big
+    // label is centred over
+    let tags = rendering
+        .one_per_thing()
+        .into_iter()
+        .map(|i| {
+            let thing = &rendering.regions[i].thing;
+            let (x, y) = percent(rendering.regions[i].anchor);
+            // this thing, by any of its regions, has the big label
+            let pointed = move || shown().is_some_and(|s| &rendering.regions[s].thing == thing);
+            view! {
+                <div
+                    class="tag"
+                    class:pointed=pointed
+                    lang=move || lang.get().code()
+                    dir=move || lang.get().dir()
+                    style=format!("left:{x:.3}%;top:{y:.3}%")
+                >
+                    {move || name(i, lang.get()).to_string()}
+                </div>
+            }
+        })
+        .collect_view();
+
+    // The tags measured where they stand and spread, so none covers another
+    // or runs off the picture: when they appear, when the names change
+    // language, and when the window changes size.
+    let tag_box = NodeRef::<Div>::new();
+    let place = move || {
+        let Some(el) = tag_box.get_untracked() else {
+            return;
+        };
+        let (sw, sh) = (f64::from(el.client_width()), f64::from(el.client_height()));
+        let children = el.children();
+        let nodes: Vec<web_sys::HtmlElement> = (0..children.length())
+            .filter_map(|k| children.item(k)?.dyn_into().ok())
+            .collect();
+        let tags: Vec<Tag> = nodes
+            .iter()
+            .zip(rendering.one_per_thing())
+            .map(|(node, i)| {
+                let (x, y) = rendering.regions[i].anchor;
+                Tag {
+                    x: x / w * sw,
+                    y: y / h * sh,
+                    w: f64::from(node.offset_width()),
+                    h: f64::from(node.offset_height()),
+                }
+            })
+            .collect();
+        for (node, (dx, dy)) in nodes.iter().zip(spread(&tags, sw, sh)) {
+            // `translate`, which adds to the centring `transform` in the CSS
+            let _ = node
+                .style()
+                .set_property("translate", &format!("{dx:.1}px {dy:.1}px"));
+        }
+    };
+    Effect::new(move |_| {
+        lang.track();
+        if all.get() && tag_box.get().is_some() {
+            // once the new names are laid out
+            request_animation_frame(place);
+        }
+    });
+    let resize = window_event_listener(ev::resize, move |_| {
+        if all.get_untracked() {
+            place();
+        }
+    });
+    on_cleanup(move || resize.remove());
+
     let label = move || {
         last.get().map(|i| {
             let region = &rendering.regions[i];
@@ -187,6 +264,16 @@ pub fn Stage(
                         }
                     />
                 </svg>
+                // the regions already carry the names for a screen reader
+                <div
+                    class="tags"
+                    node_ref=tag_box
+                    class:on=move || all.get()
+                    class:aside=move || shown().is_some()
+                    aria-hidden="true"
+                >
+                    {tags}
+                </div>
                 {label}
             </div>
         </div>

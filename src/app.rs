@@ -1,5 +1,5 @@
 use crate::lang::Lang;
-use crate::picker::{Picker, ScenePicker, StylePicker};
+use crate::picker::{AllNames, Picker, ScenePicker, StylePicker};
 use crate::scene::Scene;
 use crate::stage::Stage;
 use crate::style::Style;
@@ -11,6 +11,7 @@ pub fn App() -> impl IntoView {
     let (scene, set_scene) = signal(url::initial_scene());
     let (lang, set_lang) = signal(url::initial_lang());
     let (style, set_style) = signal(url::initial_style());
+    let (all, set_all) = signal(url::initial_all_names());
 
     // <html lang> follows the language, so a screen reader reads the names in
     // the right voice and a browser does not offer to translate them. The
@@ -40,6 +41,15 @@ pub fn App() -> impl IntoView {
         |s: &Style, _, _| url::write("s", s.code()),
         false,
     );
+    // one at a time is what Ruya opens with, so it leaves the address
+    Effect::watch(
+        move || all.get(),
+        |on: &bool, _, _| match on {
+            true => url::write("n", "all"),
+            false => url::remove("n"),
+        },
+        false,
+    );
 
     view! {
         <header class="bar">
@@ -51,6 +61,7 @@ pub fn App() -> impl IntoView {
                     <StylePicker scene=scene.get() style=style set_style=set_style lang=lang />
                 }
             }}
+            <AllNames all=all set_all=set_all lang=lang />
             <Picker lang=lang set_lang=set_lang />
         </header>
         <main class="main">
@@ -59,7 +70,7 @@ pub fn App() -> impl IntoView {
             {move || {
                 let scene = scene.get();
                 let (s, rendering) = scene.rendering_or_first(style.get());
-                view! { <Stage scene=scene style=s rendering=rendering lang=lang /> }
+                view! { <Stage scene=scene style=s rendering=rendering lang=lang all=all /> }
             }}
         </main>
     }

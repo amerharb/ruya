@@ -4,6 +4,15 @@
 
 ## [0.2.0] (unreleased)
 
+### Added
+- **All names** — a button in the bar, two little tags, that shows every
+  thing's name at once: a small tag on each thing, one per thing on the
+  biggest of its regions. Tags that would overlap, or run off the picture,
+  are moved apart the least they need. Pointing at a thing still gives it
+  the big label, the other tags fading back. The choice is kept in the
+  address as `?n=all`. On a phone held upright the button ends the bar's
+  first row, beside the scene's name.
+
 ## [0.1.0] 2026-11-01
 
 The first version of ruya.info, a picture dictionary: two scenes, the

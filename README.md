@@ -22,8 +22,13 @@ start WebAssembly.
 - **Place:** the scene's name in the bar is a list of the scenes.
 - **Style:** the little pictures in the bar switch between the styles the
   scene comes in (below).
-- On a phone held upright the bar takes two rows: the scene's name, then
-  the style and the language.
+- **All names:** the button with two tags shows every thing's name at once,
+  as a small tag on the thing — one per thing, on the biggest of its
+  regions, so two chairs get one. Tags that would overlap or run off the
+  picture are moved apart. Pointing still works: the thing pointed at gets
+  the big label, and the other tags fade back. Pressed again, the names go.
+- On a phone held upright the bar takes two rows: the scene's name and the
+  all-names button, then the style and the language.
 
 ## Styles
 
@@ -76,6 +81,8 @@ browser's languages it has, else English.
 - `s` — the style, `basic`, `realistic` or `ghibli`, e.g. `?s=basic`.
   Written when one is picked; absent, or unknown, is realistic. A scene without the
   style asked for opens in its first.
+- `n` — `?n=all` opens with every name showing. Written when the all-names
+  button is pressed, and taken out again when it is released.
 
 ## Scenes
 
@@ -217,7 +224,7 @@ trace it into polygons with a script.
 - `trunk serve` — http://127.0.0.1:8090, rebuilding on every change.
 - `trunk build --release` — the site in `dist/`: `index.html`, the
   WebAssembly, its loader, the stylesheet and `scenes/`. The release
-  WebAssembly is about 250 KB, 115 KB compressed, the scene files
+  WebAssembly is about 290 KB, 128 KB compressed, the scene files
   included.
 - `cargo test`, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`
   — run on the host, no browser needed. CI runs them and a release build.

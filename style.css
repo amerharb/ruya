@@ -136,6 +136,43 @@ body {
 	outline-offset: 2px;
 }
 
+/* every name at once: two name tags, filled while they show */
+.all-names {
+	display: grid;
+	place-items: center;
+	width: 36px;
+	height: 36px;
+	padding: 0;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	background: var(--bg);
+	color: var(--fg);
+	cursor: pointer;
+}
+
+.all-names svg {
+	width: 22px;
+	height: 22px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+}
+
+.all-names.on {
+	border-color: var(--accent);
+	background: var(--accent);
+	color: var(--bg);
+}
+
+.all-names.on svg {
+	fill: currentColor;
+}
+
+.all-names:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
 .picker {
 	font: inherit;
 	font-size: 1rem;
@@ -146,17 +183,26 @@ body {
 	color: var(--fg);
 }
 
-/* A phone held upright has no room for all four in a row: the name gets the
-   first, the style and the language a second. */
+/* A phone held upright has no room for all five in a row: the name and the
+   names toggle get the first, the style and the language a second. */
 @media (max-width: 600px) {
 	.bar {
 		flex-wrap: wrap;
 		row-gap: 8px;
 	}
 
-	/* all of the first row but what the brand needs */
+	/* all of the first row but what the brand and the toggle need */
 	.scene-name {
-		flex: 1 1 calc(100% - 64px);
+		flex: 1 1 calc(100% - 112px);
+	}
+
+	.all-names {
+		order: 1;
+	}
+
+	.styles,
+	.picker {
+		order: 2;
 	}
 
 	.picker {
@@ -185,6 +231,8 @@ body {
 	aspect-ratio: var(--w) / var(--h);
 	/* as big as fits, whichever of width or height runs out first */
 	width: min(100cqw, 100cqh * var(--w) / var(--h));
+	/* the tags are sized against the picture's width, as is everything in it */
+	container-type: inline-size;
 	user-select: none;
 	-webkit-user-select: none;
 }
@@ -303,10 +351,54 @@ body {
 	transform: translate(calc(-100% - 10px), -50%);
 }
 
+/* ── every name ── */
+
+.tags {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 200ms ease, visibility 0s 200ms;
+}
+
+.tags.on {
+	opacity: 1;
+	visibility: visible;
+	transition: opacity 200ms ease;
+}
+
+/* on the thing, centred where its big label would be */
+.tag {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	padding: 0.15em 0.55em;
+	border-radius: 0.5em;
+	background: var(--label-bg);
+	color: var(--label-fg);
+	font-size: clamp(11px, 1.3cqw, 17px);
+	font-weight: 600;
+	line-height: 1.3;
+	white-space: nowrap;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	transition: opacity 150ms ease;
+}
+
+/* a thing pointed at has the big label; the other tags step back */
+.tags.aside .tag {
+	opacity: 0.35;
+}
+
+.tags.aside .tag.pointed {
+	opacity: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
 	.dim,
 	.outline,
-	.label {
+	.label,
+	.tags,
+	.tag {
 		transition: none;
 	}
 }

@@ -1,7 +1,7 @@
 //! The choices in the bar: the scene, as its name; the style, as a little
-//! picture of each; and the language. The scene and the language are the
-//! browser's own `<select>`, which every phone turns into its best native
-//! chooser.
+//! picture of each; every name or one at a time; and the language. The scene
+//! and the language are the browser's own `<select>`, which every phone turns
+//! into its best native chooser.
 
 use crate::lang::Lang;
 use crate::scene::{SCENES, Scene};
@@ -92,6 +92,45 @@ pub fn StylePicker(
             </div>
         }
     })
+}
+
+/// Every name on the picture at once, or one at a time as you point.
+#[component]
+pub fn AllNames(
+    all: ReadSignal<bool>,
+    set_all: WriteSignal<bool>,
+    lang: ReadSignal<Lang>,
+) -> impl IntoView {
+    let words = move || all_names(lang.get());
+    view! {
+        <button
+            class="all-names"
+            class:on=move || all.get()
+            aria-pressed=move || all.get().to_string()
+            aria-label=words
+            title=words
+            on:click=move |_| set_all.update(|on| *on = !*on)
+        >
+            // two name tags, as the picture shows them
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2" y="4" width="13" height="7" rx="2" />
+                <rect x="9" y="14" width="13" height="7" rx="2" />
+            </svg>
+        </button>
+    }
+}
+
+/// The toggle's name, for a screen reader and a mouse's tooltip.
+fn all_names(lang: Lang) -> &'static str {
+    match lang {
+        Lang::En => "All names",
+        Lang::Ar => "كل الأسماء",
+        Lang::De => "Alle Namen",
+        Lang::Sv => "Alla namn",
+        Lang::Es => "Todos los nombres",
+        Lang::Uk => "Усі назви",
+        Lang::He => "כל השמות",
+    }
 }
 
 /// Each language listed in its own script.

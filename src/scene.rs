@@ -96,6 +96,10 @@ pub struct Region {
     /// never hides the thing it names.
     #[serde(skip)]
     pub top: f64,
+    /// The area of its largest part: of two chairs, the bigger one carries
+    /// the name when every name is shown.
+    #[serde(skip)]
+    pub area: f64,
 }
 
 impl Scene {
@@ -115,6 +119,7 @@ impl Scene {
                         .unwrap_or((0.0, 0.0)),
                 };
                 region.top = geometry::bounds(&rings).1;
+                region.area = largest(&rings).map(geometry::area).unwrap_or(0.0);
             }
         }
         Ok(scene)
@@ -162,6 +167,23 @@ impl Scene {
             Lang::Uk => "Місце",
             Lang::He => "מקום",
         }
+    }
+}
+
+impl Rendering {
+    /// One region per thing, the biggest, in paint order: where every name is
+    /// shown, each name once.
+    pub fn one_per_thing(&self) -> Vec<usize> {
+        let mut biggest = BTreeMap::<&str, usize>::new();
+        for (i, region) in self.regions.iter().enumerate() {
+            let best = biggest.entry(&region.thing).or_insert(i);
+            if region.area > self.regions[*best].area {
+                *best = i;
+            }
+        }
+        let mut chosen: Vec<usize> = biggest.into_values().collect();
+        chosen.sort_unstable();
+        chosen
     }
 }
 
@@ -398,6 +420,31 @@ mod tests {
                     "{what}: {}'s label point {:?} is off it — give it an \"at\"",
                     region.thing,
                     region.anchor
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn every_name_shown_once_when_all_are() {
+        let scenes = scenes();
+        for (what, r) in renderings(&scenes) {
+            let chosen = r.one_per_thing();
+            let things: HashSet<&str> = r.regions.iter().map(|g| g.thing.as_str()).collect();
+            let named: HashSet<&str> = chosen
+                .iter()
+                .map(|&i| r.regions[i].thing.as_str())
+                .collect();
+            assert_eq!(chosen.len(), named.len(), "{what}: a thing named twice");
+            assert_eq!(named, things, "{what}: a thing left without its name");
+            for &i in &chosen {
+                let it = &r.regions[i];
+                assert!(
+                    r.regions
+                        .iter()
+                        .all(|g| g.thing != it.thing || g.area <= it.area),
+                    "{what}: {}'s name is not on its biggest region",
+                    it.thing
                 );
             }
         }
