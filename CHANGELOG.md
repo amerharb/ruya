@@ -12,6 +12,11 @@
   the big label, the other tags fading back. The choice is kept in the
   address as `?n=all`. On a phone held upright the button ends the bar's
   first row, beside the scene's name.
+- **The street** — the third scene, and the first outdoors, with eighteen
+  things — sun, cloud, bird, house, roof, tree, streetlight, store, traffic
+  light, sidewalk, bicycle, bench, trash can, dog, mailbox, crosswalk, car
+  and bus — drawn by hand in SVG. Its realistic picture's prompt for
+  ChatGPT is kept in `art/`.
 
 ## [0.1.0] 2026-11-01
 

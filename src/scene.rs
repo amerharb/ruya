@@ -218,6 +218,7 @@ fn largest(rings: &[Ring]) -> Option<&[(f64, f64)]> {
 pub const SOURCES: &[(&str, &str)] = &[
     ("kitchen", include_str!("../scenes/kitchen.json")),
     ("living-room", include_str!("../scenes/living-room.json")),
+    ("street", include_str!("../scenes/street.json")),
 ];
 
 pub static SCENES: LazyLock<Vec<Scene>> = LazyLock::new(|| {

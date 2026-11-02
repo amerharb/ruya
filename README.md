@@ -1,9 +1,9 @@
 # Ruya
 
 Ruya — رؤية, "sight" — is a picture dictionary. A big picture of a place, a
-kitchen or a living room, fills the screen; point at a thing in it and its
-name appears, in the language you picked. Change the language and every name
-changes with it.
+kitchen, a living room or a street, fills the screen; point at a thing in it
+and its name appears, in the language you picked. Change the language and
+every name changes with it.
 
 It is written in Rust with [Leptos](https://leptos.dev), compiled to
 WebAssembly and built with [Trunk](https://trunk-rs.github.io/trunk). Nothing
@@ -185,6 +185,8 @@ kept in `art/` beside it.
 | living room | realistic | `art/living-room-realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | `art/living-room-realistic.prompt.md` |
 | living room | basic | `public/scenes/living-room-basic.svg` | drawn by hand, 2026-10-25 | — |
 | living room | ghibli | `art/living-room-ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-26 | `art/living-room-ghibli.prompt.md` |
+| street | basic | `public/scenes/street-basic.svg` | drawn by hand, 2026-11-02 | — |
+| street | realistic | not made yet | — | `art/street-realistic.prompt.md` |
 
 ChatGPT gave the realistic kitchen's things as boxes too, kept in
 `art/kitchen-realistic.boxes.json`. They were approximate — the fork and

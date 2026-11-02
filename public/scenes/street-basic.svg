@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024">
+	<!-- Drawn for Ruya: a flat street, seen from across the road, no text in
+	     it, so it serves every language. Each named thing sits where its
+	     region in street.json is. -->
+
+	<!-- sky, and green hills behind the buildings -->
+	<rect width="1536" height="600" fill="#cfe8f5" />
+	<path d="M0 600V548C180 520 330 540 520 556C700 572 820 540 1000 548C1200 556 1350 520 1536 540V600Z" fill="#b7dba0" />
+
+	<!-- sun -->
+	<circle cx="1390" cy="130" r="62" fill="#f6c945" />
+	<path d="M1468 130H1490M1445.2 185.2L1460.7 200.7M1390 208V230M1334.8 185.2L1319.3 200.7M1312 130H1290M1334.8 74.8L1319.3 59.3M1390 52V30M1445.2 74.8L1460.7 59.3" stroke="#f6c945" stroke-width="10" stroke-linecap="round" />
+
+	<!-- cloud -->
+	<ellipse cx="560" cy="122" rx="70" ry="32" fill="#ffffff" />
+	<ellipse cx="612" cy="98" rx="52" ry="40" fill="#ffffff" />
+	<ellipse cx="662" cy="124" rx="58" ry="28" fill="#ffffff" />
+	<rect x="520" y="118" width="190" height="34" rx="17" fill="#ffffff" />
+
+	<!-- bird, flying -->
+	<path d="M876 198L856 186L860 208Z" fill="#3d5a73" />
+	<ellipse cx="900" cy="200" rx="26" ry="14" fill="#3d5a73" />
+	<circle cx="926" cy="190" r="12" fill="#3d5a73" />
+	<path d="M936 186L952 192L936 197Z" fill="#e0a84a" />
+	<circle cx="930" cy="187" r="2.5" fill="#ffffff" />
+	<path d="M884 198L898 152L920 198Z" fill="#2c4459" />
+
+	<!-- house, its chimney behind the roof -->
+	<rect x="350" y="200" width="40" height="100" fill="#a8463a" />
+	<rect x="344" y="194" width="52" height="12" rx="2" fill="#8f3a30" />
+	<rect x="60" y="330" width="380" height="270" fill="#f2d7a7" />
+	<rect x="100" y="380" width="80" height="70" rx="3" fill="#ffffff" />
+	<rect x="108" y="388" width="64" height="54" fill="#bfe3f5" />
+	<path d="M140 388V442M108 415H172" stroke="#ffffff" stroke-width="6" />
+	<rect x="320" y="380" width="80" height="70" rx="3" fill="#ffffff" />
+	<rect x="328" y="388" width="64" height="54" fill="#bfe3f5" />
+	<path d="M360 388V442M328 415H392" stroke="#ffffff" stroke-width="6" />
+	<rect x="210" y="470" width="80" height="130" rx="3" fill="#8a5a3b" />
+	<rect x="222" y="484" width="56" height="44" rx="3" fill="#a26e4c" />
+	<circle cx="276" cy="540" r="6" fill="#e0a84a" />
+
+	<!-- roof -->
+	<path d="M36 334L250 190L464 334Z" fill="#c9553f" />
+	<path d="M90 300H410M140 266H360M190 232H310" stroke="#b44a36" stroke-width="4" />
+
+	<!-- store, with an awning over its window -->
+	<rect x="860" y="300" width="440" height="300" fill="#9fc5c0" />
+	<rect x="850" y="290" width="460" height="26" rx="3" fill="#7fa7a0" />
+	<rect x="900" y="340" width="90" height="60" rx="3" fill="#ffffff" />
+	<rect x="907" y="347" width="76" height="46" fill="#bfe3f5" />
+	<rect x="1035" y="340" width="90" height="60" rx="3" fill="#ffffff" />
+	<rect x="1042" y="347" width="76" height="46" fill="#bfe3f5" />
+	<rect x="1170" y="340" width="90" height="60" rx="3" fill="#ffffff" />
+	<rect x="1177" y="347" width="76" height="46" fill="#bfe3f5" />
+	<rect x="890" y="452" width="250" height="134" rx="3" fill="#ffffff" />
+	<rect x="898" y="460" width="234" height="118" fill="#bfe3f5" />
+	<rect x="898" y="532" width="234" height="8" fill="#ffffff" />
+	<circle cx="930" cy="520" r="12" fill="#e26d5a" />
+	<circle cx="956" cy="520" r="12" fill="#f0b84a" />
+	<circle cx="943" cy="500" r="12" fill="#e26d5a" />
+	<rect x="1000" y="490" width="34" height="42" rx="3" fill="#5b8db8" />
+	<rect x="1044" y="500" width="30" height="32" rx="3" fill="#6fb07f" />
+	<circle cx="1102" cy="518" r="14" fill="#9fcf8f" />
+	<rect x="920" y="552" width="60" height="26" rx="3" fill="#e0a84a" />
+	<rect x="1010" y="556" width="50" height="22" rx="3" fill="#c94f3d" />
+	<rect x="1170" y="452" width="80" height="148" rx="3" fill="#3d5a73" />
+	<rect x="1182" y="466" width="56" height="70" rx="3" fill="#bfe3f5" />
+	<circle cx="1182" cy="560" r="5" fill="#e0a84a" />
+	<path d="M875 410H1275V444H875Z" fill="#ffffff" />
+	<path d="M875 410H925V444H875ZM975 410H1025V444H975ZM1075 410H1125V444H1075ZM1175 410H1225V444H1175Z" fill="#e26d5a" />
+	<path d="M875 444Q900 464 925 444Q950 464 975 444Q1000 464 1025 444Q1050 464 1075 444Q1100 464 1125 444Q1150 464 1175 444Q1200 464 1225 444Q1250 464 1275 444Z" fill="#e26d5a" />
+
+	<!-- tree, in front of the house's corner -->
+	<rect x="545" y="470" width="30" height="170" fill="#8a6a4a" />
+	<circle cx="560" cy="330" r="95" fill="#6fb07f" />
+	<circle cx="488" cy="400" r="62" fill="#6fb07f" />
+	<circle cx="632" cy="400" r="64" fill="#6fb07f" />
+	<circle cx="560" cy="420" r="70" fill="#6fb07f" />
+	<circle cx="520" cy="300" r="30" fill="#5c9a6b" />
+	<circle cx="610" cy="390" r="26" fill="#5c9a6b" />
+	<circle cx="500" cy="420" r="20" fill="#5c9a6b" />
+
+	<!-- sidewalk and its curb -->
+	<rect y="600" width="1536" height="100" fill="#d6d0c6" />
+	<path d="M120 600V700M300 600V700M480 600V700M660 600V700M840 600V700M1020 600V700M1200 600V700M1380 600V700" stroke="#c4bdb1" stroke-width="3" />
+	<rect y="700" width="1536" height="16" fill="#bdb6aa" />
+
+	<!-- the tree's trunk again, standing on the sidewalk -->
+	<rect x="545" y="600" width="30" height="40" fill="#8a6a4a" />
+
+	<!-- road, its middle line, and the crosswalk -->
+	<rect y="716" width="1536" height="308" fill="#5f6670" />
+	<path d="M20 884H90V892H20ZM160 884H230V892H160ZM300 884H370V892H300ZM440 884H510V892H440ZM580 884H650V892H580ZM720 884H790V892H720ZM860 884H930V892H860ZM1000 884H1070V892H1000ZM1460 884H1530V892H1460Z" fill="#f5f3ee" />
+	<path d="M1200 728H1440V756H1200ZM1200 782H1440V810H1200ZM1200 836H1440V864H1200ZM1200 890H1440V918H1200ZM1200 944H1440V972H1200ZM1200 998H1440V1024H1200Z" fill="#f5f3ee" />
+
+	<!-- streetlight -->
+	<rect x="736" y="250" width="12" height="400" fill="#4a5560" />
+	<rect x="728" y="640" width="28" height="24" rx="3" fill="#4a5560" />
+	<circle cx="742" cy="250" r="8" fill="#4a5560" />
+	<rect x="742" y="244" width="58" height="10" rx="3" fill="#4a5560" />
+	<path d="M780 254H830L820 280H790Z" fill="#4a5560" />
+	<ellipse cx="805" cy="284" rx="15" ry="6" fill="#f6e7a1" />
+
+	<!-- traffic light, by the crosswalk -->
+	<rect x="1446" y="460" width="12" height="190" fill="#4a5560" />
+	<rect x="1438" y="640" width="28" height="24" rx="3" fill="#4a5560" />
+	<rect x="1420" y="300" width="64" height="170" rx="10" fill="#2f3a44" />
+	<circle cx="1452" cy="330" r="19" fill="#e26d5a" />
+	<circle cx="1452" cy="385" r="19" fill="#6b5a3a" />
+	<circle cx="1452" cy="440" r="19" fill="#3f5a48" />
+
+	<!-- bicycle, parked in front of the house -->
+	<circle cx="120" cy="630" r="36" fill="none" stroke="#2f3a44" stroke-width="7" />
+	<circle cx="230" cy="630" r="36" fill="none" stroke="#2f3a44" stroke-width="7" />
+	<circle cx="120" cy="630" r="5" fill="#2f3a44" />
+	<circle cx="230" cy="630" r="5" fill="#2f3a44" />
+	<path d="M120 630L165 630L150 585ZM165 630L205 585M150 585H205L230 630M150 585L145 570M205 585L212 566H226" fill="none" stroke="#c94f3d" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" />
+	<rect x="132" y="562" width="28" height="9" rx="4" fill="#2f3a44" />
+
+	<!-- bench, in front of the tree -->
+	<rect x="494" y="586" width="8" height="44" fill="#4a5560" />
+	<rect x="638" y="586" width="8" height="44" fill="#4a5560" />
+	<rect x="480" y="586" width="180" height="12" rx="3" fill="#a8714a" />
+	<rect x="480" y="606" width="180" height="12" rx="3" fill="#a8714a" />
+	<rect x="470" y="628" width="200" height="14" rx="3" fill="#b8805a" />
+	<rect x="488" y="642" width="12" height="22" fill="#4a5560" />
+	<rect x="640" y="642" width="12" height="22" fill="#4a5560" />
+
+	<!-- trash can, by the streetlight -->
+	<path d="M780 606H832L826 664H786Z" fill="#6f8a5c" />
+	<path d="M790 626H822M792 646H820" stroke="#5d7a4c" stroke-width="4" />
+	<rect x="774" y="594" width="64" height="14" rx="4" fill="#5d7a4c" />
+
+	<!-- dog, in front of the store -->
+	<path d="M980 620Q958 600 966 584" fill="none" stroke="#c98a4b" stroke-width="9" stroke-linecap="round" />
+	<rect x="992" y="640" width="12" height="40" rx="4" fill="#c98a4b" />
+	<rect x="1012" y="640" width="12" height="40" rx="4" fill="#b8793e" />
+	<rect x="1040" y="640" width="12" height="40" rx="4" fill="#c98a4b" />
+	<rect x="1060" y="640" width="12" height="40" rx="4" fill="#b8793e" />
+	<ellipse cx="1030" cy="632" rx="52" ry="24" fill="#c98a4b" />
+	<circle cx="1092" cy="606" r="22" fill="#c98a4b" />
+	<ellipse cx="1112" cy="614" rx="15" ry="9" fill="#d9a066" />
+	<circle cx="1125" cy="611" r="4.5" fill="#2f3a44" />
+	<circle cx="1098" cy="600" r="3" fill="#2f3a44" />
+	<path d="M1080 590L1072 622L1090 612Z" fill="#a86d36" />
+
+	<!-- mailbox, between the store and the traffic light -->
+	<rect x="1330" y="640" width="10" height="26" fill="#2c4f78" />
+	<rect x="1378" y="640" width="10" height="26" fill="#2c4f78" />
+	<path d="M1322 640V572Q1322 540 1359 540Q1396 540 1396 572V640Z" fill="#3d6fa8" />
+	<rect x="1340" y="566" width="38" height="7" rx="3" fill="#24476d" />
+	<path d="M1330 600H1388" stroke="#2c4f78" stroke-width="4" />
+
+	<!-- car, in the far lane -->
+	<path d="M220 770L270 720H410L460 770Z" fill="#5b8db8" />
+	<path d="M236 768L276 730H332V768ZM344 768V730H404L444 768Z" fill="#cfe8f5" />
+	<rect x="150" y="768" width="370" height="72" rx="18" fill="#5b8db8" />
+	<rect x="506" y="786" width="14" height="14" rx="3" fill="#f6e7a1" />
+	<rect x="150" y="786" width="12" height="14" rx="3" fill="#e26d5a" />
+	<path d="M300 784H318M380 784H398" stroke="#3d6f98" stroke-width="5" stroke-linecap="round" />
+	<circle cx="240" cy="842" r="30" fill="#2f3a44" />
+	<circle cx="430" cy="842" r="30" fill="#2f3a44" />
+	<circle cx="240" cy="842" r="12" fill="#bfc5cc" />
+	<circle cx="430" cy="842" r="12" fill="#bfc5cc" />
+
+	<!-- bus, in the near lane, going right -->
+	<rect x="560" y="740" width="590" height="220" rx="22" fill="#f0b84a" />
+	<path d="M600 766H690V850H600ZM705 766H795V850H705ZM810 766H900V850H810ZM915 766H1005V850H915Z" fill="#cfe8f5" />
+	<rect x="1022" y="768" width="62" height="182" rx="4" fill="#d89e36" />
+	<rect x="1028" y="774" width="22" height="80" fill="#cfe8f5" />
+	<rect x="1056" y="774" width="22" height="80" fill="#cfe8f5" />
+	<path d="M1098 762H1132Q1146 762 1146 778V880H1098Z" fill="#cfe8f5" />
+	<rect x="560" y="880" width="462" height="16" fill="#e26d5a" />
+	<rect x="1084" y="880" width="66" height="16" fill="#e26d5a" />
+	<rect x="1132" y="908" width="16" height="16" rx="3" fill="#f6e7a1" />
+	<circle cx="676" cy="962" r="38" fill="#2f3a44" />
+	<circle cx="1026" cy="962" r="38" fill="#2f3a44" />
+	<circle cx="676" cy="962" r="15" fill="#bfc5cc" />
+	<circle cx="1026" cy="962" r="15" fill="#bfc5cc" />
+</svg>

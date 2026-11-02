@@ -1,0 +1,98 @@
+{
+	"id": "street",
+	"name": { "en": "street", "ar": "شارع", "de": "die Straße", "sv": "en gata", "es": "la calle", "uk": "вулиця", "he": "רחוב" },
+	"things": {
+		"sun": {
+			"name": { "en": "sun", "ar": "شمس", "de": "die Sonne", "sv": "en sol", "es": "el sol", "uk": "сонце", "he": "שמש" },
+			"note": "sv: en sol, by the rule, though the one in the sky is said solen"
+		},
+		"cloud": {
+			"name": { "en": "cloud", "ar": "سحابة", "de": "die Wolke", "sv": "ett moln", "es": "la nube", "uk": "хмара", "he": "ענן" }
+		},
+		"bird": {
+			"name": { "en": "bird", "ar": "طائر", "de": "der Vogel", "sv": "en fågel", "es": "el pájaro", "uk": "птах", "he": "ציפור" },
+			"note": "es pájaro, a small bird that flies; ave is any bird"
+		},
+		"house": {
+			"name": { "en": "house", "ar": "منزل", "de": "das Haus", "sv": "ett hus", "es": "la casa", "uk": "будинок", "he": "בית" }
+		},
+		"roof": {
+			"name": { "en": "roof", "ar": "سقف", "de": "das Dach", "sv": "ett tak", "es": "el tejado", "uk": "дах", "he": "גג" },
+			"note": "a pitched roof of tiles: es tejado, where techo is also the ceiling; ar سقف and sv tak are the ceiling too"
+		},
+		"tree": {
+			"name": { "en": "tree", "ar": "شجرة", "de": "der Baum", "sv": "ett träd", "es": "el árbol", "uk": "дерево", "he": "עץ" }
+		},
+		"streetlight": {
+			"name": { "en": "streetlight", "ar": "عمود إنارة", "de": "die Straßenlaterne", "sv": "en gatlykta", "es": "la farola", "uk": "ліхтар", "he": "פנס רחוב" },
+			"note": "the post and its lamp; uk ліхтар is any lamp outdoors, and a street one is вуличний ліхтар"
+		},
+		"store": {
+			"name": { "en": "store", "ar": "متجر", "de": "der Laden", "sv": "en affär", "es": "la tienda", "uk": "магазин", "he": "חנות" },
+			"note": "American store, where British English says shop; de Laden, Geschäft as often"
+		},
+		"traffic-light": {
+			"name": { "en": "traffic light", "ar": "إشارة مرور", "de": "die Ampel", "sv": "ett trafikljus", "es": "el semáforo", "uk": "світлофор", "he": "רמזור" }
+		},
+		"sidewalk": {
+			"name": { "en": "sidewalk", "ar": "رصيف", "de": "der Gehweg", "sv": "en trottoar", "es": "la acera", "uk": "тротуар", "he": "מדרכה" },
+			"note": "American sidewalk, British pavement; de Gehweg, as the signs say, and Bürgersteig as often"
+		},
+		"bicycle": {
+			"name": { "en": "bicycle", "ar": "دراجة", "de": "das Fahrrad", "sv": "en cykel", "es": "la bicicleta", "uk": "велосипед", "he": "אופניים" },
+			"note": "bike is as common; ar دراجة alone is a bicycle, a motorcycle being دراجة نارية; he אופניים has no singular"
+		},
+		"bench": {
+			"name": { "en": "bench", "ar": "مقعد", "de": "die Bank", "sv": "en bänk", "es": "el banco", "uk": "лавка", "he": "ספסל" },
+			"note": "de Bank and es banco are a bank for money too; ar مقعد is any seat"
+		},
+		"trash-can": {
+			"name": { "en": "trash can", "ar": "سلة مهملات", "de": "der Mülleimer", "sv": "en papperskorg", "es": "la papelera", "uk": "урна", "he": "פח אשפה" },
+			"note": "American trash can, British bin; a small one in the street: es papelera, sv papperskorg, uk урна"
+		},
+		"dog": {
+			"name": { "en": "dog", "ar": "كلب", "de": "der Hund", "sv": "en hund", "es": "el perro", "uk": "собака", "he": "כלב" }
+		},
+		"mailbox": {
+			"name": { "en": "mailbox", "ar": "صندوق بريد", "de": "der Briefkasten", "sv": "en brevlåda", "es": "el buzón", "uk": "поштова скринька", "he": "תיבת דואר" },
+			"note": "one in the street for posting letters; American mailbox, British postbox"
+		},
+		"crosswalk": {
+			"name": { "en": "crosswalk", "ar": "ممر مشاة", "de": "der Zebrastreifen", "sv": "ett övergångsställe", "es": "el paso de peatones", "uk": "пішохідний перехід", "he": "מעבר חצייה" },
+			"note": "American crosswalk, British zebra crossing; es paso de cebra and uk зебра as often"
+		},
+		"car": {
+			"name": { "en": "car", "ar": "سيارة", "de": "das Auto", "sv": "en bil", "es": "el coche", "uk": "автомобіль", "he": "מכונית" },
+			"note": "es coche, Spain's word; uk машина is the everyday word, and a machine too"
+		},
+		"bus": {
+			"name": { "en": "bus", "ar": "حافلة", "de": "der Bus", "sv": "en buss", "es": "el autobús", "uk": "автобус", "he": "אוטובוס" },
+			"note": "ar حافلة, the Standard word; باص is the everyday one"
+		}
+	},
+	"styles": {
+		"basic": {
+			"picture": { "src": "scenes/street-basic.svg", "thumb": "scenes/street-basic.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "sidewalk", "d": "M0 600H1536V716H0Z", "at": [1240, 672] },
+				{ "thing": "house", "d": "M36 334L250 190L344 253V194H396V288L464 334H440V600H60V334Z" },
+				{ "thing": "roof", "d": "M36 334L250 190L344 253V194H396V288L464 334Z" },
+				{ "thing": "store", "d": "M850 290H1310V316H1300V600H860V316H850Z" },
+				{ "thing": "tree", "d": "M560 235L607 248L641 280L655 330L668 346L686 370L696 400L684 440L650 462L612 466L575 490V640H545V490L508 466L470 460L436 440L426 400L440 360L466 342L478 282L513 248Z" },
+				{ "thing": "sun", "d": "M1496 130L1488 171L1465 205L1431 228L1390 236L1349 228L1315 205L1292 171L1284 130L1292 89L1315 55L1349 32L1390 24L1431 32L1465 55L1488 89Z" },
+				{ "thing": "cloud", "d": "M490 122L503 102L540 91L566 84L580 68L612 58L644 68L662 90L690 98L715 112L720 124L708 150L560 154L512 146Z" },
+				{ "thing": "bird", "d": "M856 186L876 194L898 152L920 192L926 178L940 182L952 192L936 198L922 206L900 214L880 210L860 208Z" },
+				{ "thing": "streetlight", "d": "M728 664V640H736V258L734 242H800V254H830L820 290H790L780 260H748V640H756V664Z", "at": [742, 450] },
+				{ "thing": "traffic-light", "d": "M1420 300H1484V470H1458V640H1466V664H1438V640H1446V470H1420Z" },
+				{ "thing": "bicycle", "d": "M80 630L86 608L102 594L120 590L140 594L144 572L132 571V560H162V572L154 582H202L208 562H230V572L216 574L218 592L230 590L250 594L264 608L270 630L264 652L250 666L230 670L210 666L196 652L190 636H160L154 652L140 666L120 670L100 666L86 652Z" },
+				{ "thing": "bench", "d": "M478 584H662V626H672V644H654V666H638V644H502V666H486V644H468V626H478Z" },
+				{ "thing": "trash-can", "d": "M774 592H838V608L826 666H786L774 608Z" },
+				{ "thing": "dog", "d": "M960 586L972 584L984 612L1040 607L1072 600L1076 588L1094 582L1112 592L1128 604L1130 618L1114 626L1098 628L1078 642L1074 682H1058L1056 656H1026L1024 682H990L988 650L978 636L970 612Z" },
+				{ "thing": "mailbox", "d": "M1322 572L1330 548L1359 538L1388 548L1396 572V640H1388V666H1378V640H1340V666H1330V640H1322Z" },
+				{ "thing": "crosswalk", "d": "M1200 724H1440V1024H1200Z" },
+				{ "thing": "car", "d": "M150 780L162 768H220L270 720H410L460 768H508L520 780V830L506 840H460L452 872H408L400 840H270L262 872H218L210 840H164L150 830Z" },
+				{ "thing": "bus", "d": "M582 740H1128L1150 762V950L1138 960H1064L1056 1000H996L988 960H714L706 1000H646L638 960H572L560 950V762Z" }
+			]
+		}
+	}
+}
