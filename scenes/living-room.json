@@ -37,6 +37,10 @@
 			"name": { "en": "TV", "ar": "تلفاز", "de": "der Fernseher", "sv": "en tv", "es": "el televisor", "uk": "телевізор", "he": "טלוויזיה" },
 			"note": "TV, as it is said, capitals and all; sv writes tv in small letters; es televisor is the set, televisión also what is on it"
 		},
+		"tv-stand": {
+			"name": { "en": "TV stand", "ar": "طاولة تلفاز", "de": "der Fernsehschrank", "sv": "en tv-bänk", "es": "el mueble de la tele", "uk": "тумба під телевізор", "he": "מזנון" },
+			"note": "the low cabinet the TV stands on: TV stand, the everyday American word, as the kitchen's cabinet is a wall one; de Lowboard as often for a low one; es mueble de la tele, as it is said in Spain"
+		},
 		"plant": {
 			"name": { "en": "plant", "ar": "نبتة", "de": "die Pflanze", "sv": "en växt", "es": "la planta", "uk": "рослина", "he": "צמח" }
 		},
@@ -77,6 +81,7 @@
 				{ "thing": "couch", "d": "M560 470H960V590H1000V790H520V590H560Z" },
 				{ "thing": "pillow", "d": "M594 567L683 554L696 643L607 656Z" },
 				{ "thing": "pillow", "d": "M837 554L926 567L913 656L824 643Z" },
+				{ "thing": "tv-stand", "d": "M1080 650H1350V780H1338V794H1324V780H1106V794H1092V780H1080Z" },
 				{ "thing": "tv", "d": "M1100 462H1330V624H1100Z" },
 				{ "thing": "plant", "d": "M1040 572L1056 600L1072 622L1092 650L1107 690L1090 716H1068L1060 800H1020L1012 716H990L973 690L988 650L1008 622L1024 600Z" },
 				{ "thing": "rug", "d": "M420 840H1180L1250 990H350Z" },
@@ -102,6 +107,7 @@
 				{ "thing": "pillow", "d": "M351 470L454 469L473 562L383 570Z" },
 				{ "thing": "pillow", "d": "M443 483L532 488L554 557L476 562Z" },
 				{ "thing": "pillow", "d": "M802 475L925 479L893 566L776 557Z" },
+				{ "thing": "tv-stand", "d": "M1052 530L1128 534L1292 560L1366 568V714L1323 715V756H1315V716L1234 718L1215 710V760H1202V704L1079 653V670H1073V651L1058 645Z" },
 				{ "thing": "tv", "d": "M1128 352L1292 330V560L1128 534Z" },
 				{ "thing": "plant", "d": "M1002 334L1052 348L1098 372L1128 394L1112 436L1094 492L1064 538L1058 642H994L990 548L982 508L944 478L940 440L956 404L978 376Z" },
 				{ "thing": "rug", "d": "M468 690H1146L1402 986L1360 1004L110 1018L230 880Z" },
@@ -128,6 +134,7 @@
 				{ "thing": "pillow", "d": "M339 464L427 457L461 550L382 562Z" },
 				{ "thing": "pillow", "d": "M429 478L507 469L548 546L464 557Z" },
 				{ "thing": "pillow", "d": "M802 463L911 474L880 562L774 546Z" },
+				{ "thing": "tv-stand", "d": "M1051 525L1127 522L1312 548L1362 563V728L1347 729V766H1328V730L1237 731V770H1219V717L1076 651V678H1061V644L1058 644Z" },
 				{ "thing": "tv", "d": "M1125 334L1312 309V548L1127 522Z" },
 				{ "thing": "plant", "d": "M1006 276L1040 300L1074 330L1100 370L1108 420L1094 470L1064 520L1060 544L1058 654H980L978 546L968 520L936 500L926 440L940 380L968 340L990 310Z" },
 				{ "thing": "rug", "d": "M454 690H1064L1442 990L1400 1006L24 1010L16 984Z" },

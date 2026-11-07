@@ -17,6 +17,9 @@
   light, sidewalk, bicycle, bench, trash can, dog, mailbox, crosswalk, car
   and bus — drawn by hand in SVG. Its realistic picture's prompt for
   ChatGPT is kept in `art/`.
+- **The TV stand** — the living room's eighteenth thing, the low cabinet
+  the TV stands on, in all three styles. It was in every picture from the
+  start, but with no region it had no name.
 
 ## [0.1.0] 2026-11-01
 
