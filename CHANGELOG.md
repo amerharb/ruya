@@ -21,6 +21,11 @@
   the TV stands on, in all three styles. It was in every picture from the
   start, but with no region it had no name.
 
+### Changed
+- **A folder per scene** — each scene's pictures and thumbnails are in
+  `public/scenes/<scene>/`, named by style (`kitchen/realistic.webp`), and
+  its originals, boxes and prompts in `art/<scene>/` the same way.
+
 ## [0.1.0] 2026-11-01
 
 The first version of ruya.info, a picture dictionary: two scenes, the

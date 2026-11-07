@@ -72,7 +72,7 @@
 	},
 	"styles": {
 		"basic": {
-			"picture": { "src": "scenes/street-basic.svg", "thumb": "scenes/street-basic.thumb.webp", "width": 1536, "height": 1024 },
+			"picture": { "src": "scenes/street/basic.svg", "thumb": "scenes/street/basic.thumb.webp", "width": 1536, "height": 1024 },
 			"regions": [
 				{ "thing": "sidewalk", "d": "M0 600H1536V716H0Z", "at": [1240, 672] },
 				{ "thing": "house", "d": "M36 334L250 190L344 253V194H396V288L464 334H440V600H60V334Z" },

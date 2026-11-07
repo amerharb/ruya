@@ -68,7 +68,7 @@
 	},
 	"styles": {
 		"basic": {
-			"picture": { "src": "scenes/kitchen-basic.svg", "thumb": "scenes/kitchen-basic.thumb.webp", "width": 1536, "height": 1024 },
+			"picture": { "src": "scenes/kitchen/basic.svg", "thumb": "scenes/kitchen/basic.thumb.webp", "width": 1536, "height": 1024 },
 			"regions": [
 				{ "thing": "window", "d": "M570 100H890V400H570Z" },
 				{ "thing": "cabinet", "d": "M100 90H400V300H100Z" },
@@ -91,7 +91,7 @@
 			]
 		},
 		"realistic": {
-			"picture": { "src": "scenes/kitchen-realistic.webp", "thumb": "scenes/kitchen-realistic.thumb.webp", "width": 1536, "height": 1024 },
+			"picture": { "src": "scenes/kitchen/realistic.webp", "thumb": "scenes/kitchen/realistic.thumb.webp", "width": 1536, "height": 1024 },
 			"regions": [
 				{ "thing": "window", "d": "M358 36H722V384H358Z" },
 				{ "thing": "cabinet", "d": "M2 22H333V292H2Z" },
@@ -115,7 +115,7 @@
 			]
 		},
 		"ghibli": {
-			"picture": { "src": "scenes/kitchen-ghibli.webp", "thumb": "scenes/kitchen-ghibli.thumb.webp", "width": 1536, "height": 1024 },
+			"picture": { "src": "scenes/kitchen/ghibli.webp", "thumb": "scenes/kitchen/ghibli.thumb.webp", "width": 1536, "height": 1024 },
 			"regions": [
 				{ "thing": "window", "d": "M340 22H744V398H340Z" },
 				{ "thing": "cabinet", "d": "M0 16H334V290H0Z" },

@@ -69,7 +69,7 @@
 	},
 	"styles": {
 		"basic": {
-			"picture": { "src": "scenes/living-room-basic.svg", "thumb": "scenes/living-room-basic.thumb.webp", "width": 1536, "height": 1024 },
+			"picture": { "src": "scenes/living-room/basic.svg", "thumb": "scenes/living-room/basic.thumb.webp", "width": 1536, "height": 1024 },
 			"regions": [
 				{ "thing": "window", "d": "M600 110H920V410H600Z" },
 				{ "thing": "curtain", "d": "M560 92H646L656 470H550Z" },
@@ -94,7 +94,7 @@
 			]
 		},
 		"realistic": {
-			"picture": { "src": "scenes/living-room-realistic.webp", "thumb": "scenes/living-room-realistic.thumb.webp", "width": 1536, "height": 1024 },
+			"picture": { "src": "scenes/living-room/realistic.webp", "thumb": "scenes/living-room/realistic.thumb.webp", "width": 1536, "height": 1024 },
 			"regions": [
 				{ "thing": "window", "d": "M494 118H814V458H494Z" },
 				{ "thing": "curtain", "d": "M326 82H498V512H330Z" },
@@ -121,7 +121,7 @@
 			]
 		},
 		"ghibli": {
-			"picture": { "src": "scenes/living-room-ghibli.webp", "thumb": "scenes/living-room-ghibli.thumb.webp", "width": 1536, "height": 1024 },
+			"picture": { "src": "scenes/living-room/ghibli.webp", "thumb": "scenes/living-room/ghibli.thumb.webp", "width": 1536, "height": 1024 },
 			"regions": [
 				{ "thing": "window", "d": "M474 100H780V444H474Z" },
 				{ "thing": "curtain", "d": "M316 66H480V520H316Z" },

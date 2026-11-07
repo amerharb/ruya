@@ -1,13 +1,13 @@
 # The street, realistic: the prompt for ChatGPT
 
 Written 2026-11-02, to match the realistic kitchen and living room and the
-things in `scenes/street.json`; the hand-drawn `public/scenes/street-basic.svg`
+things in `scenes/street.json`; the hand-drawn `public/scenes/street/basic.svg`
 has the same street in the same order. Best asked in the chat that made the
 living room, so the look carries over; in a new one, attach
-`art/living-room-realistic.png` with it. Paste the first part, then the
+`art/living-room/realistic.png` with it. Paste the first part, then the
 second in the same chat once the picture is right. Put the picture and the
 answer to the second part in `-AmerLocal/`; they become
-`art/street-realistic.png` and `art/street-realistic.boxes.json`.
+`art/street/realistic.png` and `art/street/realistic.boxes.json`.
 
 ## 1. The picture
 

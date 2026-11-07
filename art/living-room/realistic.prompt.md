@@ -2,11 +2,11 @@
 
 Written 2026-10-25, to match the realistic kitchen and the things in
 `scenes/living-room.json`. Best asked in the chat that made the kitchen, so
-the look carries over; in a new one, attach `art/kitchen-realistic.png`
+the look carries over; in a new one, attach `art/kitchen/realistic.png`
 with it. Paste the first part, then the second in the same chat once the
 picture is right. Save the picture as
-`art/living-room-realistic.png` and the answer to the second part as
-`art/living-room-realistic.boxes.json`.
+`art/living-room/realistic.png` and the answer to the second part as
+`art/living-room/realistic.boxes.json`.
 
 ## 1. The picture
 

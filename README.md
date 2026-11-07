@@ -102,8 +102,8 @@ per style and the regions over it:
 	"styles": {
 		"realistic": {
 			"picture": {
-				"src": "scenes/kitchen-realistic.webp",
-				"thumb": "scenes/kitchen-realistic.thumb.webp",
+				"src": "scenes/kitchen/realistic.webp",
+				"thumb": "scenes/kitchen/realistic.thumb.webp",
 				"width": 1536,
 				"height": 1024
 			},
@@ -121,8 +121,9 @@ per style and the regions over it:
   parse. `note`, optional, says why a word was chosen.
 - **`styles`** holds any of `basic`, `realistic` and `ghibli`. A style the
   scene lacks is left out.
-- The **picture** is in `public/scenes/`, shown as an image: a WebP for a
-  painted scene, an SVG for a drawn one. `width` and `height` are the
+- The **picture** is in the scene's own folder, `public/scenes/<scene>/`,
+  named by its style, and shown as an image: a WebP for a painted scene, an
+  SVG for a drawn one. `width` and `height` are the
   coordinate space the regions are written in and the picture's shape; the
   file may have more pixels, in the same proportion. **`thumb`** is the
   style's button in the bar: the picture at 96 × 64, twice the size it is
@@ -148,12 +149,15 @@ or a bitmap of the scene's shape — the picture at least its size.
 
 - **A thing:** add it to `things` with its names, and a region for it to
   each style it is in; run `cargo test`.
-- **A scene:** its pictures and thumbnails in `public/scenes/`, its file in
-  `scenes/`, named by its id, and a line in `SOURCES` in `src/scene.rs`,
-  which is the order of the list in the bar.
+- **A scene:** a folder for it, `public/scenes/<id>/`, holding a picture
+  and a thumbnail per style (`basic.svg`, `realistic.webp`,
+  `realistic.thumb.webp`, …); its file in `scenes/`, named by its id; and a
+  line in `SOURCES` in `src/scene.rs`, which is the order of the list in the
+  bar. Its originals go in `art/<id>/` the same way.
 - **A style:** a variant in `Style` with its code and its name in each
   language (`src/style.rs`), a field in `Styles` (`src/scene.rs`), then the
-  picture, thumbnail and regions in each scene that has it.
+  picture and thumbnail, named by the style's code, in each scene's folder
+  that has it, and its regions in that scene's file.
 - **A language:** a variant in `Lang` and a field in `Names`
   (`src/lang.rs`). The compiler then points at every match to extend, and
   `cargo test` at every scene still missing the name.
@@ -161,48 +165,48 @@ or a bitmap of the scene's shape — the picture at least its size.
 ## Pictures and licences
 
 - **Realistic** and **Ghibli** pictures are made in ChatGPT. Each one's
-  original is kept in `art/`, as it came, and the WebP the app shows is
-  made from it with
-  `cwebp -q 80 -m 6 -metadata none art/<scene>-<style>.png -o public/scenes/<scene>-<style>.webp`:
+  original is kept as it came in `art/<scene>/`, named by its style, and
+  the WebP the app shows is made from it with
+  `cwebp -q 80 -m 6 -metadata none art/<scene>/<style>.png -o public/scenes/<scene>/<style>.webp`:
   a sixteenth to a thirtieth of the bytes, and the same picture to the eye.
 - **Basic** pictures are SVG, drawn by hand in a 1536 × 1024 `viewBox`:
   flat shapes, no text.
 - **Thumbnails** are made from the picture with
-  `cwebp -q 75 -m 6 -resize 96 64 <picture>.png -o public/scenes/<scene>-<style>.thumb.webp`;
+  `cwebp -q 75 -m 6 -resize 96 64 <picture>.png -o public/scenes/<scene>/<style>.thumb.webp`;
   an SVG is first made a PNG, with
   `rsvg-convert -w 192 -h 128 <picture>.svg -o <picture>.png`
   (`brew install librsvg`).
 
 Record each ChatGPT picture's date and prompt here, so it can be remade
 or extended in the same style; a prompt written before the picture is
-kept in `art/` beside it.
+kept beside it in `art/<scene>/`.
 
 | Scene | Style | Original | Made | Prompt |
 | --- | --- | --- | --- | --- |
-| kitchen | realistic | `art/kitchen-realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | not recorded |
-| kitchen | basic | `public/scenes/kitchen-basic.svg` | drawn by hand, 2026-10-25 | — |
-| kitchen | ghibli | `art/kitchen-ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | not recorded |
-| living room | realistic | `art/living-room-realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | `art/living-room-realistic.prompt.md` |
-| living room | basic | `public/scenes/living-room-basic.svg` | drawn by hand, 2026-10-25 | — |
-| living room | ghibli | `art/living-room-ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-26 | `art/living-room-ghibli.prompt.md` |
-| street | basic | `public/scenes/street-basic.svg` | drawn by hand, 2026-11-02 | — |
-| street | realistic | not made yet | — | `art/street-realistic.prompt.md` |
+| kitchen | realistic | `art/kitchen/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | not recorded |
+| kitchen | basic | `public/scenes/kitchen/basic.svg` | drawn by hand, 2026-10-25 | — |
+| kitchen | ghibli | `art/kitchen/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | not recorded |
+| living room | realistic | `art/living-room/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | `art/living-room/realistic.prompt.md` |
+| living room | basic | `public/scenes/living-room/basic.svg` | drawn by hand, 2026-10-25 | — |
+| living room | ghibli | `art/living-room/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-26 | `art/living-room/ghibli.prompt.md` |
+| street | basic | `public/scenes/street/basic.svg` | drawn by hand, 2026-11-02 | — |
+| street | realistic | not made yet | — | `art/street/realistic.prompt.md` |
 
 ChatGPT gave the realistic kitchen's things as boxes too, kept in
-`art/kitchen-realistic.boxes.json`. They were approximate — the fork and
+`art/kitchen/realistic.boxes.json`. They were approximate — the fork and
 spoon about 50 px low, the window short of its sill — so each region was
 redrawn by eye over the picture: rectangles where they fit, polygons for
 the fork, spoon, chairs and table. The second chair, nearest the viewer, is
 not in ChatGPT's list and has a second `chair` region.
 
-The Ghibli kitchen's boxes, in `art/kitchen-ghibli.boxes.json`, were
+The Ghibli kitchen's boxes, in `art/kitchen/ghibli.boxes.json`, were
 closer, but a box cannot follow the table or the chair behind its corner,
 and the sink's was 30 px tall, under the 48 a region needs; its regions
 were redrawn the same way. The far chair's region follows the table's edge
 rather than overlapping it, so a tap on the table's corner is the table's.
 
 The realistic living room's boxes, in
-`art/living-room-realistic.boxes.json`, put both curtains in one box and
+`art/living-room/realistic.boxes.json`, put both curtains in one box and
 all the pillows in another, though the prompt asked for one each. The
 picture has four pillows, three on the couch and one in the armchair,
 each its own `pillow` region; the armchair's comes after the armchair, as
@@ -211,7 +215,7 @@ the one piece of text in the picture.
 
 The Ghibli living room is the realistic one repainted, every thing a few
 pixels off where it was, so its regions were redrawn over it the same way.
-Its boxes, in `art/living-room-ghibli.boxes.json`, again merged the
+Its boxes, in `art/living-room/ghibli.boxes.json`, again merged the
 curtains and the pillows.
 
 For later scenes, the plan is to paint a flat colour per thing on a mask
