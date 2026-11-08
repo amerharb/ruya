@@ -70,7 +70,16 @@ pub fn App() -> impl IntoView {
             {move || {
                 let scene = scene.get();
                 let (s, rendering) = scene.rendering_or_first(style.get());
-                view! { <Stage scene=scene style=s rendering=rendering lang=lang all=all /> }
+                view! {
+                    <Stage
+                        scene=scene
+                        style=s
+                        rendering=rendering
+                        lang=lang
+                        all=all
+                        set_scene=set_scene
+                    />
+                }
             }}
         </main>
     }

@@ -156,6 +156,23 @@ impl Scene {
         &SCENES[0]
     }
 
+    /// The scene after this one in the picker's order, the first after the
+    /// last: where the picture's right edge goes.
+    pub fn next(&self) -> &'static Scene {
+        self.step(1)
+    }
+
+    /// The scene before this one, the last before the first: where the
+    /// picture's left edge goes.
+    pub fn previous(&self) -> &'static Scene {
+        self.step(SCENES.len() - 1)
+    }
+
+    fn step(&self, by: usize) -> &'static Scene {
+        let i = SCENES.iter().position(|s| s.id == self.id).unwrap_or(0);
+        &SCENES[(i + by) % SCENES.len()]
+    }
+
     /// The word for "place", the scene picker's accessible name.
     pub fn label(lang: Lang) -> &'static str {
         match lang {
@@ -292,6 +309,17 @@ mod tests {
         assert_eq!(files, listed);
         for (id, json) in SOURCES {
             assert_eq!(&Scene::parse(json).unwrap().id, id);
+        }
+    }
+
+    #[test]
+    fn the_edges_go_round_the_scenes() {
+        let first = Scene::first();
+        let last = SCENES.last().unwrap();
+        assert_eq!(last.next().id, first.id);
+        assert_eq!(first.previous().id, last.id);
+        for s in SCENES.iter() {
+            assert_eq!(s.next().previous().id, s.id);
         }
     }
 

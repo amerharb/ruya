@@ -12,6 +12,11 @@
   the big label, the other tags fading back. The choice is kept in the
   address as `?n=all`. On a phone held upright the button ends the bar's
   first row, beside the scene's name.
+- **The edges go round the scenes** — a strip along the picture's right
+  edge goes to the next scene, along its left to the one before, the last
+  leading back to the first. Pointed at, a strip shades and shows an
+  arrow; on a touch screen both stay faintly in view. Each is a button
+  named for the scene it goes to.
 - **The street** — the third scene, and the first outdoors, with 26
   things — sun, cloud, bird, house, roof, chimney, window, door, tree,
   streetlight, store, traffic light, sidewalk, curb, road, lane, lane line,

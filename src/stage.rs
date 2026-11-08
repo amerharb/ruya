@@ -14,10 +14,14 @@
 //! name, on the thing itself; pointing works as before, the thing pointed at
 //! getting the big label while the other tags step back.
 //!
+//! The picture's two edges go to the other scenes, round in a circle: the
+//! right one to the next, the left to the one before. Pointed at, an edge
+//! shades and shows its arrow.
+//!
 //! One stage shows one scene in one style; switching either builds a new one.
 
 use crate::lang::Lang;
-use crate::scene::{Rendering, Scene};
+use crate::scene::{Rendering, SCENES, Scene};
 use crate::spread::{Tag, spread};
 use crate::style::Style;
 use leptos::ev;
@@ -32,6 +36,7 @@ pub fn Stage(
     rendering: &'static Rendering,
     lang: ReadSignal<Lang>,
     all: ReadSignal<bool>,
+    set_scene: WriteSignal<&'static Scene>,
 ) -> impl IntoView {
     let (w, h) = (rendering.picture.width, rendering.picture.height);
     let name = move |i: usize, l: Lang| scene.thing(&rendering.regions[i].thing).name.get(l);
@@ -191,6 +196,30 @@ pub fn Stage(
     });
     on_cleanup(move || resize.remove());
 
+    // an edge, named for the scene it goes to
+    let edge = move |side: &'static str, arrow: &'static str, to: &'static Scene| {
+        view! {
+            <button
+                class="step"
+                data-side=side
+                lang=move || lang.get().code()
+                aria-label=move || to.name.get(lang.get()).to_string()
+                title=move || to.name.get(lang.get()).to_string()
+                on:click=move |_| set_scene.set(to)
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d=arrow />
+                </svg>
+            </button>
+        }
+    };
+    let edges = (SCENES.len() > 1).then(|| {
+        view! {
+            {edge("previous", "M15 5L8 12L15 19", scene.previous())}
+            {edge("next", "M9 5L16 12L9 19", scene.next())}
+        }
+    });
+
     let label = move || {
         last.get().map(|i| {
             let region = &rendering.regions[i];
@@ -264,6 +293,9 @@ pub fn Stage(
                         }
                     />
                 </svg>
+                // after the regions, so over them, and reached by Tab after
+                // them
+                {edges}
                 // the regions already carry the names for a screen reader
                 <div
                     class="tags"

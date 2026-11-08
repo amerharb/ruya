@@ -314,6 +314,83 @@ body {
 	filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.7));
 }
 
+/* ── the edges: to the scene before and after ── */
+
+.step {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	/* a strip a fingertip wide, against the picture's width */
+	width: clamp(28px, 3cqw, 48px);
+	display: grid;
+	place-items: center;
+	padding: 0;
+	border: none;
+	background: none;
+	color: #ffffff;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.step[data-side="previous"] {
+	left: 0;
+}
+
+.step[data-side="next"] {
+	right: 0;
+}
+
+/* the shade, darkest at the edge, in the dimming's colour */
+.step::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to right, rgba(20, 28, 32, 0.55), rgba(20, 28, 32, 0));
+}
+
+.step[data-side="next"]::before {
+	background: linear-gradient(to left, rgba(20, 28, 32, 0.55), rgba(20, 28, 32, 0));
+}
+
+.step svg {
+	position: relative;
+	width: 70%;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 3;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.7));
+}
+
+/* both only while pointed at */
+.step::before,
+.step svg {
+	opacity: 0;
+	transition: opacity 150ms ease;
+}
+
+.step:hover::before,
+.step:hover svg,
+.step:focus-visible::before,
+.step:focus-visible svg {
+	opacity: 1;
+}
+
+.step:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: -2px;
+}
+
+/* A finger has nothing to point with before it taps: the edges stay faintly
+   in view, so a tap there is not a surprise. */
+@media (hover: none) {
+	.step::before,
+	.step svg {
+		opacity: 0.5;
+	}
+}
+
 /* ── the name ── */
 
 .label {
@@ -396,6 +473,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
 	.dim,
 	.outline,
+	.step::before,
+	.step svg,
 	.label,
 	.tags,
 	.tag {

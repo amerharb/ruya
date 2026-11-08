@@ -19,7 +19,11 @@ start WebAssembly.
 - The thing shown is outlined and the rest of the picture dims.
 - On a phone held upright the picture fills the height and scrolls sideways,
   so a spoon is still big enough to tap. It opens at the middle.
-- **Place:** the scene's name in the bar is a list of the scenes.
+- **Place:** the scene's name in the bar is a list of the scenes. The
+  picture's edges go through them too, round in a circle: a strip along
+  the right edge to the next scene, along the left to the one before, in
+  the list's order. Pointed at, a strip shades and shows an arrow; on a
+  touch screen both stay faintly in view.
 - **Style:** the little pictures in the bar switch between the styles the
   scene comes in (below).
 - **All names:** the button with two tags shows every thing's name at once,
