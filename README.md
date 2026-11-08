@@ -180,6 +180,16 @@ per style and the regions over it:
 - The name shows above the region. **`at`**, optional, is a point on the
   region whose x the label centres on; it is needed where the region's
   middle is not on it, as for a chair seen between its legs.
+- **`signs`**, optional, are words painted in the pictures, which follow
+  the language: the street's bus reads "12 Central Station". The scene's
+  `signs` give each sign's words in every language, as names are given
+  (the bus's destination only; its 12 stays as painted). A style's
+  `signs` say where it is, `"rect": [x0, y0, x1, y1]` in picture units,
+  and which language the picture shows it in, `"lang": "en"`. In every
+  other language a patch is laid over that rect: a small WebP of the sign
+  with that language's words, `public/scenes/<scene>/<style>.<sign>.<lang>.webp`,
+  made by `tools/signs.py` (below). The picture itself stays as it came;
+  the patches lie under the regions, so a tap on the sign is the bus's.
 
 `cargo test` checks every scene: every name present and in its language's
 script, a thing's for one, two or many wherever its language has that
@@ -188,8 +198,10 @@ hiragana, over every kanji, and the name again without its brackets;
 every region naming a thing, and every thing in some style; every
 region inside the picture and at least 48 units across, so it can be tapped
 on a phone; every label point on its region; a thing lying on another after
-it; and each picture and thumbnail there, an SVG with the scene's `viewBox`
-or a bitmap of the scene's shape — the picture at least its size.
+it; each picture and thumbnail there, an SVG with the scene's `viewBox`
+or a bitmap of the scene's shape — the picture at least its size; and
+every sign worded in every language and in some picture, inside it, with a
+patch for every language but the picture's own, of its rect's shape.
 
 ### Adding a thing, a scene or a language
 
@@ -209,7 +221,9 @@ or a bitmap of the scene's shape — the picture at least its size.
   `Lang::numbers` saying which; in `Readings` too if its names need
   readings over them, as Japanese does, with `Lang::readings_name` naming
   them. The compiler then points at every match to extend, and
-  `cargo test` at every scene still missing a name.
+  `cargo test` at every scene still missing a name. Then each sign's words
+  in the language, and its patches, with `python3 tools/signs.py
+  scenes/<scene>.json` (adding the font for a new script to its `FONTS`).
 
 ## Pictures and licences
 
@@ -225,6 +239,17 @@ or a bitmap of the scene's shape — the picture at least its size.
   an SVG is first made a PNG, with
   `rsvg-convert -w 192 -h 128 <picture>.svg -o <picture>.png`
   (`brew install librsvg`).
+- **Sign patches** are made by `python3 tools/signs.py scenes/<scene>.json`,
+  from the original in `art/<scene>/`: for each sign and each language but
+  the one painted, it cuts the sign's rect out, fills the painted letters
+  from the panel around them, and sets the language's words in their
+  colour, on their baseline, as tall as the painted capitals and squeezed
+  sideways rather than stretched if they are long. Pango shapes the
+  Arabic, Hebrew and Japanese, which Pillow here cannot. The glow and
+  softness per style are in `art/<scene>/signs.json`, a glow like LED
+  letters for realistic and softer, painted ones for Ghibli. Run it again
+  when a sign's words change, a language is added, or a picture is
+  redrawn. It needs Pillow, `rsvg-convert` and `cwebp`.
 
 Record each ChatGPT picture's date and prompt here, so it can be remade
 or extended in the same style; a prompt written before the picture is
@@ -284,7 +309,8 @@ the sun's by 150 px, the crosswalk's by more. The one kept, supplied
 sidewalk, the crosswalk moved to the corner and the car side-on, and has
 all 26 things; it came with no boxes, so every region was drawn by eye.
 The prompt asked for no text, but the bus's sign reads "12 Central
-Station", the number plates are blurred letters, and a driver can be made
+Station" — now a sign that follows the language, its destination patched
+in each — the number plates are blurred letters, and a driver can be made
 out behind the bus's windscreen. The picture has four birds, each its own
 `bird` region and drawn bigger than the bird, so it can be tapped; two
 clouds, three trees and the house's two windows not behind leaves have a

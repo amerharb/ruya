@@ -127,6 +127,34 @@ pub fn Stage(
         }
     });
 
+    // The signs painted in the picture, in the chosen language: each patch
+    // is there from the start, hidden but the chosen language's, so a switch
+    // shows its sign at once. Under the regions, so a tap on a sign is the
+    // bus's, and under the dimming.
+    let signs = rendering
+        .signs
+        .iter()
+        .flat_map(|spot| {
+            let [x0, y0, x1, y1] = spot.rect;
+            Lang::ALL.into_iter().filter_map(move |l| {
+                let href = spot.patch(&scene.id, style, l)?;
+                Some(view! {
+                    <image
+                        class="sign"
+                        href=href
+                        x=x0.to_string()
+                        y=y0.to_string()
+                        width=(x1 - x0).to_string()
+                        height=(y1 - y0).to_string()
+                        preserveAspectRatio="none"
+                        visibility=move || if lang.get() == l { "visible" } else { "hidden" }
+                        aria-hidden="true"
+                    />
+                })
+            })
+        })
+        .collect_view();
+
     let regions = rendering
         .regions
         .iter()
@@ -311,6 +339,7 @@ pub fn Stage(
                     role="group"
                     aria-label=move || scene.name.get(lang.get()).to_string()
                 >
+                    {signs}
                     {regions}
                     // everything but the thing shown, dimmed: the picture's
                     // rectangle with the thing cut out of it, even-odd

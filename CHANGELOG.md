@@ -42,6 +42,15 @@
   two, the dual. Any of them at once, never none; the forms chosen stack a
   line each, singular on top, in the label and the tags, and a screen
   reader says them in turn. The choice is kept in the address as `?f=`.
+- **The bus's sign in every language** — the street's bus reads "12
+  Central Station" in English, and its destination follows the language:
+  المحطة المركزية, Hauptbahnhof, Centralstationen, Estación Central,
+  Центральний вокзал, התחנה המרכזית, 中央駅, the 12 as painted. Each is a
+  patch about a kilobyte in size, laid over the realistic and Ghibli
+  pictures at the sign's place, made from the sign itself by
+  `tools/signs.py`: the painted letters filled from the panel, the new
+  words set in their amber, with an LED glow or a painted softness. The
+  pictures are unchanged.
 - **The TV stand** — the living room's eighteenth thing, the low cabinet
   the TV stands on, in all three styles. It was in every picture from the
   start, but with no region it had no name.

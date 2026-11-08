@@ -29,7 +29,25 @@ pub struct Scene {
     pub name: Names,
     /// Every thing with a name, by id.
     pub things: BTreeMap<String, Thing>,
+    /// Words painted in the pictures, by id: a sign's, in every language.
+    /// The app shows them as patches (see [`Spot`]); `tools/signs.py` makes
+    /// the patches from these words, and `cargo test` checks them.
+    #[serde(default)]
+    #[allow(dead_code)]
+    pub signs: BTreeMap<String, Sign>,
     pub styles: Styles,
+}
+
+/// A sign painted in a scene's pictures — the bus's destination — its words
+/// in every language.
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+#[allow(dead_code)]
+pub struct Sign {
+    pub text: Names,
+    /// Why the words were chosen, as a thing's note.
+    #[serde(default)]
+    pub note: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -83,6 +101,40 @@ pub struct Rendering {
     pub picture: Picture,
     /// In paint order: where two overlap, the later one is the one tapped.
     pub regions: Vec<Region>,
+    /// The signs painted in this picture, each followed into the chosen
+    /// language by a patch.
+    #[serde(default)]
+    pub signs: Vec<Spot>,
+}
+
+/// Where a sign is in one style's picture, and the language the picture
+/// shows it in. In any other language a patch is laid over it: a small
+/// picture of the sign with that language's words, made by `tools/signs.py`
+/// and named `<style>.<sign>.<lang>.webp` beside the picture.
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Spot {
+    /// The id of the sign this is.
+    pub sign: String,
+    /// The patch's place: left, top, right and bottom, in picture units.
+    pub rect: [f64; 4],
+    /// The language the picture shows the sign in, which needs no patch.
+    pub lang: String,
+}
+
+impl Spot {
+    /// The patch showing this sign in `lang`, over the picture of scene
+    /// `scene` in `style`; none in the language the picture already shows.
+    pub fn patch(&self, scene: &str, style: Style, lang: Lang) -> Option<String> {
+        (lang.code() != self.lang).then(|| {
+            format!(
+                "scenes/{scene}/{}.{}.{}.webp",
+                style.code(),
+                self.sign,
+                lang.code()
+            )
+        })
+    }
 }
 
 #[derive(Debug, Deserialize)]
@@ -628,6 +680,53 @@ mod tests {
             let p = &r.picture;
             check_file(&what, &p.src, p.width, p.height, true);
             check_file(&what, &p.thumb, p.width, p.height, false);
+        }
+    }
+
+    #[test]
+    fn every_sign_has_its_words_and_its_patches() {
+        for (file, scene) in scenes() {
+            for (id, sign) in &scene.signs {
+                for lang in Lang::ALL {
+                    check_name(&file, &format!("sign {id}"), lang, sign.text.get(lang));
+                }
+                assert!(
+                    scene
+                        .renderings()
+                        .any(|(_, r)| r.signs.iter().any(|spot| &spot.sign == id)),
+                    "{file}: sign {id} is in no picture"
+                );
+            }
+            for (style, r) in scene.renderings() {
+                let what = format!("{file} {}", style.code());
+                for spot in &r.signs {
+                    let name = &spot.sign;
+                    assert!(
+                        scene.signs.contains_key(name),
+                        "{what}: {name} is not a sign of the scene"
+                    );
+                    assert!(
+                        Lang::from_tag(&spot.lang).is_some_and(|l| l.code() == spot.lang),
+                        "{what}: {name}'s {} is not a language Ruya has",
+                        spot.lang
+                    );
+                    let [x0, y0, x1, y1] = spot.rect;
+                    assert!(
+                        0.0 <= x0 && x0 < x1 && x1 <= r.picture.width,
+                        "{what}: {name} is not across the picture"
+                    );
+                    assert!(
+                        0.0 <= y0 && y0 < y1 && y1 <= r.picture.height,
+                        "{what}: {name} is not down the picture"
+                    );
+                    for lang in Lang::ALL {
+                        if let Some(src) = spot.patch(&scene.id, style, lang) {
+                            let what = format!("{what} {name} {}", lang.code());
+                            check_file(&what, &src, x1 - x0, y1 - y0, true);
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -174,6 +174,12 @@
 			"note": "es moto, short for motocicleta and what is said; ja バイク, オートバイ being the longer word"
 		}
 	},
+	"signs": {
+		"bus": {
+			"text": { "en": "Central Station", "ar": "المحطة المركزية", "de": "Hauptbahnhof", "sv": "Centralstationen", "es": "Estación Central", "uk": "Центральний вокзал", "he": "התחנה המרכזית", "ja": "中央駅" },
+			"note": "the destination on the bus's display; the route number, 12, stays as painted in every language. de Hauptbahnhof, the main station, as German signs say; sv Centralstationen and he התחנה המרכזית with their article, as signs have them"
+		}
+	},
 	"styles": {
 		"basic": {
 			"picture": { "src": "scenes/street/basic.svg", "thumb": "scenes/street/basic.thumb.webp", "width": 1536, "height": 1024 },
@@ -243,7 +249,8 @@
 				{ "thing": "traffic-light", "d": "M1125 426H1175V522H1153V738L1158 752H1136L1142 738V522H1125Z", "at": [1150, 474] },
 				{ "thing": "motorcycle", "d": "M872 645L882 650L884 668L898 676L922 672L932 662L942 672L938 688L980 683L998 700L1000 735L992 762L970 772L948 770L938 778L928 772L902 768L880 778L860 778L846 762L842 735L855 712L868 700L866 680L870 672Z" },
 				{ "thing": "dog", "d": "M352 842L362 828L392 798L430 782L478 782L502 760L523 752L545 757L558 773L552 795L528 802L526 830L518 880L520 892L488 896L478 860L440 846L432 888L396 894L392 858L380 860Z" }
-			]
+			],
+			"signs": [ { "sign": "bus", "rect": [1386, 546, 1471, 565], "lang": "en" } ]
 		},
 		"ghibli": {
 			"picture": { "src": "scenes/street/ghibli.webp", "thumb": "scenes/street/ghibli.thumb.webp", "width": 1536, "height": 1024 },
@@ -283,7 +290,8 @@
 				{ "thing": "traffic-light", "d": "M1125 426H1175V522H1153V738L1158 752H1136L1142 738V522H1125Z", "at": [1150, 474] },
 				{ "thing": "motorcycle", "d": "M872 645L882 650L884 668L898 676L922 672L932 662L942 672L938 688L980 683L998 700L1000 735L992 762L970 772L948 770L938 778L928 772L902 768L880 778L860 778L846 762L842 735L855 712L868 700L866 680L870 672Z" },
 				{ "thing": "dog", "d": "M352 842L362 828L392 798L430 782L478 782L502 760L523 752L545 757L558 773L552 795L528 802L526 830L518 880L520 892L488 896L478 860L440 846L432 888L396 894L392 858L380 860Z" }
-			]
+			],
+			"signs": [ { "sign": "bus", "rect": [1386, 547, 1472, 567], "lang": "en" } ]
 		}
 	}
 }

@@ -335,6 +335,12 @@ body {
 	-webkit-touch-callout: none;
 }
 
+/* a sign's patch in the chosen language: part of the picture, so it takes
+   no taps */
+.sign {
+	pointer-events: none;
+}
+
 .region {
 	/* transparent but there: it catches the pointer over its whole fill,
 	   and only its fill, so no invisible stroke steals a neighbour's tap */
