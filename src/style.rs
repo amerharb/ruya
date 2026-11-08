@@ -45,6 +45,7 @@ impl Style {
             Lang::Es => "Estilo",
             Lang::Uk => "Стиль",
             Lang::He => "סגנון",
+            Lang::Ja => "スタイル",
         }
     }
 
@@ -59,6 +60,7 @@ impl Style {
             (Style::Basic, Lang::Es) => "dibujo",
             (Style::Basic, Lang::Uk) => "малюнок",
             (Style::Basic, Lang::He) => "ציור",
+            (Style::Basic, Lang::Ja) => "イラスト",
             (Style::Realistic, Lang::En) => "realistic",
             (Style::Realistic, Lang::Ar) => "واقعي",
             (Style::Realistic, Lang::De) => "realistisch",
@@ -66,6 +68,7 @@ impl Style {
             (Style::Realistic, Lang::Es) => "realista",
             (Style::Realistic, Lang::Uk) => "реалістичний",
             (Style::Realistic, Lang::He) => "מציאותי",
+            (Style::Realistic, Lang::Ja) => "写実的",
             // the studio's name, as each language writes it
             (Style::Ghibli, Lang::En) => "Ghibli",
             (Style::Ghibli, Lang::Ar) => "جيبلي",
@@ -74,6 +77,7 @@ impl Style {
             (Style::Ghibli, Lang::Es) => "Ghibli",
             (Style::Ghibli, Lang::Uk) => "Гіблі",
             (Style::Ghibli, Lang::He) => "ג'יבלי",
+            (Style::Ghibli, Lang::Ja) => "ジブリ",
         }
     }
 }

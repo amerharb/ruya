@@ -37,7 +37,7 @@ start WebAssembly.
   can be pressed at once, but not none: the last one pressed stays. The
   big label and the tags both show the forms chosen. A dual chosen in
   Arabic waits through a language that has none and shows again on coming
-  back.
+  back. Japanese has no plural, so it shows no dot buttons at all.
 - On a phone held upright the bar takes two rows: the scene's name, the
   all-names button and the forms, then the style and the language.
 
@@ -61,9 +61,9 @@ has it, else in its first.
 ## Languages
 
 English, العربية (Arabic), Deutsch (German), Svenska (Swedish), Español
-(Spanish), Українська (Ukrainian) and עברית (Hebrew). The picker lists each in
-its own script. Arabic and Hebrew names read right to left; the layout itself
-stays put.
+(Spanish), Українська (Ukrainian), עברית (Hebrew) and 日本語 (Japanese). The
+picker lists each in its own script. Arabic and Hebrew names read right to
+left; the layout itself stays put.
 
 Ruya opens in the language of the address (below), else the first of the
 browser's languages it has, else English.
@@ -72,10 +72,13 @@ browser's languages it has, else English.
 
 - **Gender shows**: German with its article (der Kühlschrank, die Pfanne,
   das Glas), Spanish with its article (la nevera, el plato), Swedish with
-  en or ett (en stol, ett bord). English, Arabic, Hebrew and Ukrainian have
-  the bare noun.
+  en or ett (en stol, ett bord). English, Arabic, Hebrew, Ukrainian and
+  Japanese have the bare noun.
 - **Lowercase**, except German nouns.
 - **Arabic** is Modern Standard Arabic as printed, without vowel marks.
+- **Japanese** is written as it usually is: kanji where the word has them
+  in everyday use (窓, 冷蔵庫), katakana for words from abroad (テレビ,
+  フォーク), and no readings over the kanji.
 - **Spanish** is Spain's (nevera, grifo). **English** is American (faucet,
   stove, cabinet).
 - **Plurals** keep the same rules: German and Spanish with their article
@@ -85,6 +88,8 @@ browser's languages it has, else English.
 - **Arabic's dual**, for two, ends in ان (ثلاجتان), losing its ن before the
   noun that completes it (عمودا إنارة). Hebrew counts two with its plural,
   its dual kept for a few words, a pair of eyes or of days.
+- **Japanese has no plural**: 猫 is one cat or many, so a Japanese name has
+  its one form only.
 - Where a word needs explaining, the thing's `note` in the scene file says why
   — the pot has two handles, so it is a gryta and an olla, not a kastrull or
   a cazo.
@@ -142,10 +147,9 @@ per style and the regions over it:
 - **`things`** are named once, by an id of `a-z`, `0-9` and `-`. Names are
   a fixed set of fields, one per language; a file missing one does not
   parse. **`name`** is for one of the thing, **`plural`** for many, a field
-  per language that has a plural — all seven — and **`dual`** for two, a
-  field per language that has one: Arabic. A language without a plural,
-  as Japanese has none, would have no field in `plural`. `note`, optional,
-  says why a word was chosen.
+  per language that has a plural — all but Japanese — and **`dual`** for
+  two, a field per language that has one: Arabic. `note`, optional, says
+  why a word was chosen.
 - **`styles`** holds any of `basic`, `realistic` and `ghibli`. A style the
   scene lacks is left out.
 - The **picture** is in the scene's own folder, `public/scenes/<scene>/`,

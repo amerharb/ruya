@@ -16,11 +16,12 @@ pub enum Lang {
     Es,
     Uk,
     He,
+    Ja,
 }
 
 impl Lang {
     /// In the order the picker lists them.
-    pub const ALL: [Lang; 7] = [
+    pub const ALL: [Lang; 8] = [
         Lang::En,
         Lang::Ar,
         Lang::De,
@@ -28,6 +29,7 @@ impl Lang {
         Lang::Es,
         Lang::Uk,
         Lang::He,
+        Lang::Ja,
     ];
 
     /// The ISO 639-1 code: the `?l=` value and `<html lang>`.
@@ -40,6 +42,7 @@ impl Lang {
             Lang::Es => "es",
             Lang::Uk => "uk",
             Lang::He => "he",
+            Lang::Ja => "ja",
         }
     }
 
@@ -54,6 +57,7 @@ impl Lang {
             Lang::Es => "Español",
             Lang::Uk => "Українська",
             Lang::He => "עברית",
+            Lang::Ja => "日本語",
         }
     }
 
@@ -68,6 +72,7 @@ impl Lang {
             Lang::Es => "Idioma",
             Lang::Uk => "Мова",
             Lang::He => "שפה",
+            Lang::Ja => "言語",
         }
     }
 
@@ -81,13 +86,15 @@ impl Lang {
 
     /// The numbers a noun has a form for: one, then two, then many. Hebrew
     /// keeps its dual for a few words, a pair of eyes or of days, and counts
-    /// two of anything else with the plural, so here it has none.
+    /// two of anything else with the plural, so here it has none. Japanese
+    /// has no plural: 猫 is one cat or many.
     pub fn numbers(self) -> &'static [Number] {
         match self {
             Lang::Ar => &[Number::Singular, Number::Dual, Number::Plural],
             Lang::En | Lang::De | Lang::Sv | Lang::Es | Lang::Uk | Lang::He => {
                 &[Number::Singular, Number::Plural]
             }
+            Lang::Ja => &[Number::Singular],
         }
     }
 
@@ -95,6 +102,7 @@ impl Lang {
     pub fn comma(self) -> &'static str {
         match self {
             Lang::Ar => "، ",
+            Lang::Ja => "、",
             Lang::En | Lang::De | Lang::Sv | Lang::Es | Lang::Uk | Lang::He => ", ",
         }
     }
@@ -117,6 +125,7 @@ impl Lang {
             "es" => Some(Lang::Es),
             "uk" => Some(Lang::Uk),
             "he" | "iw" => Some(Lang::He),
+            "ja" => Some(Lang::Ja),
             _ => None,
         }
     }
@@ -134,6 +143,7 @@ pub struct Names {
     pub es: String,
     pub uk: String,
     pub he: String,
+    pub ja: String,
 }
 
 impl Names {
@@ -146,13 +156,14 @@ impl Names {
             Lang::Es => &self.es,
             Lang::Uk => &self.uk,
             Lang::He => &self.he,
+            Lang::Ja => &self.ja,
         }
     }
 }
 
 /// How many a name is for — what grammar calls number. Every language has a
-/// singular and most a plural; Arabic also has a dual, for two. A language
-/// with no plural, as Japanese has none, would have the singular alone.
+/// singular and most a plural; Arabic also has a dual, for two. Japanese has
+/// no plural, so the singular alone.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Number {
     Singular,
@@ -184,6 +195,7 @@ impl Number {
             (Number::Singular, Lang::Es) => "singular",
             (Number::Singular, Lang::Uk) => "однина",
             (Number::Singular, Lang::He) => "יחיד",
+            (Number::Singular, Lang::Ja) => "単数",
             (Number::Dual, Lang::En) => "dual",
             (Number::Dual, Lang::Ar) => "مثنى",
             (Number::Dual, Lang::De) => "Zweizahl",
@@ -191,6 +203,7 @@ impl Number {
             (Number::Dual, Lang::Es) => "dual",
             (Number::Dual, Lang::Uk) => "двоїна",
             (Number::Dual, Lang::He) => "זוגי",
+            (Number::Dual, Lang::Ja) => "双数",
             (Number::Plural, Lang::En) => "plural",
             (Number::Plural, Lang::Ar) => "جمع",
             (Number::Plural, Lang::De) => "Mehrzahl",
@@ -198,6 +211,7 @@ impl Number {
             (Number::Plural, Lang::Es) => "plural",
             (Number::Plural, Lang::Uk) => "множина",
             (Number::Plural, Lang::He) => "רבים",
+            (Number::Plural, Lang::Ja) => "複数",
         }
     }
 }
@@ -278,7 +292,8 @@ impl Forms {
         (forms != none).then_some(forms)
     }
 
-    /// The buttons' accessible name, after the forms the language has.
+    /// The buttons' accessible name, after the forms the language has. A
+    /// language with one form, as Japanese, shows no buttons.
     pub fn label(lang: Lang) -> &'static str {
         match lang {
             Lang::En => "Singular and plural",
@@ -288,12 +303,13 @@ impl Forms {
             Lang::Es => "Singular y plural",
             Lang::Uk => "Однина і множина",
             Lang::He => "יחיד ורבים",
+            Lang::Ja => "単数",
         }
     }
 }
 
-/// A name for many, one per language that has a plural: all of Ruya's so
-/// far. A field missing fails to parse, as in [`Names`].
+/// A name for many, one per language that has a plural: all of Ruya's but
+/// Japanese. A field missing fails to parse, as in [`Names`].
 #[derive(Clone, Debug, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Plurals {
@@ -316,6 +332,7 @@ impl Plurals {
             Lang::Es => Some(&self.es),
             Lang::Uk => Some(&self.uk),
             Lang::He => Some(&self.he),
+            Lang::Ja => None,
         }
     }
 }
@@ -332,7 +349,7 @@ impl Duals {
     pub fn get(&self, lang: Lang) -> Option<&str> {
         match lang {
             Lang::Ar => Some(&self.ar),
-            Lang::En | Lang::De | Lang::Sv | Lang::Es | Lang::Uk | Lang::He => None,
+            Lang::En | Lang::De | Lang::Sv | Lang::Es | Lang::Uk | Lang::He | Lang::Ja => None,
         }
     }
 }
@@ -349,6 +366,7 @@ mod tests {
         assert_eq!(Lang::from_tag("es_ES"), Some(Lang::Es));
         assert_eq!(Lang::from_tag(" de "), Some(Lang::De));
         assert_eq!(Lang::from_tag("iw"), Some(Lang::He));
+        assert_eq!(Lang::from_tag("ja-JP"), Some(Lang::Ja));
         assert_eq!(Lang::from_tag("zz"), None);
         assert_eq!(Lang::from_tag(""), None);
     }
@@ -405,6 +423,20 @@ mod tests {
         let all = plural_too.toggled(Dual, Lang::Ar);
         assert_eq!(shown(all, Lang::Ar), [Singular, Dual, Plural]);
         assert_eq!(shown(all, Lang::Sv), [Singular, Plural]);
+    }
+
+    #[test]
+    fn japanese_shows_its_one_form_whatever_is_chosen() {
+        use Number::{Dual, Plural, Singular};
+        let plural = Forms::SINGULAR
+            .toggled(Plural, Lang::En)
+            .toggled(Singular, Lang::En);
+        let all = Forms::SINGULAR
+            .toggled(Dual, Lang::Ar)
+            .toggled(Plural, Lang::Ar);
+        for forms in [Forms::SINGULAR, plural, all] {
+            assert_eq!(shown(forms, Lang::Ja), [Singular]);
+        }
     }
 
     #[test]

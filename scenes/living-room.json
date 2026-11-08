@@ -1,106 +1,108 @@
 {
 	"id": "living-room",
-	"name": { "en": "living room", "ar": "غرفة معيشة", "de": "das Wohnzimmer", "sv": "ett vardagsrum", "es": "el salón", "uk": "вітальня", "he": "סלון" },
+	"name": { "en": "living room", "ar": "غرفة معيشة", "de": "das Wohnzimmer", "sv": "ett vardagsrum", "es": "el salón", "uk": "вітальня", "he": "סלון", "ja": "リビング" },
 	"things": {
 		"window": {
-			"name": { "en": "window", "ar": "نافذة", "de": "das Fenster", "sv": "ett fönster", "es": "la ventana", "uk": "вікно", "he": "חלון" },
+			"name": { "en": "window", "ar": "نافذة", "de": "das Fenster", "sv": "ett fönster", "es": "la ventana", "uk": "вікно", "he": "חלון", "ja": "窓" },
 			"plural": { "en": "windows", "ar": "نوافذ", "de": "die Fenster", "sv": "fönster", "es": "las ventanas", "uk": "вікна", "he": "חלונות" },
 			"dual": { "ar": "نافذتان" }
 		},
 		"curtain": {
-			"name": { "en": "curtain", "ar": "ستارة", "de": "der Vorhang", "sv": "en gardin", "es": "la cortina", "uk": "штора", "he": "וילון" },
+			"name": { "en": "curtain", "ar": "ستارة", "de": "der Vorhang", "sv": "en gardin", "es": "la cortina", "uk": "штора", "he": "וילון", "ja": "カーテン" },
 			"plural": { "en": "curtains", "ar": "ستائر", "de": "die Vorhänge", "sv": "gardiner", "es": "las cortinas", "uk": "штори", "he": "וילונות" },
 			"dual": { "ar": "ستارتان" },
 			"note": "a heavy one that draws shut: de Vorhang and uk штора; a sheer one is Gardine and фіранка"
 		},
 		"picture": {
-			"name": { "en": "picture", "ar": "لوحة", "de": "das Bild", "sv": "en tavla", "es": "el cuadro", "uk": "картина", "he": "תמונה" },
+			"name": { "en": "picture", "ar": "لوحة", "de": "das Bild", "sv": "en tavla", "es": "el cuadro", "uk": "картина", "he": "תמונה", "ja": "絵" },
 			"plural": { "en": "pictures", "ar": "لوحات", "de": "die Bilder", "sv": "tavlor", "es": "los cuadros", "uk": "картини", "he": "תמונות" },
 			"dual": { "ar": "لوحتان" },
 			"note": "a framed picture on the wall: tavla and cuadro are that word; a painting as such is Gemälde, målning, pintura"
 		},
 		"door": {
-			"name": { "en": "door", "ar": "باب", "de": "die Tür", "sv": "en dörr", "es": "la puerta", "uk": "двері", "he": "דלת" },
+			"name": { "en": "door", "ar": "باب", "de": "die Tür", "sv": "en dörr", "es": "la puerta", "uk": "двері", "he": "דלת", "ja": "ドア" },
 			"plural": { "en": "doors", "ar": "أبواب", "de": "die Türen", "sv": "dörrar", "es": "las puertas", "uk": "двері", "he": "דלתות" },
 			"dual": { "ar": "بابان" },
 			"note": "uk: двері has no singular"
 		},
 		"bookshelf": {
-			"name": { "en": "bookshelf", "ar": "مكتبة", "de": "das Bücherregal", "sv": "en bokhylla", "es": "la estantería", "uk": "книжкова шафа", "he": "ספרייה" },
+			"name": { "en": "bookshelf", "ar": "مكتبة", "de": "das Bücherregal", "sv": "en bokhylla", "es": "la estantería", "uk": "книжкова шафа", "he": "ספרייה", "ja": "本棚" },
 			"plural": { "en": "bookshelves", "ar": "مكتبات", "de": "die Bücherregale", "sv": "bokhyllor", "es": "las estanterías", "uk": "книжкові шафи", "he": "ספריות" },
 			"dual": { "ar": "مكتبتان" },
 			"note": "ar مكتبة and he ספרייה are the bookcase at home as well as the library"
 		},
 		"lamp": {
-			"name": { "en": "lamp", "ar": "مصباح", "de": "die Lampe", "sv": "en lampa", "es": "la lámpara", "uk": "лампа", "he": "מנורה" },
+			"name": { "en": "lamp", "ar": "مصباح", "de": "die Lampe", "sv": "en lampa", "es": "la lámpara", "uk": "лампа", "he": "מנורה", "ja": "ランプ" },
 			"plural": { "en": "lamps", "ar": "مصابيح", "de": "die Lampen", "sv": "lampor", "es": "las lámparas", "uk": "лампи", "he": "מנורות" },
 			"dual": { "ar": "مصباحان" },
-			"note": "a floor lamp, named with the general word; Stehlampe, golvlampa, lámpara de pie and торшер are this kind"
+			"note": "a floor lamp, named with the general word; Stehlampe, golvlampa, lámpara de pie, торшер and フロアランプ are this kind"
 		},
 		"couch": {
-			"name": { "en": "couch", "ar": "أريكة", "de": "das Sofa", "sv": "en soffa", "es": "el sofá", "uk": "диван", "he": "ספה" },
+			"name": { "en": "couch", "ar": "أريكة", "de": "das Sofa", "sv": "en soffa", "es": "el sofá", "uk": "диван", "he": "ספה", "ja": "ソファ" },
 			"plural": { "en": "couches", "ar": "أرائك", "de": "die Sofas", "sv": "soffor", "es": "los sofás", "uk": "дивани", "he": "ספות" },
 			"dual": { "ar": "أريكتان" },
 			"note": "couch, the everyday American word; sofa is as right"
 		},
 		"pillow": {
-			"name": { "en": "pillow", "ar": "وسادة", "de": "das Kissen", "sv": "en kudde", "es": "el cojín", "uk": "подушка", "he": "כרית" },
+			"name": { "en": "pillow", "ar": "وسادة", "de": "das Kissen", "sv": "en kudde", "es": "el cojín", "uk": "подушка", "he": "כרית", "ja": "クッション" },
 			"plural": { "en": "pillows", "ar": "وسائد", "de": "die Kissen", "sv": "kuddar", "es": "los cojines", "uk": "подушки", "he": "כריות" },
 			"dual": { "ar": "وسادتان" },
-			"note": "American pillow, a throw pillow on the couch, where British English says cushion; es cojín, as almohada is the bed's"
+			"note": "American pillow, a throw pillow on the couch, where British English says cushion; es cojín, as almohada is the bed's; ja クッション, as 枕 is the bed's"
 		},
 		"tv": {
-			"name": { "en": "TV", "ar": "تلفاز", "de": "der Fernseher", "sv": "en tv", "es": "el televisor", "uk": "телевізор", "he": "טלוויזיה" },
+			"name": { "en": "TV", "ar": "تلفاز", "de": "der Fernseher", "sv": "en tv", "es": "el televisor", "uk": "телевізор", "he": "טלוויזיה", "ja": "テレビ" },
 			"plural": { "en": "TVs", "ar": "تلفازات", "de": "die Fernseher", "sv": "tv:ar", "es": "los televisores", "uk": "телевізори", "he": "טלוויזיות" },
 			"dual": { "ar": "تلفازان" },
 			"note": "TV, as it is said, capitals and all; sv writes tv in small letters, and tv:ar for many, with the colon an abbreviation's ending takes; es televisor is the set, televisión also what is on it"
 		},
 		"tv-stand": {
-			"name": { "en": "TV stand", "ar": "طاولة تلفاز", "de": "der Fernsehschrank", "sv": "en tv-bänk", "es": "el mueble de la tele", "uk": "тумба під телевізор", "he": "מזנון" },
+			"name": { "en": "TV stand", "ar": "طاولة تلفاز", "de": "der Fernsehschrank", "sv": "en tv-bänk", "es": "el mueble de la tele", "uk": "тумба під телевізор", "he": "מזנון", "ja": "テレビ台" },
 			"plural": { "en": "TV stands", "ar": "طاولات تلفاز", "de": "die Fernsehschränke", "sv": "tv-bänkar", "es": "los muebles de la tele", "uk": "тумби під телевізор", "he": "מזנונים" },
 			"dual": { "ar": "طاولتا تلفاز" },
 			"note": "the low cabinet the TV stands on: TV stand, the everyday American word, as the kitchen's cabinet is a wall one; de Lowboard as often for a low one; es mueble de la tele, as it is said in Spain"
 		},
 		"plant": {
-			"name": { "en": "plant", "ar": "نبتة", "de": "die Pflanze", "sv": "en växt", "es": "la planta", "uk": "рослина", "he": "צמח" },
+			"name": { "en": "plant", "ar": "نبتة", "de": "die Pflanze", "sv": "en växt", "es": "la planta", "uk": "рослина", "he": "צמח", "ja": "植物" },
 			"plural": { "en": "plants", "ar": "نبتات", "de": "die Pflanzen", "sv": "växter", "es": "las plantas", "uk": "рослини", "he": "צמחים" },
-			"dual": { "ar": "نبتتان" }
+			"dual": { "ar": "نبتتان" },
+			"note": "ja 植物 is any plant; one kept indoors in a pot is 観葉植物 as often"
 		},
 		"rug": {
-			"name": { "en": "rug", "ar": "سجادة", "de": "der Teppich", "sv": "en matta", "es": "la alfombra", "uk": "килим", "he": "שטיח" },
+			"name": { "en": "rug", "ar": "سجادة", "de": "der Teppich", "sv": "en matta", "es": "la alfombra", "uk": "килим", "he": "שטיח", "ja": "ラグ" },
 			"plural": { "en": "rugs", "ar": "سجادات", "de": "die Teppiche", "sv": "mattor", "es": "las alfombras", "uk": "килими", "he": "שטיחים" },
 			"dual": { "ar": "سجادتان" },
-			"note": "a rug, not wall-to-wall carpet; the other languages have one word for both"
+			"note": "a rug, not wall-to-wall carpet: ja ラグ, as カーペット is the carpet; the other languages have one word for both"
 		},
 		"armchair": {
-			"name": { "en": "armchair", "ar": "كرسي بذراعين", "de": "der Sessel", "sv": "en fåtölj", "es": "el sillón", "uk": "крісло", "he": "כורסה" },
+			"name": { "en": "armchair", "ar": "كرسي بذراعين", "de": "der Sessel", "sv": "en fåtölj", "es": "el sillón", "uk": "крісло", "he": "כורסה", "ja": "肘掛け椅子" },
 			"plural": { "en": "armchairs", "ar": "كراسي بذراعين", "de": "die Sessel", "sv": "fåtöljer", "es": "los sillones", "uk": "крісла", "he": "כורסאות" },
 			"dual": { "ar": "كرسيان بذراعين" },
 			"note": "he כורסאות for many, כורסות being as right"
 		},
 		"coffee-table": {
-			"name": { "en": "coffee table", "ar": "طاولة قهوة", "de": "der Couchtisch", "sv": "ett soffbord", "es": "la mesa de centro", "uk": "журнальний столик", "he": "שולחן סלון" },
+			"name": { "en": "coffee table", "ar": "طاولة قهوة", "de": "der Couchtisch", "sv": "ett soffbord", "es": "la mesa de centro", "uk": "журнальний столик", "he": "שולחן סלון", "ja": "ローテーブル" },
 			"plural": { "en": "coffee tables", "ar": "طاولات قهوة", "de": "die Couchtische", "sv": "soffbord", "es": "las mesas de centro", "uk": "журнальні столики", "he": "שולחנות סלון" },
-			"dual": { "ar": "طاولتا قهوة" }
+			"dual": { "ar": "طاولتا قهوة" },
+			"note": "ja ローテーブル, the low table, as a coffee table is called; センターテーブル as often"
 		},
 		"book": {
-			"name": { "en": "book", "ar": "كتاب", "de": "das Buch", "sv": "en bok", "es": "el libro", "uk": "книга", "he": "ספר" },
+			"name": { "en": "book", "ar": "كتاب", "de": "das Buch", "sv": "en bok", "es": "el libro", "uk": "книга", "he": "ספר", "ja": "本" },
 			"plural": { "en": "books", "ar": "كتب", "de": "die Bücher", "sv": "böcker", "es": "los libros", "uk": "книги", "he": "ספרים" },
 			"dual": { "ar": "كتابان" }
 		},
 		"vase": {
-			"name": { "en": "vase", "ar": "مزهرية", "de": "die Vase", "sv": "en vas", "es": "el jarrón", "uk": "ваза", "he": "אגרטל" },
+			"name": { "en": "vase", "ar": "مزهرية", "de": "die Vase", "sv": "en vas", "es": "el jarrón", "uk": "ваза", "he": "אגרטל", "ja": "花瓶" },
 			"plural": { "en": "vases", "ar": "مزهريات", "de": "die Vasen", "sv": "vaser", "es": "los jarrones", "uk": "вази", "he": "אגרטלים" },
 			"dual": { "ar": "مزهريتان" }
 		},
 		"flower": {
-			"name": { "en": "flower", "ar": "زهرة", "de": "die Blume", "sv": "en blomma", "es": "la flor", "uk": "квітка", "he": "פרח" },
+			"name": { "en": "flower", "ar": "زهرة", "de": "die Blume", "sv": "en blomma", "es": "la flor", "uk": "квітка", "he": "פרח", "ja": "花" },
 			"plural": { "en": "flowers", "ar": "زهور", "de": "die Blumen", "sv": "blommor", "es": "las flores", "uk": "квіти", "he": "פרחים" },
 			"dual": { "ar": "زهرتان" },
 			"note": "uk квіти for many, as it is said; квітки is the botanist's plural, the flowers on a plant"
 		},
 		"cat": {
-			"name": { "en": "cat", "ar": "قطة", "de": "die Katze", "sv": "en katt", "es": "el gato", "uk": "кіт", "he": "חתול" },
+			"name": { "en": "cat", "ar": "قطة", "de": "die Katze", "sv": "en katt", "es": "el gato", "uk": "кіт", "he": "חתול", "ja": "猫" },
 			"plural": { "en": "cats", "ar": "قطط", "de": "die Katzen", "sv": "katter", "es": "los gatos", "uk": "коти", "he": "חתולים" },
 			"dual": { "ar": "قطتان" }
 		}

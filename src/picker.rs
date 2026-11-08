@@ -128,7 +128,8 @@ pub fn AllNames(
 
 /// A button per form the language has — singular and plural, and in Arabic
 /// the dual between them — each adding its form under every name shown, or
-/// taking it away: any of them at once, never none.
+/// taking it away: any of them at once, never none. A language with one
+/// form, as Japanese, has nothing to choose and shows none.
 #[component]
 pub fn FormButtons(
     forms: ReadSignal<Forms>,
@@ -138,29 +139,31 @@ pub fn FormButtons(
     // two buttons or three, so a new set with each language
     move || {
         let l = lang.get();
-        view! {
-            <div class="forms" role="group" aria-label=Forms::label(l)>
-                {l
-                    .numbers()
-                    .iter()
-                    .map(|&n| {
-                        let on = move || forms.get().shows(n, l);
-                        view! {
-                            <button
-                                class="form"
-                                class:on=on
-                                aria-pressed=move || on().to_string()
-                                aria-label=n.name(l)
-                                title=n.name(l)
-                                on:click=move |_| set_forms.update(|f| *f = f.toggled(n, l))
-                            >
-                                {dots(n)}
-                            </button>
-                        }
-                    })
-                    .collect_view()}
-            </div>
-        }
+        (l.numbers().len() > 1).then(|| {
+            view! {
+                <div class="forms" role="group" aria-label=Forms::label(l)>
+                    {l
+                        .numbers()
+                        .iter()
+                        .map(|&n| {
+                            let on = move || forms.get().shows(n, l);
+                            view! {
+                                <button
+                                    class="form"
+                                    class:on=on
+                                    aria-pressed=move || on().to_string()
+                                    aria-label=n.name(l)
+                                    title=n.name(l)
+                                    on:click=move |_| set_forms.update(|f| *f = f.toggled(n, l))
+                                >
+                                    {dots(n)}
+                                </button>
+                            }
+                        })
+                        .collect_view()}
+                </div>
+            }
+        })
     }
 }
 
@@ -189,6 +192,7 @@ fn all_names(lang: Lang) -> &'static str {
         Lang::Es => "Todos los nombres",
         Lang::Uk => "Усі назви",
         Lang::He => "כל השמות",
+        Lang::Ja => "すべての名前",
     }
 }
 

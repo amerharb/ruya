@@ -44,7 +44,7 @@ body {
 	grid-template-columns: minmax(0, 1fr);
 	background: var(--bg);
 	color: var(--fg);
-	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Arabic", "Noto Sans Hebrew", sans-serif;
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans CJK JP", sans-serif;
 }
 
 /* ── the bar ── */

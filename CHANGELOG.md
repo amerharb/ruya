@@ -24,14 +24,19 @@
   motorcycle — drawn by hand in SVG, and a street corner in the realistic
   and Ghibli styles, made in ChatGPT (299 KB and 403 KB as WebP), with all
   26 in every style.
-- **Plurals and duals** — every thing's name for many, in all seven
-  languages, and Arabic's for two (قطة, قطتان, قطط), beside its name for
-  one, in the scene files; `cargo test` checks each is there wherever its
-  language has the form. Dot buttons beside the all-names button show
-  them: one dot the singular, three the plural, and in Arabic two, the
-  dual. Any of them at once, never none; the forms chosen stack a line
-  each, singular on top, in the label and the tags, and a screen reader
-  says them in turn. The choice is kept in the address as `?f=`.
+- **Japanese** — the eighth language, 日本語 in the picker: every scene and
+  thing named as Japanese is usually written, kanji where the word has
+  them and katakana for words from abroad (窓, テレビ). Japanese has no
+  plural, so its names have the one form, and the bar shows no dot
+  buttons while it is chosen.
+- **Plurals and duals** — every thing's name for many, in each language
+  that has a plural, and Arabic's for two (قطة, قطتان, قطط), beside its
+  name for one, in the scene files; `cargo test` checks each is there
+  wherever its language has the form. Dot buttons beside the all-names
+  button show them: one dot the singular, three the plural, and in Arabic
+  two, the dual. Any of them at once, never none; the forms chosen stack a
+  line each, singular on top, in the label and the tags, and a screen
+  reader says them in turn. The choice is kept in the address as `?f=`.
 - **The TV stand** — the living room's eighteenth thing, the low cabinet
   the TV stands on, in all three styles. It was in every picture from the
   start, but with no region it had no name.

@@ -200,6 +200,7 @@ impl Scene {
             Lang::Es => "Lugar",
             Lang::Uk => "Місце",
             Lang::He => "מקום",
+            Lang::Ja => "場所",
         }
     }
 }
@@ -386,8 +387,15 @@ mod tests {
                 Lang::Ar => (0x0600..=0x06FF).contains(&u),
                 Lang::He => (0x0590..=0x05FF).contains(&u),
                 Lang::Uk => (0x0400..=0x04FF).contains(&u),
+                // hiragana and katakana, the long-vowel mark ー among them;
+                // kanji; and 々, which repeats one
+                Lang::Ja => {
+                    (0x3040..=0x30FF).contains(&u) || (0x4E00..=0x9FFF).contains(&u) || u == 0x3005
+                }
                 // Latin, with the accents Spanish, German and Swedish use
-                _ => c.is_ascii_alphabetic() || (0x00C0..=0x017F).contains(&u),
+                Lang::En | Lang::De | Lang::Sv | Lang::Es => {
+                    c.is_ascii_alphabetic() || (0x00C0..=0x017F).contains(&u)
+                }
             }
         })
     }
