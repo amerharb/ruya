@@ -119,6 +119,21 @@ browser's languages it has, else English.
 - `r` — `?r=on` opens with furigana over Japanese kanji. Written when the
   furigana button is pressed, and taken out again when it is released.
 
+## Counting opens
+
+Opened on ruya.info, Ruya tells sada, the collector the sawt apps and
+amerharb.com report to (sada.sawt.info), that it was opened, once per load
+(`src/sada.rs`). `{ "site": "ruya.info", "kind": "open" }` is all it sends:
+no cookies, no identifiers, nothing of what is pointed at or chosen. sada
+adds only the country the request came from.
+
+A copy served anywhere else, as by `trunk serve`, sends nothing, unless a
+`sada-url` entry in localStorage points it at a collector — the switch for
+trying it out, as on amerharb.com:
+`localStorage.setItem('sada-url', 'http://localhost:8080')`, and
+`localStorage.removeItem('sada-url')` to stop. A send that fails is
+swallowed: counting never breaks the page.
+
 ## Scenes
 
 A scene is a file in `scenes/` naming the things in a place, with a picture

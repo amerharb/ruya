@@ -51,6 +51,11 @@
   `tools/signs.py`: the painted letters filled from the panel, the new
   words set in their amber, with an LED glow or a painted softness. The
   pictures are unchanged.
+- **Opens counted** — on ruya.info, Ruya tells sada, the collector the
+  sawt apps report to, that it was opened: `{ site: "ruya.info", kind:
+  "open" }` once per load, and nothing more — no cookies, no identifiers.
+  Anywhere else it stays silent, unless a `sada-url` entry in localStorage
+  points it at a collector. sada takes it once it lists ruya.info.
 - **The TV stand** — the living room's eighteenth thing, the low cabinet
   the TV stands on, in all three styles. It was in every picture from the
   start, but with no region it had no name.

@@ -3,6 +3,7 @@ mod geometry;
 mod lang;
 mod picker;
 mod reading;
+mod sada;
 mod scene;
 mod spread;
 mod stage;
@@ -14,4 +15,6 @@ fn main() {
     // "unreachable executed"
     console_error_panic_hook::set_once();
     leptos::mount::mount_to_body(app::App);
+    // once the picture is on its way: Ruya was opened
+    sada::post_open();
 }
