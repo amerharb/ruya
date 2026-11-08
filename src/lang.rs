@@ -1,7 +1,8 @@
 //! The languages Ruya names things in.
 //!
-//! Adding one: a variant here, a field in [`Names`], and an arm in each match.
-//! Every scene file then fails to parse until it carries the new language, and
+//! Adding one: a variant here, a field in [`Names`] — and in [`Plurals`] or
+//! [`Duals`] if it has those forms — and an arm in each match. Every scene
+//! file then fails to parse until it carries the new language, and
 //! `cargo test` names each file and field still missing.
 
 use serde::Deserialize;
@@ -78,6 +79,19 @@ impl Lang {
         if self.rtl() { "rtl" } else { "ltr" }
     }
 
+    /// The numbers a noun has a form for: one, then two, then many. Hebrew
+    /// keeps its dual for a few words, a pair of eyes or of days, and counts
+    /// two of anything else with the plural, so here it has none.
+    #[cfg_attr(not(test), expect(dead_code, reason = "the label shows them next"))]
+    pub fn numbers(self) -> &'static [Number] {
+        match self {
+            Lang::Ar => &[Number::Singular, Number::Dual, Number::Plural],
+            Lang::En | Lang::De | Lang::Sv | Lang::Es | Lang::Uk | Lang::He => {
+                &[Number::Singular, Number::Plural]
+            }
+        }
+    }
+
     /// A language from a BCP 47 tag, ignoring case and region (`sv-SE` is
     /// Swedish), or None when Ruya does not have it. `iw` is the code Hebrew
     /// had before 1989, which some systems still report.
@@ -129,6 +143,66 @@ impl Names {
     }
 }
 
+/// How many a name is for — what grammar calls number. Every language has a
+/// singular and most a plural; Arabic also has a dual, for two. A language
+/// with no plural, as Japanese has none, would have the singular alone.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[cfg_attr(not(test), expect(dead_code, reason = "the label shows them next"))]
+pub enum Number {
+    Singular,
+    Dual,
+    Plural,
+}
+
+/// A name for many, one per language that has a plural: all of Ruya's so
+/// far. A field missing fails to parse, as in [`Names`].
+#[derive(Clone, Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+#[cfg_attr(not(test), expect(dead_code, reason = "the label shows them next"))]
+pub struct Plurals {
+    pub en: String,
+    pub ar: String,
+    pub de: String,
+    pub sv: String,
+    pub es: String,
+    pub uk: String,
+    pub he: String,
+}
+
+#[cfg_attr(not(test), expect(dead_code, reason = "the label shows them next"))]
+impl Plurals {
+    pub fn get(&self, lang: Lang) -> Option<&str> {
+        match lang {
+            Lang::En => Some(&self.en),
+            Lang::Ar => Some(&self.ar),
+            Lang::De => Some(&self.de),
+            Lang::Sv => Some(&self.sv),
+            Lang::Es => Some(&self.es),
+            Lang::Uk => Some(&self.uk),
+            Lang::He => Some(&self.he),
+        }
+    }
+}
+
+/// A name for two, one per language that has a dual: Arabic. A field for any
+/// other fails to parse.
+#[derive(Clone, Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+#[cfg_attr(not(test), expect(dead_code, reason = "the label shows them next"))]
+pub struct Duals {
+    pub ar: String,
+}
+
+#[cfg_attr(not(test), expect(dead_code, reason = "the label shows them next"))]
+impl Duals {
+    pub fn get(&self, lang: Lang) -> Option<&str> {
+        match lang {
+            Lang::Ar => Some(&self.ar),
+            Lang::En | Lang::De | Lang::Sv | Lang::Es | Lang::Uk | Lang::He => None,
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -160,5 +234,17 @@ mod tests {
     fn only_arabic_and_hebrew_read_right_to_left() {
         let rtl: Vec<_> = Lang::ALL.into_iter().filter(|l| l.rtl()).collect();
         assert_eq!(rtl, [Lang::Ar, Lang::He]);
+    }
+
+    #[test]
+    fn every_language_has_one_first_and_only_arabic_has_two() {
+        for l in Lang::ALL {
+            assert_eq!(l.numbers().first(), Some(&Number::Singular));
+        }
+        let dual: Vec<_> = Lang::ALL
+            .into_iter()
+            .filter(|l| l.numbers().contains(&Number::Dual))
+            .collect();
+        assert_eq!(dual, [Lang::Ar]);
     }
 }

@@ -16,7 +16,7 @@
 //! cannot fail in a browser.
 
 use crate::geometry::{self, Ring};
-use crate::lang::{Lang, Names};
+use crate::lang::{Duals, Lang, Names, Number, Plurals};
 use crate::style::Style;
 use serde::Deserialize;
 use std::collections::BTreeMap;
@@ -35,11 +35,31 @@ pub struct Scene {
 #[derive(Debug, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Thing {
+    /// Its name for one of it, the one shown.
     pub name: Names,
+    /// For many of it.
+    #[cfg_attr(not(test), expect(dead_code, reason = "the label shows them next"))]
+    pub plural: Plurals,
+    /// For two of it, in a language with a dual.
+    #[cfg_attr(not(test), expect(dead_code, reason = "the label shows them next"))]
+    pub dual: Duals,
     /// Why a word was chosen, where that is not obvious. JSON has no comments.
     #[serde(default)]
     #[allow(dead_code)]
     pub note: Option<String>,
+}
+
+#[cfg_attr(not(test), expect(dead_code, reason = "the label shows them next"))]
+impl Thing {
+    /// Its name for one, two or many of it, where the language has that
+    /// number.
+    pub fn name_for(&self, lang: Lang, number: Number) -> Option<&str> {
+        match number {
+            Number::Singular => Some(self.name.get(lang)),
+            Number::Dual => self.dual.get(lang),
+            Number::Plural => self.plural.get(lang),
+        }
+    }
 }
 
 /// One field per style, like the names: a style the app does not know fails
@@ -375,34 +395,53 @@ mod tests {
         })
     }
 
-    fn check_names(file: &str, what: &str, names: &Names) {
-        for lang in Lang::ALL {
-            let word = names.get(lang);
-            assert!(
-                !word.trim().is_empty(),
-                "{file}: {what} has no {} name",
-                lang.code()
-            );
-            assert_eq!(
-                word,
-                word.trim(),
-                "{file}: {what}'s {} name has spaces at an end",
-                lang.code()
-            );
-            assert!(
-                in_script(lang, word),
-                "{file}: {what}'s {} name '{word}' is not in that language's script",
-                lang.code()
-            );
-        }
+    fn check_name(file: &str, what: &str, lang: Lang, word: &str) {
+        assert!(
+            !word.trim().is_empty(),
+            "{file}: {what} has no {} name",
+            lang.code()
+        );
+        assert_eq!(
+            word,
+            word.trim(),
+            "{file}: {what}'s {} name has spaces at an end",
+            lang.code()
+        );
+        assert!(
+            in_script(lang, word),
+            "{file}: {what}'s {} name '{word}' is not in that language's script",
+            lang.code()
+        );
     }
 
     #[test]
     fn every_name_is_there_and_in_its_script() {
         for (file, scene) in scenes() {
-            check_names(&file, "the scene", &scene.name);
+            for lang in Lang::ALL {
+                check_name(&file, "the scene", lang, scene.name.get(lang));
+            }
+        }
+    }
+
+    #[test]
+    fn every_thing_has_a_name_for_each_number_its_language_has() {
+        for (file, scene) in scenes() {
             for (id, thing) in &scene.things {
-                check_names(&file, id, &thing.name);
+                for lang in Lang::ALL {
+                    for number in [Number::Singular, Number::Dual, Number::Plural] {
+                        let word = thing.name_for(lang, number);
+                        assert_eq!(
+                            word.is_some(),
+                            lang.numbers().contains(&number),
+                            "{file}: {id} has a {number:?} in {} if and only if the \
+                             language has one",
+                            lang.code()
+                        );
+                        if let Some(word) = word {
+                            check_name(&file, &format!("{id} ({number:?})"), lang, word);
+                        }
+                    }
+                }
             }
         }
     }

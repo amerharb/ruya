@@ -4,100 +4,152 @@
 	"things": {
 		"sun": {
 			"name": { "en": "sun", "ar": "شمس", "de": "die Sonne", "sv": "en sol", "es": "el sol", "uk": "сонце", "he": "שמש" },
+			"plural": { "en": "suns", "ar": "شموس", "de": "die Sonnen", "sv": "solar", "es": "los soles", "uk": "сонця", "he": "שמשות" },
+			"dual": { "ar": "شمسان" },
 			"note": "sv: en sol, by the rule, though the one in the sky is said solen"
 		},
 		"cloud": {
-			"name": { "en": "cloud", "ar": "سحابة", "de": "die Wolke", "sv": "ett moln", "es": "la nube", "uk": "хмара", "he": "ענן" }
+			"name": { "en": "cloud", "ar": "سحابة", "de": "die Wolke", "sv": "ett moln", "es": "la nube", "uk": "хмара", "he": "ענן" },
+			"plural": { "en": "clouds", "ar": "سحب", "de": "die Wolken", "sv": "moln", "es": "las nubes", "uk": "хмари", "he": "עננים" },
+			"dual": { "ar": "سحابتان" }
 		},
 		"bird": {
 			"name": { "en": "bird", "ar": "طائر", "de": "der Vogel", "sv": "en fågel", "es": "el pájaro", "uk": "птах", "he": "ציפור" },
+			"plural": { "en": "birds", "ar": "طيور", "de": "die Vögel", "sv": "fåglar", "es": "los pájaros", "uk": "птахи", "he": "ציפורים" },
+			"dual": { "ar": "طائران" },
 			"note": "es pájaro, a small bird that flies; ave is any bird"
 		},
 		"house": {
-			"name": { "en": "house", "ar": "منزل", "de": "das Haus", "sv": "ett hus", "es": "la casa", "uk": "будинок", "he": "בית" }
+			"name": { "en": "house", "ar": "منزل", "de": "das Haus", "sv": "ett hus", "es": "la casa", "uk": "будинок", "he": "בית" },
+			"plural": { "en": "houses", "ar": "منازل", "de": "die Häuser", "sv": "hus", "es": "las casas", "uk": "будинки", "he": "בתים" },
+			"dual": { "ar": "منزلان" }
 		},
 		"roof": {
 			"name": { "en": "roof", "ar": "سقف", "de": "das Dach", "sv": "ett tak", "es": "el tejado", "uk": "дах", "he": "גג" },
+			"plural": { "en": "roofs", "ar": "أسقف", "de": "die Dächer", "sv": "tak", "es": "los tejados", "uk": "дахи", "he": "גגות" },
+			"dual": { "ar": "سقفان" },
 			"note": "a pitched roof of tiles: es tejado, where techo is also the ceiling; ar سقف and sv tak are the ceiling too"
 		},
 		"chimney": {
 			"name": { "en": "chimney", "ar": "مدخنة", "de": "der Schornstein", "sv": "en skorsten", "es": "la chimenea", "uk": "димар", "he": "ארובה" },
+			"plural": { "en": "chimneys", "ar": "مداخن", "de": "die Schornsteine", "sv": "skorstenar", "es": "las chimeneas", "uk": "димарі", "he": "ארובות" },
+			"dual": { "ar": "مدخنتان" },
 			"note": "de Schornstein, Kamin and Schlot as often in the south; es chimenea is the fireplace too; uk комин as often"
 		},
 		"window": {
-			"name": { "en": "window", "ar": "نافذة", "de": "das Fenster", "sv": "ett fönster", "es": "la ventana", "uk": "вікно", "he": "חלון" }
+			"name": { "en": "window", "ar": "نافذة", "de": "das Fenster", "sv": "ett fönster", "es": "la ventana", "uk": "вікно", "he": "חלון" },
+			"plural": { "en": "windows", "ar": "نوافذ", "de": "die Fenster", "sv": "fönster", "es": "las ventanas", "uk": "вікна", "he": "חלונות" },
+			"dual": { "ar": "نافذتان" }
 		},
 		"door": {
 			"name": { "en": "door", "ar": "باب", "de": "die Tür", "sv": "en dörr", "es": "la puerta", "uk": "двері", "he": "דלת" },
+			"plural": { "en": "doors", "ar": "أبواب", "de": "die Türen", "sv": "dörrar", "es": "las puertas", "uk": "двері", "he": "דלתות" },
+			"dual": { "ar": "بابان" },
 			"note": "uk: двері has no singular"
 		},
 		"tree": {
-			"name": { "en": "tree", "ar": "شجرة", "de": "der Baum", "sv": "ett träd", "es": "el árbol", "uk": "дерево", "he": "עץ" }
+			"name": { "en": "tree", "ar": "شجرة", "de": "der Baum", "sv": "ett träd", "es": "el árbol", "uk": "дерево", "he": "עץ" },
+			"plural": { "en": "trees", "ar": "أشجار", "de": "die Bäume", "sv": "träd", "es": "los árboles", "uk": "дерева", "he": "עצים" },
+			"dual": { "ar": "شجرتان" }
 		},
 		"streetlight": {
 			"name": { "en": "streetlight", "ar": "عمود إنارة", "de": "die Straßenlaterne", "sv": "en gatlykta", "es": "la farola", "uk": "ліхтар", "he": "פנס רחוב" },
+			"plural": { "en": "streetlights", "ar": "أعمدة إنارة", "de": "die Straßenlaternen", "sv": "gatlyktor", "es": "las farolas", "uk": "ліхтарі", "he": "פנסי רחוב" },
+			"dual": { "ar": "عمودا إنارة" },
 			"note": "the post and its lamp; uk ліхтар is any lamp outdoors, and a street one is вуличний ліхтар"
 		},
 		"store": {
 			"name": { "en": "store", "ar": "متجر", "de": "der Laden", "sv": "en affär", "es": "la tienda", "uk": "магазин", "he": "חנות" },
+			"plural": { "en": "stores", "ar": "متاجر", "de": "die Läden", "sv": "affärer", "es": "las tiendas", "uk": "магазини", "he": "חנויות" },
+			"dual": { "ar": "متجران" },
 			"note": "American store, where British English says shop; de Laden, Geschäft as often"
 		},
 		"traffic-light": {
-			"name": { "en": "traffic light", "ar": "إشارة مرور", "de": "die Ampel", "sv": "ett trafikljus", "es": "el semáforo", "uk": "світлофор", "he": "רמזור" }
+			"name": { "en": "traffic light", "ar": "إشارة مرور", "de": "die Ampel", "sv": "ett trafikljus", "es": "el semáforo", "uk": "світлофор", "he": "רמזור" },
+			"plural": { "en": "traffic lights", "ar": "إشارات مرور", "de": "die Ampeln", "sv": "trafikljus", "es": "los semáforos", "uk": "світлофори", "he": "רמזורים" },
+			"dual": { "ar": "إشارتا مرور" }
 		},
 		"sidewalk": {
 			"name": { "en": "sidewalk", "ar": "رصيف", "de": "der Gehweg", "sv": "en trottoar", "es": "la acera", "uk": "тротуар", "he": "מדרכה" },
+			"plural": { "en": "sidewalks", "ar": "أرصفة", "de": "die Gehwege", "sv": "trottoarer", "es": "las aceras", "uk": "тротуари", "he": "מדרכות" },
+			"dual": { "ar": "رصيفان" },
 			"note": "American sidewalk, British pavement; de Gehweg, as the signs say, and Bürgersteig as often"
 		},
 		"road": {
 			"name": { "en": "road", "ar": "طريق", "de": "die Fahrbahn", "sv": "en väg", "es": "la calzada", "uk": "дорога", "he": "כביש" },
+			"plural": { "en": "roads", "ar": "طرق", "de": "die Fahrbahnen", "sv": "vägar", "es": "las calzadas", "uk": "дороги", "he": "כבישים" },
+			"dual": { "ar": "طريقان" },
 			"note": "the part of the street that traffic drives on: de Fahrbahn, as Straße is the whole street; es calzada, carretera being a road between towns; he כביש, as רחוב is the street"
 		},
 		"lane": {
 			"name": { "en": "lane", "ar": "حارة", "de": "die Fahrspur", "sv": "ett körfält", "es": "el carril", "uk": "смуга", "he": "נתיב" },
+			"plural": { "en": "lanes", "ar": "حارات", "de": "die Fahrspuren", "sv": "körfält", "es": "los carriles", "uk": "смуги", "he": "נתיבים" },
+			"dual": { "ar": "حارتان" },
 			"note": "one lane of traffic; ar مسار as often; uk смуга руху in full"
 		},
 		"lane-line": {
 			"name": { "en": "lane line", "ar": "خط فاصل", "de": "die Leitlinie", "sv": "en mittlinje", "es": "la línea discontinua", "uk": "розділова лінія", "he": "קו הפרדה" },
+			"plural": { "en": "lane lines", "ar": "خطوط فاصلة", "de": "die Leitlinien", "sv": "mittlinjer", "es": "las líneas discontinuas", "uk": "розділові лінії", "he": "קווי הפרדה" },
+			"dual": { "ar": "خطان فاصلان" },
 			"note": "the dashed line between the lanes: de Leitlinie, the traffic rules' word, Mittelstreifen as often in speech; es línea discontinua, the broken line, as it is called"
 		},
 		"curb": {
 			"name": { "en": "curb", "ar": "حافة الرصيف", "de": "der Bordstein", "sv": "en trottoarkant", "es": "el bordillo", "uk": "бордюр", "he": "אבן שפה" },
+			"plural": { "en": "curbs", "ar": "حواف الرصيف", "de": "die Bordsteine", "sv": "trottoarkanter", "es": "los bordillos", "uk": "бордюри", "he": "אבני שפה" },
+			"dual": { "ar": "حافتا الرصيف" },
 			"note": "American curb, British kerb"
 		},
 		"bicycle": {
 			"name": { "en": "bicycle", "ar": "دراجة", "de": "das Fahrrad", "sv": "en cykel", "es": "la bicicleta", "uk": "велосипед", "he": "אופניים" },
+			"plural": { "en": "bicycles", "ar": "دراجات", "de": "die Fahrräder", "sv": "cyklar", "es": "las bicicletas", "uk": "велосипеди", "he": "אופניים" },
+			"dual": { "ar": "دراجتان" },
 			"note": "bike is as common; ar دراجة alone is a bicycle, a motorcycle being دراجة نارية; he אופניים has no singular"
 		},
 		"bench": {
 			"name": { "en": "bench", "ar": "مقعد", "de": "die Bank", "sv": "en bänk", "es": "el banco", "uk": "лавка", "he": "ספסל" },
+			"plural": { "en": "benches", "ar": "مقاعد", "de": "die Bänke", "sv": "bänkar", "es": "los bancos", "uk": "лавки", "he": "ספסלים" },
+			"dual": { "ar": "مقعدان" },
 			"note": "de Bank and es banco are a bank for money too; ar مقعد is any seat"
 		},
 		"trash-can": {
 			"name": { "en": "trash can", "ar": "سلة مهملات", "de": "der Mülleimer", "sv": "en papperskorg", "es": "la papelera", "uk": "урна", "he": "פח אשפה" },
+			"plural": { "en": "trash cans", "ar": "سلال مهملات", "de": "die Mülleimer", "sv": "papperskorgar", "es": "las papeleras", "uk": "урни", "he": "פחי אשפה" },
+			"dual": { "ar": "سلتا مهملات" },
 			"note": "American trash can, British bin; a small one in the street: es papelera, sv papperskorg, uk урна"
 		},
 		"dog": {
-			"name": { "en": "dog", "ar": "كلب", "de": "der Hund", "sv": "en hund", "es": "el perro", "uk": "собака", "he": "כלב" }
+			"name": { "en": "dog", "ar": "كلب", "de": "der Hund", "sv": "en hund", "es": "el perro", "uk": "собака", "he": "כלב" },
+			"plural": { "en": "dogs", "ar": "كلاب", "de": "die Hunde", "sv": "hundar", "es": "los perros", "uk": "собаки", "he": "כלבים" },
+			"dual": { "ar": "كلبان" }
 		},
 		"mailbox": {
 			"name": { "en": "mailbox", "ar": "صندوق بريد", "de": "der Briefkasten", "sv": "en brevlåda", "es": "el buzón", "uk": "поштова скринька", "he": "תיבת דואר" },
+			"plural": { "en": "mailboxes", "ar": "صناديق بريد", "de": "die Briefkästen", "sv": "brevlådor", "es": "los buzones", "uk": "поштові скриньки", "he": "תיבות דואר" },
+			"dual": { "ar": "صندوقا بريد" },
 			"note": "one in the street for posting letters; American mailbox, British postbox"
 		},
 		"crosswalk": {
 			"name": { "en": "crosswalk", "ar": "ممر مشاة", "de": "der Zebrastreifen", "sv": "ett övergångsställe", "es": "el paso de peatones", "uk": "пішохідний перехід", "he": "מעבר חצייה" },
+			"plural": { "en": "crosswalks", "ar": "ممرات مشاة", "de": "die Zebrastreifen", "sv": "övergångsställen", "es": "los pasos de peatones", "uk": "пішохідні переходи", "he": "מעברי חצייה" },
+			"dual": { "ar": "ممرا مشاة" },
 			"note": "American crosswalk, British zebra crossing; es paso de cebra and uk зебра as often"
 		},
 		"car": {
 			"name": { "en": "car", "ar": "سيارة", "de": "das Auto", "sv": "en bil", "es": "el coche", "uk": "автомобіль", "he": "מכונית" },
+			"plural": { "en": "cars", "ar": "سيارات", "de": "die Autos", "sv": "bilar", "es": "los coches", "uk": "автомобілі", "he": "מכוניות" },
+			"dual": { "ar": "سيارتان" },
 			"note": "es coche, Spain's word; uk машина is the everyday word, and a machine too"
 		},
 		"bus": {
 			"name": { "en": "bus", "ar": "حافلة", "de": "der Bus", "sv": "en buss", "es": "el autobús", "uk": "автобус", "he": "אוטובוס" },
+			"plural": { "en": "buses", "ar": "حافلات", "de": "die Busse", "sv": "bussar", "es": "los autobuses", "uk": "автобуси", "he": "אוטובוסים" },
+			"dual": { "ar": "حافلتان" },
 			"note": "ar حافلة, the Standard word; باص is the everyday one"
 		},
 		"motorcycle": {
 			"name": { "en": "motorcycle", "ar": "دراجة نارية", "de": "das Motorrad", "sv": "en motorcykel", "es": "la moto", "uk": "мотоцикл", "he": "אופנוע" },
+			"plural": { "en": "motorcycles", "ar": "دراجات نارية", "de": "die Motorräder", "sv": "motorcyklar", "es": "las motos", "uk": "мотоцикли", "he": "אופנועים" },
+			"dual": { "ar": "دراجتان ناريتان" },
 			"note": "es moto, short for motocicleta and what is said"
 		}
 	},

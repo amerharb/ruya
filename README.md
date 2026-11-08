@@ -71,6 +71,13 @@ browser's languages it has, else English.
 - **Arabic** is Modern Standard Arabic as printed, without vowel marks.
 - **Spanish** is Spain's (nevera, grifo). **English** is American (faucet,
   stove, cabinet).
+- **Plurals** keep the same rules: German and Spanish with their article
+  (die Kühlschränke, las neveras), the others bare — Swedish too, as en and
+  ett have no plural (stolar, bord). A word with no singular, or the same
+  word for one and many, repeats it (uk двері, he אופניים, sv fönster).
+- **Arabic's dual**, for two, ends in ان (ثلاجتان), losing its ن before the
+  noun that completes it (عمودا إنارة). Hebrew counts two with its plural,
+  its dual kept for a few words, a pair of eyes or of days.
 - Where a word needs explaining, the thing's `note` in the scene file says why
   — the pot has two handles, so it is a gryta and an olla, not a kastrull or
   a cazo.
@@ -100,6 +107,8 @@ per style and the regions over it:
 	"things": {
 		"fridge": {
 			"name": { "en": "fridge", "ar": "ثلاجة", … },
+			"plural": { "en": "fridges", "ar": "ثلاجات", … },
+			"dual": { "ar": "ثلاجتان" },
 			"note": "es: nevera, the everyday word in Spain"
 		}
 	},
@@ -122,7 +131,11 @@ per style and the regions over it:
 
 - **`things`** are named once, by an id of `a-z`, `0-9` and `-`. Names are
   a fixed set of fields, one per language; a file missing one does not
-  parse. `note`, optional, says why a word was chosen.
+  parse. **`name`** is for one of the thing, **`plural`** for many, a field
+  per language that has a plural — all seven — and **`dual`** for two, a
+  field per language that has one: Arabic. A language without a plural,
+  as Japanese has none, would have no field in `plural`. `note`, optional,
+  says why a word was chosen. Only `name` is shown so far.
 - **`styles`** holds any of `basic`, `realistic` and `ghibli`. A style the
   scene lacks is left out.
 - The **picture** is in the scene's own folder, `public/scenes/<scene>/`,
@@ -143,7 +156,8 @@ per style and the regions over it:
   middle is not on it, as for a chair seen between its legs.
 
 `cargo test` checks every scene: every name present and in its language's
-script; every region naming a thing, and every thing in some style; every
+script, a thing's for one, two or many wherever its language has that
+form and nowhere else; every region naming a thing, and every thing in some style; every
 region inside the picture and at least 48 units across, so it can be tapped
 on a phone; every label point on its region; a thing lying on another after
 it; and each picture and thumbnail there, an SVG with the scene's `viewBox`
@@ -162,9 +176,10 @@ or a bitmap of the scene's shape — the picture at least its size.
   language (`src/style.rs`), a field in `Styles` (`src/scene.rs`), then the
   picture and thumbnail, named by the style's code, in each scene's folder
   that has it, and its regions in that scene's file.
-- **A language:** a variant in `Lang` and a field in `Names`
-  (`src/lang.rs`). The compiler then points at every match to extend, and
-  `cargo test` at every scene still missing the name.
+- **A language:** a variant in `Lang` and a field in `Names`, and in
+  `Plurals` and `Duals` if it has a plural or a dual (`src/lang.rs`), with
+  `Lang::numbers` saying which. The compiler then points at every match to
+  extend, and `cargo test` at every scene still missing a name.
 
 ## Pictures and licences
 

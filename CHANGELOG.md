@@ -24,6 +24,10 @@
   motorcycle — drawn by hand in SVG, and a street corner in the realistic
   and Ghibli styles, made in ChatGPT (299 KB and 403 KB as WebP), with all
   26 in every style.
+- **Plurals and duals** — every thing's name for many, in all seven
+  languages, and Arabic's for two (قطة, قطتان, قطط), beside its name for
+  one, in the scene files; `cargo test` checks each is there wherever its
+  language has the form. Not shown yet.
 - **The TV stand** — the living room's eighteenth thing, the low cabinet
   the TV stands on, in all three styles. It was in every picture from the
   start, but with no region it had no name.

@@ -3,67 +3,103 @@
 	"name": { "en": "kitchen", "ar": "مطبخ", "de": "die Küche", "sv": "ett kök", "es": "la cocina", "uk": "кухня", "he": "מטבח" },
 	"things": {
 		"window": {
-			"name": { "en": "window", "ar": "نافذة", "de": "das Fenster", "sv": "ett fönster", "es": "la ventana", "uk": "вікно", "he": "חלון" }
+			"name": { "en": "window", "ar": "نافذة", "de": "das Fenster", "sv": "ett fönster", "es": "la ventana", "uk": "вікно", "he": "חלון" },
+			"plural": { "en": "windows", "ar": "نوافذ", "de": "die Fenster", "sv": "fönster", "es": "las ventanas", "uk": "вікна", "he": "חלונות" },
+			"dual": { "ar": "نافذتان" }
 		},
 		"cabinet": {
 			"name": { "en": "cabinet", "ar": "خزانة", "de": "der Schrank", "sv": "ett skåp", "es": "el armario", "uk": "шафа", "he": "ארון" },
+			"plural": { "en": "cabinets", "ar": "خزائن", "de": "die Schränke", "sv": "skåp", "es": "los armarios", "uk": "шафи", "he": "ארונות" },
+			"dual": { "ar": "خزانتان" },
 			"note": "a wall cabinet; American cabinet, where British English says cupboard"
 		},
 		"frying-pan": {
-			"name": { "en": "frying pan", "ar": "مقلاة", "de": "die Pfanne", "sv": "en stekpanna", "es": "la sartén", "uk": "сковорода", "he": "מחבת" }
+			"name": { "en": "frying pan", "ar": "مقلاة", "de": "die Pfanne", "sv": "en stekpanna", "es": "la sartén", "uk": "сковорода", "he": "מחבת" },
+			"plural": { "en": "frying pans", "ar": "مقالي", "de": "die Pfannen", "sv": "stekpannor", "es": "las sartenes", "uk": "сковороди", "he": "מחבתות" },
+			"dual": { "ar": "مقلاتان" }
 		},
 		"clock": {
-			"name": { "en": "clock", "ar": "ساعة", "de": "die Uhr", "sv": "en klocka", "es": "el reloj", "uk": "годинник", "he": "שעון" }
+			"name": { "en": "clock", "ar": "ساعة", "de": "die Uhr", "sv": "en klocka", "es": "el reloj", "uk": "годинник", "he": "שעון" },
+			"plural": { "en": "clocks", "ar": "ساعات", "de": "die Uhren", "sv": "klockor", "es": "los relojes", "uk": "годинники", "he": "שעונים" },
+			"dual": { "ar": "ساعتان" }
 		},
 		"fridge": {
 			"name": { "en": "fridge", "ar": "ثلاجة", "de": "der Kühlschrank", "sv": "ett kylskåp", "es": "la nevera", "uk": "холодильник", "he": "מקרר" },
+			"plural": { "en": "fridges", "ar": "ثلاجات", "de": "die Kühlschränke", "sv": "kylskåp", "es": "las neveras", "uk": "холодильники", "he": "מקררים" },
+			"dual": { "ar": "ثلاجتان" },
 			"note": "es: nevera, the everyday word in Spain; refrigerador is Latin American"
 		},
 		"stove": {
 			"name": { "en": "stove", "ar": "موقد", "de": "der Herd", "sv": "en spis", "es": "la cocina", "uk": "плита", "he": "כיריים" },
-			"note": "es: in Spain la cocina is both the room and the cooker, as here"
+			"plural": { "en": "stoves", "ar": "مواقد", "de": "die Herde", "sv": "spisar", "es": "las cocinas", "uk": "плити", "he": "כיריים" },
+			"dual": { "ar": "موقدان" },
+			"note": "es: in Spain la cocina is both the room and the cooker, as here; he כיריים is a pair in form, and the same for many"
 		},
 		"sink": {
 			"name": { "en": "sink", "ar": "حوض", "de": "die Spüle", "sv": "en diskho", "es": "el fregadero", "uk": "мийка", "he": "כיור" },
+			"plural": { "en": "sinks", "ar": "أحواض", "de": "die Spülen", "sv": "diskhoar", "es": "los fregaderos", "uk": "мийки", "he": "כיורים" },
+			"dual": { "ar": "حوضان" },
 			"note": "ar: حوض, the kitchen sink; مغسلة is more the washbasin"
 		},
 		"faucet": {
 			"name": { "en": "faucet", "ar": "صنبور", "de": "der Wasserhahn", "sv": "en kran", "es": "el grifo", "uk": "кран", "he": "ברז" },
+			"plural": { "en": "faucets", "ar": "صنابير", "de": "die Wasserhähne", "sv": "kranar", "es": "los grifos", "uk": "крани", "he": "ברזים" },
+			"dual": { "ar": "صنبوران" },
 			"note": "American faucet, where British English says tap"
 		},
 		"pot": {
 			"name": { "en": "pot", "ar": "قدر", "de": "der Topf", "sv": "en gryta", "es": "la olla", "uk": "каструля", "he": "סיר" },
+			"plural": { "en": "pots", "ar": "قدور", "de": "die Töpfe", "sv": "grytor", "es": "las ollas", "uk": "каструлі", "he": "סירים" },
+			"dual": { "ar": "قدران" },
 			"note": "two handles, so a pot (gryta, olla), not a saucepan with one long handle (kastrull, cazo)"
 		},
 		"kettle": {
 			"name": { "en": "kettle", "ar": "غلاية", "de": "der Wasserkocher", "sv": "en vattenkokare", "es": "el hervidor", "uk": "чайник", "he": "קומקום" },
+			"plural": { "en": "kettles", "ar": "غلايات", "de": "die Wasserkocher", "sv": "vattenkokare", "es": "los hervidores", "uk": "чайники", "he": "קומקומים" },
+			"dual": { "ar": "غلايتان" },
 			"note": "electric, on the counter: Wasserkocher, vattenkokare and hervidor are the electric words"
 		},
 		"table": {
-			"name": { "en": "table", "ar": "طاولة", "de": "der Tisch", "sv": "ett bord", "es": "la mesa", "uk": "стіл", "he": "שולחן" }
+			"name": { "en": "table", "ar": "طاولة", "de": "der Tisch", "sv": "ett bord", "es": "la mesa", "uk": "стіл", "he": "שולחן" },
+			"plural": { "en": "tables", "ar": "طاولات", "de": "die Tische", "sv": "bord", "es": "las mesas", "uk": "столи", "he": "שולחנות" },
+			"dual": { "ar": "طاولتان" }
 		},
 		"chair": {
-			"name": { "en": "chair", "ar": "كرسي", "de": "der Stuhl", "sv": "en stol", "es": "la silla", "uk": "стілець", "he": "כיסא" }
+			"name": { "en": "chair", "ar": "كرسي", "de": "der Stuhl", "sv": "en stol", "es": "la silla", "uk": "стілець", "he": "כיסא" },
+			"plural": { "en": "chairs", "ar": "كراسي", "de": "die Stühle", "sv": "stolar", "es": "las sillas", "uk": "стільці", "he": "כיסאות" },
+			"dual": { "ar": "كرسيان" }
 		},
 		"plate": {
-			"name": { "en": "plate", "ar": "صحن", "de": "der Teller", "sv": "en tallrik", "es": "el plato", "uk": "тарілка", "he": "צלחת" }
+			"name": { "en": "plate", "ar": "صحن", "de": "der Teller", "sv": "en tallrik", "es": "el plato", "uk": "тарілка", "he": "צלחת" },
+			"plural": { "en": "plates", "ar": "صحون", "de": "die Teller", "sv": "tallrikar", "es": "los platos", "uk": "тарілки", "he": "צלחות" },
+			"dual": { "ar": "صحنان" }
 		},
 		"fork": {
-			"name": { "en": "fork", "ar": "شوكة", "de": "die Gabel", "sv": "en gaffel", "es": "el tenedor", "uk": "виделка", "he": "מזלג" }
+			"name": { "en": "fork", "ar": "شوكة", "de": "die Gabel", "sv": "en gaffel", "es": "el tenedor", "uk": "виделка", "he": "מזלג" },
+			"plural": { "en": "forks", "ar": "شوك", "de": "die Gabeln", "sv": "gafflar", "es": "los tenedores", "uk": "виделки", "he": "מזלגות" },
+			"dual": { "ar": "شوكتان" }
 		},
 		"spoon": {
-			"name": { "en": "spoon", "ar": "ملعقة", "de": "der Löffel", "sv": "en sked", "es": "la cuchara", "uk": "ложка", "he": "כף" }
+			"name": { "en": "spoon", "ar": "ملعقة", "de": "der Löffel", "sv": "en sked", "es": "la cuchara", "uk": "ложка", "he": "כף" },
+			"plural": { "en": "spoons", "ar": "ملاعق", "de": "die Löffel", "sv": "skedar", "es": "las cucharas", "uk": "ложки", "he": "כפות" },
+			"dual": { "ar": "ملعقتان" }
 		},
 		"cup": {
 			"name": { "en": "cup", "ar": "كوب", "de": "die Tasse", "sv": "en kopp", "es": "la taza", "uk": "чашка", "he": "ספל" },
+			"plural": { "en": "cups", "ar": "أكواب", "de": "die Tassen", "sv": "koppar", "es": "las tazas", "uk": "чашки", "he": "ספלים" },
+			"dual": { "ar": "كوبان" },
 			"note": "ar: كوب is the cup with a handle, كأس the glass"
 		},
 		"glass": {
 			"name": { "en": "glass", "ar": "كأس", "de": "das Glas", "sv": "ett glas", "es": "el vaso", "uk": "склянка", "he": "כוס" },
+			"plural": { "en": "glasses", "ar": "كؤوس", "de": "die Gläser", "sv": "glas", "es": "los vasos", "uk": "склянки", "he": "כוסות" },
+			"dual": { "ar": "كأسان" },
 			"note": "es: vaso is a drinking glass; un cristal is the material"
 		},
 		"bowl": {
-			"name": { "en": "bowl", "ar": "وعاء", "de": "die Schüssel", "sv": "en skål", "es": "el cuenco", "uk": "миска", "he": "קערה" }
+			"name": { "en": "bowl", "ar": "وعاء", "de": "die Schüssel", "sv": "en skål", "es": "el cuenco", "uk": "миска", "he": "קערה" },
+			"plural": { "en": "bowls", "ar": "أوعية", "de": "die Schüsseln", "sv": "skålar", "es": "los cuencos", "uk": "миски", "he": "קערות" },
+			"dual": { "ar": "وعاءان" }
 		}
 	},
 	"styles": {
