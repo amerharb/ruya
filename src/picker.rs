@@ -28,12 +28,16 @@ pub fn ScenePicker(
                 }
             >
                 // as in the language picker, each option says whether it is
-                // the one chosen
+                // the one chosen, and its direction is its own
                 {SCENES
                     .iter()
                     .map(|s| {
                         view! {
-                            <option value=s.id.clone() selected=move || scene.get().id == s.id>
+                            <option
+                                value=s.id.clone()
+                                dir=move || lang.get().dir()
+                                selected=move || scene.get().id == s.id
+                            >
                                 {move || s.name.get(lang.get()).to_string()}
                             </option>
                         }
@@ -43,8 +47,10 @@ pub fn ScenePicker(
         }
     });
     let alone = picker.is_none();
+    // no `dir` on the heading: in Arabic or Hebrew it would carry the name,
+    // and the list with it, to the bar's other end
     view! {
-        <h1 class="scene-name" lang=move || lang.get().code() dir=move || lang.get().dir()>
+        <h1 class="scene-name" lang=move || lang.get().code()>
             {picker}
             {move || alone.then(|| scene.get().name.get(lang.get()).to_string())}
         </h1>

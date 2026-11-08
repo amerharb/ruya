@@ -33,6 +33,11 @@
   `public/scenes/<scene>/`, named by style (`kitchen/realistic.webp`), and
   its originals, boxes and prompts in `art/<scene>/` the same way.
 
+### Fixed
+- **The scene's list in Arabic and Hebrew** stays at the bar's left, beside
+  the brand, as in every other language; it had moved right, next to the
+  style switch. Its options still read right to left.
+
 ## [0.1.0] 2026-11-01
 
 The first version of ruya.info, a picture dictionary: two scenes, the
