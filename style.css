@@ -136,8 +136,10 @@ body {
 	outline-offset: 2px;
 }
 
-/* every name at once: two name tags, filled while they show */
-.all-names {
+/* every name at once: two name tags, filled while they show; readings over
+   the names, in Japanese, a button of the same make */
+.all-names,
+.readings {
 	display: grid;
 	place-items: center;
 	width: 36px;
@@ -158,7 +160,8 @@ body {
 	stroke-width: 2;
 }
 
-.all-names.on {
+.all-names.on,
+.readings.on {
 	border-color: var(--accent);
 	background: var(--accent);
 	color: var(--bg);
@@ -168,9 +171,21 @@ body {
 	fill: currentColor;
 }
 
-.all-names:focus-visible {
+.all-names:focus-visible,
+.readings:focus-visible {
 	outline: 2px solid var(--accent);
 	outline-offset: 2px;
+}
+
+/* 字 with じ over it, as a name with its reading */
+.readings ruby {
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1;
+}
+
+.readings rt {
+	font-size: 9px;
 }
 
 /* the forms each name shows: a joined row of buttons, as many dots as each
@@ -247,7 +262,8 @@ body {
 	}
 
 	.all-names,
-	.forms {
+	.forms,
+	.readings {
 		order: 1;
 	}
 
@@ -475,6 +491,15 @@ body {
 .label span,
 .tag span {
 	display: block;
+}
+
+/* furigana: half the name's size, but never too small to read on a tag */
+.label rt {
+	font-size: 0.5em;
+}
+
+.tag rt {
+	font-size: max(0.55em, 8px);
 }
 
 /* near the picture's edges the label turns inward */

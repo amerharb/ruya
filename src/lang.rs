@@ -107,6 +107,16 @@ impl Lang {
         }
     }
 
+    /// What the language calls the readings over its names, in one that has
+    /// them: Japanese's furigana, over its kanji. None where the letters
+    /// already say the sound.
+    pub fn readings_name(self) -> Option<&'static str> {
+        match self {
+            Lang::Ja => Some("ふりがな"),
+            Lang::En | Lang::Ar | Lang::De | Lang::Sv | Lang::Es | Lang::Uk | Lang::He => None,
+        }
+    }
+
     /// A language from a BCP 47 tag, ignoring case and region (`sv-SE` is
     /// Swedish), or None when Ruya does not have it. `iw` is the code Hebrew
     /// had before 1989, which some systems still report.
@@ -350,6 +360,25 @@ impl Duals {
         match lang {
             Lang::Ar => Some(&self.ar),
             Lang::En | Lang::De | Lang::Sv | Lang::Es | Lang::Uk | Lang::He | Lang::Ja => None,
+        }
+    }
+}
+
+/// A name with its readings — see [`crate::reading`] — in a language that
+/// has them: Japanese, wherever its name has kanji. A field for any other
+/// language fails to parse.
+#[derive(Clone, Debug, Default, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Readings {
+    #[serde(default)]
+    pub ja: Option<String>,
+}
+
+impl Readings {
+    pub fn get(&self, lang: Lang) -> Option<&str> {
+        match lang {
+            Lang::Ja => self.ja.as_deref(),
+            Lang::En | Lang::Ar | Lang::De | Lang::Sv | Lang::Es | Lang::Uk | Lang::He => None,
         }
     }
 }

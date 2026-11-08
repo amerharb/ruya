@@ -2,6 +2,7 @@ mod app;
 mod geometry;
 mod lang;
 mod picker;
+mod reading;
 mod scene;
 mod spread;
 mod stage;

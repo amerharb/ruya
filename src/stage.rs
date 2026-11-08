@@ -15,7 +15,8 @@
 //! getting the big label while the other tags step back.
 //!
 //! A name is shown in each form chosen, a line each: the singular on top,
-//! then the dual where the language has one, then the plural.
+//! then the dual where the language has one, then the plural. With readings
+//! asked for, a Japanese name carries furigana over its kanji.
 //!
 //! The picture's two edges go to the other scenes, round in a circle: the
 //! right one to the next, the left to the one before. Pointed at, an edge
@@ -23,10 +24,12 @@
 //!
 //! One stage shows one scene in one style; switching either builds a new one.
 
-use crate::lang::{Forms, Lang};
+use crate::lang::{Forms, Lang, Number};
+use crate::reading::pieces;
 use crate::scene::{Rendering, SCENES, Scene};
 use crate::spread::{Tag, spread};
 use crate::style::Style;
+use leptos::either::Either;
 use leptos::ev;
 use leptos::html::Div;
 use leptos::prelude::*;
@@ -40,6 +43,7 @@ pub fn Stage(
     lang: ReadSignal<Lang>,
     all: ReadSignal<bool>,
     forms: ReadSignal<Forms>,
+    readings: ReadSignal<bool>,
     set_scene: WriteSignal<&'static Scene>,
 ) -> impl IntoView {
     let (w, h) = (rendering.picture.width, rendering.picture.height);
@@ -52,11 +56,21 @@ pub fn Stage(
             .filter_map(|n| thing.name_for(l, n))
             .collect()
     };
-    // the same, a line each, for the label and the tags
+    // the same, a line each, for the label and the tags; the name for one
+    // with its readings over it, where they are asked for and it has some
     let lines = move |i: usize, l: Lang| {
-        words(i, l)
-            .into_iter()
-            .map(|word| view! { <span>{word}</span> })
+        let thing = scene.thing(&rendering.regions[i].thing);
+        let over = readings.get().then(|| thing.reading.get(l)).flatten();
+        forms
+            .get()
+            .shown(l)
+            .filter_map(|n| {
+                let word = thing.name_for(l, n)?;
+                Some(match over.filter(|_| n == Number::Singular) {
+                    Some(annotated) => Either::Left(view! { <span>{ruby(annotated)}</span> }),
+                    None => Either::Right(view! { <span>{word}</span> }),
+                })
+            })
             .collect_view()
     };
 
@@ -173,7 +187,7 @@ pub fn Stage(
 
     // The tags measured where they stand and spread, so none covers another
     // or runs off the picture: when they appear, when the names change
-    // language or forms, and when the window changes size.
+    // language, forms or readings, and when the window changes size.
     let tag_box = NodeRef::<Div>::new();
     let place = move || {
         let Some(el) = tag_box.get_untracked() else {
@@ -207,6 +221,7 @@ pub fn Stage(
     Effect::new(move |_| {
         lang.track();
         forms.track();
+        readings.track();
         if all.get() && tag_box.get().is_some() {
             // once the new names are laid out
             request_animation_frame(place);
@@ -333,4 +348,20 @@ pub fn Stage(
             </div>
         </div>
     }
+}
+
+/// A name with its readings, each over its kanji, as HTML ruby.
+fn ruby(annotated: &'static str) -> impl IntoView {
+    pieces(annotated)
+        .into_iter()
+        .map(|(text, reading)| match reading {
+            Some(reading) => Either::Left(view! {
+                <ruby>
+                    {text}
+                    <rt>{reading}</rt>
+                </ruby>
+            }),
+            None => Either::Right(text),
+        })
+        .collect_view()
 }

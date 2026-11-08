@@ -29,6 +29,11 @@
   them and katakana for words from abroad (窓, テレビ). Japanese has no
   plural, so its names have the one form, and the bar shows no dot
   buttons while it is chosen.
+- **Furigana** — in Japanese, a button showing 字 with じ over it puts each
+  kanji's reading over it in small hiragana, in the label and the tags:
+  ねこ over 猫, ひじ, か and いす over 肘掛け椅子. All 37 things written with
+  kanji have their readings in the scene files; katakana words need none.
+  The choice is kept in the address as `?r=on`.
 - **Plurals and duals** — every thing's name for many, in each language
   that has a plural, and Arabic's for two (قطة, قطتان, قطط), beside its
   name for one, in the scene files; `cargo test` checks each is there

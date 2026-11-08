@@ -1,7 +1,8 @@
 //! The choices in the bar: the scene, as its name; the style, as a little
 //! picture of each; every name or one at a time; the forms each name shows;
-//! and the language. The scene and the language are the browser's own
-//! `<select>`, which every phone turns into its best native chooser.
+//! readings over the names, in Japanese; and the language. The scene and the
+//! language are the browser's own `<select>`, which every phone turns into
+//! its best native chooser.
 
 use crate::lang::{Forms, Lang, Number};
 use crate::scene::{SCENES, Scene};
@@ -123,6 +124,36 @@ pub fn AllNames(
                 <rect x="9" y="14" width="13" height="7" rx="2" />
             </svg>
         </button>
+    }
+}
+
+/// Readings over the names, or none: furigana over Japanese kanji. A button
+/// only in a language that has readings.
+#[component]
+pub fn ReadingsButton(
+    readings: ReadSignal<bool>,
+    set_readings: WriteSignal<bool>,
+    lang: ReadSignal<Lang>,
+) -> impl IntoView {
+    move || {
+        lang.get().readings_name().map(|word| {
+            view! {
+                <button
+                    class="readings"
+                    class:on=move || readings.get()
+                    aria-pressed=move || readings.get().to_string()
+                    aria-label=word
+                    title=word
+                    on:click=move |_| set_readings.update(|on| *on = !*on)
+                >
+                    // a kanji with its reading over it, as the names get
+                    <ruby lang="ja" aria-hidden="true">
+                        "字"
+                        <rt>"じ"</rt>
+                    </ruby>
+                </button>
+            }
+        })
     }
 }
 

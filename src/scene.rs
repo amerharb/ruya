@@ -16,7 +16,7 @@
 //! cannot fail in a browser.
 
 use crate::geometry::{self, Ring};
-use crate::lang::{Duals, Lang, Names, Number, Plurals};
+use crate::lang::{Duals, Lang, Names, Number, Plurals, Readings};
 use crate::style::Style;
 use serde::Deserialize;
 use std::collections::BTreeMap;
@@ -41,6 +41,10 @@ pub struct Thing {
     pub plural: Plurals,
     /// For two of it, in a language with a dual.
     pub dual: Duals,
+    /// Its name for one with readings over it, where the language has them
+    /// and the name needs them: Japanese with kanji.
+    #[serde(default)]
+    pub reading: Readings,
     /// Why a word was chosen, where that is not obvious. JSON has no comments.
     #[serde(default)]
     #[allow(dead_code)]
@@ -270,6 +274,7 @@ pub static SCENES: LazyLock<Vec<Scene>> = LazyLock::new(|| {
 mod tests {
     use super::*;
     use crate::geometry::{bounds, contains, parse_path};
+    use crate::reading::{is_kanji, pieces};
     use std::collections::HashSet;
     use std::path::Path;
 
@@ -387,11 +392,9 @@ mod tests {
                 Lang::Ar => (0x0600..=0x06FF).contains(&u),
                 Lang::He => (0x0590..=0x05FF).contains(&u),
                 Lang::Uk => (0x0400..=0x04FF).contains(&u),
-                // hiragana and katakana, the long-vowel mark ー among them;
-                // kanji; and 々, which repeats one
-                Lang::Ja => {
-                    (0x3040..=0x30FF).contains(&u) || (0x4E00..=0x9FFF).contains(&u) || u == 0x3005
-                }
+                // hiragana and katakana, the long-vowel mark ー among them,
+                // and kanji
+                Lang::Ja => (0x3040..=0x30FF).contains(&u) || is_kanji(c),
                 // Latin, with the accents Spanish, German and Swedish use
                 Lang::En | Lang::De | Lang::Sv | Lang::Es => {
                     c.is_ascii_alphabetic() || (0x00C0..=0x017F).contains(&u)
@@ -424,6 +427,47 @@ mod tests {
         for (file, scene) in scenes() {
             for lang in Lang::ALL {
                 check_name(&file, "the scene", lang, scene.name.get(lang));
+            }
+        }
+    }
+
+    #[test]
+    fn every_kanji_has_its_reading_over_it() {
+        let hiragana = |c: char| ('\u{3041}'..='\u{309F}').contains(&c);
+        for (file, scene) in scenes() {
+            for (id, thing) in &scene.things {
+                for lang in Lang::ALL {
+                    let name = thing.name.get(lang);
+                    let reading = thing.reading.get(lang);
+                    let needs = lang.readings_name().is_some() && name.chars().any(is_kanji);
+                    assert_eq!(
+                        reading.is_some(),
+                        needs,
+                        "{file}: {id} has readings in {} if and only if its name has kanji",
+                        lang.code()
+                    );
+                    let Some(reading) = reading else {
+                        continue;
+                    };
+                    let pieces = pieces(reading);
+                    let bare: String = pieces.iter().map(|&(text, _)| text).collect();
+                    assert_eq!(
+                        bare, name,
+                        "{file}: {id}'s reading {reading} is not its name"
+                    );
+                    for (text, over) in pieces {
+                        match over {
+                            Some(kana) => assert!(
+                                !text.is_empty() && !kana.is_empty() && kana.chars().all(hiragana),
+                                "{file}: {id}: [{kana}] is not in hiragana over a kanji"
+                            ),
+                            None => assert!(
+                                !text.chars().any(is_kanji),
+                                "{file}: {id}: {text} has a kanji with no reading"
+                            ),
+                        }
+                    }
+                }
             }
         }
     }

@@ -1,8 +1,9 @@
 //! The choices in the address: `?p=living-room` opens Ruya on the living
 //! room, `?l=sv` in Swedish, `?s=basic` on the drawing, `?n=all` with every
-//! name showing and `?f=one-many` with each name's plural under it, and
-//! picking any of them writes it back, so a link shows what the person
-//! sharing it saw. `p` is for place, as `s` was taken.
+//! name showing, `?f=one-many` with each name's plural under it and `?r=on`
+//! with furigana over Japanese kanji, and picking any of them writes it
+//! back, so a link shows what the person sharing it saw. `p` is for place,
+//! as `s` was taken.
 
 use crate::lang::{Forms, Lang};
 use crate::scene::Scene;
@@ -42,6 +43,12 @@ pub fn all_names_from_search(search: &str) -> bool {
 /// none.
 pub fn forms_from_search(search: &str) -> Option<Forms> {
     param(search, "f").and_then(Forms::from_code)
+}
+
+/// `?r=on`: readings over the names, in a language that has them. Anything
+/// else, or nothing, is none.
+pub fn readings_from_search(search: &str) -> bool {
+    param(search, "r") == Some("on")
 }
 
 fn search() -> String {
@@ -84,6 +91,11 @@ pub fn initial_all_names() -> bool {
 /// The forms to open with: the address, else the singular alone.
 pub fn initial_forms() -> Forms {
     forms_from_search(&search()).unwrap_or(Forms::SINGULAR)
+}
+
+/// Whether to open with readings over the names.
+pub fn initial_readings() -> bool {
+    readings_from_search(&search())
 }
 
 /// Write a parameter into the address without a new history entry: a
@@ -165,6 +177,15 @@ mod tests {
         assert_eq!(code("?f=lots"), None);
         assert_eq!(code("?f="), None);
         assert_eq!(code("?l=sv"), None);
+    }
+
+    #[test]
+    fn reads_r_for_the_readings() {
+        assert!(readings_from_search("?r=on"));
+        assert!(readings_from_search("?l=ja&r=on&n=all"));
+        assert!(!readings_from_search("?r=off"));
+        assert!(!readings_from_search("?r="));
+        assert!(!readings_from_search("?l=ja"));
     }
 
     #[test]

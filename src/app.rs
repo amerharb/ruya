@@ -1,5 +1,5 @@
 use crate::lang::{Forms, Lang};
-use crate::picker::{AllNames, FormButtons, Picker, ScenePicker, StylePicker};
+use crate::picker::{AllNames, FormButtons, Picker, ReadingsButton, ScenePicker, StylePicker};
 use crate::scene::Scene;
 use crate::stage::Stage;
 use crate::style::Style;
@@ -13,6 +13,7 @@ pub fn App() -> impl IntoView {
     let (style, set_style) = signal(url::initial_style());
     let (all, set_all) = signal(url::initial_all_names());
     let (forms, set_forms) = signal(url::initial_forms());
+    let (readings, set_readings) = signal(url::initial_readings());
 
     // <html lang> follows the language, so a screen reader reads the names in
     // the right voice and a browser does not offer to translate them. The
@@ -60,6 +61,15 @@ pub fn App() -> impl IntoView {
         },
         false,
     );
+    // and names without readings
+    Effect::watch(
+        move || readings.get(),
+        |on: &bool, _, _| match on {
+            true => url::write("r", "on"),
+            false => url::remove("r"),
+        },
+        false,
+    );
 
     view! {
         <header class="bar">
@@ -73,6 +83,7 @@ pub fn App() -> impl IntoView {
             }}
             <AllNames all=all set_all=set_all lang=lang />
             <FormButtons forms=forms set_forms=set_forms lang=lang />
+            <ReadingsButton readings=readings set_readings=set_readings lang=lang />
             <Picker lang=lang set_lang=set_lang />
         </header>
         <main class="main">
@@ -89,6 +100,7 @@ pub fn App() -> impl IntoView {
                         lang=lang
                         all=all
                         forms=forms
+                        readings=readings
                         set_scene=set_scene
                     />
                 }

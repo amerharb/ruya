@@ -38,8 +38,14 @@ start WebAssembly.
   big label and the tags both show the forms chosen. A dual chosen in
   Arabic waits through a language that has none and shows again on coming
   back. Japanese has no plural, so it shows no dot buttons at all.
+- **Furigana:** in Japanese, the button showing 字 with じ over it puts each
+  kanji's reading over it in small hiragana — ねこ over 猫 — in the label
+  and the tags, so a name can be read aloud by someone who does not know
+  its kanji. Katakana words already spell their sound and get none. The
+  button is there only in Japanese.
 - On a phone held upright the bar takes two rows: the scene's name, the
-  all-names button and the forms, then the style and the language.
+  all-names button and the forms or furigana, then the style and the
+  language.
 
 ## Styles
 
@@ -78,7 +84,8 @@ browser's languages it has, else English.
 - **Arabic** is Modern Standard Arabic as printed, without vowel marks.
 - **Japanese** is written as it usually is: kanji where the word has them
   in everyday use (窓, 冷蔵庫), katakana for words from abroad (テレビ,
-  フォーク), and no readings over the kanji.
+  フォーク). The readings, for furigana, go over a whole run of kanji at a
+  time (れいぞうこ over 冷蔵庫), as compounds are usually given.
 - **Spanish** is Spain's (nevera, grifo). **English** is American (faucet,
   stove, cabinet).
 - **Plurals** keep the same rules: German and Spanish with their article
@@ -109,6 +116,8 @@ browser's languages it has, else English.
 - `f` — the forms each name shows, of `one`, `two` and `many`, joined by
   `-`: `?f=one-many` is singular and plural. Written when a form button is
   pressed; absent — or back at the singular alone — the singular alone.
+- `r` — `?r=on` opens with furigana over Japanese kanji. Written when the
+  furigana button is pressed, and taken out again when it is released.
 
 ## Scenes
 
@@ -124,6 +133,7 @@ per style and the regions over it:
 			"name": { "en": "fridge", "ar": "ثلاجة", … },
 			"plural": { "en": "fridges", "ar": "ثلاجات", … },
 			"dual": { "ar": "ثلاجتان" },
+			"reading": { "ja": "冷蔵庫[れいぞうこ]" },
 			"note": "es: nevera, the everyday word in Spain"
 		}
 	},
@@ -148,8 +158,10 @@ per style and the regions over it:
   a fixed set of fields, one per language; a file missing one does not
   parse. **`name`** is for one of the thing, **`plural`** for many, a field
   per language that has a plural — all but Japanese — and **`dual`** for
-  two, a field per language that has one: Arabic. `note`, optional, says
-  why a word was chosen.
+  two, a field per language that has one: Arabic. **`reading`** is the
+  name with its furigana, for a Japanese name with kanji: each run of
+  kanji followed by its reading in hiragana, in brackets — 冷蔵庫[れいぞうこ],
+  肘[ひじ]掛[か]け椅子[いす]. `note`, optional, says why a word was chosen.
 - **`styles`** holds any of `basic`, `realistic` and `ghibli`. A style the
   scene lacks is left out.
 - The **picture** is in the scene's own folder, `public/scenes/<scene>/`,
@@ -171,7 +183,9 @@ per style and the regions over it:
 
 `cargo test` checks every scene: every name present and in its language's
 script, a thing's for one, two or many wherever its language has that
-form and nowhere else; every region naming a thing, and every thing in some style; every
+form and nowhere else; a reading for every Japanese name with kanji, in
+hiragana, over every kanji, and the name again without its brackets;
+every region naming a thing, and every thing in some style; every
 region inside the picture and at least 48 units across, so it can be tapped
 on a phone; every label point on its region; a thing lying on another after
 it; and each picture and thumbnail there, an SVG with the scene's `viewBox`
@@ -192,8 +206,10 @@ or a bitmap of the scene's shape — the picture at least its size.
   that has it, and its regions in that scene's file.
 - **A language:** a variant in `Lang` and a field in `Names`, and in
   `Plurals` and `Duals` if it has a plural or a dual (`src/lang.rs`), with
-  `Lang::numbers` saying which. The compiler then points at every match to
-  extend, and `cargo test` at every scene still missing a name.
+  `Lang::numbers` saying which; in `Readings` too if its names need
+  readings over them, as Japanese does, with `Lang::readings_name` naming
+  them. The compiler then points at every match to extend, and
+  `cargo test` at every scene still missing a name.
 
 ## Pictures and licences
 

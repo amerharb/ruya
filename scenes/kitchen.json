@@ -5,12 +5,14 @@
 		"window": {
 			"name": { "en": "window", "ar": "نافذة", "de": "das Fenster", "sv": "ett fönster", "es": "la ventana", "uk": "вікно", "he": "חלון", "ja": "窓" },
 			"plural": { "en": "windows", "ar": "نوافذ", "de": "die Fenster", "sv": "fönster", "es": "las ventanas", "uk": "вікна", "he": "חלונות" },
-			"dual": { "ar": "نافذتان" }
+			"dual": { "ar": "نافذتان" },
+			"reading": { "ja": "窓[まど]" }
 		},
 		"cabinet": {
 			"name": { "en": "cabinet", "ar": "خزانة", "de": "der Schrank", "sv": "ett skåp", "es": "el armario", "uk": "шафа", "he": "ארון", "ja": "戸棚" },
 			"plural": { "en": "cabinets", "ar": "خزائن", "de": "die Schränke", "sv": "skåp", "es": "los armarios", "uk": "шафи", "he": "ארונות" },
 			"dual": { "ar": "خزانتان" },
+			"reading": { "ja": "戸棚[とだな]" },
 			"note": "a wall cabinet; American cabinet, where British English says cupboard"
 		},
 		"frying-pan": {
@@ -21,12 +23,14 @@
 		"clock": {
 			"name": { "en": "clock", "ar": "ساعة", "de": "die Uhr", "sv": "en klocka", "es": "el reloj", "uk": "годинник", "he": "שעון", "ja": "時計" },
 			"plural": { "en": "clocks", "ar": "ساعات", "de": "die Uhren", "sv": "klockor", "es": "los relojes", "uk": "годинники", "he": "שעונים" },
-			"dual": { "ar": "ساعتان" }
+			"dual": { "ar": "ساعتان" },
+			"reading": { "ja": "時計[とけい]" }
 		},
 		"fridge": {
 			"name": { "en": "fridge", "ar": "ثلاجة", "de": "der Kühlschrank", "sv": "ett kylskåp", "es": "la nevera", "uk": "холодильник", "he": "מקרר", "ja": "冷蔵庫" },
 			"plural": { "en": "fridges", "ar": "ثلاجات", "de": "die Kühlschränke", "sv": "kylskåp", "es": "las neveras", "uk": "холодильники", "he": "מקררים" },
 			"dual": { "ar": "ثلاجتان" },
+			"reading": { "ja": "冷蔵庫[れいぞうこ]" },
 			"note": "es: nevera, the everyday word in Spain; refrigerador is Latin American"
 		},
 		"stove": {
@@ -45,18 +49,21 @@
 			"name": { "en": "faucet", "ar": "صنبور", "de": "der Wasserhahn", "sv": "en kran", "es": "el grifo", "uk": "кран", "he": "ברז", "ja": "蛇口" },
 			"plural": { "en": "faucets", "ar": "صنابير", "de": "die Wasserhähne", "sv": "kranar", "es": "los grifos", "uk": "крани", "he": "ברזים" },
 			"dual": { "ar": "صنبوران" },
+			"reading": { "ja": "蛇口[じゃぐち]" },
 			"note": "American faucet, where British English says tap"
 		},
 		"pot": {
 			"name": { "en": "pot", "ar": "قدر", "de": "der Topf", "sv": "en gryta", "es": "la olla", "uk": "каструля", "he": "סיר", "ja": "鍋" },
 			"plural": { "en": "pots", "ar": "قدور", "de": "die Töpfe", "sv": "grytor", "es": "las ollas", "uk": "каструлі", "he": "סירים" },
 			"dual": { "ar": "قدران" },
+			"reading": { "ja": "鍋[なべ]" },
 			"note": "two handles, so a pot (gryta, olla), not a saucepan with one long handle (kastrull, cazo); ja 鍋, 両手鍋 in full"
 		},
 		"kettle": {
 			"name": { "en": "kettle", "ar": "غلاية", "de": "der Wasserkocher", "sv": "en vattenkokare", "es": "el hervidor", "uk": "чайник", "he": "קומקום", "ja": "電気ケトル" },
 			"plural": { "en": "kettles", "ar": "غلايات", "de": "die Wasserkocher", "sv": "vattenkokare", "es": "los hervidores", "uk": "чайники", "he": "קומקומים" },
 			"dual": { "ar": "غلايتان" },
+			"reading": { "ja": "電気[でんき]ケトル" },
 			"note": "electric, on the counter: Wasserkocher, vattenkokare and hervidor are the electric words, as is ja 電気ケトル; やかん goes on the stove"
 		},
 		"table": {
@@ -67,12 +74,14 @@
 		"chair": {
 			"name": { "en": "chair", "ar": "كرسي", "de": "der Stuhl", "sv": "en stol", "es": "la silla", "uk": "стілець", "he": "כיסא", "ja": "椅子" },
 			"plural": { "en": "chairs", "ar": "كراسي", "de": "die Stühle", "sv": "stolar", "es": "las sillas", "uk": "стільці", "he": "כיסאות" },
-			"dual": { "ar": "كرسيان" }
+			"dual": { "ar": "كرسيان" },
+			"reading": { "ja": "椅子[いす]" }
 		},
 		"plate": {
 			"name": { "en": "plate", "ar": "صحن", "de": "der Teller", "sv": "en tallrik", "es": "el plato", "uk": "тарілка", "he": "צלחת", "ja": "皿" },
 			"plural": { "en": "plates", "ar": "صحون", "de": "die Teller", "sv": "tallrikar", "es": "los platos", "uk": "тарілки", "he": "צלחות" },
-			"dual": { "ar": "صحنان" }
+			"dual": { "ar": "صحنان" },
+			"reading": { "ja": "皿[さら]" }
 		},
 		"fork": {
 			"name": { "en": "fork", "ar": "شوكة", "de": "die Gabel", "sv": "en gaffel", "es": "el tenedor", "uk": "виделка", "he": "מזלג", "ja": "フォーク" },
