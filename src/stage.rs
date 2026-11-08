@@ -14,13 +14,16 @@
 //! name, on the thing itself; pointing works as before, the thing pointed at
 //! getting the big label while the other tags step back.
 //!
+//! A name is shown in each form chosen, a line each: the singular on top,
+//! then the dual where the language has one, then the plural.
+//!
 //! The picture's two edges go to the other scenes, round in a circle: the
 //! right one to the next, the left to the one before. Pointed at, an edge
 //! shades and shows its arrow.
 //!
 //! One stage shows one scene in one style; switching either builds a new one.
 
-use crate::lang::Lang;
+use crate::lang::{Forms, Lang};
 use crate::scene::{Rendering, SCENES, Scene};
 use crate::spread::{Tag, spread};
 use crate::style::Style;
@@ -36,10 +39,26 @@ pub fn Stage(
     rendering: &'static Rendering,
     lang: ReadSignal<Lang>,
     all: ReadSignal<bool>,
+    forms: ReadSignal<Forms>,
     set_scene: WriteSignal<&'static Scene>,
 ) -> impl IntoView {
     let (w, h) = (rendering.picture.width, rendering.picture.height);
-    let name = move |i: usize, l: Lang| scene.thing(&rendering.regions[i].thing).name.get(l);
+    // a thing's name in each form chosen: one, then two, then many
+    let words = move |i: usize, l: Lang| -> Vec<&'static str> {
+        let thing = scene.thing(&rendering.regions[i].thing);
+        forms
+            .get()
+            .shown(l)
+            .filter_map(|n| thing.name_for(l, n))
+            .collect()
+    };
+    // the same, a line each, for the label and the tags
+    let lines = move |i: usize, l: Lang| {
+        words(i, l)
+            .into_iter()
+            .map(|word| view! { <span>{word}</span> })
+            .collect_view()
+    };
 
     // from a mouse or pen only: a finger has nothing to hover with, and its
     // enter and leave come as one with the tap
@@ -106,7 +125,10 @@ pub fn Stage(
                     data-item=i.to_string()
                     tabindex="0"
                     role="button"
-                    aria-label=move || name(i, lang.get()).to_string()
+                    aria-label=move || {
+                        let l = lang.get();
+                        words(i, l).join(l.comma())
+                    }
                     on:pointerenter=move |ev: ev::PointerEvent| {
                         if ev.pointer_type() != "touch" {
                             hovered.set(Some(i));
@@ -143,7 +165,7 @@ pub fn Stage(
                     dir=move || lang.get().dir()
                     style=format!("left:{x:.3}%;top:{y:.3}%")
                 >
-                    {move || name(i, lang.get()).to_string()}
+                    {move || lines(i, lang.get())}
                 </div>
             }
         })
@@ -151,7 +173,7 @@ pub fn Stage(
 
     // The tags measured where they stand and spread, so none covers another
     // or runs off the picture: when they appear, when the names change
-    // language, and when the window changes size.
+    // language or forms, and when the window changes size.
     let tag_box = NodeRef::<Div>::new();
     let place = move || {
         let Some(el) = tag_box.get_untracked() else {
@@ -184,6 +206,7 @@ pub fn Stage(
     };
     Effect::new(move |_| {
         lang.track();
+        forms.track();
         if all.get() && tag_box.get().is_some() {
             // once the new names are laid out
             request_animation_frame(place);
@@ -246,7 +269,7 @@ pub fn Stage(
                     style=format!("left:{x:.3}%;top:{y:.3}%")
                     aria-hidden="true"
                 >
-                    {name(i, l).to_string()}
+                    {lines(i, l)}
                 </div>
             }
         })

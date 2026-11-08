@@ -1,9 +1,10 @@
 //! The choices in the address: `?p=living-room` opens Ruya on the living
-//! room, `?l=sv` in Swedish, `?s=basic` on the drawing and `?n=all` with every
-//! name showing, and picking any of them writes it back, so a link shows what
-//! the person sharing it saw. `p` is for place, as `s` was taken.
+//! room, `?l=sv` in Swedish, `?s=basic` on the drawing, `?n=all` with every
+//! name showing and `?f=one-many` with each name's plural under it, and
+//! picking any of them writes it back, so a link shows what the person
+//! sharing it saw. `p` is for place, as `s` was taken.
 
-use crate::lang::Lang;
+use crate::lang::{Forms, Lang};
 use crate::scene::Scene;
 use crate::style::Style;
 use wasm_bindgen::JsValue;
@@ -35,6 +36,12 @@ pub fn scene_from_search(search: &str) -> Option<&'static Scene> {
 /// `?n=all`: every name showing. Anything else, or nothing, is one at a time.
 pub fn all_names_from_search(search: &str) -> bool {
     param(search, "n") == Some("all")
+}
+
+/// `?f=`, the forms each name shows, or None when it is absent or names
+/// none.
+pub fn forms_from_search(search: &str) -> Option<Forms> {
+    param(search, "f").and_then(Forms::from_code)
 }
 
 fn search() -> String {
@@ -72,6 +79,11 @@ pub fn initial_scene() -> &'static Scene {
 /// Whether to open with every name showing.
 pub fn initial_all_names() -> bool {
     all_names_from_search(&search())
+}
+
+/// The forms to open with: the address, else the singular alone.
+pub fn initial_forms() -> Forms {
+    forms_from_search(&search()).unwrap_or(Forms::SINGULAR)
 }
 
 /// Write a parameter into the address without a new history entry: a
@@ -143,6 +155,16 @@ mod tests {
         assert!(!all_names_from_search("?n=one"));
         assert!(!all_names_from_search("?n="));
         assert!(!all_names_from_search("?l=sv"));
+    }
+
+    #[test]
+    fn reads_f_for_the_forms() {
+        let code = |search| forms_from_search(search).map(Forms::code);
+        assert_eq!(code("?f=one-many").as_deref(), Some("one-many"));
+        assert_eq!(code("?l=ar&f=two&n=all").as_deref(), Some("two"));
+        assert_eq!(code("?f=lots"), None);
+        assert_eq!(code("?f="), None);
+        assert_eq!(code("?l=sv"), None);
     }
 
     #[test]

@@ -27,7 +27,11 @@
 - **Plurals and duals** — every thing's name for many, in all seven
   languages, and Arabic's for two (قطة, قطتان, قطط), beside its name for
   one, in the scene files; `cargo test` checks each is there wherever its
-  language has the form. Not shown yet.
+  language has the form. Dot buttons beside the all-names button show
+  them: one dot the singular, three the plural, and in Arabic two, the
+  dual. Any of them at once, never none; the forms chosen stack a line
+  each, singular on top, in the label and the tags, and a screen reader
+  says them in turn. The choice is kept in the address as `?f=`.
 - **The TV stand** — the living room's eighteenth thing, the low cabinet
   the TV stands on, in all three styles. It was in every picture from the
   start, but with no region it had no name.

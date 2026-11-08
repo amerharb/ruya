@@ -1,9 +1,9 @@
 //! The choices in the bar: the scene, as its name; the style, as a little
-//! picture of each; every name or one at a time; and the language. The scene
-//! and the language are the browser's own `<select>`, which every phone turns
-//! into its best native chooser.
+//! picture of each; every name or one at a time; the forms each name shows;
+//! and the language. The scene and the language are the browser's own
+//! `<select>`, which every phone turns into its best native chooser.
 
-use crate::lang::Lang;
+use crate::lang::{Forms, Lang, Number};
 use crate::scene::{SCENES, Scene};
 use crate::style::Style;
 use leptos::prelude::*;
@@ -123,6 +123,59 @@ pub fn AllNames(
                 <rect x="9" y="14" width="13" height="7" rx="2" />
             </svg>
         </button>
+    }
+}
+
+/// A button per form the language has — singular and plural, and in Arabic
+/// the dual between them — each adding its form under every name shown, or
+/// taking it away: any of them at once, never none.
+#[component]
+pub fn FormButtons(
+    forms: ReadSignal<Forms>,
+    set_forms: WriteSignal<Forms>,
+    lang: ReadSignal<Lang>,
+) -> impl IntoView {
+    // two buttons or three, so a new set with each language
+    move || {
+        let l = lang.get();
+        view! {
+            <div class="forms" role="group" aria-label=Forms::label(l)>
+                {l
+                    .numbers()
+                    .iter()
+                    .map(|&n| {
+                        let on = move || forms.get().shows(n, l);
+                        view! {
+                            <button
+                                class="form"
+                                class:on=on
+                                aria-pressed=move || on().to_string()
+                                aria-label=n.name(l)
+                                title=n.name(l)
+                                on:click=move |_| set_forms.update(|f| *f = f.toggled(n, l))
+                            >
+                                {dots(n)}
+                            </button>
+                        }
+                    })
+                    .collect_view()}
+            </div>
+        }
+    }
+}
+
+/// A form's button: as many dots as it names — one, two, or three in a
+/// triangle for many.
+fn dots(n: Number) -> impl IntoView {
+    let at: &[(&str, &str)] = match n {
+        Number::Singular => &[("12", "12")],
+        Number::Dual => &[("7", "12"), ("17", "12")],
+        Number::Plural => &[("12", "7"), ("6.5", "16.5"), ("17.5", "16.5")],
+    };
+    view! {
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            {at.iter().map(|&(x, y)| view! { <circle cx=x cy=y r="3" /> }).collect_view()}
+        </svg>
     }
 }
 

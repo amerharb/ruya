@@ -1,5 +1,5 @@
-use crate::lang::Lang;
-use crate::picker::{AllNames, Picker, ScenePicker, StylePicker};
+use crate::lang::{Forms, Lang};
+use crate::picker::{AllNames, FormButtons, Picker, ScenePicker, StylePicker};
 use crate::scene::Scene;
 use crate::stage::Stage;
 use crate::style::Style;
@@ -12,6 +12,7 @@ pub fn App() -> impl IntoView {
     let (lang, set_lang) = signal(url::initial_lang());
     let (style, set_style) = signal(url::initial_style());
     let (all, set_all) = signal(url::initial_all_names());
+    let (forms, set_forms) = signal(url::initial_forms());
 
     // <html lang> follows the language, so a screen reader reads the names in
     // the right voice and a browser does not offer to translate them. The
@@ -50,6 +51,15 @@ pub fn App() -> impl IntoView {
         },
         false,
     );
+    // and so does the singular alone
+    Effect::watch(
+        move || forms.get(),
+        |f: &Forms, _, _| match *f == Forms::SINGULAR {
+            true => url::remove("f"),
+            false => url::write("f", &f.code()),
+        },
+        false,
+    );
 
     view! {
         <header class="bar">
@@ -62,6 +72,7 @@ pub fn App() -> impl IntoView {
                 }
             }}
             <AllNames all=all set_all=set_all lang=lang />
+            <FormButtons forms=forms set_forms=set_forms lang=lang />
             <Picker lang=lang set_lang=set_lang />
         </header>
         <main class="main">
@@ -77,6 +88,7 @@ pub fn App() -> impl IntoView {
                         rendering=rendering
                         lang=lang
                         all=all
+                        forms=forms
                         set_scene=set_scene
                     />
                 }

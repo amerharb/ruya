@@ -173,6 +173,48 @@ body {
 	outline-offset: 2px;
 }
 
+/* the forms each name shows: a joined row of buttons, as many dots as each
+   names, any of them pressed at once */
+.forms {
+	display: flex;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.form {
+	display: grid;
+	place-items: center;
+	width: 34px;
+	height: 34px;
+	padding: 0;
+	border: none;
+	border-left: 1px solid var(--line);
+	background: var(--bg);
+	color: var(--fg);
+	cursor: pointer;
+}
+
+.form:first-child {
+	border-left: none;
+}
+
+.form svg {
+	width: 20px;
+	height: 20px;
+	fill: currentColor;
+}
+
+.form.on {
+	background: var(--accent);
+	color: var(--bg);
+}
+
+.form:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: -4px;
+}
+
 .picker {
 	font: inherit;
 	font-size: 1rem;
@@ -183,20 +225,29 @@ body {
 	color: var(--fg);
 }
 
-/* A phone held upright has no room for all five in a row: the name and the
-   names toggle get the first, the style and the language a second. */
+/* A phone held upright has no room for them all in a row: the name, the
+   names toggle and the forms get the first, the style and the language a
+   second. */
 @media (max-width: 600px) {
+	/* the gaps and the forms a little narrower, so a long name such as das
+	   Wohnzimmer still fits beside them */
 	.bar {
 		flex-wrap: wrap;
-		row-gap: 8px;
+		gap: 8px;
 	}
 
-	/* all of the first row but what the brand and the toggle need */
+	.form {
+		width: 30px;
+	}
+
+	/* all of the first row but what the brand, the toggle and three forms
+	   need */
 	.scene-name {
-		flex: 1 1 calc(100% - 112px);
+		flex: 1 1 calc(100% - 200px);
 	}
 
-	.all-names {
+	.all-names,
+	.forms {
 		order: 1;
 	}
 
@@ -413,6 +464,17 @@ body {
 .label.on {
 	opacity: 1;
 	transition-delay: 0ms;
+}
+
+/* a line per form: singular, then dual, then plural */
+.label,
+.tag {
+	text-align: center;
+}
+
+.label span,
+.tag span {
+	display: block;
 }
 
 /* near the picture's edges the label turns inward */

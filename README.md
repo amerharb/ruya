@@ -31,8 +31,15 @@ start WebAssembly.
   regions, so two chairs get one. Tags that would overlap or run off the
   picture are moved apart. Pointing still works: the thing pointed at gets
   the big label, and the other tags fade back. Pressed again, the names go.
-- On a phone held upright the bar takes two rows: the scene's name and the
-  all-names button, then the style and the language.
+- **Singular and plural:** the dot buttons beside it show a name's other
+  forms, a line each under it — one dot the singular, three the plural, and
+  in Arabic two dots between them, the dual (قطة, قطتان, قطط). Any of them
+  can be pressed at once, but not none: the last one pressed stays. The
+  big label and the tags both show the forms chosen. A dual chosen in
+  Arabic waits through a language that has none and shows again on coming
+  back.
+- On a phone held upright the bar takes two rows: the scene's name, the
+  all-names button and the forms, then the style and the language.
 
 ## Styles
 
@@ -94,6 +101,9 @@ browser's languages it has, else English.
   style asked for opens in its first.
 - `n` — `?n=all` opens with every name showing. Written when the all-names
   button is pressed, and taken out again when it is released.
+- `f` — the forms each name shows, of `one`, `two` and `many`, joined by
+  `-`: `?f=one-many` is singular and plural. Written when a form button is
+  pressed; absent — or back at the singular alone — the singular alone.
 
 ## Scenes
 
@@ -135,7 +145,7 @@ per style and the regions over it:
   per language that has a plural — all seven — and **`dual`** for two, a
   field per language that has one: Arabic. A language without a plural,
   as Japanese has none, would have no field in `plural`. `note`, optional,
-  says why a word was chosen. Only `name` is shown so far.
+  says why a word was chosen.
 - **`styles`** holds any of `basic`, `realistic` and `ghibli`. A style the
   scene lacks is left out.
 - The **picture** is in the scene's own folder, `public/scenes/<scene>/`,

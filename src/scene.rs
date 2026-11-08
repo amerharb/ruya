@@ -38,10 +38,8 @@ pub struct Thing {
     /// Its name for one of it, the one shown.
     pub name: Names,
     /// For many of it.
-    #[cfg_attr(not(test), expect(dead_code, reason = "the label shows them next"))]
     pub plural: Plurals,
     /// For two of it, in a language with a dual.
-    #[cfg_attr(not(test), expect(dead_code, reason = "the label shows them next"))]
     pub dual: Duals,
     /// Why a word was chosen, where that is not obvious. JSON has no comments.
     #[serde(default)]
@@ -49,7 +47,6 @@ pub struct Thing {
     pub note: Option<String>,
 }
 
-#[cfg_attr(not(test), expect(dead_code, reason = "the label shows them next"))]
 impl Thing {
     /// Its name for one, two or many of it, where the language has that
     /// number.
