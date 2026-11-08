@@ -12,11 +12,13 @@
   the big label, the other tags fading back. The choice is kept in the
   address as `?n=all`. On a phone held upright the button ends the bar's
   first row, beside the scene's name.
-- **The street** — the third scene, and the first outdoors, with eighteen
-  things — sun, cloud, bird, house, roof, tree, streetlight, store, traffic
-  light, sidewalk, bicycle, bench, trash can, dog, mailbox, crosswalk, car
-  and bus — drawn by hand in SVG. Its realistic picture's prompt for
-  ChatGPT is kept in `art/`.
+- **The street** — the third scene, and the first outdoors, with 26
+  things — sun, cloud, bird, house, roof, chimney, window, door, tree,
+  streetlight, store, traffic light, sidewalk, curb, road, lane, lane line,
+  bicycle, bench, trash can, dog, mailbox, crosswalk, car, bus and
+  motorcycle — drawn by hand in SVG, and a street corner in the realistic
+  and Ghibli styles, made in ChatGPT (299 KB and 403 KB as WebP), with all
+  26 in every style.
 - **The TV stand** — the living room's eighteenth thing, the low cabinet
   the TV stands on, in all three styles. It was in every picture from the
   start, but with no region it had no name.

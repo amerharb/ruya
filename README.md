@@ -189,8 +189,9 @@ kept beside it in `art/<scene>/`.
 | living room | realistic | `art/living-room/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-25 | `art/living-room/realistic.prompt.md` |
 | living room | basic | `public/scenes/living-room/basic.svg` | drawn by hand, 2026-10-25 | — |
 | living room | ghibli | `art/living-room/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-10-26 | `art/living-room/ghibli.prompt.md` |
+| street | realistic | `art/street/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-08 | not recorded; `art/street/realistic.prompt.md` made the first version |
 | street | basic | `public/scenes/street/basic.svg` | drawn by hand, 2026-11-02 | — |
-| street | realistic | not made yet | — | `art/street/realistic.prompt.md` |
+| street | ghibli | `art/street/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-08 | not recorded |
 
 ChatGPT gave the realistic kitchen's things as boxes too, kept in
 `art/kitchen/realistic.boxes.json`. They were approximate — the fork and
@@ -217,6 +218,42 @@ The Ghibli living room is the realistic one repainted, every thing a few
 pixels off where it was, so its regions were redrawn over it the same way.
 Its boxes, in `art/living-room/ghibli.boxes.json`, again merged the
 curtains and the pillows.
+
+The drawn street's road has a solid line along each edge. The near lane,
+between its edge line and the dashed line, is the one `lane` region; the
+far lane and the strip between the curb and the far edge line are the
+road's, so a tap there says road. The curb and the dashed
+line are thinner than the 48 units a region needs, so their regions are 48
+tall, centred on them; the dashed line's comes after the lanes, the curb's
+after the road. The motorcycle has the near lane to itself, left of the bus.
+
+The realistic street did not keep to its prompt's layout: it is a street
+corner seen at an angle, not straight across the road. The first
+picture, supplied 2026-11-07, had no dog, and its boxes were far off —
+the sun's by 150 px, the crosswalk's by more. The one kept, supplied
+2026-11-08, is the same corner with a dog and a motorcycle on the
+sidewalk, the crosswalk moved to the corner and the car side-on, and has
+all 26 things; it came with no boxes, so every region was drawn by eye.
+The prompt asked for no text, but the bus's sign reads "12 Central
+Station", the number plates are blurred letters, and a driver can be made
+out behind the bus's windscreen. The picture has four birds, each its own
+`bird` region and drawn bigger than the bird, so it can be tapped; two
+clouds, three trees and the house's two windows not behind leaves have a
+region each. The road is all the asphalt, the side street the car is on
+included. As in the drawing, one lane is the `lane`: the one right of the
+dashed line, up to the stop line; the rest is the road's. The curb and
+the dashed line are bands about 30 wide along them. The car comes after
+the bus and the traffic light after the car, each standing in front of
+the other's edge; the dog comes after the bicycle and the streetlight.
+As WebP it is 299 KB, twice the kitchen: the leaves are detail that does
+not compress.
+
+The Ghibli street is the realistic one repainted, every thing within a
+few pixels of where it was, so its regions are the realistic ones moved
+where it differs: the streetlight 12 px left, the mailbox wider, the sun
+and one bird lower. Its sky has more clouds, and two more of them have a
+region. It came with no boxes. As WebP it is 403 KB, the biggest picture:
+its painted leaves and clouds are fine detail all over.
 
 For later scenes, the plan is to paint a flat colour per thing on a mask
 layer, as a PNG — never a lossy format, which smears the colours — and

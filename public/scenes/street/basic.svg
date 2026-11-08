@@ -80,16 +80,20 @@
 	<circle cx="610" cy="390" r="26" fill="#5c9a6b" />
 	<circle cx="500" cy="420" r="20" fill="#5c9a6b" />
 
-	<!-- sidewalk and its curb -->
-	<rect y="600" width="1536" height="100" fill="#d6d0c6" />
-	<path d="M120 600V700M300 600V700M480 600V700M660 600V700M840 600V700M1020 600V700M1200 600V700M1380 600V700" stroke="#c4bdb1" stroke-width="3" />
-	<rect y="700" width="1536" height="16" fill="#bdb6aa" />
+	<!-- sidewalk and its curb, the curb's top and then its face -->
+	<rect y="600" width="1536" height="96" fill="#d6d0c6" />
+	<path d="M120 600V696M300 600V696M480 600V696M660 600V696M840 600V696M1020 600V696M1200 600V696M1380 600V696" stroke="#c4bdb1" stroke-width="3" />
+	<rect y="696" width="1536" height="6" fill="#e2ddd4" />
+	<rect y="702" width="1536" height="18" fill="#a9a296" />
+	<path d="M200 702V720M420 702V720M640 702V720M860 702V720M1080 702V720M1300 702V720M1520 702V720" stroke="#968f83" stroke-width="3" />
 
 	<!-- the tree's trunk again, standing on the sidewalk -->
 	<rect x="545" y="600" width="30" height="40" fill="#8a6a4a" />
 
-	<!-- road, its middle line, and the crosswalk -->
-	<rect y="716" width="1536" height="308" fill="#5f6670" />
+	<!-- road: a solid line along each edge, the dashed line between the two
+	     lanes, and the crosswalk -->
+	<rect y="720" width="1536" height="304" fill="#5f6670" />
+	<path d="M0 764H1536V770H0ZM0 1006H1536V1012H0Z" fill="#f5f3ee" />
 	<path d="M20 884H90V892H20ZM160 884H230V892H160ZM300 884H370V892H300ZM440 884H510V892H440ZM580 884H650V892H580ZM720 884H790V892H720ZM860 884H930V892H860ZM1000 884H1070V892H1000ZM1460 884H1530V892H1460Z" fill="#f5f3ee" />
 	<path d="M1200 728H1440V756H1200ZM1200 782H1440V810H1200ZM1200 836H1440V864H1200ZM1200 890H1440V918H1200ZM1200 944H1440V972H1200ZM1200 998H1440V1024H1200Z" fill="#f5f3ee" />
 
@@ -177,4 +181,20 @@
 	<circle cx="1026" cy="962" r="38" fill="#2f3a44" />
 	<circle cx="676" cy="962" r="15" fill="#bfc5cc" />
 	<circle cx="1026" cy="962" r="15" fill="#bfc5cc" />
+
+	<!-- motorcycle, in the near lane, going right like the bus -->
+	<circle cx="290" cy="964" r="34" fill="#2f3a44" />
+	<circle cx="444" cy="964" r="34" fill="#2f3a44" />
+	<circle cx="290" cy="964" r="13" fill="#bfc5cc" />
+	<circle cx="444" cy="964" r="13" fill="#bfc5cc" />
+	<path d="M252 952Q262 920 300 916L310 928Q278 930 268 956Z" fill="#2f6f73" />
+	<path d="M418 902L444 964" stroke="#4a5560" stroke-width="9" stroke-linecap="round" />
+	<path d="M420 924Q450 918 472 944L462 952Q448 934 424 936Z" fill="#2f6f73" />
+	<rect x="328" y="926" width="64" height="38" rx="8" fill="#8a949e" />
+	<path d="M300 968H392" stroke="#bfc5cc" stroke-width="8" stroke-linecap="round" />
+	<path d="M290 964L330 930M392 940L444 964" stroke="#4a5560" stroke-width="7" stroke-linecap="round" />
+	<path d="M296 912Q318 896 352 900V916H300Z" fill="#2f3a44" />
+	<path d="M352 900Q382 884 414 894L422 916Q388 924 352 920Z" fill="#2f6f73" />
+	<path d="M412 878L422 900M404 876H418" stroke="#2f3a44" stroke-width="6" stroke-linecap="round" />
+	<circle cx="430" cy="902" r="9" fill="#f6e7a1" />
 </svg>

@@ -20,6 +20,17 @@
 			"name": { "en": "roof", "ar": "سقف", "de": "das Dach", "sv": "ett tak", "es": "el tejado", "uk": "дах", "he": "גג" },
 			"note": "a pitched roof of tiles: es tejado, where techo is also the ceiling; ar سقف and sv tak are the ceiling too"
 		},
+		"chimney": {
+			"name": { "en": "chimney", "ar": "مدخنة", "de": "der Schornstein", "sv": "en skorsten", "es": "la chimenea", "uk": "димар", "he": "ארובה" },
+			"note": "de Schornstein, Kamin and Schlot as often in the south; es chimenea is the fireplace too; uk комин as often"
+		},
+		"window": {
+			"name": { "en": "window", "ar": "نافذة", "de": "das Fenster", "sv": "ett fönster", "es": "la ventana", "uk": "вікно", "he": "חלון" }
+		},
+		"door": {
+			"name": { "en": "door", "ar": "باب", "de": "die Tür", "sv": "en dörr", "es": "la puerta", "uk": "двері", "he": "דלת" },
+			"note": "uk: двері has no singular"
+		},
 		"tree": {
 			"name": { "en": "tree", "ar": "شجرة", "de": "der Baum", "sv": "ett träd", "es": "el árbol", "uk": "дерево", "he": "עץ" }
 		},
@@ -37,6 +48,22 @@
 		"sidewalk": {
 			"name": { "en": "sidewalk", "ar": "رصيف", "de": "der Gehweg", "sv": "en trottoar", "es": "la acera", "uk": "тротуар", "he": "מדרכה" },
 			"note": "American sidewalk, British pavement; de Gehweg, as the signs say, and Bürgersteig as often"
+		},
+		"road": {
+			"name": { "en": "road", "ar": "طريق", "de": "die Fahrbahn", "sv": "en väg", "es": "la calzada", "uk": "дорога", "he": "כביש" },
+			"note": "the part of the street that traffic drives on: de Fahrbahn, as Straße is the whole street; es calzada, carretera being a road between towns; he כביש, as רחוב is the street"
+		},
+		"lane": {
+			"name": { "en": "lane", "ar": "حارة", "de": "die Fahrspur", "sv": "ett körfält", "es": "el carril", "uk": "смуга", "he": "נתיב" },
+			"note": "one lane of traffic; ar مسار as often; uk смуга руху in full"
+		},
+		"lane-line": {
+			"name": { "en": "lane line", "ar": "خط فاصل", "de": "die Leitlinie", "sv": "en mittlinje", "es": "la línea discontinua", "uk": "розділова лінія", "he": "קו הפרדה" },
+			"note": "the dashed line between the lanes: de Leitlinie, the traffic rules' word, Mittelstreifen as often in speech; es línea discontinua, the broken line, as it is called"
+		},
+		"curb": {
+			"name": { "en": "curb", "ar": "حافة الرصيف", "de": "der Bordstein", "sv": "en trottoarkant", "es": "el bordillo", "uk": "бордюр", "he": "אבן שפה" },
+			"note": "American curb, British kerb"
 		},
 		"bicycle": {
 			"name": { "en": "bicycle", "ar": "دراجة", "de": "das Fahrrad", "sv": "en cykel", "es": "la bicicleta", "uk": "велосипед", "he": "אופניים" },
@@ -68,15 +95,27 @@
 		"bus": {
 			"name": { "en": "bus", "ar": "حافلة", "de": "der Bus", "sv": "en buss", "es": "el autobús", "uk": "автобус", "he": "אוטובוס" },
 			"note": "ar حافلة, the Standard word; باص is the everyday one"
+		},
+		"motorcycle": {
+			"name": { "en": "motorcycle", "ar": "دراجة نارية", "de": "das Motorrad", "sv": "en motorcykel", "es": "la moto", "uk": "мотоцикл", "he": "אופנוע" },
+			"note": "es moto, short for motocicleta and what is said"
 		}
 	},
 	"styles": {
 		"basic": {
 			"picture": { "src": "scenes/street/basic.svg", "thumb": "scenes/street/basic.thumb.webp", "width": 1536, "height": 1024 },
 			"regions": [
-				{ "thing": "sidewalk", "d": "M0 600H1536V716H0Z", "at": [1240, 672] },
+				{ "thing": "sidewalk", "d": "M0 600H1536V696H0Z", "at": [1240, 650] },
+				{ "thing": "road", "d": "M0 720H1536V1024H0Z", "at": [75, 805] },
+				{ "thing": "lane", "d": "M0 888H1536V1012H0Z", "at": [110, 950] },
+				{ "thing": "lane-line", "d": "M0 864H1536V912H0Z", "at": [1495, 888] },
+				{ "thing": "curb", "d": "M0 686H1536V734H0Z" },
 				{ "thing": "house", "d": "M36 334L250 190L344 253V194H396V288L464 334H440V600H60V334Z" },
-				{ "thing": "roof", "d": "M36 334L250 190L344 253V194H396V288L464 334Z" },
+				{ "thing": "roof", "d": "M36 334L250 190L464 334Z" },
+				{ "thing": "chimney", "d": "M344 194H396V206H390V284L350 257V206H344Z" },
+				{ "thing": "window", "d": "M100 380H180V450H100Z" },
+				{ "thing": "window", "d": "M320 380H400V450H320Z" },
+				{ "thing": "door", "d": "M210 470H290V600H210Z" },
 				{ "thing": "store", "d": "M850 290H1310V316H1300V600H860V316H850Z" },
 				{ "thing": "tree", "d": "M560 235L607 248L641 280L655 330L668 346L686 370L696 400L684 440L650 462L612 466L575 490V640H545V490L508 466L470 460L436 440L426 400L440 360L466 342L478 282L513 248Z" },
 				{ "thing": "sun", "d": "M1496 130L1488 171L1465 205L1431 228L1390 236L1349 228L1315 205L1292 171L1284 130L1292 89L1315 55L1349 32L1390 24L1431 32L1465 55L1488 89Z" },
@@ -91,7 +130,86 @@
 				{ "thing": "mailbox", "d": "M1322 572L1330 548L1359 538L1388 548L1396 572V640H1388V666H1378V640H1340V666H1330V640H1322Z" },
 				{ "thing": "crosswalk", "d": "M1200 724H1440V1024H1200Z" },
 				{ "thing": "car", "d": "M150 780L162 768H220L270 720H410L460 768H508L520 780V830L506 840H460L452 872H408L400 840H270L262 872H218L210 840H164L150 830Z" },
-				{ "thing": "bus", "d": "M582 740H1128L1150 762V950L1138 960H1064L1056 1000H996L988 960H714L706 1000H646L638 960H572L560 950V762Z" }
+				{ "thing": "bus", "d": "M582 740H1128L1150 762V950L1138 960H1064L1056 1000H996L988 960H714L706 1000H646L638 960H572L560 950V762Z" },
+				{ "thing": "motorcycle", "d": "M256 940L272 922L296 910L318 898H352L382 886L404 876H420L424 892L440 896L448 912L468 936L478 964L470 988L444 998L420 990L410 972H322L318 988L290 998L264 990L256 964Z" }
+			]
+		},
+		"realistic": {
+			"picture": { "src": "scenes/street/realistic.webp", "thumb": "scenes/street/realistic.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "sidewalk", "d": "M0 856L400 830L590 798L800 768L830 738H1195L1207 744L1205 754L1175 770L1100 787L1000 815L850 852L650 893L525 930L380 960L215 992L55 1024H0Z", "at": [720, 820] },
+				{ "thing": "road", "d": "M55 1024L215 992L380 960L525 930L650 893L850 852L1000 815L1100 787L1175 770L1205 754L1207 744L1195 738H830L815 728V705L1092 702L1536 696V1024Z", "at": [1040, 960] },
+				{ "thing": "lane", "d": "M1370 822L1536 828V1024H1242Z", "at": [1440, 940] },
+				{ "thing": "lane-line", "d": "M1352 822H1388L1270 1024H1214Z", "at": [1280, 965] },
+				{ "thing": "curb", "d": "M0 1004L215 962L380 926L525 898L650 866L850 832L1000 799L1100 777L1175 758L1195 744L1210 746L1207 756L1178 772L1100 790L1000 818L850 855L650 896L525 933L380 963L215 995L60 1024H0Z", "at": [500, 920] },
+				{ "thing": "crosswalk", "d": "M1180 784L1232 742L1532 746L1512 793Z" },
+				{ "thing": "house", "d": "M0 396L262 232L285 118L360 162V75L425 72V90L421 202L590 334V349L557 346V690L0 700Z", "at": [380, 470] },
+				{ "thing": "roof", "d": "M285 118L360 162V75L425 72V90L421 202L590 334V349L315 255L262 232Z", "at": [470, 265] },
+				{ "thing": "chimney", "d": "M358 70H427V90H422V220L362 188V90H358Z" },
+				{ "thing": "window", "d": "M343 317H402V425H343Z" },
+				{ "thing": "window", "d": "M136 505H186V596H136Z" },
+				{ "thing": "door", "d": "M352 538H408V668H352Z" },
+				{ "thing": "store", "d": "M868 544L1160 541V697H868Z" },
+				{ "thing": "tree", "d": "M570 79L631 92L692 62L744 75L788 88L857 92L910 118L927 170L962 192L997 240L1014 284L1049 327L1066 370L1079 431L1049 492L997 527L927 553L857 570H788V753H757V570L701 562L631 544L592 527L586 440L590 345L560 262L522 214L500 170L520 128Z" },
+				{ "thing": "tree", "d": "M0 0H300L330 30L350 90L352 150L345 230L330 300L290 360L240 410L180 440L100 455L40 470H0Z" },
+				{ "thing": "tree", "d": "M1222 384L1262 355L1305 368L1346 300L1384 262L1440 250L1500 262L1536 292V560H1350L1340 600L1300 612L1250 616L1222 600Z" },
+				{ "thing": "sun", "d": "M1284 62L1280 81L1269 97L1253 108L1234 112L1215 108L1199 97L1188 81L1184 62L1188 43L1199 27L1215 16L1234 12L1253 16L1269 27L1280 43Z" },
+				{ "thing": "cloud", "d": "M992 180L1025 145L1058 125L1100 129L1142 121L1180 133L1175 167L1142 192L1108 208L1067 221L1025 250L995 238Z" },
+				{ "thing": "cloud", "d": "M1083 283L1092 250L1142 242L1175 238L1200 246L1250 233L1275 225L1300 221L1333 238L1367 233L1400 242L1383 275L1333 292L1275 304L1217 317L1150 321L1100 308Z" },
+				{ "thing": "bird", "d": "M1314 121L1329 106L1353 106L1368 121L1368 141L1353 156L1329 156L1314 141Z" },
+				{ "thing": "bird", "d": "M1368 97L1383 82L1407 82L1422 97L1422 117L1407 132L1383 132L1368 117Z" },
+				{ "thing": "bird", "d": "M1436 82L1451 67L1475 67L1490 82L1490 102L1475 117L1451 117L1436 102Z" },
+				{ "thing": "bird", "d": "M1398 164L1413 149L1437 149L1452 164L1452 184L1437 199L1413 199L1398 184Z" },
+				{ "thing": "bench", "d": "M118 698L322 690L330 736L392 752L402 772V836L192 862L116 852Z" },
+				{ "thing": "bicycle", "d": "M410 664L446 660L470 676L500 672L512 690L540 700L553 730V790L540 810L515 812L498 800L470 790L452 812L430 815L410 800L405 760L410 712Z" },
+				{ "thing": "streetlight", "d": "M562 104L578 118L614 158L606 196L584 224L578 228V796L602 808V866H537V808L555 796V228L549 224L525 196L509 158L546 118Z", "at": [566, 420] },
+				{ "thing": "trash-can", "d": "M600 684H684L677 838H607Z" },
+				{ "thing": "mailbox", "d": "M753 632L758 624H818L823 632V723H791V779H777V723H753Z" },
+				{ "thing": "bus", "d": "M1354 542H1504L1514 566V675L1500 689L1486 696H1370L1357 684L1350 634L1336 593L1337 569L1352 562Z" },
+				{ "thing": "car", "d": "M1095 700L1093 682L1100 667L1130 659L1160 650L1190 631L1230 625L1300 628L1320 630L1334 646L1347 668L1349 698L1334 710L1300 712L1280 718L1260 712L1150 712L1127 716L1105 710Z" },
+				{ "thing": "traffic-light", "d": "M1125 426H1175V522H1153V738L1158 752H1136L1142 738V522H1125Z", "at": [1150, 474] },
+				{ "thing": "motorcycle", "d": "M872 645L882 650L884 668L898 676L922 672L932 662L942 672L938 688L980 683L998 700L1000 735L992 762L970 772L948 770L938 778L928 772L902 768L880 778L860 778L846 762L842 735L855 712L868 700L866 680L870 672Z" },
+				{ "thing": "dog", "d": "M352 842L362 828L392 798L430 782L478 782L502 760L523 752L545 757L558 773L552 795L528 802L526 830L518 880L520 892L488 896L478 860L440 846L432 888L396 894L392 858L380 860Z" }
+			]
+		},
+		"ghibli": {
+			"picture": { "src": "scenes/street/ghibli.webp", "thumb": "scenes/street/ghibli.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "sidewalk", "d": "M0 856L400 830L590 798L800 768L830 738H1195L1207 744L1205 754L1175 770L1100 787L1000 815L850 852L650 893L525 930L380 960L215 992L55 1024H0Z", "at": [720, 820] },
+				{ "thing": "road", "d": "M55 1024L215 992L380 960L525 930L650 893L850 852L1000 815L1100 787L1175 770L1205 754L1207 744L1195 738H830L815 728V705L1092 702L1536 696V1024Z", "at": [1040, 960] },
+				{ "thing": "lane", "d": "M1370 822L1536 828V1024H1242Z", "at": [1440, 940] },
+				{ "thing": "lane-line", "d": "M1352 822H1388L1270 1024H1214Z", "at": [1280, 965] },
+				{ "thing": "curb", "d": "M0 1004L215 962L380 926L525 898L650 866L850 832L1000 799L1100 777L1175 758L1195 744L1210 746L1207 756L1178 772L1100 790L1000 818L850 855L650 896L525 933L380 963L215 995L60 1024H0Z", "at": [500, 920] },
+				{ "thing": "crosswalk", "d": "M1180 784L1232 742L1532 746L1512 793Z" },
+				{ "thing": "house", "d": "M0 396L262 232L285 118L360 162V75L425 72V90L421 202L590 334V349L557 346V690L0 700Z", "at": [380, 470] },
+				{ "thing": "roof", "d": "M285 118L360 162V75L425 72V90L421 202L590 334V349L315 255L262 232Z", "at": [470, 265] },
+				{ "thing": "chimney", "d": "M358 70H427V90H422V220L362 188V90H358Z" },
+				{ "thing": "window", "d": "M343 317H402V425H343Z" },
+				{ "thing": "window", "d": "M136 505H186V596H136Z" },
+				{ "thing": "door", "d": "M352 538H408V668H352Z" },
+				{ "thing": "store", "d": "M868 544L1160 541V697H868Z" },
+				{ "thing": "tree", "d": "M570 79L631 92L692 62L744 75L788 88L857 92L910 118L927 170L962 192L997 240L1014 284L1049 327L1066 370L1079 431L1049 492L997 527L927 553L857 570H788V753H757V570L701 562L631 544L592 527L586 440L590 345L560 262L522 214L500 170L520 128Z" },
+				{ "thing": "tree", "d": "M0 0H300L330 30L350 90L352 150L345 230L330 300L290 360L240 410L180 440L100 455L40 470H0Z" },
+				{ "thing": "tree", "d": "M1222 384L1262 355L1305 368L1346 300L1384 262L1440 250L1500 262L1536 292V560H1350L1340 600L1300 612L1250 616L1222 600Z" },
+				{ "thing": "sun", "d": "M1284 74L1280 93L1269 109L1253 120L1234 124L1215 120L1199 109L1188 93L1184 74L1188 55L1199 39L1215 28L1234 24L1253 28L1269 39L1280 55Z" },
+				{ "thing": "cloud", "d": "M992 180L1025 145L1058 125L1100 129L1142 121L1180 133L1175 167L1142 192L1108 208L1067 221L1025 250L995 238Z" },
+				{ "thing": "cloud", "d": "M1083 283L1092 250L1142 242L1175 238L1200 246L1250 233L1275 225L1300 221L1333 238L1367 233L1400 242L1383 275L1333 292L1275 304L1217 317L1150 321L1100 308Z" },
+				{ "thing": "cloud", "d": "M872 55L890 35L925 15L955 0H1060L1095 25L1085 50L1100 75L1110 107L1070 120L1010 125L960 115L895 95Z" },
+				{ "thing": "cloud", "d": "M1362 40L1375 15L1395 0H1470L1460 30L1430 45L1400 60L1375 62Z" },
+				{ "thing": "bird", "d": "M1314 121L1329 106L1353 106L1368 121L1368 141L1353 156L1329 156L1314 141Z" },
+				{ "thing": "bird", "d": "M1368 97L1383 82L1407 82L1422 97L1422 117L1407 132L1383 132L1368 117Z" },
+				{ "thing": "bird", "d": "M1436 92L1451 77L1475 77L1490 92L1490 112L1475 127L1451 127L1436 112Z" },
+				{ "thing": "bird", "d": "M1398 164L1413 149L1437 149L1452 164L1452 184L1437 199L1413 199L1398 184Z" },
+				{ "thing": "bench", "d": "M118 698L322 690L330 736L392 752L402 772V836L192 862L116 852Z" },
+				{ "thing": "bicycle", "d": "M410 664L446 660L470 676L500 672L512 690L540 700L553 730V790L540 810L515 812L498 800L470 790L452 812L430 815L410 800L405 760L410 712Z" },
+				{ "thing": "streetlight", "d": "M548 100L560 110L596 146L602 168L588 192L574 216L572 228V790L592 800L602 815V872H530V815L540 800L548 790V228L542 216L524 194L498 168L506 148L536 110Z", "at": [560, 420] },
+				{ "thing": "trash-can", "d": "M600 684H684L677 838H607Z" },
+				{ "thing": "mailbox", "d": "M745 634L752 624H818L824 634V724H791V780H775V724H745Z" },
+				{ "thing": "bus", "d": "M1354 542H1504L1514 566V675L1500 689L1486 696H1370L1357 684L1350 634L1336 593L1337 569L1352 562Z" },
+				{ "thing": "car", "d": "M1095 700L1093 682L1100 667L1130 659L1160 650L1190 631L1230 625L1300 628L1320 630L1334 646L1347 668L1349 698L1334 710L1300 712L1280 718L1260 712L1150 712L1127 716L1105 710Z" },
+				{ "thing": "traffic-light", "d": "M1125 426H1175V522H1153V738L1158 752H1136L1142 738V522H1125Z", "at": [1150, 474] },
+				{ "thing": "motorcycle", "d": "M872 645L882 650L884 668L898 676L922 672L932 662L942 672L938 688L980 683L998 700L1000 735L992 762L970 772L948 770L938 778L928 772L902 768L880 778L860 778L846 762L842 735L855 712L868 700L866 680L870 672Z" },
+				{ "thing": "dog", "d": "M352 842L362 828L392 798L430 782L478 782L502 760L523 752L545 757L558 773L552 795L528 802L526 830L518 880L520 892L488 896L478 860L440 846L432 888L396 894L392 858L380 860Z" }
 			]
 		}
 	}
