@@ -2,6 +2,8 @@
 
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
+## [0.3.0] (unreleased)
+
 ## [0.2.0] 2026-11-09
 
 ### Added
