@@ -1,9 +1,9 @@
 # Ruya
 
 Ruya — رؤية, "sight" — is a picture dictionary. A big picture of a place, a
-kitchen, a living room or a street, fills the screen; point at a thing in it
-and its name appears, in the language you picked. Change the language and
-every name changes with it.
+kitchen, a living room, a street or a fruit stand, fills the screen; point
+at a thing in it and its name appears, in the language you picked. Change
+the language and every name changes with it.
 
 It is written in Rust with [Leptos](https://leptos.dev), compiled to
 WebAssembly and built with [Trunk](https://trunk-rs.github.io/trunk). Nothing
@@ -92,9 +92,10 @@ browser's languages it has, else English.
 - **Lowercase**, except German nouns.
 - **Arabic** is Modern Standard Arabic as printed, without vowel marks.
 - **Japanese** is written as it usually is: kanji where the word has them
-  in everyday use (窓, 冷蔵庫), katakana for words from abroad (テレビ,
-  フォーク). The readings, for furigana, go over a whole run of kanji at a
-  time (れいぞうこ over 冷蔵庫), as compounds are usually given.
+  in everyday use (窓, 冷蔵庫), hiragana where its kanji are not (りんご, as
+  林檎 is rare), katakana for words from abroad (テレビ, フォーク). The
+  readings, for furigana, go over a whole run of kanji at a time (れいぞうこ
+  over 冷蔵庫), as compounds are usually given.
 - **Spanish** is Spain's (nevera, grifo). **English** is American (faucet,
   stove, cabinet).
 - **Plurals** keep the same rules: German and Spanish with their article
@@ -104,6 +105,12 @@ browser's languages it has, else English.
 - **Arabic's dual**, for two, ends in ان (ثلاجتان), losing its ن before the
   noun that completes it (عمودا إنارة). Hebrew counts two with its plural,
   its dual kept for a few words, a pair of eyes or of days.
+- **Fruit in Arabic** has a word for one, which ends in ة (تفاحة), and a
+  collective for the fruit itself (تفاح): the one is its name, the
+  collective its many, and two are the one's dual (تفاحتان). A fruit with
+  no word for one apart — mostly words from abroad, مانجو, كيوي — has the
+  same word for one and many, and its two are counted as fruit: ثمرتا
+  مانجو.
 - **Japanese has no plural**: 猫 is one cat or many, so a Japanese name has
   its one form only.
 - Where a word needs explaining, the thing's `note` in the scene file says why
@@ -257,7 +264,10 @@ patch for every language but the picture's own, of its rect's shape.
   `cwebp -q 80 -m 6 -metadata none art/<scene>/<style>.png -o public/scenes/<scene>/<style>.webp`:
   a sixteenth to a thirtieth of the bytes, and the same picture to the eye.
 - **Basic** pictures are SVG, drawn by hand in a 1536 × 1024 `viewBox`:
-  flat shapes, no text.
+  flat shapes, no text. The fruit stand's, too many heaps of fruit to place
+  by hand, is drawn by a script, `python3 art/fruit-stand/basic.py`, which
+  writes its SVG and its regions in the scene file; change the script and
+  run it again, rather than the SVG.
 - **Thumbnails** are made from the picture with
   `cwebp -q 75 -m 6 -resize 96 64 <picture>.png -o public/scenes/<scene>/<style>.thumb.webp`;
   an SVG is first made a PNG, with
@@ -290,6 +300,7 @@ kept beside it in `art/<scene>/`.
 | street | realistic | `art/street/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-08 | not recorded; `art/street/realistic.prompt.md` made the first version |
 | street | basic | `public/scenes/street/basic.svg` | drawn by hand, 2026-11-02 | — |
 | street | ghibli | `art/street/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-08 | not recorded |
+| fruit stand | basic | `public/scenes/fruit-stand/basic.svg` | drawn by `art/fruit-stand/basic.py`, 2026-11-09 | — |
 
 ChatGPT gave the realistic kitchen's things as boxes too, kept in
 `art/kitchen/realistic.boxes.json`. They were approximate — the fork and
@@ -354,6 +365,17 @@ and one bird lower. Its sky has more clouds, and two more of them have a
 region. It came with no boxes. As WebP it is 403 KB, the biggest picture:
 its painted leaves and clouds are fine detail all over.
 
+The drawn fruit stand is three tiers of eight crates under a striped
+awning, one fruit to a crate: the big fruit on top, the tree fruit in the
+middle, the berries and small fruit at the bottom. Where a fruit's inside
+is what tells it apart, one of it is cut — the watermelon, the melon, the
+coconut, the papaya, the pomegranate, the kiwi and the fig. Each fruit's
+region is its heap and its crate together, the convex hull of both, so a
+tap on the crate names what is in it; the crates themselves have no name.
+The SVG is 98 KB, 16 KB compressed: every apple and blueberry is its own
+shape. The realistic picture is to be made from
+`art/fruit-stand/realistic.prompt.md`, which keeps the drawing's order.
+
 For later scenes, the plan is to paint a flat colour per thing on a mask
 layer, as a PNG — never a lossy format, which smears the colours — and
 trace it into polygons with a script.
@@ -366,7 +388,7 @@ trace it into polygons with a script.
 - `trunk serve` — http://127.0.0.1:8090, rebuilding on every change.
 - `trunk build --release` — the site in `dist/`: `index.html`, the
   WebAssembly, its loader, the stylesheet and `scenes/`. The release
-  WebAssembly is about 395 KB, 162 KB compressed, the scene files
+  WebAssembly is about 412 KB, 170 KB compressed, the scene files
   included.
 - `cargo test`, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`
   — run on the host, no browser needed. CI runs them and a release build.

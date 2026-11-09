@@ -19,6 +19,17 @@
   reduced motion asked for, it is simply there. Once a scene's picture is
   in, the pictures of the scenes either side are fetched in the same
   style, so the next one is there to slide.
+- **The fruit stand** — the fourth scene, a market stand with 24 fruits, a
+  crate of each under a striped awning: pineapple, watermelon, banana,
+  coconut, melon, mango, papaya and pomegranate on top; apricot, apple,
+  lemon, plum, orange, pear, tangerine and peach in the middle; strawberry,
+  blueberry, grape, cherry, kiwi, raspberry, fig and date at the bottom.
+  Drawn in SVG by a script, `art/fruit-stand/basic.py`, which writes each
+  fruit's region too: its heap and its crate, so a tap on the crate names
+  what is in it. Named in all eight languages, Arabic's by the word for
+  one, its dual, and the collective for many (تفاحة, تفاحتان, تفاح). The
+  prompt for its realistic picture is written; the picture is to come.
+  Vegetables will be a scene of their own.
 
 ### Fixed
 - **A picture a few pixels off** — where the whole picture shows, a name
