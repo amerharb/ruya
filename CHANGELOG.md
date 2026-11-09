@@ -24,12 +24,14 @@
   coconut, melon, mango, papaya and pomegranate on top; apricot, apple,
   lemon, plum, orange, pear, tangerine and peach in the middle; strawberry,
   blueberry, grape, cherry, kiwi, raspberry, fig and date at the bottom.
-  Drawn in SVG by a script, `art/fruit-stand/basic.py`, which writes each
-  fruit's region too: its heap and its crate, so a tap on the crate names
-  what is in it. Named in all eight languages, Arabic's by the word for
-  one, its dual, and the collective for many (تفاحة, تفاحتان, تفاح). The
-  prompt for its realistic picture is written; the picture is to come.
-  Vegetables will be a scene of their own.
+  A realistic picture and a Ghibli one, made in ChatGPT (360 KB and 466 KB
+  as WebP), the stand seen from the left on a cobbled street, and a basic
+  one drawn in SVG by a script, `art/fruit-stand/basic.py`, which writes
+  the drawing's regions too. In every style a fruit's region is its heap
+  and its crate, so a tap on the crate names what is in it. Named in all
+  eight languages, Arabic's by the word for one, its dual, and the
+  collective for many (تفاحة, تفاحتان, تفاح). Vegetables will be a scene of
+  their own.
 
 ### Fixed
 - **A picture a few pixels off** — where the whole picture shows, a name

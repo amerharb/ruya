@@ -300,7 +300,9 @@ kept beside it in `art/<scene>/`.
 | street | realistic | `art/street/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-08 | not recorded; `art/street/realistic.prompt.md` made the first version |
 | street | basic | `public/scenes/street/basic.svg` | drawn by hand, 2026-11-02 | — |
 | street | ghibli | `art/street/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-08 | not recorded |
+| fruit stand | realistic | `art/fruit-stand/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-09 | `art/fruit-stand/realistic.prompt.md` |
 | fruit stand | basic | `public/scenes/fruit-stand/basic.svg` | drawn by `art/fruit-stand/basic.py`, 2026-11-09 | — |
+| fruit stand | ghibli | `art/fruit-stand/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-09 | not recorded |
 
 ChatGPT gave the realistic kitchen's things as boxes too, kept in
 `art/kitchen/realistic.boxes.json`. They were approximate — the fork and
@@ -373,8 +375,21 @@ coconut, the papaya, the pomegranate, the kiwi and the fig. Each fruit's
 region is its heap and its crate together, the convex hull of both, so a
 tap on the crate names what is in it; the crates themselves have no name.
 The SVG is 98 KB, 16 KB compressed: every apple and blueberry is its own
-shape. The realistic picture is to be made from
-`art/fruit-stand/realistic.prompt.md`, which keeps the drawing's order.
+shape.
+
+The realistic fruit stand kept to its prompt: three tiers of eight
+crates, every fruit in the drawing's order, the cut ones cut as asked, and
+no text anywhere. It is seen from the left rather than straight on, the
+stand reaching back to the right, on a cobbled street under a tree. It
+came with no boxes, so each region was drawn by eye: the crate and its
+heap, as in the drawing, the crate's front up its two sides to the top of
+the heap. The top tier comes first, the bottom last, so where a heap
+stands in front of the crate behind it — the grapes' stalks and the
+cherries' before the middle tier — a tap there is the nearer crate's. The
+Ghibli fruit stand is the realistic one repainted, every crate where it
+was, so its regions are the realistic ones as they are. As WebP they are
+360 KB and 466 KB, the Ghibli now the biggest picture: heaps of small
+fruit are detail all over.
 
 For later scenes, the plan is to paint a flat colour per thing on a mask
 layer, as a PNG — never a lossy format, which smears the colours — and
@@ -388,7 +403,7 @@ trace it into polygons with a script.
 - `trunk serve` — http://127.0.0.1:8090, rebuilding on every change.
 - `trunk build --release` — the site in `dist/`: `index.html`, the
   WebAssembly, its loader, the stylesheet and `scenes/`. The release
-  WebAssembly is about 412 KB, 170 KB compressed, the scene files
+  WebAssembly is about 418 KB, 171 KB compressed, the scene files
   included.
 - `cargo test`, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`
   — run on the host, no browser needed. CI runs them and a release build.
