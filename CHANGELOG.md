@@ -2,7 +2,80 @@
 
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
-## [0.1.0] (unreleased)
+## [0.2.0] 2026-11-09
+
+### Added
+- **All names** — a button in the bar, two little tags, that shows every
+  thing's name at once: a small tag on each thing, one per thing on the
+  biggest of its regions. Tags that would overlap, or run off the picture,
+  are moved apart the least they need. Pointing at a thing still gives it
+  the big label, the other tags fading back. The choice is kept in the
+  address as `?n=all`. On a phone held upright the button ends the bar's
+  first row, beside the scene's name.
+- **The edges go round the scenes** — a strip along the picture's right
+  edge goes to the next scene, along its left to the one before, the last
+  leading back to the first. Pointed at, a strip shades and shows an
+  arrow; on a touch screen both stay faintly in view. Each is a button
+  named for the scene it goes to.
+- **The street** — the third scene, and the first outdoors, with 26
+  things — sun, cloud, bird, house, roof, chimney, window, door, tree,
+  streetlight, store, traffic light, sidewalk, curb, road, lane, lane line,
+  bicycle, bench, trash can, dog, mailbox, crosswalk, car, bus and
+  motorcycle — drawn by hand in SVG, and a street corner in the realistic
+  and Ghibli styles, made in ChatGPT (299 KB and 403 KB as WebP), with all
+  26 in every style.
+- **Japanese** — the eighth language, 日本語 in the picker: every scene and
+  thing named as Japanese is usually written, kanji where the word has
+  them and katakana for words from abroad (窓, テレビ). Japanese has no
+  plural, so its names have the one form, and the bar shows no dot
+  buttons while it is chosen.
+- **Furigana** — in Japanese, a button showing 字 with じ over it puts each
+  kanji's reading over it in small hiragana, in the label and the tags:
+  ねこ over 猫, ひじ, か and いす over 肘掛け椅子. All 37 things written with
+  kanji have their readings in the scene files; katakana words need none.
+  The choice is kept in the address as `?r=on`.
+- **Plurals and duals** — every thing's name for many, in each language
+  that has a plural, and Arabic's for two (قطة, قطتان, قطط), beside its
+  name for one, in the scene files; `cargo test` checks each is there
+  wherever its language has the form. Dot buttons beside the all-names
+  button show them: one dot the singular, three the plural, and in Arabic
+  two, the dual. Any of them at once, never none; the forms chosen stack a
+  line each, singular on top, in the label and the tags, and a screen
+  reader says them in turn. The choice is kept in the address as `?f=`.
+- **The bus's sign in every language** — the street's bus reads "12
+  Central Station" in English, and its destination follows the language:
+  المحطة المركزية, Hauptbahnhof, Centralstationen, Estación Central,
+  Центральний вокзал, התחנה המרכזית, 中央駅, the 12 as painted. Each is a
+  patch about a kilobyte in size, laid over the realistic and Ghibli
+  pictures at the sign's place, made from the sign itself by
+  `tools/signs.py`: the painted letters filled from the panel, the new
+  words set in their amber, with an LED glow or a painted softness. The
+  pictures are unchanged.
+- **Opens counted** — on ruya.info, Ruya tells sada, the collector the
+  sawt apps report to, that it was opened: `{ site: "ruya.info", kind:
+  "open" }` once per load, and nothing more — no cookies, no identifiers.
+  Anywhere else it stays silent, unless a `sada-url` entry in localStorage
+  points it at a collector. sada takes it once it lists ruya.info.
+- **The TV stand** — the living room's eighteenth thing, the low cabinet
+  the TV stands on, in all three styles. It was in every picture from the
+  start, but with no region it had no name.
+
+### Changed
+- **A folder per scene** — each scene's pictures and thumbnails are in
+  `public/scenes/<scene>/`, named by style (`kitchen/realistic.webp`), and
+  its originals, boxes and prompts in `art/<scene>/` the same way.
+
+### Fixed
+- **The scene's list in Arabic and Hebrew** stays at the bar's left, beside
+  the brand, as in every other language; it had moved right, next to the
+  style switch. Its options still read right to left.
+
+## [0.1.0] 2026-11-01
+
+The first version of ruya.info, a picture dictionary: two scenes, the
+kitchen and the living room, each in three styles, where pointing at a thing
+shows its name in one of seven languages. Published by GitHub Pages from
+amerharb/ruya, over HTTPS; nothing needs a server.
 
 ### Added
 - **The kitchen** — the first scene, a picture made in ChatGPT and shown as
@@ -43,4 +116,5 @@
   scrolling sideways and opening at the middle, so the smallest thing is a
   fingertip wide, and the bar in two rows.
 - **Checks** run by `cargo test` on every scene file, and CI running format,
-  lint, tests and a release build.
+  lint, tests and a release build; on `main`, once they pass, that build is
+  deployed to ruya.info.

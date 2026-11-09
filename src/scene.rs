@@ -16,7 +16,7 @@
 //! cannot fail in a browser.
 
 use crate::geometry::{self, Ring};
-use crate::lang::{Lang, Names};
+use crate::lang::{Duals, Lang, Names, Number, Plurals, Readings};
 use crate::style::Style;
 use serde::Deserialize;
 use std::collections::BTreeMap;
@@ -29,17 +29,56 @@ pub struct Scene {
     pub name: Names,
     /// Every thing with a name, by id.
     pub things: BTreeMap<String, Thing>,
+    /// Words painted in the pictures, by id: a sign's, in every language.
+    /// The app shows them as patches (see [`Spot`]); `tools/signs.py` makes
+    /// the patches from these words, and `cargo test` checks them.
+    #[serde(default)]
+    #[allow(dead_code)]
+    pub signs: BTreeMap<String, Sign>,
     pub styles: Styles,
+}
+
+/// A sign painted in a scene's pictures — the bus's destination — its words
+/// in every language.
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+#[allow(dead_code)]
+pub struct Sign {
+    pub text: Names,
+    /// Why the words were chosen, as a thing's note.
+    #[serde(default)]
+    pub note: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Thing {
+    /// Its name for one of it, the one shown.
     pub name: Names,
+    /// For many of it.
+    pub plural: Plurals,
+    /// For two of it, in a language with a dual.
+    pub dual: Duals,
+    /// Its name for one with readings over it, where the language has them
+    /// and the name needs them: Japanese with kanji.
+    #[serde(default)]
+    pub reading: Readings,
     /// Why a word was chosen, where that is not obvious. JSON has no comments.
     #[serde(default)]
     #[allow(dead_code)]
     pub note: Option<String>,
+}
+
+impl Thing {
+    /// Its name for one, two or many of it, where the language has that
+    /// number.
+    pub fn name_for(&self, lang: Lang, number: Number) -> Option<&str> {
+        match number {
+            Number::Singular => Some(self.name.get(lang)),
+            Number::Dual => self.dual.get(lang),
+            Number::Plural => self.plural.get(lang),
+        }
+    }
 }
 
 /// One field per style, like the names: a style the app does not know fails
@@ -62,6 +101,40 @@ pub struct Rendering {
     pub picture: Picture,
     /// In paint order: where two overlap, the later one is the one tapped.
     pub regions: Vec<Region>,
+    /// The signs painted in this picture, each followed into the chosen
+    /// language by a patch.
+    #[serde(default)]
+    pub signs: Vec<Spot>,
+}
+
+/// Where a sign is in one style's picture, and the language the picture
+/// shows it in. In any other language a patch is laid over it: a small
+/// picture of the sign with that language's words, made by `tools/signs.py`
+/// and named `<style>.<sign>.<lang>.webp` beside the picture.
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Spot {
+    /// The id of the sign this is.
+    pub sign: String,
+    /// The patch's place: left, top, right and bottom, in picture units.
+    pub rect: [f64; 4],
+    /// The language the picture shows the sign in, which needs no patch.
+    pub lang: String,
+}
+
+impl Spot {
+    /// The patch showing this sign in `lang`, over the picture of scene
+    /// `scene` in `style`; none in the language the picture already shows.
+    pub fn patch(&self, scene: &str, style: Style, lang: Lang) -> Option<String> {
+        (lang.code() != self.lang).then(|| {
+            format!(
+                "scenes/{scene}/{}.{}.{}.webp",
+                style.code(),
+                self.sign,
+                lang.code()
+            )
+        })
+    }
 }
 
 #[derive(Debug, Deserialize)]
@@ -96,6 +169,10 @@ pub struct Region {
     /// never hides the thing it names.
     #[serde(skip)]
     pub top: f64,
+    /// The area of its largest part: of two chairs, the bigger one carries
+    /// the name when every name is shown.
+    #[serde(skip)]
+    pub area: f64,
 }
 
 impl Scene {
@@ -115,6 +192,7 @@ impl Scene {
                         .unwrap_or((0.0, 0.0)),
                 };
                 region.top = geometry::bounds(&rings).1;
+                region.area = largest(&rings).map(geometry::area).unwrap_or(0.0);
             }
         }
         Ok(scene)
@@ -151,6 +229,23 @@ impl Scene {
         &SCENES[0]
     }
 
+    /// The scene after this one in the picker's order, the first after the
+    /// last: where the picture's right edge goes.
+    pub fn next(&self) -> &'static Scene {
+        self.step(1)
+    }
+
+    /// The scene before this one, the last before the first: where the
+    /// picture's left edge goes.
+    pub fn previous(&self) -> &'static Scene {
+        self.step(SCENES.len() - 1)
+    }
+
+    fn step(&self, by: usize) -> &'static Scene {
+        let i = SCENES.iter().position(|s| s.id == self.id).unwrap_or(0);
+        &SCENES[(i + by) % SCENES.len()]
+    }
+
     /// The word for "place", the scene picker's accessible name.
     pub fn label(lang: Lang) -> &'static str {
         match lang {
@@ -161,7 +256,25 @@ impl Scene {
             Lang::Es => "Lugar",
             Lang::Uk => "Місце",
             Lang::He => "מקום",
+            Lang::Ja => "場所",
         }
+    }
+}
+
+impl Rendering {
+    /// One region per thing, the biggest, in paint order: where every name is
+    /// shown, each name once.
+    pub fn one_per_thing(&self) -> Vec<usize> {
+        let mut biggest = BTreeMap::<&str, usize>::new();
+        for (i, region) in self.regions.iter().enumerate() {
+            let best = biggest.entry(&region.thing).or_insert(i);
+            if region.area > self.regions[*best].area {
+                *best = i;
+            }
+        }
+        let mut chosen: Vec<usize> = biggest.into_values().collect();
+        chosen.sort_unstable();
+        chosen
     }
 }
 
@@ -196,6 +309,7 @@ fn largest(rings: &[Ring]) -> Option<&[(f64, f64)]> {
 pub const SOURCES: &[(&str, &str)] = &[
     ("kitchen", include_str!("../scenes/kitchen.json")),
     ("living-room", include_str!("../scenes/living-room.json")),
+    ("street", include_str!("../scenes/street.json")),
 ];
 
 pub static SCENES: LazyLock<Vec<Scene>> = LazyLock::new(|| {
@@ -212,6 +326,7 @@ pub static SCENES: LazyLock<Vec<Scene>> = LazyLock::new(|| {
 mod tests {
     use super::*;
     use crate::geometry::{bounds, contains, parse_path};
+    use crate::reading::{is_kanji, pieces};
     use std::collections::HashSet;
     use std::path::Path;
 
@@ -273,6 +388,17 @@ mod tests {
     }
 
     #[test]
+    fn the_edges_go_round_the_scenes() {
+        let first = Scene::first();
+        let last = SCENES.last().unwrap();
+        assert_eq!(last.next().id, first.id);
+        assert_eq!(first.previous().id, last.id);
+        for s in SCENES.iter() {
+            assert_eq!(s.next().previous().id, s.id);
+        }
+    }
+
+    #[test]
     fn every_scene_has_a_style() {
         for (file, scene) in scenes() {
             assert!(scene.renderings().next().is_some(), "{file}: no style");
@@ -318,40 +444,105 @@ mod tests {
                 Lang::Ar => (0x0600..=0x06FF).contains(&u),
                 Lang::He => (0x0590..=0x05FF).contains(&u),
                 Lang::Uk => (0x0400..=0x04FF).contains(&u),
+                // hiragana and katakana, the long-vowel mark ー among them,
+                // and kanji
+                Lang::Ja => (0x3040..=0x30FF).contains(&u) || is_kanji(c),
                 // Latin, with the accents Spanish, German and Swedish use
-                _ => c.is_ascii_alphabetic() || (0x00C0..=0x017F).contains(&u),
+                Lang::En | Lang::De | Lang::Sv | Lang::Es => {
+                    c.is_ascii_alphabetic() || (0x00C0..=0x017F).contains(&u)
+                }
             }
         })
     }
 
-    fn check_names(file: &str, what: &str, names: &Names) {
-        for lang in Lang::ALL {
-            let word = names.get(lang);
-            assert!(
-                !word.trim().is_empty(),
-                "{file}: {what} has no {} name",
-                lang.code()
-            );
-            assert_eq!(
-                word,
-                word.trim(),
-                "{file}: {what}'s {} name has spaces at an end",
-                lang.code()
-            );
-            assert!(
-                in_script(lang, word),
-                "{file}: {what}'s {} name '{word}' is not in that language's script",
-                lang.code()
-            );
-        }
+    fn check_name(file: &str, what: &str, lang: Lang, word: &str) {
+        assert!(
+            !word.trim().is_empty(),
+            "{file}: {what} has no {} name",
+            lang.code()
+        );
+        assert_eq!(
+            word,
+            word.trim(),
+            "{file}: {what}'s {} name has spaces at an end",
+            lang.code()
+        );
+        assert!(
+            in_script(lang, word),
+            "{file}: {what}'s {} name '{word}' is not in that language's script",
+            lang.code()
+        );
     }
 
     #[test]
     fn every_name_is_there_and_in_its_script() {
         for (file, scene) in scenes() {
-            check_names(&file, "the scene", &scene.name);
+            for lang in Lang::ALL {
+                check_name(&file, "the scene", lang, scene.name.get(lang));
+            }
+        }
+    }
+
+    #[test]
+    fn every_kanji_has_its_reading_over_it() {
+        let hiragana = |c: char| ('\u{3041}'..='\u{309F}').contains(&c);
+        for (file, scene) in scenes() {
             for (id, thing) in &scene.things {
-                check_names(&file, id, &thing.name);
+                for lang in Lang::ALL {
+                    let name = thing.name.get(lang);
+                    let reading = thing.reading.get(lang);
+                    let needs = lang.readings_name().is_some() && name.chars().any(is_kanji);
+                    assert_eq!(
+                        reading.is_some(),
+                        needs,
+                        "{file}: {id} has readings in {} if and only if its name has kanji",
+                        lang.code()
+                    );
+                    let Some(reading) = reading else {
+                        continue;
+                    };
+                    let pieces = pieces(reading);
+                    let bare: String = pieces.iter().map(|&(text, _)| text).collect();
+                    assert_eq!(
+                        bare, name,
+                        "{file}: {id}'s reading {reading} is not its name"
+                    );
+                    for (text, over) in pieces {
+                        match over {
+                            Some(kana) => assert!(
+                                !text.is_empty() && !kana.is_empty() && kana.chars().all(hiragana),
+                                "{file}: {id}: [{kana}] is not in hiragana over a kanji"
+                            ),
+                            None => assert!(
+                                !text.chars().any(is_kanji),
+                                "{file}: {id}: {text} has a kanji with no reading"
+                            ),
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn every_thing_has_a_name_for_each_number_its_language_has() {
+        for (file, scene) in scenes() {
+            for (id, thing) in &scene.things {
+                for lang in Lang::ALL {
+                    for number in [Number::Singular, Number::Dual, Number::Plural] {
+                        let word = thing.name_for(lang, number);
+                        assert_eq!(
+                            word.is_some(),
+                            lang.numbers().contains(&number),
+                            "{file}: {id} has a {number:?} in {} if and only if the \
+                             language has one",
+                            lang.code()
+                        );
+                        if let Some(word) = word {
+                            check_name(&file, &format!("{id} ({number:?})"), lang, word);
+                        }
+                    }
+                }
             }
         }
     }
@@ -398,6 +589,31 @@ mod tests {
                     "{what}: {}'s label point {:?} is off it — give it an \"at\"",
                     region.thing,
                     region.anchor
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn every_name_shown_once_when_all_are() {
+        let scenes = scenes();
+        for (what, r) in renderings(&scenes) {
+            let chosen = r.one_per_thing();
+            let things: HashSet<&str> = r.regions.iter().map(|g| g.thing.as_str()).collect();
+            let named: HashSet<&str> = chosen
+                .iter()
+                .map(|&i| r.regions[i].thing.as_str())
+                .collect();
+            assert_eq!(chosen.len(), named.len(), "{what}: a thing named twice");
+            assert_eq!(named, things, "{what}: a thing left without its name");
+            for &i in &chosen {
+                let it = &r.regions[i];
+                assert!(
+                    r.regions
+                        .iter()
+                        .all(|g| g.thing != it.thing || g.area <= it.area),
+                    "{what}: {}'s name is not on its biggest region",
+                    it.thing
                 );
             }
         }
@@ -464,6 +680,53 @@ mod tests {
             let p = &r.picture;
             check_file(&what, &p.src, p.width, p.height, true);
             check_file(&what, &p.thumb, p.width, p.height, false);
+        }
+    }
+
+    #[test]
+    fn every_sign_has_its_words_and_its_patches() {
+        for (file, scene) in scenes() {
+            for (id, sign) in &scene.signs {
+                for lang in Lang::ALL {
+                    check_name(&file, &format!("sign {id}"), lang, sign.text.get(lang));
+                }
+                assert!(
+                    scene
+                        .renderings()
+                        .any(|(_, r)| r.signs.iter().any(|spot| &spot.sign == id)),
+                    "{file}: sign {id} is in no picture"
+                );
+            }
+            for (style, r) in scene.renderings() {
+                let what = format!("{file} {}", style.code());
+                for spot in &r.signs {
+                    let name = &spot.sign;
+                    assert!(
+                        scene.signs.contains_key(name),
+                        "{what}: {name} is not a sign of the scene"
+                    );
+                    assert!(
+                        Lang::from_tag(&spot.lang).is_some_and(|l| l.code() == spot.lang),
+                        "{what}: {name}'s {} is not a language Ruya has",
+                        spot.lang
+                    );
+                    let [x0, y0, x1, y1] = spot.rect;
+                    assert!(
+                        0.0 <= x0 && x0 < x1 && x1 <= r.picture.width,
+                        "{what}: {name} is not across the picture"
+                    );
+                    assert!(
+                        0.0 <= y0 && y0 < y1 && y1 <= r.picture.height,
+                        "{what}: {name} is not down the picture"
+                    );
+                    for lang in Lang::ALL {
+                        if let Some(src) = spot.patch(&scene.id, style, lang) {
+                            let what = format!("{what} {name} {}", lang.code());
+                            check_file(&what, &src, x1 - x0, y1 - y0, true);
+                        }
+                    }
+                }
+            }
         }
     }
 }

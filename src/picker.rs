@@ -1,9 +1,10 @@
 //! The choices in the bar: the scene, as its name; the style, as a little
-//! picture of each; and the language. The scene and the language are the
-//! browser's own `<select>`, which every phone turns into its best native
-//! chooser.
+//! picture of each; every name or one at a time; the forms each name shows;
+//! readings over the names, in Japanese; and the language. The scene and the
+//! language are the browser's own `<select>`, which every phone turns into
+//! its best native chooser.
 
-use crate::lang::Lang;
+use crate::lang::{Forms, Lang, Number};
 use crate::scene::{SCENES, Scene};
 use crate::style::Style;
 use leptos::prelude::*;
@@ -28,12 +29,16 @@ pub fn ScenePicker(
                 }
             >
                 // as in the language picker, each option says whether it is
-                // the one chosen
+                // the one chosen, and its direction is its own
                 {SCENES
                     .iter()
                     .map(|s| {
                         view! {
-                            <option value=s.id.clone() selected=move || scene.get().id == s.id>
+                            <option
+                                value=s.id.clone()
+                                dir=move || lang.get().dir()
+                                selected=move || scene.get().id == s.id
+                            >
                                 {move || s.name.get(lang.get()).to_string()}
                             </option>
                         }
@@ -43,8 +48,10 @@ pub fn ScenePicker(
         }
     });
     let alone = picker.is_none();
+    // no `dir` on the heading: in Arabic or Hebrew it would carry the name,
+    // and the list with it, to the bar's other end
     view! {
-        <h1 class="scene-name" lang=move || lang.get().code() dir=move || lang.get().dir()>
+        <h1 class="scene-name" lang=move || lang.get().code()>
             {picker}
             {move || alone.then(|| scene.get().name.get(lang.get()).to_string())}
         </h1>
@@ -92,6 +99,132 @@ pub fn StylePicker(
             </div>
         }
     })
+}
+
+/// Every name on the picture at once, or one at a time as you point.
+#[component]
+pub fn AllNames(
+    all: ReadSignal<bool>,
+    set_all: WriteSignal<bool>,
+    lang: ReadSignal<Lang>,
+) -> impl IntoView {
+    let words = move || all_names(lang.get());
+    view! {
+        <button
+            class="all-names"
+            class:on=move || all.get()
+            aria-pressed=move || all.get().to_string()
+            aria-label=words
+            title=words
+            on:click=move |_| set_all.update(|on| *on = !*on)
+        >
+            // two name tags, as the picture shows them
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2" y="4" width="13" height="7" rx="2" />
+                <rect x="9" y="14" width="13" height="7" rx="2" />
+            </svg>
+        </button>
+    }
+}
+
+/// Readings over the names, or none: furigana over Japanese kanji. A button
+/// only in a language that has readings.
+#[component]
+pub fn ReadingsButton(
+    readings: ReadSignal<bool>,
+    set_readings: WriteSignal<bool>,
+    lang: ReadSignal<Lang>,
+) -> impl IntoView {
+    move || {
+        lang.get().readings_name().map(|word| {
+            view! {
+                <button
+                    class="readings"
+                    class:on=move || readings.get()
+                    aria-pressed=move || readings.get().to_string()
+                    aria-label=word
+                    title=word
+                    on:click=move |_| set_readings.update(|on| *on = !*on)
+                >
+                    // a kanji with its reading over it, as the names get
+                    <ruby lang="ja" aria-hidden="true">
+                        "字"
+                        <rt>"じ"</rt>
+                    </ruby>
+                </button>
+            }
+        })
+    }
+}
+
+/// A button per form the language has — singular and plural, and in Arabic
+/// the dual between them — each adding its form under every name shown, or
+/// taking it away: any of them at once, never none. A language with one
+/// form, as Japanese, has nothing to choose and shows none.
+#[component]
+pub fn FormButtons(
+    forms: ReadSignal<Forms>,
+    set_forms: WriteSignal<Forms>,
+    lang: ReadSignal<Lang>,
+) -> impl IntoView {
+    // two buttons or three, so a new set with each language
+    move || {
+        let l = lang.get();
+        (l.numbers().len() > 1).then(|| {
+            view! {
+                <div class="forms" role="group" aria-label=Forms::label(l)>
+                    {l
+                        .numbers()
+                        .iter()
+                        .map(|&n| {
+                            let on = move || forms.get().shows(n, l);
+                            view! {
+                                <button
+                                    class="form"
+                                    class:on=on
+                                    aria-pressed=move || on().to_string()
+                                    aria-label=n.name(l)
+                                    title=n.name(l)
+                                    on:click=move |_| set_forms.update(|f| *f = f.toggled(n, l))
+                                >
+                                    {dots(n)}
+                                </button>
+                            }
+                        })
+                        .collect_view()}
+                </div>
+            }
+        })
+    }
+}
+
+/// A form's button: as many dots as it names — one, two, or three in a
+/// triangle for many.
+fn dots(n: Number) -> impl IntoView {
+    let at: &[(&str, &str)] = match n {
+        Number::Singular => &[("12", "12")],
+        Number::Dual => &[("7", "12"), ("17", "12")],
+        Number::Plural => &[("12", "7"), ("6.5", "16.5"), ("17.5", "16.5")],
+    };
+    view! {
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            {at.iter().map(|&(x, y)| view! { <circle cx=x cy=y r="3" /> }).collect_view()}
+        </svg>
+    }
+}
+
+/// The toggle's name, for a screen reader and a mouse's tooltip.
+fn all_names(lang: Lang) -> &'static str {
+    match lang {
+        Lang::En => "All names",
+        Lang::Ar => "كل الأسماء",
+        Lang::De => "Alle Namen",
+        Lang::Sv => "Alla namn",
+        Lang::Es => "Todos los nombres",
+        Lang::Uk => "Усі назви",
+        Lang::He => "כל השמות",
+        Lang::Ja => "すべての名前",
+    }
 }
 
 /// Each language listed in its own script.

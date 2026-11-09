@@ -1,0 +1,297 @@
+{
+	"id": "street",
+	"name": { "en": "street", "ar": "شارع", "de": "die Straße", "sv": "en gata", "es": "la calle", "uk": "вулиця", "he": "רחוב", "ja": "通り" },
+	"things": {
+		"sun": {
+			"name": { "en": "sun", "ar": "شمس", "de": "die Sonne", "sv": "en sol", "es": "el sol", "uk": "сонце", "he": "שמש", "ja": "太陽" },
+			"plural": { "en": "suns", "ar": "شموس", "de": "die Sonnen", "sv": "solar", "es": "los soles", "uk": "сонця", "he": "שמשות" },
+			"dual": { "ar": "شمسان" },
+			"reading": { "ja": "太陽[たいよう]" },
+			"note": "sv: en sol, by the rule, though the one in the sky is said solen"
+		},
+		"cloud": {
+			"name": { "en": "cloud", "ar": "سحابة", "de": "die Wolke", "sv": "ett moln", "es": "la nube", "uk": "хмара", "he": "ענן", "ja": "雲" },
+			"plural": { "en": "clouds", "ar": "سحب", "de": "die Wolken", "sv": "moln", "es": "las nubes", "uk": "хмари", "he": "עננים" },
+			"dual": { "ar": "سحابتان" },
+			"reading": { "ja": "雲[くも]" }
+		},
+		"bird": {
+			"name": { "en": "bird", "ar": "طائر", "de": "der Vogel", "sv": "en fågel", "es": "el pájaro", "uk": "птах", "he": "ציפור", "ja": "鳥" },
+			"plural": { "en": "birds", "ar": "طيور", "de": "die Vögel", "sv": "fåglar", "es": "los pájaros", "uk": "птахи", "he": "ציפורים" },
+			"dual": { "ar": "طائران" },
+			"reading": { "ja": "鳥[とり]" },
+			"note": "es pájaro, a small bird that flies; ave is any bird"
+		},
+		"house": {
+			"name": { "en": "house", "ar": "منزل", "de": "das Haus", "sv": "ett hus", "es": "la casa", "uk": "будинок", "he": "בית", "ja": "家" },
+			"plural": { "en": "houses", "ar": "منازل", "de": "die Häuser", "sv": "hus", "es": "las casas", "uk": "будинки", "he": "בתים" },
+			"dual": { "ar": "منزلان" },
+			"reading": { "ja": "家[いえ]" }
+		},
+		"roof": {
+			"name": { "en": "roof", "ar": "سقف", "de": "das Dach", "sv": "ett tak", "es": "el tejado", "uk": "дах", "he": "גג", "ja": "屋根" },
+			"plural": { "en": "roofs", "ar": "أسقف", "de": "die Dächer", "sv": "tak", "es": "los tejados", "uk": "дахи", "he": "גגות" },
+			"dual": { "ar": "سقفان" },
+			"reading": { "ja": "屋根[やね]" },
+			"note": "a pitched roof of tiles: es tejado, where techo is also the ceiling; ar سقف and sv tak are the ceiling too"
+		},
+		"chimney": {
+			"name": { "en": "chimney", "ar": "مدخنة", "de": "der Schornstein", "sv": "en skorsten", "es": "la chimenea", "uk": "димар", "he": "ארובה", "ja": "煙突" },
+			"plural": { "en": "chimneys", "ar": "مداخن", "de": "die Schornsteine", "sv": "skorstenar", "es": "las chimeneas", "uk": "димарі", "he": "ארובות" },
+			"dual": { "ar": "مدخنتان" },
+			"reading": { "ja": "煙突[えんとつ]" },
+			"note": "de Schornstein, Kamin and Schlot as often in the south; es chimenea is the fireplace too; uk комин as often"
+		},
+		"window": {
+			"name": { "en": "window", "ar": "نافذة", "de": "das Fenster", "sv": "ett fönster", "es": "la ventana", "uk": "вікно", "he": "חלון", "ja": "窓" },
+			"plural": { "en": "windows", "ar": "نوافذ", "de": "die Fenster", "sv": "fönster", "es": "las ventanas", "uk": "вікна", "he": "חלונות" },
+			"dual": { "ar": "نافذتان" },
+			"reading": { "ja": "窓[まど]" }
+		},
+		"door": {
+			"name": { "en": "door", "ar": "باب", "de": "die Tür", "sv": "en dörr", "es": "la puerta", "uk": "двері", "he": "דלת", "ja": "ドア" },
+			"plural": { "en": "doors", "ar": "أبواب", "de": "die Türen", "sv": "dörrar", "es": "las puertas", "uk": "двері", "he": "דלתות" },
+			"dual": { "ar": "بابان" },
+			"note": "uk: двері has no singular"
+		},
+		"tree": {
+			"name": { "en": "tree", "ar": "شجرة", "de": "der Baum", "sv": "ett träd", "es": "el árbol", "uk": "дерево", "he": "עץ", "ja": "木" },
+			"plural": { "en": "trees", "ar": "أشجار", "de": "die Bäume", "sv": "träd", "es": "los árboles", "uk": "дерева", "he": "עצים" },
+			"dual": { "ar": "شجرتان" },
+			"reading": { "ja": "木[き]" }
+		},
+		"streetlight": {
+			"name": { "en": "streetlight", "ar": "عمود إنارة", "de": "die Straßenlaterne", "sv": "en gatlykta", "es": "la farola", "uk": "ліхтар", "he": "פנס רחוב", "ja": "街灯" },
+			"plural": { "en": "streetlights", "ar": "أعمدة إنارة", "de": "die Straßenlaternen", "sv": "gatlyktor", "es": "las farolas", "uk": "ліхтарі", "he": "פנסי רחוב" },
+			"dual": { "ar": "عمودا إنارة" },
+			"reading": { "ja": "街灯[がいとう]" },
+			"note": "the post and its lamp; uk ліхтар is any lamp outdoors, and a street one is вуличний ліхтар"
+		},
+		"store": {
+			"name": { "en": "store", "ar": "متجر", "de": "der Laden", "sv": "en affär", "es": "la tienda", "uk": "магазин", "he": "חנות", "ja": "店" },
+			"plural": { "en": "stores", "ar": "متاجر", "de": "die Läden", "sv": "affärer", "es": "las tiendas", "uk": "магазини", "he": "חנויות" },
+			"dual": { "ar": "متجران" },
+			"reading": { "ja": "店[みせ]" },
+			"note": "American store, where British English says shop; de Laden, Geschäft as often"
+		},
+		"traffic-light": {
+			"name": { "en": "traffic light", "ar": "إشارة مرور", "de": "die Ampel", "sv": "ett trafikljus", "es": "el semáforo", "uk": "світлофор", "he": "רמזור", "ja": "信号" },
+			"plural": { "en": "traffic lights", "ar": "إشارات مرور", "de": "die Ampeln", "sv": "trafikljus", "es": "los semáforos", "uk": "світлофори", "he": "רמזורים" },
+			"dual": { "ar": "إشارتا مرور" },
+			"reading": { "ja": "信号[しんごう]" },
+			"note": "ja 信号, 信号機 in full"
+		},
+		"sidewalk": {
+			"name": { "en": "sidewalk", "ar": "رصيف", "de": "der Gehweg", "sv": "en trottoar", "es": "la acera", "uk": "тротуар", "he": "מדרכה", "ja": "歩道" },
+			"plural": { "en": "sidewalks", "ar": "أرصفة", "de": "die Gehwege", "sv": "trottoarer", "es": "las aceras", "uk": "тротуари", "he": "מדרכות" },
+			"dual": { "ar": "رصيفان" },
+			"reading": { "ja": "歩道[ほどう]" },
+			"note": "American sidewalk, British pavement; de Gehweg, as the signs say, and Bürgersteig as often"
+		},
+		"road": {
+			"name": { "en": "road", "ar": "طريق", "de": "die Fahrbahn", "sv": "en väg", "es": "la calzada", "uk": "дорога", "he": "כביש", "ja": "車道" },
+			"plural": { "en": "roads", "ar": "طرق", "de": "die Fahrbahnen", "sv": "vägar", "es": "las calzadas", "uk": "дороги", "he": "כבישים" },
+			"dual": { "ar": "طريقان" },
+			"reading": { "ja": "車道[しゃどう]" },
+			"note": "the part of the street that traffic drives on: de Fahrbahn, as Straße is the whole street; es calzada, carretera being a road between towns; he כביש, as רחוב is the street; ja 車道, as 道路 is the whole road"
+		},
+		"lane": {
+			"name": { "en": "lane", "ar": "حارة", "de": "die Fahrspur", "sv": "ett körfält", "es": "el carril", "uk": "смуга", "he": "נתיב", "ja": "車線" },
+			"plural": { "en": "lanes", "ar": "حارات", "de": "die Fahrspuren", "sv": "körfält", "es": "los carriles", "uk": "смуги", "he": "נתיבים" },
+			"dual": { "ar": "حارتان" },
+			"reading": { "ja": "車線[しゃせん]" },
+			"note": "one lane of traffic; ar مسار as often; uk смуга руху in full"
+		},
+		"lane-line": {
+			"name": { "en": "lane line", "ar": "خط فاصل", "de": "die Leitlinie", "sv": "en mittlinje", "es": "la línea discontinua", "uk": "розділова лінія", "he": "קו הפרדה", "ja": "センターライン" },
+			"plural": { "en": "lane lines", "ar": "خطوط فاصلة", "de": "die Leitlinien", "sv": "mittlinjer", "es": "las líneas discontinuas", "uk": "розділові лінії", "he": "קווי הפרדה" },
+			"dual": { "ar": "خطان فاصلان" },
+			"note": "the dashed line between the lanes: de Leitlinie, the traffic rules' word, Mittelstreifen as often in speech; es línea discontinua, the broken line, as it is called"
+		},
+		"curb": {
+			"name": { "en": "curb", "ar": "حافة الرصيف", "de": "der Bordstein", "sv": "en trottoarkant", "es": "el bordillo", "uk": "бордюр", "he": "אבן שפה", "ja": "縁石" },
+			"plural": { "en": "curbs", "ar": "حواف الرصيف", "de": "die Bordsteine", "sv": "trottoarkanter", "es": "los bordillos", "uk": "бордюри", "he": "אבני שפה" },
+			"dual": { "ar": "حافتا الرصيف" },
+			"reading": { "ja": "縁石[えんせき]" },
+			"note": "American curb, British kerb"
+		},
+		"bicycle": {
+			"name": { "en": "bicycle", "ar": "دراجة", "de": "das Fahrrad", "sv": "en cykel", "es": "la bicicleta", "uk": "велосипед", "he": "אופניים", "ja": "自転車" },
+			"plural": { "en": "bicycles", "ar": "دراجات", "de": "die Fahrräder", "sv": "cyklar", "es": "las bicicletas", "uk": "велосипеди", "he": "אופניים" },
+			"dual": { "ar": "دراجتان" },
+			"reading": { "ja": "自転車[じてんしゃ]" },
+			"note": "bike is as common; ar دراجة alone is a bicycle, a motorcycle being دراجة نارية; he אופניים has no singular"
+		},
+		"bench": {
+			"name": { "en": "bench", "ar": "مقعد", "de": "die Bank", "sv": "en bänk", "es": "el banco", "uk": "лавка", "he": "ספסל", "ja": "ベンチ" },
+			"plural": { "en": "benches", "ar": "مقاعد", "de": "die Bänke", "sv": "bänkar", "es": "los bancos", "uk": "лавки", "he": "ספסלים" },
+			"dual": { "ar": "مقعدان" },
+			"note": "de Bank and es banco are a bank for money too; ar مقعد is any seat"
+		},
+		"trash-can": {
+			"name": { "en": "trash can", "ar": "سلة مهملات", "de": "der Mülleimer", "sv": "en papperskorg", "es": "la papelera", "uk": "урна", "he": "פח אשפה", "ja": "ゴミ箱" },
+			"plural": { "en": "trash cans", "ar": "سلال مهملات", "de": "die Mülleimer", "sv": "papperskorgar", "es": "las papeleras", "uk": "урни", "he": "פחי אשפה" },
+			"dual": { "ar": "سلتا مهملات" },
+			"reading": { "ja": "ゴミ箱[ばこ]" },
+			"note": "American trash can, British bin; a small one in the street: es papelera, sv papperskorg, uk урна"
+		},
+		"dog": {
+			"name": { "en": "dog", "ar": "كلب", "de": "der Hund", "sv": "en hund", "es": "el perro", "uk": "собака", "he": "כלב", "ja": "犬" },
+			"plural": { "en": "dogs", "ar": "كلاب", "de": "die Hunde", "sv": "hundar", "es": "los perros", "uk": "собаки", "he": "כלבים" },
+			"dual": { "ar": "كلبان" },
+			"reading": { "ja": "犬[いぬ]" }
+		},
+		"mailbox": {
+			"name": { "en": "mailbox", "ar": "صندوق بريد", "de": "der Briefkasten", "sv": "en brevlåda", "es": "el buzón", "uk": "поштова скринька", "he": "תיבת דואר", "ja": "ポスト" },
+			"plural": { "en": "mailboxes", "ar": "صناديق بريد", "de": "die Briefkästen", "sv": "brevlådor", "es": "los buzones", "uk": "поштові скриньки", "he": "תיבות דואר" },
+			"dual": { "ar": "صندوقا بريد" },
+			"note": "one in the street for posting letters; American mailbox, British postbox; ja ポスト, as 郵便受け is the box at home"
+		},
+		"crosswalk": {
+			"name": { "en": "crosswalk", "ar": "ممر مشاة", "de": "der Zebrastreifen", "sv": "ett övergångsställe", "es": "el paso de peatones", "uk": "пішохідний перехід", "he": "מעבר חצייה", "ja": "横断歩道" },
+			"plural": { "en": "crosswalks", "ar": "ممرات مشاة", "de": "die Zebrastreifen", "sv": "övergångsställen", "es": "los pasos de peatones", "uk": "пішохідні переходи", "he": "מעברי חצייה" },
+			"dual": { "ar": "ممرا مشاة" },
+			"reading": { "ja": "横断歩道[おうだんほどう]" },
+			"note": "American crosswalk, British zebra crossing; es paso de cebra and uk зебра as often"
+		},
+		"car": {
+			"name": { "en": "car", "ar": "سيارة", "de": "das Auto", "sv": "en bil", "es": "el coche", "uk": "автомобіль", "he": "מכונית", "ja": "車" },
+			"plural": { "en": "cars", "ar": "سيارات", "de": "die Autos", "sv": "bilar", "es": "los coches", "uk": "автомобілі", "he": "מכוניות" },
+			"dual": { "ar": "سيارتان" },
+			"reading": { "ja": "車[くるま]" },
+			"note": "es coche, Spain's word; uk машина is the everyday word, and a machine too"
+		},
+		"bus": {
+			"name": { "en": "bus", "ar": "حافلة", "de": "der Bus", "sv": "en buss", "es": "el autobús", "uk": "автобус", "he": "אוטובוס", "ja": "バス" },
+			"plural": { "en": "buses", "ar": "حافلات", "de": "die Busse", "sv": "bussar", "es": "los autobuses", "uk": "автобуси", "he": "אוטובוסים" },
+			"dual": { "ar": "حافلتان" },
+			"note": "ar حافلة, the Standard word; باص is the everyday one"
+		},
+		"motorcycle": {
+			"name": { "en": "motorcycle", "ar": "دراجة نارية", "de": "das Motorrad", "sv": "en motorcykel", "es": "la moto", "uk": "мотоцикл", "he": "אופנוע", "ja": "バイク" },
+			"plural": { "en": "motorcycles", "ar": "دراجات نارية", "de": "die Motorräder", "sv": "motorcyklar", "es": "las motos", "uk": "мотоцикли", "he": "אופנועים" },
+			"dual": { "ar": "دراجتان ناريتان" },
+			"note": "es moto, short for motocicleta and what is said; ja バイク, オートバイ being the longer word"
+		}
+	},
+	"signs": {
+		"bus": {
+			"text": { "en": "Central Station", "ar": "المحطة المركزية", "de": "Hauptbahnhof", "sv": "Centralstationen", "es": "Estación Central", "uk": "Центральний вокзал", "he": "התחנה המרכזית", "ja": "中央駅" },
+			"note": "the destination on the bus's display; the route number, 12, stays as painted in every language. de Hauptbahnhof, the main station, as German signs say; sv Centralstationen and he התחנה המרכזית with their article, as signs have them"
+		}
+	},
+	"styles": {
+		"basic": {
+			"picture": { "src": "scenes/street/basic.svg", "thumb": "scenes/street/basic.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "sidewalk", "d": "M0 600H1536V696H0Z", "at": [1240, 650] },
+				{ "thing": "road", "d": "M0 720H1536V1024H0Z", "at": [75, 805] },
+				{ "thing": "lane", "d": "M0 888H1536V1012H0Z", "at": [110, 950] },
+				{ "thing": "lane-line", "d": "M0 864H1536V912H0Z", "at": [1495, 888] },
+				{ "thing": "curb", "d": "M0 686H1536V734H0Z" },
+				{ "thing": "house", "d": "M36 334L250 190L344 253V194H396V288L464 334H440V600H60V334Z" },
+				{ "thing": "roof", "d": "M36 334L250 190L464 334Z" },
+				{ "thing": "chimney", "d": "M344 194H396V206H390V284L350 257V206H344Z" },
+				{ "thing": "window", "d": "M100 380H180V450H100Z" },
+				{ "thing": "window", "d": "M320 380H400V450H320Z" },
+				{ "thing": "door", "d": "M210 470H290V600H210Z" },
+				{ "thing": "store", "d": "M850 290H1310V316H1300V600H860V316H850Z" },
+				{ "thing": "tree", "d": "M560 235L607 248L641 280L655 330L668 346L686 370L696 400L684 440L650 462L612 466L575 490V640H545V490L508 466L470 460L436 440L426 400L440 360L466 342L478 282L513 248Z" },
+				{ "thing": "sun", "d": "M1496 130L1488 171L1465 205L1431 228L1390 236L1349 228L1315 205L1292 171L1284 130L1292 89L1315 55L1349 32L1390 24L1431 32L1465 55L1488 89Z" },
+				{ "thing": "cloud", "d": "M490 122L503 102L540 91L566 84L580 68L612 58L644 68L662 90L690 98L715 112L720 124L708 150L560 154L512 146Z" },
+				{ "thing": "bird", "d": "M856 186L876 194L898 152L920 192L926 178L940 182L952 192L936 198L922 206L900 214L880 210L860 208Z" },
+				{ "thing": "streetlight", "d": "M728 664V640H736V258L734 242H800V254H830L820 290H790L780 260H748V640H756V664Z", "at": [742, 450] },
+				{ "thing": "traffic-light", "d": "M1420 300H1484V470H1458V640H1466V664H1438V640H1446V470H1420Z" },
+				{ "thing": "bicycle", "d": "M80 630L86 608L102 594L120 590L140 594L144 572L132 571V560H162V572L154 582H202L208 562H230V572L216 574L218 592L230 590L250 594L264 608L270 630L264 652L250 666L230 670L210 666L196 652L190 636H160L154 652L140 666L120 670L100 666L86 652Z" },
+				{ "thing": "bench", "d": "M478 584H662V626H672V644H654V666H638V644H502V666H486V644H468V626H478Z" },
+				{ "thing": "trash-can", "d": "M774 592H838V608L826 666H786L774 608Z" },
+				{ "thing": "dog", "d": "M960 586L972 584L984 612L1040 607L1072 600L1076 588L1094 582L1112 592L1128 604L1130 618L1114 626L1098 628L1078 642L1074 682H1058L1056 656H1026L1024 682H990L988 650L978 636L970 612Z" },
+				{ "thing": "mailbox", "d": "M1322 572L1330 548L1359 538L1388 548L1396 572V640H1388V666H1378V640H1340V666H1330V640H1322Z" },
+				{ "thing": "crosswalk", "d": "M1200 724H1440V1024H1200Z" },
+				{ "thing": "car", "d": "M150 780L162 768H220L270 720H410L460 768H508L520 780V830L506 840H460L452 872H408L400 840H270L262 872H218L210 840H164L150 830Z" },
+				{ "thing": "bus", "d": "M582 740H1128L1150 762V950L1138 960H1064L1056 1000H996L988 960H714L706 1000H646L638 960H572L560 950V762Z" },
+				{ "thing": "motorcycle", "d": "M256 940L272 922L296 910L318 898H352L382 886L404 876H420L424 892L440 896L448 912L468 936L478 964L470 988L444 998L420 990L410 972H322L318 988L290 998L264 990L256 964Z" }
+			]
+		},
+		"realistic": {
+			"picture": { "src": "scenes/street/realistic.webp", "thumb": "scenes/street/realistic.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "sidewalk", "d": "M0 856L400 830L590 798L800 768L830 738H1195L1207 744L1205 754L1175 770L1100 787L1000 815L850 852L650 893L525 930L380 960L215 992L55 1024H0Z", "at": [720, 820] },
+				{ "thing": "road", "d": "M55 1024L215 992L380 960L525 930L650 893L850 852L1000 815L1100 787L1175 770L1205 754L1207 744L1195 738H830L815 728V705L1092 702L1536 696V1024Z", "at": [1040, 960] },
+				{ "thing": "lane", "d": "M1370 822L1536 828V1024H1242Z", "at": [1440, 940] },
+				{ "thing": "lane-line", "d": "M1352 822H1388L1270 1024H1214Z", "at": [1280, 965] },
+				{ "thing": "curb", "d": "M0 1004L215 962L380 926L525 898L650 866L850 832L1000 799L1100 777L1175 758L1195 744L1210 746L1207 756L1178 772L1100 790L1000 818L850 855L650 896L525 933L380 963L215 995L60 1024H0Z", "at": [500, 920] },
+				{ "thing": "crosswalk", "d": "M1180 784L1232 742L1532 746L1512 793Z" },
+				{ "thing": "house", "d": "M0 396L262 232L285 118L360 162V75L425 72V90L421 202L590 334V349L557 346V690L0 700Z", "at": [380, 470] },
+				{ "thing": "roof", "d": "M285 118L360 162V75L425 72V90L421 202L590 334V349L315 255L262 232Z", "at": [470, 265] },
+				{ "thing": "chimney", "d": "M358 70H427V90H422V220L362 188V90H358Z" },
+				{ "thing": "window", "d": "M343 317H402V425H343Z" },
+				{ "thing": "window", "d": "M136 505H186V596H136Z" },
+				{ "thing": "door", "d": "M352 538H408V668H352Z" },
+				{ "thing": "store", "d": "M868 544L1160 541V697H868Z" },
+				{ "thing": "tree", "d": "M570 79L631 92L692 62L744 75L788 88L857 92L910 118L927 170L962 192L997 240L1014 284L1049 327L1066 370L1079 431L1049 492L997 527L927 553L857 570H788V753H757V570L701 562L631 544L592 527L586 440L590 345L560 262L522 214L500 170L520 128Z" },
+				{ "thing": "tree", "d": "M0 0H300L330 30L350 90L352 150L345 230L330 300L290 360L240 410L180 440L100 455L40 470H0Z" },
+				{ "thing": "tree", "d": "M1222 384L1262 355L1305 368L1346 300L1384 262L1440 250L1500 262L1536 292V560H1350L1340 600L1300 612L1250 616L1222 600Z" },
+				{ "thing": "sun", "d": "M1284 62L1280 81L1269 97L1253 108L1234 112L1215 108L1199 97L1188 81L1184 62L1188 43L1199 27L1215 16L1234 12L1253 16L1269 27L1280 43Z" },
+				{ "thing": "cloud", "d": "M992 180L1025 145L1058 125L1100 129L1142 121L1180 133L1175 167L1142 192L1108 208L1067 221L1025 250L995 238Z" },
+				{ "thing": "cloud", "d": "M1083 283L1092 250L1142 242L1175 238L1200 246L1250 233L1275 225L1300 221L1333 238L1367 233L1400 242L1383 275L1333 292L1275 304L1217 317L1150 321L1100 308Z" },
+				{ "thing": "bird", "d": "M1314 121L1329 106L1353 106L1368 121L1368 141L1353 156L1329 156L1314 141Z" },
+				{ "thing": "bird", "d": "M1368 97L1383 82L1407 82L1422 97L1422 117L1407 132L1383 132L1368 117Z" },
+				{ "thing": "bird", "d": "M1436 82L1451 67L1475 67L1490 82L1490 102L1475 117L1451 117L1436 102Z" },
+				{ "thing": "bird", "d": "M1398 164L1413 149L1437 149L1452 164L1452 184L1437 199L1413 199L1398 184Z" },
+				{ "thing": "bench", "d": "M118 698L322 690L330 736L392 752L402 772V836L192 862L116 852Z" },
+				{ "thing": "bicycle", "d": "M410 664L446 660L470 676L500 672L512 690L540 700L553 730V790L540 810L515 812L498 800L470 790L452 812L430 815L410 800L405 760L410 712Z" },
+				{ "thing": "streetlight", "d": "M562 104L578 118L614 158L606 196L584 224L578 228V796L602 808V866H537V808L555 796V228L549 224L525 196L509 158L546 118Z", "at": [566, 420] },
+				{ "thing": "trash-can", "d": "M600 684H684L677 838H607Z" },
+				{ "thing": "mailbox", "d": "M753 632L758 624H818L823 632V723H791V779H777V723H753Z" },
+				{ "thing": "bus", "d": "M1354 542H1504L1514 566V675L1500 689L1486 696H1370L1357 684L1350 634L1336 593L1337 569L1352 562Z" },
+				{ "thing": "car", "d": "M1095 700L1093 682L1100 667L1130 659L1160 650L1190 631L1230 625L1300 628L1320 630L1334 646L1347 668L1349 698L1334 710L1300 712L1280 718L1260 712L1150 712L1127 716L1105 710Z" },
+				{ "thing": "traffic-light", "d": "M1125 426H1175V522H1153V738L1158 752H1136L1142 738V522H1125Z", "at": [1150, 474] },
+				{ "thing": "motorcycle", "d": "M872 645L882 650L884 668L898 676L922 672L932 662L942 672L938 688L980 683L998 700L1000 735L992 762L970 772L948 770L938 778L928 772L902 768L880 778L860 778L846 762L842 735L855 712L868 700L866 680L870 672Z" },
+				{ "thing": "dog", "d": "M352 842L362 828L392 798L430 782L478 782L502 760L523 752L545 757L558 773L552 795L528 802L526 830L518 880L520 892L488 896L478 860L440 846L432 888L396 894L392 858L380 860Z" }
+			],
+			"signs": [ { "sign": "bus", "rect": [1386, 546, 1471, 565], "lang": "en" } ]
+		},
+		"ghibli": {
+			"picture": { "src": "scenes/street/ghibli.webp", "thumb": "scenes/street/ghibli.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "sidewalk", "d": "M0 856L400 830L590 798L800 768L830 738H1195L1207 744L1205 754L1175 770L1100 787L1000 815L850 852L650 893L525 930L380 960L215 992L55 1024H0Z", "at": [720, 820] },
+				{ "thing": "road", "d": "M55 1024L215 992L380 960L525 930L650 893L850 852L1000 815L1100 787L1175 770L1205 754L1207 744L1195 738H830L815 728V705L1092 702L1536 696V1024Z", "at": [1040, 960] },
+				{ "thing": "lane", "d": "M1370 822L1536 828V1024H1242Z", "at": [1440, 940] },
+				{ "thing": "lane-line", "d": "M1352 822H1388L1270 1024H1214Z", "at": [1280, 965] },
+				{ "thing": "curb", "d": "M0 1004L215 962L380 926L525 898L650 866L850 832L1000 799L1100 777L1175 758L1195 744L1210 746L1207 756L1178 772L1100 790L1000 818L850 855L650 896L525 933L380 963L215 995L60 1024H0Z", "at": [500, 920] },
+				{ "thing": "crosswalk", "d": "M1180 784L1232 742L1532 746L1512 793Z" },
+				{ "thing": "house", "d": "M0 396L262 232L285 118L360 162V75L425 72V90L421 202L590 334V349L557 346V690L0 700Z", "at": [380, 470] },
+				{ "thing": "roof", "d": "M285 118L360 162V75L425 72V90L421 202L590 334V349L315 255L262 232Z", "at": [470, 265] },
+				{ "thing": "chimney", "d": "M358 70H427V90H422V220L362 188V90H358Z" },
+				{ "thing": "window", "d": "M343 317H402V425H343Z" },
+				{ "thing": "window", "d": "M136 505H186V596H136Z" },
+				{ "thing": "door", "d": "M352 538H408V668H352Z" },
+				{ "thing": "store", "d": "M868 544L1160 541V697H868Z" },
+				{ "thing": "tree", "d": "M570 79L631 92L692 62L744 75L788 88L857 92L910 118L927 170L962 192L997 240L1014 284L1049 327L1066 370L1079 431L1049 492L997 527L927 553L857 570H788V753H757V570L701 562L631 544L592 527L586 440L590 345L560 262L522 214L500 170L520 128Z" },
+				{ "thing": "tree", "d": "M0 0H300L330 30L350 90L352 150L345 230L330 300L290 360L240 410L180 440L100 455L40 470H0Z" },
+				{ "thing": "tree", "d": "M1222 384L1262 355L1305 368L1346 300L1384 262L1440 250L1500 262L1536 292V560H1350L1340 600L1300 612L1250 616L1222 600Z" },
+				{ "thing": "sun", "d": "M1284 74L1280 93L1269 109L1253 120L1234 124L1215 120L1199 109L1188 93L1184 74L1188 55L1199 39L1215 28L1234 24L1253 28L1269 39L1280 55Z" },
+				{ "thing": "cloud", "d": "M992 180L1025 145L1058 125L1100 129L1142 121L1180 133L1175 167L1142 192L1108 208L1067 221L1025 250L995 238Z" },
+				{ "thing": "cloud", "d": "M1083 283L1092 250L1142 242L1175 238L1200 246L1250 233L1275 225L1300 221L1333 238L1367 233L1400 242L1383 275L1333 292L1275 304L1217 317L1150 321L1100 308Z" },
+				{ "thing": "cloud", "d": "M872 55L890 35L925 15L955 0H1060L1095 25L1085 50L1100 75L1110 107L1070 120L1010 125L960 115L895 95Z" },
+				{ "thing": "cloud", "d": "M1362 40L1375 15L1395 0H1470L1460 30L1430 45L1400 60L1375 62Z" },
+				{ "thing": "bird", "d": "M1314 121L1329 106L1353 106L1368 121L1368 141L1353 156L1329 156L1314 141Z" },
+				{ "thing": "bird", "d": "M1368 97L1383 82L1407 82L1422 97L1422 117L1407 132L1383 132L1368 117Z" },
+				{ "thing": "bird", "d": "M1436 92L1451 77L1475 77L1490 92L1490 112L1475 127L1451 127L1436 112Z" },
+				{ "thing": "bird", "d": "M1398 164L1413 149L1437 149L1452 164L1452 184L1437 199L1413 199L1398 184Z" },
+				{ "thing": "bench", "d": "M118 698L322 690L330 736L392 752L402 772V836L192 862L116 852Z" },
+				{ "thing": "bicycle", "d": "M410 664L446 660L470 676L500 672L512 690L540 700L553 730V790L540 810L515 812L498 800L470 790L452 812L430 815L410 800L405 760L410 712Z" },
+				{ "thing": "streetlight", "d": "M548 100L560 110L596 146L602 168L588 192L574 216L572 228V790L592 800L602 815V872H530V815L540 800L548 790V228L542 216L524 194L498 168L506 148L536 110Z", "at": [560, 420] },
+				{ "thing": "trash-can", "d": "M600 684H684L677 838H607Z" },
+				{ "thing": "mailbox", "d": "M745 634L752 624H818L824 634V724H791V780H775V724H745Z" },
+				{ "thing": "bus", "d": "M1354 542H1504L1514 566V675L1500 689L1486 696H1370L1357 684L1350 634L1336 593L1337 569L1352 562Z" },
+				{ "thing": "car", "d": "M1095 700L1093 682L1100 667L1130 659L1160 650L1190 631L1230 625L1300 628L1320 630L1334 646L1347 668L1349 698L1334 710L1300 712L1280 718L1260 712L1150 712L1127 716L1105 710Z" },
+				{ "thing": "traffic-light", "d": "M1125 426H1175V522H1153V738L1158 752H1136L1142 738V522H1125Z", "at": [1150, 474] },
+				{ "thing": "motorcycle", "d": "M872 645L882 650L884 668L898 676L922 672L932 662L942 672L938 688L980 683L998 700L1000 735L992 762L970 772L948 770L938 778L928 772L902 768L880 778L860 778L846 762L842 735L855 712L868 700L866 680L870 672Z" },
+				{ "thing": "dog", "d": "M352 842L362 828L392 798L430 782L478 782L502 760L523 752L545 757L558 773L552 795L528 802L526 830L518 880L520 892L488 896L478 860L440 846L432 888L396 894L392 858L380 860Z" }
+			],
+			"signs": [ { "sign": "bus", "rect": [1386, 547, 1472, 567], "lang": "en" } ]
+		}
+	}
+}

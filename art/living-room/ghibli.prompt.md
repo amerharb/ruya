@@ -1,13 +1,13 @@
 # The living room, Ghibli: the prompt for ChatGPT
 
-Written 2026-10-25, to repaint `art/living-room-realistic.png` the way the
+Written 2026-10-25, to repaint `art/living-room/realistic.png` the way the
 Ghibli kitchen repainted the realistic one. Best asked in the chat that made
 the realistic living room, so it has the picture; in a new one, attach
-`art/living-room-realistic.png`, and `art/kitchen-ghibli.png` for the look.
+`art/living-room/realistic.png`, and `art/kitchen/ghibli.png` for the look.
 Paste the first part, then the second in the same chat once the picture is
 right. Put the picture and the answer to the second part in `-AmerLocal/`;
-they become `art/living-room-ghibli.png` and
-`art/living-room-ghibli.boxes.json`.
+they become `art/living-room/ghibli.png` and
+`art/living-room/ghibli.boxes.json`.
 
 ## 1. The picture
 

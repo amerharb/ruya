@@ -44,7 +44,7 @@ body {
 	grid-template-columns: minmax(0, 1fr);
 	background: var(--bg);
 	color: var(--fg);
-	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Arabic", "Noto Sans Hebrew", sans-serif;
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans CJK JP", sans-serif;
 }
 
 /* ── the bar ── */
@@ -136,6 +136,100 @@ body {
 	outline-offset: 2px;
 }
 
+/* every name at once: two name tags, filled while they show; readings over
+   the names, in Japanese, a button of the same make */
+.all-names,
+.readings {
+	display: grid;
+	place-items: center;
+	width: 36px;
+	height: 36px;
+	padding: 0;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	background: var(--bg);
+	color: var(--fg);
+	cursor: pointer;
+}
+
+.all-names svg {
+	width: 22px;
+	height: 22px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+}
+
+.all-names.on,
+.readings.on {
+	border-color: var(--accent);
+	background: var(--accent);
+	color: var(--bg);
+}
+
+.all-names.on svg {
+	fill: currentColor;
+}
+
+.all-names:focus-visible,
+.readings:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
+/* 字 with じ over it, as a name with its reading */
+.readings ruby {
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1;
+}
+
+.readings rt {
+	font-size: 9px;
+}
+
+/* the forms each name shows: a joined row of buttons, as many dots as each
+   names, any of them pressed at once */
+.forms {
+	display: flex;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.form {
+	display: grid;
+	place-items: center;
+	width: 34px;
+	height: 34px;
+	padding: 0;
+	border: none;
+	border-left: 1px solid var(--line);
+	background: var(--bg);
+	color: var(--fg);
+	cursor: pointer;
+}
+
+.form:first-child {
+	border-left: none;
+}
+
+.form svg {
+	width: 20px;
+	height: 20px;
+	fill: currentColor;
+}
+
+.form.on {
+	background: var(--accent);
+	color: var(--bg);
+}
+
+.form:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: -4px;
+}
+
 .picker {
 	font: inherit;
 	font-size: 1rem;
@@ -146,17 +240,36 @@ body {
 	color: var(--fg);
 }
 
-/* A phone held upright has no room for all four in a row: the name gets the
-   first, the style and the language a second. */
+/* A phone held upright has no room for them all in a row: the name, the
+   names toggle and the forms get the first, the style and the language a
+   second. */
 @media (max-width: 600px) {
+	/* the gaps and the forms a little narrower, so a long name such as das
+	   Wohnzimmer still fits beside them */
 	.bar {
 		flex-wrap: wrap;
-		row-gap: 8px;
+		gap: 8px;
 	}
 
-	/* all of the first row but what the brand needs */
+	.form {
+		width: 30px;
+	}
+
+	/* all of the first row but what the brand, the toggle and three forms
+	   need */
 	.scene-name {
-		flex: 1 1 calc(100% - 64px);
+		flex: 1 1 calc(100% - 200px);
+	}
+
+	.all-names,
+	.forms,
+	.readings {
+		order: 1;
+	}
+
+	.styles,
+	.picker {
+		order: 2;
 	}
 
 	.picker {
@@ -185,6 +298,8 @@ body {
 	aspect-ratio: var(--w) / var(--h);
 	/* as big as fits, whichever of width or height runs out first */
 	width: min(100cqw, 100cqh * var(--w) / var(--h));
+	/* the tags are sized against the picture's width, as is everything in it */
+	container-type: inline-size;
 	user-select: none;
 	-webkit-user-select: none;
 }
@@ -218,6 +333,12 @@ body {
 	object-fit: contain;
 	pointer-events: none;
 	-webkit-touch-callout: none;
+}
+
+/* a sign's patch in the chosen language: part of the picture, so it takes
+   no taps */
+.sign {
+	pointer-events: none;
 }
 
 .region {
@@ -266,6 +387,83 @@ body {
 	filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.7));
 }
 
+/* ── the edges: to the scene before and after ── */
+
+.step {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	/* a strip a fingertip wide, against the picture's width */
+	width: clamp(28px, 3cqw, 48px);
+	display: grid;
+	place-items: center;
+	padding: 0;
+	border: none;
+	background: none;
+	color: #ffffff;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.step[data-side="previous"] {
+	left: 0;
+}
+
+.step[data-side="next"] {
+	right: 0;
+}
+
+/* the shade, darkest at the edge, in the dimming's colour */
+.step::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to right, rgba(20, 28, 32, 0.55), rgba(20, 28, 32, 0));
+}
+
+.step[data-side="next"]::before {
+	background: linear-gradient(to left, rgba(20, 28, 32, 0.55), rgba(20, 28, 32, 0));
+}
+
+.step svg {
+	position: relative;
+	width: 70%;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 3;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.7));
+}
+
+/* both only while pointed at */
+.step::before,
+.step svg {
+	opacity: 0;
+	transition: opacity 150ms ease;
+}
+
+.step:hover::before,
+.step:hover svg,
+.step:focus-visible::before,
+.step:focus-visible svg {
+	opacity: 1;
+}
+
+.step:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: -2px;
+}
+
+/* A finger has nothing to point with before it taps: the edges stay faintly
+   in view, so a tap there is not a surprise. */
+@media (hover: none) {
+	.step::before,
+	.step svg {
+		opacity: 0.5;
+	}
+}
+
 /* ── the name ── */
 
 .label {
@@ -290,6 +488,26 @@ body {
 	transition-delay: 0ms;
 }
 
+/* a line per form: singular, then dual, then plural */
+.label,
+.tag {
+	text-align: center;
+}
+
+.label span,
+.tag span {
+	display: block;
+}
+
+/* furigana: half the name's size, but never too small to read on a tag */
+.label rt {
+	font-size: 0.5em;
+}
+
+.tag rt {
+	font-size: max(0.55em, 8px);
+}
+
 /* near the picture's edges the label turns inward */
 .label[data-edge="below"] {
 	transform: translate(-50%, 10px);
@@ -303,10 +521,56 @@ body {
 	transform: translate(calc(-100% - 10px), -50%);
 }
 
+/* ── every name ── */
+
+.tags {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 200ms ease, visibility 0s 200ms;
+}
+
+.tags.on {
+	opacity: 1;
+	visibility: visible;
+	transition: opacity 200ms ease;
+}
+
+/* on the thing, centred where its big label would be */
+.tag {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	padding: 0.15em 0.55em;
+	border-radius: 0.5em;
+	background: var(--label-bg);
+	color: var(--label-fg);
+	font-size: clamp(11px, 1.3cqw, 17px);
+	font-weight: 600;
+	line-height: 1.3;
+	white-space: nowrap;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	transition: opacity 150ms ease;
+}
+
+/* a thing pointed at has the big label; the other tags step back */
+.tags.aside .tag {
+	opacity: 0.35;
+}
+
+.tags.aside .tag.pointed {
+	opacity: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
 	.dim,
 	.outline,
-	.label {
+	.step::before,
+	.step svg,
+	.label,
+	.tags,
+	.tag {
 		transition: none;
 	}
 }

@@ -10,11 +10,26 @@
 //! clicked or reached with the keyboard. Tapping anywhere else, or Escape,
 //! clears it.
 //!
+//! With every name asked for, each thing also carries a small tag with its
+//! name, on the thing itself; pointing works as before, the thing pointed at
+//! getting the big label while the other tags step back.
+//!
+//! A name is shown in each form chosen, a line each: the singular on top,
+//! then the dual where the language has one, then the plural. With readings
+//! asked for, a Japanese name carries furigana over its kanji.
+//!
+//! The picture's two edges go to the other scenes, round in a circle: the
+//! right one to the next, the left to the one before. Pointed at, an edge
+//! shades and shows its arrow.
+//!
 //! One stage shows one scene in one style; switching either builds a new one.
 
-use crate::lang::Lang;
-use crate::scene::{Rendering, Scene};
+use crate::lang::{Forms, Lang, Number};
+use crate::reading::pieces;
+use crate::scene::{Rendering, SCENES, Scene};
+use crate::spread::{Tag, spread};
 use crate::style::Style;
+use leptos::either::Either;
 use leptos::ev;
 use leptos::html::Div;
 use leptos::prelude::*;
@@ -26,9 +41,38 @@ pub fn Stage(
     style: Style,
     rendering: &'static Rendering,
     lang: ReadSignal<Lang>,
+    all: ReadSignal<bool>,
+    forms: ReadSignal<Forms>,
+    readings: ReadSignal<bool>,
+    set_scene: WriteSignal<&'static Scene>,
 ) -> impl IntoView {
     let (w, h) = (rendering.picture.width, rendering.picture.height);
-    let name = move |i: usize, l: Lang| scene.thing(&rendering.regions[i].thing).name.get(l);
+    // a thing's name in each form chosen: one, then two, then many
+    let words = move |i: usize, l: Lang| -> Vec<&'static str> {
+        let thing = scene.thing(&rendering.regions[i].thing);
+        forms
+            .get()
+            .shown(l)
+            .filter_map(|n| thing.name_for(l, n))
+            .collect()
+    };
+    // the same, a line each, for the label and the tags; the name for one
+    // with its readings over it, where they are asked for and it has some
+    let lines = move |i: usize, l: Lang| {
+        let thing = scene.thing(&rendering.regions[i].thing);
+        let over = readings.get().then(|| thing.reading.get(l)).flatten();
+        forms
+            .get()
+            .shown(l)
+            .filter_map(|n| {
+                let word = thing.name_for(l, n)?;
+                Some(match over.filter(|_| n == Number::Singular) {
+                    Some(annotated) => Either::Left(view! { <span>{ruby(annotated)}</span> }),
+                    None => Either::Right(view! { <span>{word}</span> }),
+                })
+            })
+            .collect_view()
+    };
 
     // from a mouse or pen only: a finger has nothing to hover with, and its
     // enter and leave come as one with the tap
@@ -83,6 +127,34 @@ pub fn Stage(
         }
     });
 
+    // The signs painted in the picture, in the chosen language: each patch
+    // is there from the start, hidden but the chosen language's, so a switch
+    // shows its sign at once. Under the regions, so a tap on a sign is the
+    // bus's, and under the dimming.
+    let signs = rendering
+        .signs
+        .iter()
+        .flat_map(|spot| {
+            let [x0, y0, x1, y1] = spot.rect;
+            Lang::ALL.into_iter().filter_map(move |l| {
+                let href = spot.patch(&scene.id, style, l)?;
+                Some(view! {
+                    <image
+                        class="sign"
+                        href=href
+                        x=x0.to_string()
+                        y=y0.to_string()
+                        width=(x1 - x0).to_string()
+                        height=(y1 - y0).to_string()
+                        preserveAspectRatio="none"
+                        visibility=move || if lang.get() == l { "visible" } else { "hidden" }
+                        aria-hidden="true"
+                    />
+                })
+            })
+        })
+        .collect_view();
+
     let regions = rendering
         .regions
         .iter()
@@ -95,7 +167,10 @@ pub fn Stage(
                     data-item=i.to_string()
                     tabindex="0"
                     role="button"
-                    aria-label=move || name(i, lang.get()).to_string()
+                    aria-label=move || {
+                        let l = lang.get();
+                        words(i, l).join(l.comma())
+                    }
                     on:pointerenter=move |ev: ev::PointerEvent| {
                         if ev.pointer_type() != "touch" {
                             hovered.set(Some(i));
@@ -113,6 +188,103 @@ pub fn Stage(
         .collect_view();
 
     let percent = move |(x, y): (f64, f64)| (x / w * 100.0, y / h * 100.0);
+
+    // a tag per thing, on its biggest region, centred on the point its big
+    // label is centred over
+    let tags = rendering
+        .one_per_thing()
+        .into_iter()
+        .map(|i| {
+            let thing = &rendering.regions[i].thing;
+            let (x, y) = percent(rendering.regions[i].anchor);
+            // this thing, by any of its regions, has the big label
+            let pointed = move || shown().is_some_and(|s| &rendering.regions[s].thing == thing);
+            view! {
+                <div
+                    class="tag"
+                    class:pointed=pointed
+                    lang=move || lang.get().code()
+                    dir=move || lang.get().dir()
+                    style=format!("left:{x:.3}%;top:{y:.3}%")
+                >
+                    {move || lines(i, lang.get())}
+                </div>
+            }
+        })
+        .collect_view();
+
+    // The tags measured where they stand and spread, so none covers another
+    // or runs off the picture: when they appear, when the names change
+    // language, forms or readings, and when the window changes size.
+    let tag_box = NodeRef::<Div>::new();
+    let place = move || {
+        let Some(el) = tag_box.get_untracked() else {
+            return;
+        };
+        let (sw, sh) = (f64::from(el.client_width()), f64::from(el.client_height()));
+        let children = el.children();
+        let nodes: Vec<web_sys::HtmlElement> = (0..children.length())
+            .filter_map(|k| children.item(k)?.dyn_into().ok())
+            .collect();
+        let tags: Vec<Tag> = nodes
+            .iter()
+            .zip(rendering.one_per_thing())
+            .map(|(node, i)| {
+                let (x, y) = rendering.regions[i].anchor;
+                Tag {
+                    x: x / w * sw,
+                    y: y / h * sh,
+                    w: f64::from(node.offset_width()),
+                    h: f64::from(node.offset_height()),
+                }
+            })
+            .collect();
+        for (node, (dx, dy)) in nodes.iter().zip(spread(&tags, sw, sh)) {
+            // `translate`, which adds to the centring `transform` in the CSS
+            let _ = node
+                .style()
+                .set_property("translate", &format!("{dx:.1}px {dy:.1}px"));
+        }
+    };
+    Effect::new(move |_| {
+        lang.track();
+        forms.track();
+        readings.track();
+        if all.get() && tag_box.get().is_some() {
+            // once the new names are laid out
+            request_animation_frame(place);
+        }
+    });
+    let resize = window_event_listener(ev::resize, move |_| {
+        if all.get_untracked() {
+            place();
+        }
+    });
+    on_cleanup(move || resize.remove());
+
+    // an edge, named for the scene it goes to
+    let edge = move |side: &'static str, arrow: &'static str, to: &'static Scene| {
+        view! {
+            <button
+                class="step"
+                data-side=side
+                lang=move || lang.get().code()
+                aria-label=move || to.name.get(lang.get()).to_string()
+                title=move || to.name.get(lang.get()).to_string()
+                on:click=move |_| set_scene.set(to)
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d=arrow />
+                </svg>
+            </button>
+        }
+    };
+    let edges = (SCENES.len() > 1).then(|| {
+        view! {
+            {edge("previous", "M15 5L8 12L15 19", scene.previous())}
+            {edge("next", "M9 5L16 12L9 19", scene.next())}
+        }
+    });
 
     let label = move || {
         last.get().map(|i| {
@@ -140,7 +312,7 @@ pub fn Stage(
                     style=format!("left:{x:.3}%;top:{y:.3}%")
                     aria-hidden="true"
                 >
-                    {name(i, l).to_string()}
+                    {lines(i, l)}
                 </div>
             }
         })
@@ -167,6 +339,7 @@ pub fn Stage(
                     role="group"
                     aria-label=move || scene.name.get(lang.get()).to_string()
                 >
+                    {signs}
                     {regions}
                     // everything but the thing shown, dimmed: the picture's
                     // rectangle with the thing cut out of it, even-odd
@@ -187,8 +360,37 @@ pub fn Stage(
                         }
                     />
                 </svg>
+                // after the regions, so over them, and reached by Tab after
+                // them
+                {edges}
+                // the regions already carry the names for a screen reader
+                <div
+                    class="tags"
+                    node_ref=tag_box
+                    class:on=move || all.get()
+                    class:aside=move || shown().is_some()
+                    aria-hidden="true"
+                >
+                    {tags}
+                </div>
                 {label}
             </div>
         </div>
     }
+}
+
+/// A name with its readings, each over its kanji, as HTML ruby.
+fn ruby(annotated: &'static str) -> impl IntoView {
+    pieces(annotated)
+        .into_iter()
+        .map(|(text, reading)| match reading {
+            Some(reading) => Either::Left(view! {
+                <ruby>
+                    {text}
+                    <rt>{reading}</rt>
+                </ruby>
+            }),
+            None => Either::Right(text),
+        })
+        .collect_view()
 }
