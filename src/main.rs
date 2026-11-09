@@ -8,6 +8,7 @@ mod scene;
 mod spread;
 mod stage;
 mod style;
+mod swipe;
 mod url;
 
 fn main() {

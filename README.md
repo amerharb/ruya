@@ -18,12 +18,21 @@ start WebAssembly.
   name. Escape hides the name.
 - The thing shown is outlined and the rest of the picture dims.
 - On a phone held upright the picture fills the height and scrolls sideways,
-  so a spoon is still big enough to tap. It opens at the middle.
+  so a spoon is still big enough to tap. It opens at the middle, or,
+  reached by an edge or a swipe, at the end it was entered from.
 - **Place:** the scene's name in the bar is a list of the scenes. The
   picture's edges go through them too, round in a circle: a strip along
   the right edge to the next scene, along the left to the one before, in
   the list's order. Pointed at, a strip shades and shows an arrow; on a
   touch screen both stay faintly in view.
+- **Swipe:** on a touch screen, a swipe across the picture does what the
+  edges do: to the left for the next scene, to the right for the one
+  before. Only a flick counts — at least 50 pixels sideways, twice as far
+  as up or down, within half a second — so a tap still names a thing and
+  a pinch still zooms. On a phone held upright a swipe first scrolls the
+  picture to its end, and the next one that way turns the scene. A scene
+  reached by a swipe or an edge slides in from that side, unless the
+  device asks for reduced motion.
 - **Style:** the little pictures in the bar switch between the styles the
   scene comes in (below).
 - **All names:** the button with two tags shows every thing's name at once,
@@ -357,7 +366,7 @@ trace it into polygons with a script.
 - `trunk serve` — http://127.0.0.1:8090, rebuilding on every change.
 - `trunk build --release` — the site in `dist/`: `index.html`, the
   WebAssembly, its loader, the stylesheet and `scenes/`. The release
-  WebAssembly is about 290 KB, 128 KB compressed, the scene files
+  WebAssembly is about 395 KB, 162 KB compressed, the scene files
   included.
 - `cargo test`, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`
   — run on the host, no browser needed. CI runs them and a release build.

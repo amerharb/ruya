@@ -282,6 +282,8 @@ body {
 .main {
 	min-height: 0;
 	display: grid;
+	/* a scene sliding in stays inside the space below the bar */
+	overflow: clip;
 }
 
 .viewport {
@@ -318,6 +320,40 @@ body {
 	.stage {
 		height: 100cqh;
 		width: auto;
+	}
+}
+
+/* A scene an edge or a swipe stepped to slides in from that side, the next
+   from the right and the one before from the left, as if the finger pushed
+   it along. It waits unseen until its picture is in, so what slides is the
+   picture and not an empty frame. */
+.viewport[data-came] {
+	animation: 200ms ease-out both paused;
+}
+
+.viewport[data-came="next"] {
+	animation-name: from-right;
+}
+
+.viewport[data-came="previous"] {
+	animation-name: from-left;
+}
+
+.viewport[data-came].ready {
+	animation-play-state: running;
+}
+
+@keyframes from-right {
+	from {
+		translate: 8% 0;
+		opacity: 0;
+	}
+}
+
+@keyframes from-left {
+	from {
+		translate: -8% 0;
+		opacity: 0;
 	}
 }
 
@@ -572,5 +608,10 @@ body {
 	.tags,
 	.tag {
 		transition: none;
+	}
+
+	/* a scene stepped to is simply there */
+	.viewport[data-came] {
+		animation: none;
 	}
 }

@@ -4,6 +4,29 @@
 
 ## [0.3.0] (unreleased)
 
+### Added
+- **Swiping between scenes** — on a touch screen, a swipe across the
+  picture turns the scene as the edges do: to the left for the next, to
+  the right for the one before, round in a circle. Only a flick counts —
+  at least 50 pixels sideways, twice as far as up or down, within half a
+  second — so a tap still names a thing, and a slow drag, a pinch or a
+  page zoomed in is left alone. On a phone held upright, where the picture
+  scrolls sideways, a swipe first takes it to its end and the next one
+  turns the scene; the scene turned to opens at the end it was entered
+  from, so swiping on the same way carries straight across it.
+- **Scenes slide in** — a scene reached by a swipe or an edge slides in
+  from that side, in a fifth of a second, once its picture is in; with
+  reduced motion asked for, it is simply there. Once a scene's picture is
+  in, the pictures of the scenes either side are fetched in the same
+  style, so the next one is there to slide.
+
+### Fixed
+- **A picture a few pixels off** — where the whole picture shows, a name
+  tag reaching past its edge, shown or not, let it scroll a few pixels,
+  and it opened scrolled by half of them: the street 3 px to the left at
+  1024 pixels wide. How far a picture can scroll is now measured on the
+  picture itself.
+
 ## [0.2.0] 2026-11-09
 
 ### Added
