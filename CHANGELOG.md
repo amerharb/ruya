@@ -2,7 +2,7 @@
 
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
-## [0.3.0] (unreleased)
+## [0.3.0] 2026-11-10
 
 ### Added
 - **Swiping between scenes** — on a touch screen, a swipe across the
