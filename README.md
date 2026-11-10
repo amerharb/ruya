@@ -1,9 +1,9 @@
 # Ruya
 
 Ruya — رؤية, "sight" — is a picture dictionary. A big picture of a place, a
-kitchen, a living room or a street, fills the screen; point at a thing in it
-and its name appears, in the language you picked. Change the language and
-every name changes with it.
+kitchen, a living room, a street, a fruit stand or a vegetable stand, fills
+the screen; point at a thing in it and its name appears, in the language
+you picked. Change the language and every name changes with it.
 
 It is written in Rust with [Leptos](https://leptos.dev), compiled to
 WebAssembly and built with [Trunk](https://trunk-rs.github.io/trunk). Nothing
@@ -18,12 +18,21 @@ start WebAssembly.
   name. Escape hides the name.
 - The thing shown is outlined and the rest of the picture dims.
 - On a phone held upright the picture fills the height and scrolls sideways,
-  so a spoon is still big enough to tap. It opens at the middle.
+  so a spoon is still big enough to tap. It opens at the middle, or,
+  reached by an edge or a swipe, at the end it was entered from.
 - **Place:** the scene's name in the bar is a list of the scenes. The
   picture's edges go through them too, round in a circle: a strip along
   the right edge to the next scene, along the left to the one before, in
   the list's order. Pointed at, a strip shades and shows an arrow; on a
   touch screen both stay faintly in view.
+- **Swipe:** on a touch screen, a swipe across the picture does what the
+  edges do: to the left for the next scene, to the right for the one
+  before. Only a flick counts — at least 50 pixels sideways, twice as far
+  as up or down, within half a second — so a tap still names a thing and
+  a pinch still zooms. On a phone held upright a swipe first scrolls the
+  picture to its end, and the next one that way turns the scene. A scene
+  reached by a swipe or an edge slides in from that side, unless the
+  device asks for reduced motion.
 - **Style:** the little pictures in the bar switch between the styles the
   scene comes in (below).
 - **All names:** the button with two tags shows every thing's name at once,
@@ -83,9 +92,10 @@ browser's languages it has, else English.
 - **Lowercase**, except German nouns.
 - **Arabic** is Modern Standard Arabic as printed, without vowel marks.
 - **Japanese** is written as it usually is: kanji where the word has them
-  in everyday use (窓, 冷蔵庫), katakana for words from abroad (テレビ,
-  フォーク). The readings, for furigana, go over a whole run of kanji at a
-  time (れいぞうこ over 冷蔵庫), as compounds are usually given.
+  in everyday use (窓, 冷蔵庫), hiragana where its kanji are not (りんご, as
+  林檎 is rare), katakana for words from abroad (テレビ, フォーク). The
+  readings, for furigana, go over a whole run of kanji at a time (れいぞうこ
+  over 冷蔵庫), as compounds are usually given.
 - **Spanish** is Spain's (nevera, grifo). **English** is American (faucet,
   stove, cabinet).
 - **Plurals** keep the same rules: German and Spanish with their article
@@ -95,6 +105,13 @@ browser's languages it has, else English.
 - **Arabic's dual**, for two, ends in ان (ثلاجتان), losing its ن before the
   noun that completes it (عمودا إنارة). Hebrew counts two with its plural,
   its dual kept for a few words, a pair of eyes or of days.
+- **Fruit and vegetables in Arabic** have a word for one, which ends in ة
+  (تفاحة, بصلة), and a collective for the produce itself (تفاح, بصل): the
+  one is the name, the collective its many, and two are the one's dual
+  (تفاحتان). One with no word for one apart — mostly words from abroad,
+  مانجو, بطاطس, بروكلي — has the same word for one and many, and its two are
+  counted with the word that fits it: a fruit by ثمرة (ثمرتا مانجو), a
+  vegetable by حبة (حبتا بطاطس), a head by رأس (رأسا بروكلي).
 - **Japanese has no plural**: 猫 is one cat or many, so a Japanese name has
   its one form only.
 - Where a word needs explaining, the thing's `note` in the scene file says why
@@ -248,7 +265,11 @@ patch for every language but the picture's own, of its rect's shape.
   `cwebp -q 80 -m 6 -metadata none art/<scene>/<style>.png -o public/scenes/<scene>/<style>.webp`:
   a sixteenth to a thirtieth of the bytes, and the same picture to the eye.
 - **Basic** pictures are SVG, drawn by hand in a 1536 × 1024 `viewBox`:
-  flat shapes, no text.
+  flat shapes, no text. The fruit and the vegetable stand's, too many heaps
+  to place by hand, are drawn by scripts, `python3 art/<scene>/basic.py`:
+  each says what is in its crates and how to draw it, and the stand around
+  them is `tools/stand.py`'s, which writes the SVG and the regions in the
+  scene file. Change the script and run it again, rather than the SVG.
 - **Thumbnails** are made from the picture with
   `cwebp -q 75 -m 6 -resize 96 64 <picture>.png -o public/scenes/<scene>/<style>.thumb.webp`;
   an SVG is first made a PNG, with
@@ -281,6 +302,12 @@ kept beside it in `art/<scene>/`.
 | street | realistic | `art/street/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-08 | not recorded; `art/street/realistic.prompt.md` made the first version |
 | street | basic | `public/scenes/street/basic.svg` | drawn by hand, 2026-11-02 | — |
 | street | ghibli | `art/street/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-08 | not recorded |
+| fruit stand | realistic | `art/fruit-stand/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-09 | `art/fruit-stand/realistic.prompt.md` |
+| fruit stand | basic | `public/scenes/fruit-stand/basic.svg` | drawn by `art/fruit-stand/basic.py`, 2026-11-09 | — |
+| fruit stand | ghibli | `art/fruit-stand/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-09 | not recorded |
+| vegetable stand | realistic | `art/vegetable-stand/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-10 | `art/vegetable-stand/realistic.prompt.md` |
+| vegetable stand | basic | `public/scenes/vegetable-stand/basic.svg` | drawn by `art/vegetable-stand/basic.py`, 2026-11-09 | — |
+| vegetable stand | ghibli | `art/vegetable-stand/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-10 | `art/vegetable-stand/ghibli.prompt.md` |
 
 ChatGPT gave the realistic kitchen's things as boxes too, kept in
 `art/kitchen/realistic.boxes.json`. They were approximate — the fork and
@@ -345,6 +372,47 @@ and one bird lower. Its sky has more clouds, and two more of them have a
 region. It came with no boxes. As WebP it is 403 KB, the biggest picture:
 its painted leaves and clouds are fine detail all over.
 
+The drawn fruit stand is three tiers of eight crates under a striped
+awning, one fruit to a crate: the big fruit on top, the tree fruit in the
+middle, the berries and small fruit at the bottom. Where a fruit's inside
+is what tells it apart, one of it is cut — the watermelon, the melon, the
+coconut, the papaya, the pomegranate, the kiwi and the fig. Each fruit's
+region is its heap and its crate together, the convex hull of both, so a
+tap on the crate names what is in it; the crates themselves have no name.
+The SVG is 98 KB, 16 KB compressed: every apple and blueberry is its own
+shape.
+
+The realistic fruit stand kept to its prompt: three tiers of eight
+crates, every fruit in the drawing's order, the cut ones cut as asked, and
+no text anywhere. It is seen from the left rather than straight on, the
+stand reaching back to the right, on a cobbled street under a tree. It
+came with no boxes, so each region was drawn by eye: the crate and its
+heap, as in the drawing, the crate's front up its two sides to the top of
+the heap. The top tier comes first, the bottom last, so where a heap
+stands in front of the crate behind it — the grapes' stalks and the
+cherries' before the middle tier — a tap there is the nearer crate's. The
+Ghibli fruit stand is the realistic one repainted, every crate where it
+was, so its regions are the realistic ones as they are. As WebP they are
+360 KB and 466 KB, the Ghibli now the biggest picture: heaps of small
+fruit are detail all over.
+
+The drawn vegetable stand is the fruit stand's, its awning green: the big
+vegetables on top, those sold by the piece in the middle, the small ones
+at the bottom. They are whole, but for one pea pod lying open on the
+others, its peas showing. Its SVG is 134 KB, 29 KB compressed, with every
+kernel on the corn.
+
+The realistic vegetable stand kept to its prompt as the fruit stand did:
+the same street and view, the awning green and white, every vegetable in
+the drawing's order. It came with no boxes, so each region was drawn by
+eye, the crate and its heap as for the fruit stand, but meeting its
+neighbours edge to edge, with no overlap: where leaves reach over the
+crate behind — the carrots' tops, the radishes' and the beets' leaves, the
+asparagus tips — the crate behind gives way, so a tap on them names the
+vegetable they belong to. The Ghibli vegetable stand is the realistic one
+repainted, every crate where it was, so its regions are the realistic ones
+as they are. As WebP they are 276 KB and 386 KB.
+
 For later scenes, the plan is to paint a flat colour per thing on a mask
 layer, as a PNG — never a lossy format, which smears the colours — and
 trace it into polygons with a script.
@@ -357,7 +425,7 @@ trace it into polygons with a script.
 - `trunk serve` — http://127.0.0.1:8090, rebuilding on every change.
 - `trunk build --release` — the site in `dist/`: `index.html`, the
   WebAssembly, its loader, the stylesheet and `scenes/`. The release
-  WebAssembly is about 290 KB, 128 KB compressed, the scene files
+  WebAssembly is about 443 KB, 176 KB compressed, the scene files
   included.
 - `cargo test`, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`
   — run on the host, no browser needed. CI runs them and a release build.

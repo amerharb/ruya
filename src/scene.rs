@@ -175,6 +175,26 @@ pub struct Region {
     pub area: f64,
 }
 
+/// A step round the scenes, as the picture's edges and a swipe take it.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Step {
+    /// To the scene before: the left edge, or a swipe to the right.
+    Previous,
+    /// To the scene after: the right edge, or a swipe to the left.
+    Next,
+}
+
+impl Step {
+    /// An edge's `data-side`, and the `data-came` of a stage the step
+    /// reached.
+    pub fn code(self) -> &'static str {
+        match self {
+            Step::Previous => "previous",
+            Step::Next => "next",
+        }
+    }
+}
+
 impl Scene {
     pub fn parse(json: &str) -> Result<Scene, String> {
         let mut scene: Scene = serde_json::from_str(json).map_err(|e| e.to_string())?;
@@ -232,16 +252,24 @@ impl Scene {
     /// The scene after this one in the picker's order, the first after the
     /// last: where the picture's right edge goes.
     pub fn next(&self) -> &'static Scene {
-        self.step(1)
+        self.ahead(1)
     }
 
     /// The scene before this one, the last before the first: where the
     /// picture's left edge goes.
     pub fn previous(&self) -> &'static Scene {
-        self.step(SCENES.len() - 1)
+        self.ahead(SCENES.len() - 1)
     }
 
-    fn step(&self, by: usize) -> &'static Scene {
+    /// The scene a step from this one reaches.
+    pub fn step(&self, step: Step) -> &'static Scene {
+        match step {
+            Step::Previous => self.previous(),
+            Step::Next => self.next(),
+        }
+    }
+
+    fn ahead(&self, by: usize) -> &'static Scene {
         let i = SCENES.iter().position(|s| s.id == self.id).unwrap_or(0);
         &SCENES[(i + by) % SCENES.len()]
     }
@@ -310,6 +338,11 @@ pub const SOURCES: &[(&str, &str)] = &[
     ("kitchen", include_str!("../scenes/kitchen.json")),
     ("living-room", include_str!("../scenes/living-room.json")),
     ("street", include_str!("../scenes/street.json")),
+    ("fruit-stand", include_str!("../scenes/fruit-stand.json")),
+    (
+        "vegetable-stand",
+        include_str!("../scenes/vegetable-stand.json"),
+    ),
 ];
 
 pub static SCENES: LazyLock<Vec<Scene>> = LazyLock::new(|| {
@@ -395,6 +428,8 @@ mod tests {
         assert_eq!(first.previous().id, last.id);
         for s in SCENES.iter() {
             assert_eq!(s.next().previous().id, s.id);
+            assert_eq!(s.step(Step::Next).id, s.next().id);
+            assert_eq!(s.step(Step::Previous).id, s.previous().id);
         }
     }
 

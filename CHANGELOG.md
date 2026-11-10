@@ -2,6 +2,58 @@
 
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
+## [0.3.0] 2026-11-10
+
+### Added
+- **Swiping between scenes** — on a touch screen, a swipe across the
+  picture turns the scene as the edges do: to the left for the next, to
+  the right for the one before, round in a circle. Only a flick counts —
+  at least 50 pixels sideways, twice as far as up or down, within half a
+  second — so a tap still names a thing, and a slow drag, a pinch or a
+  page zoomed in is left alone. On a phone held upright, where the picture
+  scrolls sideways, a swipe first takes it to its end and the next one
+  turns the scene; the scene turned to opens at the end it was entered
+  from, so swiping on the same way carries straight across it.
+- **Scenes slide in** — a scene reached by a swipe or an edge slides in
+  from that side, in a fifth of a second, once its picture is in; with
+  reduced motion asked for, it is simply there. Once a scene's picture is
+  in, the pictures of the scenes either side are fetched in the same
+  style, so the next one is there to slide.
+- **The fruit stand** — the fourth scene, a market stand with 24 fruits, a
+  crate of each under a striped awning: pineapple, watermelon, banana,
+  coconut, melon, mango, papaya and pomegranate on top; apricot, apple,
+  lemon, plum, orange, pear, tangerine and peach in the middle; strawberry,
+  blueberry, grape, cherry, kiwi, raspberry, fig and date at the bottom.
+  A realistic picture and a Ghibli one, made in ChatGPT (360 KB and 466 KB
+  as WebP), the stand seen from the left on a cobbled street, and a basic
+  one drawn in SVG by a script, `art/fruit-stand/basic.py`, which writes
+  the drawing's regions too. In every style a fruit's region is its heap
+  and its crate, so a tap on the crate names what is in it. Named in all
+  eight languages, Arabic's by the word for one, its dual, and the
+  collective for many (تفاحة, تفاحتان, تفاح).
+- **The vegetable stand** — the fifth scene, the fruit stand's twin under
+  a green-and-white awning, with 24 vegetables: pumpkin, cabbage,
+  eggplant, cauliflower, broccoli, corn, artichoke and lettuce on top;
+  tomato, cucumber, carrot, potato, bell pepper, zucchini, onion and sweet
+  potato in the middle; radish, pea, mushroom, chili pepper, asparagus,
+  garlic, okra and beet at the bottom. A realistic picture and a Ghibli
+  one, made in ChatGPT (276 KB and 386 KB as WebP), on the fruit stand's
+  street and seen the same way, and a basic one drawn in SVG by
+  `art/vegetable-stand/basic.py`, on the same stand as the fruit, which is
+  now `tools/stand.py`, shared by the two. A vegetable's region is its
+  heap and its crate, and in the painted pictures its leaves too, where
+  they reach over the crate behind, so a tap on the carrots' tops names
+  the carrot. Named in all eight languages; in Arabic a vegetable with no
+  word for one apart counts its two by حبة, or by رأس for a head
+  (حبتا بطاطس, رأسا بروكلي).
+
+### Fixed
+- **A picture a few pixels off** — where the whole picture shows, a name
+  tag reaching past its edge, shown or not, let it scroll a few pixels,
+  and it opened scrolled by half of them: the street 3 px to the left at
+  1024 pixels wide. How far a picture can scroll is now measured on the
+  picture itself.
+
 ## [0.2.0] 2026-11-09
 
 ### Added

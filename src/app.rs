@@ -1,6 +1,6 @@
 use crate::lang::{Forms, Lang};
 use crate::picker::{AllNames, FormButtons, Picker, ReadingsButton, ScenePicker, StylePicker};
-use crate::scene::Scene;
+use crate::scene::{Scene, Step};
 use crate::stage::Stage;
 use crate::style::Style;
 use crate::url;
@@ -14,6 +14,11 @@ pub fn App() -> impl IntoView {
     let (all, set_all) = signal(url::initial_all_names());
     let (forms, set_forms) = signal(url::initial_forms());
     let (readings, set_readings) = signal(url::initial_readings());
+    // How the scene shown was reached, when an edge or a swipe stepped to
+    // it: set as the step is taken, and taken back by the stage it builds,
+    // which slides in from that side. Anything else that builds a stage — a
+    // scene picked from the list, a style switched — finds it empty.
+    let arrival = StoredValue::new(None::<Step>);
 
     // <html lang> follows the language, so a screen reader reads the names in
     // the right voice and a browser does not offer to translate them. The
@@ -87,24 +92,39 @@ pub fn App() -> impl IntoView {
             <Picker lang=lang set_lang=set_lang />
         </header>
         <main class="main">
-            // a new stage per scene and style: its own picture, regions and
-            // state
-            {move || {
-                let scene = scene.get();
-                let (s, rendering) = scene.rendering_or_first(style.get());
-                view! {
-                    <Stage
-                        scene=scene
-                        style=s
-                        rendering=rendering
-                        lang=lang
-                        all=all
-                        forms=forms
-                        readings=readings
-                        set_scene=set_scene
-                    />
+            // A new stage per scene and style: its own picture, regions and
+            // state, and its own elements. Keyed, so a change builds it
+            // afresh; a closure would have Leptos patch the last stage's
+            // elements in place, keeping their scroll and a slide already
+            // played.
+            <For
+                each=move || {
+                    let scene = scene.get();
+                    [(scene, scene.rendering_or_first(style.get()).0)]
                 }
-            }}
+                key=|&(scene, style)| (scene.id.as_str(), style)
+                children=move |(scene, style)| {
+                    let (_, rendering) = scene.rendering_or_first(style);
+                    let came = arrival.try_update_value(Option::take).flatten();
+                    let turn = Callback::new(move |step: Step| {
+                        arrival.set_value(Some(step));
+                        set_scene.set(scene.step(step));
+                    });
+                    view! {
+                        <Stage
+                            scene=scene
+                            style=style
+                            rendering=rendering
+                            lang=lang
+                            all=all
+                            forms=forms
+                            readings=readings
+                            came=came
+                            turn=turn
+                        />
+                    }
+                }
+            />
         </main>
     }
 }
