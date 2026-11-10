@@ -1,9 +1,9 @@
 # Ruya
 
 Ruya — رؤية, "sight" — is a picture dictionary. A big picture of a place, a
-kitchen, a living room, a street or a fruit stand, fills the screen; point
-at a thing in it and its name appears, in the language you picked. Change
-the language and every name changes with it.
+kitchen, a living room, a street, a fruit stand or a vegetable stand, fills
+the screen; point at a thing in it and its name appears, in the language
+you picked. Change the language and every name changes with it.
 
 It is written in Rust with [Leptos](https://leptos.dev), compiled to
 WebAssembly and built with [Trunk](https://trunk-rs.github.io/trunk). Nothing
@@ -105,12 +105,13 @@ browser's languages it has, else English.
 - **Arabic's dual**, for two, ends in ان (ثلاجتان), losing its ن before the
   noun that completes it (عمودا إنارة). Hebrew counts two with its plural,
   its dual kept for a few words, a pair of eyes or of days.
-- **Fruit in Arabic** has a word for one, which ends in ة (تفاحة), and a
-  collective for the fruit itself (تفاح): the one is its name, the
-  collective its many, and two are the one's dual (تفاحتان). A fruit with
-  no word for one apart — mostly words from abroad, مانجو, كيوي — has the
-  same word for one and many, and its two are counted as fruit: ثمرتا
-  مانجو.
+- **Fruit and vegetables in Arabic** have a word for one, which ends in ة
+  (تفاحة, بصلة), and a collective for the produce itself (تفاح, بصل): the
+  one is the name, the collective its many, and two are the one's dual
+  (تفاحتان). One with no word for one apart — mostly words from abroad,
+  مانجو, بطاطس, بروكلي — has the same word for one and many, and its two are
+  counted with the word that fits it: a fruit by ثمرة (ثمرتا مانجو), a
+  vegetable by حبة (حبتا بطاطس), a head by رأس (رأسا بروكلي).
 - **Japanese has no plural**: 猫 is one cat or many, so a Japanese name has
   its one form only.
 - Where a word needs explaining, the thing's `note` in the scene file says why
@@ -264,10 +265,11 @@ patch for every language but the picture's own, of its rect's shape.
   `cwebp -q 80 -m 6 -metadata none art/<scene>/<style>.png -o public/scenes/<scene>/<style>.webp`:
   a sixteenth to a thirtieth of the bytes, and the same picture to the eye.
 - **Basic** pictures are SVG, drawn by hand in a 1536 × 1024 `viewBox`:
-  flat shapes, no text. The fruit stand's, too many heaps of fruit to place
-  by hand, is drawn by a script, `python3 art/fruit-stand/basic.py`, which
-  writes its SVG and its regions in the scene file; change the script and
-  run it again, rather than the SVG.
+  flat shapes, no text. The fruit and the vegetable stand's, too many heaps
+  to place by hand, are drawn by scripts, `python3 art/<scene>/basic.py`:
+  each says what is in its crates and how to draw it, and the stand around
+  them is `tools/stand.py`'s, which writes the SVG and the regions in the
+  scene file. Change the script and run it again, rather than the SVG.
 - **Thumbnails** are made from the picture with
   `cwebp -q 75 -m 6 -resize 96 64 <picture>.png -o public/scenes/<scene>/<style>.thumb.webp`;
   an SVG is first made a PNG, with
@@ -303,6 +305,9 @@ kept beside it in `art/<scene>/`.
 | fruit stand | realistic | `art/fruit-stand/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-09 | `art/fruit-stand/realistic.prompt.md` |
 | fruit stand | basic | `public/scenes/fruit-stand/basic.svg` | drawn by `art/fruit-stand/basic.py`, 2026-11-09 | — |
 | fruit stand | ghibli | `art/fruit-stand/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-09 | not recorded |
+| vegetable stand | realistic | `art/vegetable-stand/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-10 | `art/vegetable-stand/realistic.prompt.md` |
+| vegetable stand | basic | `public/scenes/vegetable-stand/basic.svg` | drawn by `art/vegetable-stand/basic.py`, 2026-11-09 | — |
+| vegetable stand | ghibli | `art/vegetable-stand/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-10 | `art/vegetable-stand/ghibli.prompt.md` |
 
 ChatGPT gave the realistic kitchen's things as boxes too, kept in
 `art/kitchen/realistic.boxes.json`. They were approximate — the fork and
@@ -391,6 +396,23 @@ was, so its regions are the realistic ones as they are. As WebP they are
 360 KB and 466 KB, the Ghibli now the biggest picture: heaps of small
 fruit are detail all over.
 
+The drawn vegetable stand is the fruit stand's, its awning green: the big
+vegetables on top, those sold by the piece in the middle, the small ones
+at the bottom. They are whole, but for one pea pod lying open on the
+others, its peas showing. Its SVG is 134 KB, 29 KB compressed, with every
+kernel on the corn.
+
+The realistic vegetable stand kept to its prompt as the fruit stand did:
+the same street and view, the awning green and white, every vegetable in
+the drawing's order. It came with no boxes, so each region was drawn by
+eye, the crate and its heap as for the fruit stand, but meeting its
+neighbours edge to edge, with no overlap: where leaves reach over the
+crate behind — the carrots' tops, the radishes' and the beets' leaves, the
+asparagus tips — the crate behind gives way, so a tap on them names the
+vegetable they belong to. The Ghibli vegetable stand is the realistic one
+repainted, every crate where it was, so its regions are the realistic ones
+as they are. As WebP they are 276 KB and 386 KB.
+
 For later scenes, the plan is to paint a flat colour per thing on a mask
 layer, as a PNG — never a lossy format, which smears the colours — and
 trace it into polygons with a script.
@@ -403,7 +425,7 @@ trace it into polygons with a script.
 - `trunk serve` — http://127.0.0.1:8090, rebuilding on every change.
 - `trunk build --release` — the site in `dist/`: `index.html`, the
   WebAssembly, its loader, the stylesheet and `scenes/`. The release
-  WebAssembly is about 418 KB, 171 KB compressed, the scene files
+  WebAssembly is about 443 KB, 176 KB compressed, the scene files
   included.
 - `cargo test`, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`
   — run on the host, no browser needed. CI runs them and a release build.

@@ -30,8 +30,22 @@
   the drawing's regions too. In every style a fruit's region is its heap
   and its crate, so a tap on the crate names what is in it. Named in all
   eight languages, Arabic's by the word for one, its dual, and the
-  collective for many (تفاحة, تفاحتان, تفاح). Vegetables will be a scene of
-  their own.
+  collective for many (تفاحة, تفاحتان, تفاح).
+- **The vegetable stand** — the fifth scene, the fruit stand's twin under
+  a green-and-white awning, with 24 vegetables: pumpkin, cabbage,
+  eggplant, cauliflower, broccoli, corn, artichoke and lettuce on top;
+  tomato, cucumber, carrot, potato, bell pepper, zucchini, onion and sweet
+  potato in the middle; radish, pea, mushroom, chili pepper, asparagus,
+  garlic, okra and beet at the bottom. A realistic picture and a Ghibli
+  one, made in ChatGPT (276 KB and 386 KB as WebP), on the fruit stand's
+  street and seen the same way, and a basic one drawn in SVG by
+  `art/vegetable-stand/basic.py`, on the same stand as the fruit, which is
+  now `tools/stand.py`, shared by the two. A vegetable's region is its
+  heap and its crate, and in the painted pictures its leaves too, where
+  they reach over the crate behind, so a tap on the carrots' tops names
+  the carrot. Named in all eight languages; in Arabic a vegetable with no
+  word for one apart counts its two by حبة, or by رأس for a head
+  (حبتا بطاطس, رأسا بروكلي).
 
 ### Fixed
 - **A picture a few pixels off** — where the whole picture shows, a name

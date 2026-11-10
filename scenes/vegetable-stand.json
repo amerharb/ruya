@@ -1,0 +1,243 @@
+{
+	"id": "vegetable-stand",
+	"name": { "en": "vegetable stand", "ar": "بسطة خضار", "de": "der Gemüsestand", "sv": "ett grönsaksstånd", "es": "el puesto de verdura", "uk": "овочева ятка", "he": "דוכן ירקות", "ja": "八百屋" },
+	"things": {
+		"pumpkin": {
+			"name": { "en": "pumpkin", "ar": "يقطينة", "de": "der Kürbis", "sv": "en pumpa", "es": "la calabaza", "uk": "гарбуз", "he": "דלעת", "ja": "かぼちゃ" },
+			"plural": { "en": "pumpkins", "ar": "يقطين", "de": "die Kürbisse", "sv": "pumpor", "es": "las calabazas", "uk": "гарбузи", "he": "דלועים" },
+			"dual": { "ar": "يقطينتان" },
+			"note": "ar يقطين, as printed, قرع as often; he דלועים, the plural the Academy gives; ja かぼちゃ, as it is usually written"
+		},
+		"cabbage": {
+			"name": { "en": "cabbage", "ar": "ملفوفة", "de": "der Kohlkopf", "sv": "ett kålhuvud", "es": "el repollo", "uk": "капуста", "he": "כרוב", "ja": "キャベツ" },
+			"plural": { "en": "cabbages", "ar": "ملفوف", "de": "die Kohlköpfe", "sv": "kålhuvuden", "es": "los repollos", "uk": "капусти", "he": "כרובים" },
+			"dual": { "ar": "ملفوفتان" },
+			"note": "a head of cabbage: de Kohlkopf and sv kålhuvud, as Kohl and kål are the vegetable; es repollo, the round one; ar ملفوف, as in the Levant and print, كرنب in Egypt"
+		},
+		"eggplant": {
+			"name": { "en": "eggplant", "ar": "باذنجانة", "de": "die Aubergine", "sv": "en aubergine", "es": "la berenjena", "uk": "баклажан", "he": "חציל", "ja": "なす" },
+			"plural": { "en": "eggplants", "ar": "باذنجان", "de": "die Auberginen", "sv": "auberginer", "es": "las berenjenas", "uk": "баклажани", "he": "חצילים" },
+			"dual": { "ar": "باذنجانتان" },
+			"note": "American eggplant, British aubergine; ja なす, as it is usually written"
+		},
+		"cauliflower": {
+			"name": { "en": "cauliflower", "ar": "قرنبيطة", "de": "der Blumenkohl", "sv": "en blomkål", "es": "la coliflor", "uk": "цвітна капуста", "he": "כרובית", "ja": "カリフラワー" },
+			"plural": { "en": "cauliflowers", "ar": "قرنبيط", "de": "die Blumenkohle", "sv": "blomkål", "es": "las coliflores", "uk": "цвітна капуста", "he": "כרוביות" },
+			"dual": { "ar": "قرنبيطتان" },
+			"note": "sv blomkål and uk цвітна капуста are the same for many"
+		},
+		"broccoli": {
+			"name": { "en": "broccoli", "ar": "بروكلي", "de": "der Brokkoli", "sv": "en broccoli", "es": "el brócoli", "uk": "броколі", "he": "ברוקולי", "ja": "ブロッコリー" },
+			"plural": { "en": "broccoli", "ar": "بروكلي", "de": "die Brokkoli", "sv": "broccoli", "es": "los brócolis", "uk": "броколі", "he": "ברוקולי" },
+			"dual": { "ar": "رأسا بروكلي" },
+			"note": "the same for many but in Spanish; ar counts heads, رأسا بروكلي; de die Brokkolis as right"
+		},
+		"corn": {
+			"name": { "en": "corn", "ar": "كوز ذرة", "de": "der Maiskolben", "sv": "en majskolv", "es": "la mazorca", "uk": "качан кукурудзи", "he": "קלח תירס", "ja": "とうもろこし" },
+			"plural": { "en": "corn", "ar": "أكواز ذرة", "de": "die Maiskolben", "sv": "majskolvar", "es": "las mazorcas", "uk": "качани кукурудзи", "he": "קלחי תירס" },
+			"dual": { "ar": "كوزا ذرة" },
+			"note": "ears of corn: corn is said of one or many, an ear of corn in full; de Maiskolben, sv majskolv, es mazorca, ar كوز, uk качан and he קלח name the cob, the grain being Mais, majs, maíz, ذرة, кукурудза and תירס"
+		},
+		"artichoke": {
+			"name": { "en": "artichoke", "ar": "خرشوفة", "de": "die Artischocke", "sv": "en kronärtskocka", "es": "la alcachofa", "uk": "артишок", "he": "ארטישוק", "ja": "アーティチョーク" },
+			"plural": { "en": "artichokes", "ar": "خرشوف", "de": "die Artischocken", "sv": "kronärtskockor", "es": "las alcachofas", "uk": "артишоки", "he": "ארטישוקים" },
+			"dual": { "ar": "خرشوفتان" },
+			"note": "ar خرشوف, and أرضي شوكي in print as often"
+		},
+		"lettuce": {
+			"name": { "en": "lettuce", "ar": "خسة", "de": "der Kopfsalat", "sv": "ett salladshuvud", "es": "la lechuga", "uk": "салат", "he": "חסה", "ja": "レタス" },
+			"plural": { "en": "lettuces", "ar": "خس", "de": "die Kopfsalate", "sv": "salladshuvuden", "es": "las lechugas", "uk": "салати", "he": "חסות" },
+			"dual": { "ar": "خستان" },
+			"note": "a head of lettuce: de Kopfsalat and sv salladshuvud, as Salat and sallad are the dish too; uk салат is both"
+		},
+		"tomato": {
+			"name": { "en": "tomato", "ar": "طماطمة", "de": "die Tomate", "sv": "en tomat", "es": "el tomate", "uk": "помідор", "he": "עגבנייה", "ja": "トマト" },
+			"plural": { "en": "tomatoes", "ar": "طماطم", "de": "die Tomaten", "sv": "tomater", "es": "los tomates", "uk": "помідори", "he": "עגבניות" },
+			"dual": { "ar": "طماطمتان" },
+			"note": "ar طماطم, بندورة in the Levant; uk помідор, томат as right"
+		},
+		"cucumber": {
+			"name": { "en": "cucumber", "ar": "خيارة", "de": "die Gurke", "sv": "en gurka", "es": "el pepino", "uk": "огірок", "he": "מלפפון", "ja": "きゅうり" },
+			"plural": { "en": "cucumbers", "ar": "خيار", "de": "die Gurken", "sv": "gurkor", "es": "los pepinos", "uk": "огірки", "he": "מלפפונים" },
+			"dual": { "ar": "خيارتان" },
+			"note": "ja きゅうり, as it is usually written"
+		},
+		"carrot": {
+			"name": { "en": "carrot", "ar": "جزرة", "de": "die Karotte", "sv": "en morot", "es": "la zanahoria", "uk": "морква", "he": "גזר", "ja": "人参" },
+			"plural": { "en": "carrots", "ar": "جزر", "de": "die Karotten", "sv": "morötter", "es": "las zanahorias", "uk": "морква", "he": "גזרים" },
+			"dual": { "ar": "جزرتان" },
+			"reading": { "ja": "人参[にんじん]" },
+			"note": "de Karotte, Möhre as often; uk морква, the roots together, for many as for one; ja 人参, にんじん as often"
+		},
+		"potato": {
+			"name": { "en": "potato", "ar": "بطاطس", "de": "die Kartoffel", "sv": "en potatis", "es": "la patata", "uk": "картопля", "he": "תפוח אדמה", "ja": "じゃがいも" },
+			"plural": { "en": "potatoes", "ar": "بطاطس", "de": "die Kartoffeln", "sv": "potatisar", "es": "las patatas", "uk": "картопля", "he": "תפוחי אדמה" },
+			"dual": { "ar": "حبتا بطاطس" },
+			"note": "ar بطاطس, as in Egypt, the Gulf and print, بطاطا in the Levant; es patata, as in Spain, papa in Latin America; uk картопля, the potatoes together, one being картоплина"
+		},
+		"bell-pepper": {
+			"name": { "en": "bell pepper", "ar": "فلفل حلو", "de": "die Paprika", "sv": "en paprika", "es": "el pimiento", "uk": "солодкий перець", "he": "פלפל", "ja": "パプリカ" },
+			"plural": { "en": "bell peppers", "ar": "فلفل حلو", "de": "die Paprika", "sv": "paprikor", "es": "los pimientos", "uk": "солодкі перці", "he": "פלפלים" },
+			"dual": { "ar": "حبتا فلفل حلو" },
+			"note": "the sweet, blocky one; ar فلفل حلو, فليفلة in the Levant and فلفل رومي in Egypt; de die Paprika for many as for one, Paprikas as often; he פלפל, as the sweet one is called; ja パプリカ, the big red and yellow ones, as ピーマン is the small green one"
+		},
+		"zucchini": {
+			"name": { "en": "zucchini", "ar": "كوسا", "de": "die Zucchini", "sv": "en zucchini", "es": "el calabacín", "uk": "кабачок", "he": "קישוא", "ja": "ズッキーニ" },
+			"plural": { "en": "zucchini", "ar": "كوسا", "de": "die Zucchini", "sv": "zucchinier", "es": "los calabacines", "uk": "кабачки", "he": "קישואים" },
+			"dual": { "ar": "حبتا كوسا" },
+			"note": "American zucchini, the same for many, British courgette; ar كوسا, كوسة in Egypt; sv zucchini, squash as often"
+		},
+		"onion": {
+			"name": { "en": "onion", "ar": "بصلة", "de": "die Zwiebel", "sv": "en lök", "es": "la cebolla", "uk": "цибуля", "he": "בצל", "ja": "玉ねぎ" },
+			"plural": { "en": "onions", "ar": "بصل", "de": "die Zwiebeln", "sv": "lökar", "es": "las cebollas", "uk": "цибулі", "he": "בצלים" },
+			"dual": { "ar": "بصلتان" },
+			"reading": { "ja": "玉[たま]ねぎ" },
+			"note": "sv lök, gul lök in full; uk цибуля, one bulb a цибулина; ja 玉ねぎ, as it is usually written"
+		},
+		"sweet-potato": {
+			"name": { "en": "sweet potato", "ar": "بطاطا حلوة", "de": "die Süßkartoffel", "sv": "en sötpotatis", "es": "el boniato", "uk": "батат", "he": "בטטה", "ja": "さつまいも" },
+			"plural": { "en": "sweet potatoes", "ar": "بطاطا حلوة", "de": "die Süßkartoffeln", "sv": "sötpotatisar", "es": "los boniatos", "uk": "батати", "he": "בטטות" },
+			"dual": { "ar": "حبتا بطاطا حلوة" },
+			"note": "ar بطاطا حلوة, بطاطا alone in Egypt; es boniato, as in Spain, batata as often; ja さつまいも, as it is usually written"
+		},
+		"radish": {
+			"name": { "en": "radish", "ar": "فجلة", "de": "das Radieschen", "sv": "en rädisa", "es": "el rábano", "uk": "редиска", "he": "צנונית", "ja": "ラディッシュ" },
+			"plural": { "en": "radishes", "ar": "فجل", "de": "die Radieschen", "sv": "rädisor", "es": "los rábanos", "uk": "редиски", "he": "צנוניות" },
+			"dual": { "ar": "فجلتان" },
+			"note": "the small red one: de Radieschen, as Rettich is the big one; ja ラディッシュ, 二十日大根 as often"
+		},
+		"pea": {
+			"name": { "en": "pea", "ar": "بازلاء", "de": "die Erbse", "sv": "en ärta", "es": "el guisante", "uk": "горох", "he": "אפונה", "ja": "えんどう豆" },
+			"plural": { "en": "peas", "ar": "بازلاء", "de": "die Erbsen", "sv": "ärtor", "es": "los guisantes", "uk": "горох", "he": "אפונים" },
+			"dual": { "ar": "حبتا بازلاء" },
+			"reading": { "ja": "えんどう豆[まめ]" },
+			"note": "peas in the pod; ar بازلاء, بسلة in Egypt and بازيلا in the Levant; es guisante, as in Spain, arveja in much of Latin America; uk горох, the peas together; he אפונים, the plural the dictionaries give"
+		},
+		"mushroom": {
+			"name": { "en": "mushroom", "ar": "فطر", "de": "der Pilz", "sv": "en svamp", "es": "el champiñón", "uk": "гриб", "he": "פטרייה", "ja": "きのこ" },
+			"plural": { "en": "mushrooms", "ar": "فطر", "de": "die Pilze", "sv": "svampar", "es": "los champiñones", "uk": "гриби", "he": "פטריות" },
+			"dual": { "ar": "حبتا فطر" },
+			"note": "the button mushroom sold in shops: es champiñón, its name in Spain, seta being one from the woods; de Pilz and sv svamp are any mushroom, Champignon and champinjon this one; ar فطر, عيش الغراب in Egypt; ja きのこ, as マッシュルーム is this kind"
+		},
+		"chili-pepper": {
+			"name": { "en": "chili pepper", "ar": "فلفل حار", "de": "die Chilischote", "sv": "en chili", "es": "la guindilla", "uk": "перець чилі", "he": "פלפל חריף", "ja": "唐辛子" },
+			"plural": { "en": "chili peppers", "ar": "فلفل حار", "de": "die Chilischoten", "sv": "chili", "es": "las guindillas", "uk": "перці чилі", "he": "פלפלים חריפים" },
+			"dual": { "ar": "حبتا فلفل حار" },
+			"reading": { "ja": "唐辛子[とうがらし]" },
+			"note": "American chili, British chilli; es guindilla, as in Spain, chile in Mexico; sv chili, the same for many"
+		},
+		"asparagus": {
+			"name": { "en": "asparagus", "ar": "هليون", "de": "der Spargel", "sv": "en sparris", "es": "el espárrago", "uk": "спаржа", "he": "אספרגוס", "ja": "アスパラガス" },
+			"plural": { "en": "asparagus", "ar": "هليون", "de": "die Spargel", "sv": "sparrisar", "es": "los espárragos", "uk": "спаржа", "he": "אספרגוסים" },
+			"dual": { "ar": "عودا هليون" },
+			"note": "the same for many in English, a spear being one; ar counts the spears, عودا هليون; uk спаржа, the spears together"
+		},
+		"garlic": {
+			"name": { "en": "garlic", "ar": "ثوم", "de": "der Knoblauch", "sv": "en vitlök", "es": "el ajo", "uk": "часник", "he": "שום", "ja": "にんにく" },
+			"plural": { "en": "garlic", "ar": "ثوم", "de": "die Knoblauchknollen", "sv": "vitlökar", "es": "los ajos", "uk": "часник", "he": "שום" },
+			"dual": { "ar": "رأسا ثوم" },
+			"note": "heads of garlic: garlic is said of one or many, a head of garlic in full; ar counts the heads, رأسا ثوم; de Knoblauch, its bulbs Knoblauchknollen; uk часник and he שום are the same for many; ja にんにく, as it is usually written"
+		},
+		"okra": {
+			"name": { "en": "okra", "ar": "بامية", "de": "die Okra", "sv": "en okra", "es": "la okra", "uk": "бамія", "he": "במיה", "ja": "オクラ" },
+			"plural": { "en": "okra", "ar": "بامية", "de": "die Okras", "sv": "okra", "es": "las okras", "uk": "бамія", "he": "במיה" },
+			"dual": { "ar": "حبتا بامية" },
+			"note": "the same for many in English, Swedish, Arabic, Ukrainian and Hebrew; es okra, quingombó as right"
+		},
+		"beet": {
+			"name": { "en": "beet", "ar": "شمندرة", "de": "die Rote Bete", "sv": "en rödbeta", "es": "la remolacha", "uk": "буряк", "he": "סלק", "ja": "ビーツ" },
+			"plural": { "en": "beets", "ar": "شمندر", "de": "die Roten Beten", "sv": "rödbetor", "es": "las remolachas", "uk": "буряки", "he": "סלקים" },
+			"dual": { "ar": "شمندرتان" },
+			"note": "American beet, British beetroot; de Rote Bete, Rote Rübe in the south; ar شمندر, as in the Levant and print, بنجر in Egypt"
+		}
+	},
+	"styles": {
+		"basic": {
+			"picture": { "src": "scenes/vegetable-stand/basic.svg", "thumb": "scenes/vegetable-stand/basic.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "pumpkin", "d": "M90 388L103 313L118 291L154 270L189 295L232 342L241 362L248 388L248 448L90 448Z" },
+				{ "thing": "cabbage", "d": "M261 388L276 351L283 341L342 295L360 290L383 299L390 310L419 388L419 448L261 448Z" },
+				{ "thing": "eggplant", "d": "M432 388L447 362L483 307L511 308L536 317L573 345L590 388L590 448L432 448Z" },
+				{ "thing": "cauliflower", "d": "M603 388L630 344L688 304L713 295L732 304L743 326L761 388L761 448L603 448Z" },
+				{ "thing": "broccoli", "d": "M774 388L793 332L836 287L850 279L860 279L877 290L913 336L932 388L932 448L774 448Z" },
+				{ "thing": "corn", "d": "M945 388L958 306L962 301L1004 298L1044 298L1086 301L1090 306L1103 388L1103 448L945 448Z" },
+				{ "thing": "artichoke", "d": "M1116 388L1157 315L1168 308L1222 308L1233 315L1274 388L1274 448L1116 448Z" },
+				{ "thing": "lettuce", "d": "M1287 388L1299 358L1310 341L1358 299L1375 292L1396 295L1409 306L1433 356L1445 388L1445 448L1287 448Z" },
+				{ "thing": "tomato", "d": "M90 600L152 491L165 482L180 485L186 491L248 600L248 660L90 660Z" },
+				{ "thing": "cucumber", "d": "M261 600L276 545L312 517L347 513L368 518L404 543L419 600L419 660L261 660Z" },
+				{ "thing": "carrot", "d": "M432 600L439 494L451 484L473 476L561 476L575 484L590 600L590 660L432 660Z" },
+				{ "thing": "potato", "d": "M603 600L629 559L666 504L687 497L701 507L761 600L761 660L603 660Z" },
+				{ "thing": "bell-pepper", "d": "M774 600L789 574L835 502L862 485L908 557L932 600L932 660L774 660Z" },
+				{ "thing": "zucchini", "d": "M945 600L960 545L996 517L1031 513L1052 518L1088 543L1103 600L1103 660L945 660Z" },
+				{ "thing": "onion", "d": "M1116 600L1179 491L1195 472L1211 491L1274 600L1274 660L1116 660Z" },
+				{ "thing": "sweet-potato", "d": "M1287 600L1296 565L1326 534L1341 522L1358 516L1380 518L1407 534L1439 562L1445 600L1445 660L1287 660Z" },
+				{ "thing": "radish", "d": "M90 812L129 726L149 722L204 722L208 727L248 812L248 872L90 872Z" },
+				{ "thing": "pea", "d": "M261 812L269 765L312 732L325 727L362 725L372 728L411 765L419 812L419 872L261 872Z" },
+				{ "thing": "mushroom", "d": "M432 812L495 722L511 715L520 717L527 722L590 812L590 872L432 872Z" },
+				{ "thing": "chili-pepper", "d": "M603 812L608 774L629 724L725 726L737 734L761 812L761 872L603 872Z" },
+				{ "thing": "asparagus", "d": "M774 812L785 726L787 719L804 708L902 708L919 719L921 726L932 812L932 872L774 872Z" },
+				{ "thing": "garlic", "d": "M945 812L1008 711L1024 692L1040 711L1103 812L1103 872L945 872Z" },
+				{ "thing": "okra", "d": "M1116 812L1120 754L1144 727L1157 723L1243 727L1251 735L1271 786L1274 812L1274 872L1116 872Z" },
+				{ "thing": "beet", "d": "M1287 812L1332 698L1352 667L1385 671L1402 699L1445 812L1445 872L1287 872Z" }
+			]
+		},
+		"realistic": {
+			"picture": { "src": "scenes/vegetable-stand/realistic.webp", "thumb": "scenes/vegetable-stand/realistic.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "pumpkin", "d": "M40 449L38 300L40 250L50 225L75 210L110 206L128 192L138 185L145 190L150 207L170 214L180 228L188 223L205 221L215 232L232 247L240 258L277 395L277 451Z" },
+				{ "thing": "cabbage", "d": "M277 451L277 395L240 258L256 262L272 252L288 237L305 230L330 228L365 226L395 232L410 247L418 264L420 270L452 400L452 429L432 428L415 436L402 443L388 453Z" },
+				{ "thing": "eggplant", "d": "M452 429L452 400L420 270L440 262L455 252L470 240L482 229L505 230L520 250L545 262L565 278L625 403L625 454L576 453L566 440L552 425L530 424L505 420L480 418L458 429Z" },
+				{ "thing": "cauliflower", "d": "M625 454L625 403L565 278L585 268L598 250L625 243L660 245L680 262L700 275L714 288L780 407L780 456Z" },
+				{ "thing": "broccoli", "d": "M780 456L780 407L714 288L728 270L750 262L790 259L825 266L838 285L855 295L873 298L925 410L925 458Z" },
+				{ "thing": "corn", "d": "M925 458L925 410L873 298L887 277L942 275L965 283L990 292L1015 302L1060 415L1060 460Z" },
+				{ "thing": "artichoke", "d": "M1060 460L1060 415L1015 302L1030 290L1050 283L1075 285L1100 290L1120 296L1130 302L1143 330L1145 352L1167 360L1183 377L1187 400L1191 413L1191 462Z" },
+				{ "thing": "lettuce", "d": "M1191 462L1191 413L1187 400L1183 377L1167 360L1145 352L1143 330L1130 302L1140 306L1157 296L1170 292L1187 296L1200 300L1217 306L1233 312L1250 326L1267 336L1277 356L1290 376L1303 398L1303 463Z" },
+				{ "thing": "tomato", "d": "M88 687L35 449L240 451L307 617L307 677L283 680L262 677L240 674L225 668L212 661L200 662L157 667L145 676L135 684Z" },
+				{ "thing": "cucumber", "d": "M307 677L307 617L240 451L277 451L388 453L392 450L408 478L477 612L477 671L445 674L310 677Z" },
+				{ "thing": "carrot", "d": "M477 671L477 612L408 478L392 450L402 443L415 436L432 428L458 429L480 418L505 420L530 424L552 425L566 440L576 453L600 453L598 470L588 495L640 607L640 664Z" },
+				{ "thing": "potato", "d": "M640 664L640 607L588 495L598 470L600 453L625 454L715 455L797 607L797 646L785 652L760 656L700 660Z" },
+				{ "thing": "bell-pepper", "d": "M797 646L797 607L715 455L780 456L880 457L960 605L960 650L900 650L885 643L800 644Z" },
+				{ "thing": "zucchini", "d": "M960 650L960 605L880 457L925 458L1020 459L1105 602L1105 646L1000 648Z" },
+				{ "thing": "onion", "d": "M1105 646L1105 602L1020 459L1060 460L1155 461L1242 600L1242 642L1228 649L1215 645Z" },
+				{ "thing": "sweet-potato", "d": "M1242 642L1242 600L1155 461L1191 462L1303 463L1380 597L1380 621L1360 618L1342 613L1323 610L1302 615L1290 622L1275 635L1258 638Z" },
+				{ "thing": "radish", "d": "M132 924L73 688L135 684L145 676L157 667L200 662L212 661L225 668L240 674L262 677L280 680L352 845L352 916Z" },
+				{ "thing": "pea", "d": "M352 916L352 845L280 680L283 680L310 677L445 674L522 835L522 909L356 910Z" },
+				{ "thing": "mushroom", "d": "M522 909L522 835L445 674L477 671L605 666L690 825L690 896L526 897Z" },
+				{ "thing": "chili-pepper", "d": "M690 896L690 825L605 666L640 664L700 660L760 656L765 655L845 810L845 874L694 876Z" },
+				{ "thing": "asparagus", "d": "M845 874L845 810L765 655L785 652L800 644L885 643L900 650L925 650L1005 802L1005 864L848 866Z" },
+				{ "thing": "garlic", "d": "M1005 864L1005 802L925 650L960 650L1000 648L1070 647L1165 792L1165 851L1008 853Z" },
+				{ "thing": "okra", "d": "M1165 851L1165 792L1070 647L1105 646L1215 645L1310 785L1310 834L1168 836Z" },
+				{ "thing": "beet", "d": "M1310 834L1310 785L1215 645L1228 649L1242 642L1258 638L1275 635L1290 622L1302 615L1323 610L1342 613L1360 618L1380 621L1398 625L1412 629L1422 638L1432 656L1486 772L1486 824L1313 826Z" }
+			]
+		},
+		"ghibli": {
+			"picture": { "src": "scenes/vegetable-stand/ghibli.webp", "thumb": "scenes/vegetable-stand/ghibli.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "pumpkin", "d": "M40 449L38 300L40 250L50 225L75 210L110 206L128 192L138 185L145 190L150 207L170 214L180 228L188 223L205 221L215 232L232 247L240 258L277 395L277 451Z" },
+				{ "thing": "cabbage", "d": "M277 451L277 395L240 258L256 262L272 252L288 237L305 230L330 228L365 226L395 232L410 247L418 264L420 270L452 400L452 429L432 428L415 436L402 443L388 453Z" },
+				{ "thing": "eggplant", "d": "M452 429L452 400L420 270L440 262L455 252L470 240L482 229L505 230L520 250L545 262L565 278L625 403L625 454L576 453L566 440L552 425L530 424L505 420L480 418L458 429Z" },
+				{ "thing": "cauliflower", "d": "M625 454L625 403L565 278L585 268L598 250L625 243L660 245L680 262L700 275L714 288L780 407L780 456Z" },
+				{ "thing": "broccoli", "d": "M780 456L780 407L714 288L728 270L750 262L790 259L825 266L838 285L855 295L873 298L925 410L925 458Z" },
+				{ "thing": "corn", "d": "M925 458L925 410L873 298L887 277L942 275L965 283L990 292L1015 302L1060 415L1060 460Z" },
+				{ "thing": "artichoke", "d": "M1060 460L1060 415L1015 302L1030 290L1050 283L1075 285L1100 290L1120 296L1130 302L1143 330L1145 352L1167 360L1183 377L1187 400L1191 413L1191 462Z" },
+				{ "thing": "lettuce", "d": "M1191 462L1191 413L1187 400L1183 377L1167 360L1145 352L1143 330L1130 302L1140 306L1157 296L1170 292L1187 296L1200 300L1217 306L1233 312L1250 326L1267 336L1277 356L1290 376L1303 398L1303 463Z" },
+				{ "thing": "tomato", "d": "M88 687L35 449L240 451L307 617L307 677L283 680L262 677L240 674L225 668L212 661L200 662L157 667L145 676L135 684Z" },
+				{ "thing": "cucumber", "d": "M307 677L307 617L240 451L277 451L388 453L392 450L408 478L477 612L477 671L445 674L310 677Z" },
+				{ "thing": "carrot", "d": "M477 671L477 612L408 478L392 450L402 443L415 436L432 428L458 429L480 418L505 420L530 424L552 425L566 440L576 453L600 453L598 470L588 495L640 607L640 664Z" },
+				{ "thing": "potato", "d": "M640 664L640 607L588 495L598 470L600 453L625 454L715 455L797 607L797 646L785 652L760 656L700 660Z" },
+				{ "thing": "bell-pepper", "d": "M797 646L797 607L715 455L780 456L880 457L960 605L960 650L900 650L885 643L800 644Z" },
+				{ "thing": "zucchini", "d": "M960 650L960 605L880 457L925 458L1020 459L1105 602L1105 646L1000 648Z" },
+				{ "thing": "onion", "d": "M1105 646L1105 602L1020 459L1060 460L1155 461L1242 600L1242 642L1228 649L1215 645Z" },
+				{ "thing": "sweet-potato", "d": "M1242 642L1242 600L1155 461L1191 462L1303 463L1380 597L1380 621L1360 618L1342 613L1323 610L1302 615L1290 622L1275 635L1258 638Z" },
+				{ "thing": "radish", "d": "M132 924L73 688L135 684L145 676L157 667L200 662L212 661L225 668L240 674L262 677L280 680L352 845L352 916Z" },
+				{ "thing": "pea", "d": "M352 916L352 845L280 680L283 680L310 677L445 674L522 835L522 909L356 910Z" },
+				{ "thing": "mushroom", "d": "M522 909L522 835L445 674L477 671L605 666L690 825L690 896L526 897Z" },
+				{ "thing": "chili-pepper", "d": "M690 896L690 825L605 666L640 664L700 660L760 656L765 655L845 810L845 874L694 876Z" },
+				{ "thing": "asparagus", "d": "M845 874L845 810L765 655L785 652L800 644L885 643L900 650L925 650L1005 802L1005 864L848 866Z" },
+				{ "thing": "garlic", "d": "M1005 864L1005 802L925 650L960 650L1000 648L1070 647L1165 792L1165 851L1008 853Z" },
+				{ "thing": "okra", "d": "M1165 851L1165 792L1070 647L1105 646L1215 645L1310 785L1310 834L1168 836Z" },
+				{ "thing": "beet", "d": "M1310 834L1310 785L1215 645L1228 649L1242 642L1258 638L1275 635L1290 622L1302 615L1323 610L1342 613L1360 618L1380 621L1398 625L1412 629L1422 638L1432 656L1486 772L1486 824L1313 826Z" }
+			]
+		}
+	}
+}
