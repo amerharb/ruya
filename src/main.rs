@@ -10,6 +10,7 @@ mod stage;
 mod style;
 mod swipe;
 mod url;
+mod voice;
 
 fn main() {
     // a panic shows in the browser's console with its message, not as

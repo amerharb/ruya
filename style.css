@@ -63,8 +63,10 @@ body {
 	color: var(--accent);
 }
 
+/* only as wide as its name, the styles beside it; it gives way first,
+   cut short, when the bar runs out of room */
 .scene-name {
-	flex: 1;
+	flex: 0 1 auto;
 	min-width: 0;
 	margin: 0;
 	font-size: 1.05rem;
@@ -137,9 +139,11 @@ body {
 }
 
 /* every name at once: two name tags, filled while they show; readings over
-   the names, in Japanese, a button of the same make */
+   the names, in Japanese, and the names said aloud, buttons of the same
+   make */
 .all-names,
-.readings {
+.readings,
+.voice {
 	display: grid;
 	place-items: center;
 	width: 36px;
@@ -152,7 +156,14 @@ body {
 	cursor: pointer;
 }
 
-.all-names svg {
+/* the first of the toggles, which with the speaker and the language keep
+   to the bar's far end */
+.all-names {
+	margin-inline-start: auto;
+}
+
+.all-names svg,
+.voice svg {
 	width: 22px;
 	height: 22px;
 	fill: none;
@@ -160,19 +171,27 @@ body {
 	stroke-width: 2;
 }
 
+.voice svg {
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
 .all-names.on,
-.readings.on {
+.readings.on,
+.voice.on {
 	border-color: var(--accent);
 	background: var(--accent);
 	color: var(--bg);
 }
 
-.all-names.on svg {
+.all-names.on svg,
+.voice.on .body {
 	fill: currentColor;
 }
 
 .all-names:focus-visible,
-.readings:focus-visible {
+.readings:focus-visible,
+.voice:focus-visible {
 	outline: 2px solid var(--accent);
 	outline-offset: 2px;
 }
@@ -241,8 +260,8 @@ body {
 }
 
 /* A phone held upright has no room for them all in a row: the name, the
-   names toggle and the forms get the first, the style and the language a
-   second. */
+   names toggle and the forms get the first, the style, the speaker and the
+   language a second. */
 @media (max-width: 600px) {
 	/* the gaps and the forms a little narrower, so a long name such as das
 	   Wohnzimmer still fits beside them */
@@ -268,12 +287,30 @@ body {
 	}
 
 	.styles,
+	.voice,
 	.picker {
 		order: 2;
 	}
 
+	/* the speaker and the language at the row's end, side by side */
+	.voice,
 	.picker {
 		margin-inline-start: auto;
+	}
+
+	.voice + .picker {
+		margin-inline-start: 0;
+	}
+
+	/* the thumbnails a little smaller, so the speaker and the language still
+	   fit beside them on a screen 360 pixels wide */
+	.styles {
+		gap: 4px;
+	}
+
+	.style img {
+		width: 42px;
+		height: 28px;
 	}
 }
 

@@ -1,9 +1,9 @@
 //! The choices in the address: `?p=living-room` opens Ruya on the living
 //! room, `?l=sv` in Swedish, `?s=basic` on the drawing, `?n=all` with every
-//! name showing, `?f=one-many` with each name's plural under it and `?r=on`
-//! with furigana over Japanese kanji, and picking any of them writes it
-//! back, so a link shows what the person sharing it saw. `p` is for place,
-//! as `s` was taken.
+//! name showing, `?f=one-many` with each name's plural under it, `?r=on`
+//! with furigana over Japanese kanji and `?v=on` with the names said aloud,
+//! and picking any of them writes it back, so a link shows what the person
+//! sharing it saw. `p` is for place, as `s` was taken.
 
 use crate::lang::{Forms, Lang};
 use crate::scene::Scene;
@@ -51,6 +51,12 @@ pub fn readings_from_search(search: &str) -> bool {
     param(search, "r") == Some("on")
 }
 
+/// `?v=on`: a thing tapped says its name, in a language Ruya has a voice
+/// for. Anything else, or nothing, is silent.
+pub fn voice_from_search(search: &str) -> bool {
+    param(search, "v") == Some("on")
+}
+
 fn search() -> String {
     web_sys::window()
         .and_then(|w| w.location().search().ok())
@@ -96,6 +102,11 @@ pub fn initial_forms() -> Forms {
 /// Whether to open with readings over the names.
 pub fn initial_readings() -> bool {
     readings_from_search(&search())
+}
+
+/// Whether to open with the names said aloud.
+pub fn initial_voice() -> bool {
+    voice_from_search(&search())
 }
 
 /// Write a parameter into the address without a new history entry: a
@@ -186,6 +197,15 @@ mod tests {
         assert!(!readings_from_search("?r=off"));
         assert!(!readings_from_search("?r="));
         assert!(!readings_from_search("?l=ja"));
+    }
+
+    #[test]
+    fn reads_v_for_the_voice() {
+        assert!(voice_from_search("?v=on"));
+        assert!(voice_from_search("?p=street&v=on"));
+        assert!(!voice_from_search("?v=off"));
+        assert!(!voice_from_search("?v="));
+        assert!(!voice_from_search("?l=en"));
     }
 
     #[test]

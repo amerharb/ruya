@@ -1,5 +1,7 @@
 use crate::lang::{Forms, Lang};
-use crate::picker::{AllNames, FormButtons, Picker, ReadingsButton, ScenePicker, StylePicker};
+use crate::picker::{
+    AllNames, FormButtons, Picker, ReadingsButton, ScenePicker, StylePicker, VoiceButton,
+};
 use crate::scene::{Scene, Step};
 use crate::stage::Stage;
 use crate::style::Style;
@@ -14,6 +16,7 @@ pub fn App() -> impl IntoView {
     let (all, set_all) = signal(url::initial_all_names());
     let (forms, set_forms) = signal(url::initial_forms());
     let (readings, set_readings) = signal(url::initial_readings());
+    let (voice, set_voice) = signal(url::initial_voice());
     // How the scene shown was reached, when an edge or a swipe stepped to
     // it: set as the step is taken, and taken back by the stage it builds,
     // which slides in from that side. Anything else that builds a stage — a
@@ -75,6 +78,15 @@ pub fn App() -> impl IntoView {
         },
         false,
     );
+    // and silence
+    Effect::watch(
+        move || voice.get(),
+        |on: &bool, _, _| match on {
+            true => url::write("v", "on"),
+            false => url::remove("v"),
+        },
+        false,
+    );
 
     view! {
         <header class="bar">
@@ -89,6 +101,7 @@ pub fn App() -> impl IntoView {
             <AllNames all=all set_all=set_all lang=lang />
             <FormButtons forms=forms set_forms=set_forms lang=lang />
             <ReadingsButton readings=readings set_readings=set_readings lang=lang />
+            <VoiceButton voice=voice set_voice=set_voice lang=lang />
             <Picker lang=lang set_lang=set_lang />
         </header>
         <main class="main">
@@ -119,6 +132,7 @@ pub fn App() -> impl IntoView {
                             all=all
                             forms=forms
                             readings=readings
+                            voice=voice
                             came=came
                             turn=turn
                         />

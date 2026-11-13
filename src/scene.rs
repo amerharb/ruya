@@ -241,6 +241,18 @@ impl Scene {
             .expect("every region names a thing — checked by cargo test")
     }
 
+    /// The recording of thing `id`'s name for `number`, in a language Ruya
+    /// has a voice for: beside the scene's pictures, made by
+    /// `tools/voice.py`.
+    pub fn clip(&self, id: &str, lang: Lang, number: Number) -> String {
+        format!(
+            "scenes/{}/voice/{}/{id}.{}.mp3",
+            self.id,
+            lang.code(),
+            number.code()
+        )
+    }
+
     pub fn find(id: &str) -> Option<&'static Scene> {
         SCENES.iter().find(|s| s.id == id.trim())
     }
@@ -760,6 +772,89 @@ mod tests {
                             check_file(&what, &src, x1 - x0, y1 - y0, true);
                         }
                     }
+                }
+            }
+        }
+    }
+
+    /// What `tools/voice.py` recorded for a scene in one language: the voice,
+    /// and the name each recording says, by `<thing>.<number>`.
+    #[derive(Deserialize)]
+    #[serde(deny_unknown_fields)]
+    struct Recorded {
+        voice: String,
+        said: BTreeMap<String, String>,
+    }
+
+    /// An MP3: an ID3 tag, or straight into a frame's sync bits.
+    fn is_mp3(bytes: &[u8]) -> bool {
+        bytes.starts_with(b"ID3")
+            || (bytes.len() > 1 && bytes[0] == 0xFF && bytes[1] & 0xE0 == 0xE0)
+    }
+
+    #[test]
+    fn every_name_is_recorded_in_a_language_with_a_voice() {
+        for (file, scene) in scenes() {
+            for lang in Lang::ALL {
+                let code = lang.code();
+                let dir = root()
+                    .join("public/scenes")
+                    .join(&scene.id)
+                    .join("voice")
+                    .join(code);
+                if lang.voice_name().is_none() {
+                    assert!(
+                        !dir.exists(),
+                        "{file}: recordings in {code}, which has no voice"
+                    );
+                    continue;
+                }
+                let log = root()
+                    .join("art")
+                    .join(&scene.id)
+                    .join(format!("voice.{code}.json"));
+                let json = std::fs::read_to_string(&log).unwrap_or_else(|_| {
+                    panic!("{file}: no {} — run tools/voice.py {code}", log.display())
+                });
+                let recorded: Recorded = serde_json::from_str(&json).unwrap();
+                assert!(!recorded.voice.is_empty(), "{}: no voice", log.display());
+                let mut kept = HashSet::new();
+                for (id, thing) in &scene.things {
+                    for &number in lang.numbers() {
+                        let src = scene.clip(id, lang, number);
+                        // a name changed since its recording was made says the
+                        // old word
+                        let name = thing.name_for(lang, number).unwrap();
+                        let said = recorded.said.get(&format!("{id}.{}", number.code()));
+                        assert_eq!(
+                            said.map(String::as_str),
+                            Some(name),
+                            "{file}: {src} does not say '{name}' — run tools/voice.py {code}"
+                        );
+                        let path = root().join("public").join(&src);
+                        let bytes = std::fs::read(&path)
+                            .unwrap_or_else(|_| panic!("{file}: no recording at {src}"));
+                        assert!(
+                            bytes.len() > 1000 && is_mp3(&bytes),
+                            "{file}: {src} is not an MP3 recording"
+                        );
+                        kept.insert(path);
+                    }
+                }
+                assert_eq!(
+                    recorded.said.len(),
+                    kept.len(),
+                    "{}: records a name the scene no longer has",
+                    log.display()
+                );
+                for entry in std::fs::read_dir(&dir).unwrap() {
+                    let path = entry.unwrap().path();
+                    let hidden = path.file_name().unwrap().to_string_lossy().starts_with('.');
+                    assert!(
+                        hidden || kept.contains(&path),
+                        "{file}: {} is no name's recording",
+                        path.display()
+                    );
                 }
             }
         }

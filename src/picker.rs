@@ -1,8 +1,9 @@
 //! The choices in the bar: the scene, as its name; the style, as a little
 //! picture of each; every name or one at a time; the forms each name shows;
-//! readings over the names, in Japanese; and the language. The scene and the
-//! language are the browser's own `<select>`, which every phone turns into
-//! its best native chooser.
+//! readings over the names, in Japanese; the names said aloud, in a language
+//! with a voice; and the language. The scene and the language are the
+//! browser's own `<select>`, which every phone turns into its best native
+//! chooser.
 
 use crate::lang::{Forms, Lang, Number};
 use crate::scene::{SCENES, Scene};
@@ -151,6 +152,38 @@ pub fn ReadingsButton(
                         "字"
                         <rt>"じ"</rt>
                     </ruby>
+                </button>
+            }
+        })
+    }
+}
+
+/// The names said aloud, or not: pressed, the speaker has a thing tapped
+/// say its name. A button only in a language Ruya has a voice for; off
+/// until pressed.
+#[component]
+pub fn VoiceButton(
+    voice: ReadSignal<bool>,
+    set_voice: WriteSignal<bool>,
+    lang: ReadSignal<Lang>,
+) -> impl IntoView {
+    move || {
+        lang.get().voice_name().map(|word| {
+            view! {
+                <button
+                    class="voice"
+                    class:on=move || voice.get()
+                    aria-pressed=move || voice.get().to_string()
+                    aria-label=word
+                    title=word
+                    on:click=move |_| set_voice.update(|on| *on = !*on)
+                >
+                    // a speaker and its sound
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path class="body" d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" />
+                        <path d="M15.5 9a4 4 0 0 1 0 6" />
+                        <path d="M18.5 6.5a7.5 7.5 0 0 1 0 11" />
+                    </svg>
                 </button>
             }
         })

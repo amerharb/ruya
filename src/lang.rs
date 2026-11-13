@@ -117,6 +117,16 @@ impl Lang {
         }
     }
 
+    /// The speaker button's name, in a language Ruya has a voice for: one
+    /// that says a thing's name when it is tapped, from recordings made by
+    /// `tools/voice.py`. None where it has none yet; English is the first.
+    pub fn voice_name(self) -> Option<&'static str> {
+        match self {
+            Lang::En => Some("Say the names"),
+            Lang::Ar | Lang::De | Lang::Sv | Lang::Es | Lang::Uk | Lang::He | Lang::Ja => None,
+        }
+    }
+
     /// A language from a BCP 47 tag, ignoring case and region (`sv-SE` is
     /// Swedish), or None when Ruya does not have it. `iw` is the code Hebrew
     /// had before 1989, which some systems still report.

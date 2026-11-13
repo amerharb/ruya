@@ -1,6 +1,6 @@
 [package]
 name = "ruya"
-version = "0.3.0"
+version = "0.4.0"
 edition = "2024"
 rust-version = "1.88"
 description = "Ruya — رؤية, a picture dictionary: point at a thing, read its name"
@@ -25,9 +25,11 @@ web-sys = { version = "0.3", features = [
 	"Element",
 	"Headers",
 	"History",
+	"HtmlAudioElement",
 	"HtmlCollection",
 	"HtmlElement",
 	"HtmlImageElement",
+	"HtmlMediaElement",
 	"KeyboardEvent",
 	"Location",
 	"MouseEvent",

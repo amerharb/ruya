@@ -2,6 +2,27 @@
 
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
+## [0.4.0] (unreleased)
+
+### Added
+- **The names said aloud** — in a language Ruya has a voice for, English
+  first, a speaker button stands left of the language list. Pressed, a
+  thing tapped or clicked says its name in each form shown, "strawberry"
+  then "strawberries"; with the keyboard, Enter or the space bar on a
+  thing says it. Off until pressed, the choice kept in the address as
+  `?v=on`. The names are recordings, not the browser's speech, so every
+  device hears the same voice: Ava, the one the sawt apps use for English,
+  from Microsoft Edge's text-to-speech, picked by ear from four. A name
+  and a plural for each of the 110 things, 220 MP3s made by
+  `tools/voice.py`, each fetched the first time it is said.
+
+### Changed
+- **The style switch beside the scene's name** — the thumbnails moved from
+  the bar's right end to its left, after the scene's name; the toggles,
+  the speaker and the language keep to the right. On a phone held upright
+  they are a little smaller, so the speaker and the language still fit
+  beside them.
+
 ## [0.3.0] 2026-11-10
 
 ### Added

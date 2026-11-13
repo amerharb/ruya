@@ -16,7 +16,9 @@
 //!
 //! A name is shown in each form chosen, a line each: the singular on top,
 //! then the dual where the language has one, then the plural. With readings
-//! asked for, a Japanese name carries furigana over its kanji.
+//! asked for, a Japanese name carries furigana over its kanji. With the
+//! speaker on, a thing tapped, clicked, or reached with the keyboard and
+//! then Enter, says its name in those forms, in turn — see `voice`.
 //!
 //! The picture's two edges go to the other scenes, round in a circle: the
 //! right one to the next, the left to the one before. Pointed at, an edge
@@ -33,6 +35,7 @@ use crate::scene::{Rendering, SCENES, Scene, Step};
 use crate::spread::{Tag, spread};
 use crate::style::Style;
 use crate::swipe::Swipe;
+use crate::voice;
 use leptos::either::Either;
 use leptos::ev;
 use leptos::html::Div;
@@ -48,6 +51,7 @@ pub fn Stage(
     all: ReadSignal<bool>,
     forms: ReadSignal<Forms>,
     readings: ReadSignal<bool>,
+    voice: ReadSignal<bool>,
     came: Option<Step>,
     turn: Callback<Step>,
 ) -> impl IntoView {
@@ -105,9 +109,28 @@ pub fn Stage(
     });
     on_cleanup(move || escape.remove());
 
-    // One handler for every tap: on a thing it picks it, anywhere else it
-    // clears. `click`, not `pointerdown`, so a finger dragging the picture
-    // sideways picks nothing.
+    // With the speaker on, in a language Ruya has a voice for, a thing's
+    // name said in each form shown, as its label shows them
+    let say = move |i: usize| {
+        let l = lang.get_untracked();
+        if !voice.get_untracked() || l.voice_name().is_none() {
+            return;
+        }
+        let id = &rendering.regions[i].thing;
+        let thing = scene.thing(id);
+        voice::say(
+            forms
+                .get_untracked()
+                .shown(l)
+                .filter(|&n| thing.name_for(l, n).is_some())
+                .map(|n| scene.clip(id, l, n))
+                .collect(),
+        );
+    };
+
+    // One handler for every tap: on a thing it picks it and says its name,
+    // anywhere else it clears. `click`, not `pointerdown`, so a finger
+    // dragging the picture sideways picks nothing.
     let on_click = move |ev: ev::MouseEvent| {
         let item = ev
             .target()
@@ -116,6 +139,9 @@ pub fn Stage(
             .and_then(|el| el.get_attribute("data-item"))
             .and_then(|v| v.parse::<usize>().ok());
         picked.set(item);
+        if let Some(i) = item {
+            say(i);
+        }
     };
 
     // On a phone held upright the picture fills the height and scrolls
@@ -236,6 +262,14 @@ pub fn Stage(
                         }
                     }
                     on:focus=move |_| picked.set(Some(i))
+                    // a thing reached with Tab is already shown; Enter or
+                    // the space bar says it, as a click would
+                    on:keydown=move |ev: ev::KeyboardEvent| {
+                        if ev.key() == "Enter" || ev.key() == " " {
+                            ev.prevent_default();
+                            say(i);
+                        }
+                    }
                 />
             }
         })

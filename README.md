@@ -33,8 +33,8 @@ start WebAssembly.
   picture to its end, and the next one that way turns the scene. A scene
   reached by a swipe or an edge slides in from that side, unless the
   device asks for reduced motion.
-- **Style:** the little pictures in the bar switch between the styles the
-  scene comes in (below).
+- **Style:** the little pictures beside the scene's name switch between
+  the styles the scene comes in (below).
 - **All names:** the button with two tags shows every thing's name at once,
   as a small tag on the thing — one per thing, on the biggest of its
   regions, so two chairs get one. Tags that would overlap or run off the
@@ -52,9 +52,14 @@ start WebAssembly.
   and the tags, so a name can be read aloud by someone who does not know
   its kanji. Katakana words already spell their sound and get none. The
   button is there only in Japanese.
+- **Voice:** in a language Ruya has a voice for — English, so far — a
+  speaker button stands left of the language list. Pressed, a thing
+  tapped or clicked says its name aloud, in each form shown, singular then
+  plural; with the keyboard, Enter or the space bar on a thing says it.
+  Ruya opens with it off, and tapping without it stays silent.
 - On a phone held upright the bar takes two rows: the scene's name, the
-  all-names button and the forms or furigana, then the style and the
-  language.
+  all-names button and the forms or furigana, then the style, the speaker
+  and the language.
 
 ## Styles
 
@@ -135,6 +140,34 @@ browser's languages it has, else English.
   pressed; absent — or back at the singular alone — the singular alone.
 - `r` — `?r=on` opens with furigana over Japanese kanji. Written when the
   furigana button is pressed, and taken out again when it is released.
+- `v` — `?v=on` opens with the speaker on, so a thing tapped says its name.
+  Written when the speaker button is pressed, and taken out again when it
+  is released.
+
+## Voice
+
+The names are said by recordings, one per name and form, made ahead of
+time rather than by the browser's own speech: the same voice on every
+device, and no voice missing on a phone that has none for the language.
+English is said by Ava (`en-US-AvaNeural`, the voice the sawt apps use
+for English), from Microsoft Edge's online text-to-speech, picked by ear
+from four.
+
+A recording is `public/scenes/<scene>/voice/<lang>/<thing>.<number>.mp3`
+— `fridge.one.mp3`, `fridge.many.mp3` — fetched the first time it is
+said. Each is the name with a full stop after it, the silence Edge puts
+around a word trimmed to a breath, so a tap is answered at once and the
+plural follows close behind: about 5 KB, mono MP3. One `<audio>` plays
+them all (`src/voice.rs`): a thing tapped while another is speaking cuts
+it short.
+
+`python3 tools/voice.py en` records what is missing: a new thing's names,
+or one whose name changed since. What each recording says is logged in
+`art/<scene>/voice.<lang>.json`, and `cargo test` fails while a name and
+its recording differ. `--all` records everything again; a new voice in
+the script does that too. Edge gives a different recording each time, so
+listen to a new one rather than compare files. A word Edge says wrong
+gets what to say instead in the script's `SAY`.
 
 ## Counting opens
 
@@ -233,12 +266,15 @@ on a phone; every label point on its region; a thing lying on another after
 it; each picture and thumbnail there, an SVG with the scene's `viewBox`
 or a bitmap of the scene's shape — the picture at least its size; and
 every sign worded in every language and in some picture, inside it, with a
-patch for every language but the picture's own, of its rect's shape.
+patch for every language but the picture's own, of its rect's shape; and,
+in a language with a voice, an MP3 of every name in each of its forms,
+logged as saying the name as it now is, and none left over.
 
 ### Adding a thing, a scene or a language
 
 - **A thing:** add it to `things` with its names, and a region for it to
-  each style it is in; run `cargo test`.
+  each style it is in; record its names with `python3 tools/voice.py en`;
+  run `cargo test`.
 - **A scene:** a folder for it, `public/scenes/<id>/`, holding a picture
   and a thumbnail per style (`basic.svg`, `realistic.webp`,
   `realistic.thumb.webp`, …); its file in `scenes/`, named by its id; and a
@@ -256,6 +292,11 @@ patch for every language but the picture's own, of its rect's shape.
   `cargo test` at every scene still missing a name. Then each sign's words
   in the language, and its patches, with `python3 tools/signs.py
   scenes/<scene>.json` (adding the font for a new script to its `FONTS`).
+- **A voice for a language:** pick one of Edge's voices by ear; put it in
+  `VOICES` in `tools/voice.py`, with the language's forms in `NUMBERS`,
+  and run `python3 tools/voice.py <lang>`; then give the speaker button its
+  name in the language, in `Lang::voice_name` (`src/lang.rs`), which is
+  what makes the button show.
 
 ## Pictures and licences
 
@@ -425,7 +466,7 @@ trace it into polygons with a script.
 - `trunk serve` — http://127.0.0.1:8090, rebuilding on every change.
 - `trunk build --release` — the site in `dist/`: `index.html`, the
   WebAssembly, its loader, the stylesheet and `scenes/`. The release
-  WebAssembly is about 443 KB, 176 KB compressed, the scene files
+  WebAssembly is about 447 KB, 177 KB compressed, the scene files
   included.
 - `cargo test`, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`
   — run on the host, no browser needed. CI runs them and a release build.
