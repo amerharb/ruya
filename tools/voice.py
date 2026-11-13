@@ -38,17 +38,20 @@ ROOT = Path(__file__).resolve().parent.parent
 # the voice per language, picked by ear
 VOICES = {
     "en": "en-US-AvaNeural",
+    "de": "de-DE-KatjaNeural",
 }
 
 # what to say instead, where a voice reads the written name wrong
 SAY = {
     "en": {},
+    "de": {},
 }
 
 # the numbers a language has, as `Lang::numbers` in src/lang.rs, by the code
 # that names its recording and the scene file's field for it
 NUMBERS = {
     "en": ["one", "many"],
+    "de": ["one", "many"],
 }
 FIELDS = {"one": "name", "two": "dual", "many": "plural"}
 

@@ -52,8 +52,8 @@ start WebAssembly.
   and the tags, so a name can be read aloud by someone who does not know
   its kanji. Katakana words already spell their sound and get none. The
   button is there only in Japanese.
-- **Voice:** in a language Ruya has a voice for — English, so far — a
-  speaker button stands left of the language list. Pressed, a thing
+- **Voice:** in a language Ruya has a voice for — English and German, so
+  far — a speaker button stands left of the language list. Pressed, a thing
   tapped or clicked says its name aloud, in each form shown, singular then
   plural; with the keyboard, Enter or the space bar on a thing says it.
   Ruya opens with it off, and tapping without it stays silent.
@@ -149,9 +149,12 @@ browser's languages it has, else English.
 The names are said by recordings, one per name and form, made ahead of
 time rather than by the browser's own speech: the same voice on every
 device, and no voice missing on a phone that has none for the language.
-English is said by Ava (`en-US-AvaNeural`, the voice the sawt apps use
-for English), from Microsoft Edge's online text-to-speech, picked by ear
-from four.
+The voices are Microsoft Edge's online text-to-speech, each picked by ear
+from four, and the ones the sawt apps use for the same languages:
+
+- **English:** Ava, `en-US-AvaNeural`.
+- **German:** Katja, `de-DE-KatjaNeural`, saying each name with its
+  article, as the label shows it (der Kühlschrank, die Kühlschränke).
 
 A recording is `public/scenes/<scene>/voice/<lang>/<thing>.<number>.mp3`
 — `fridge.one.mp3`, `fridge.many.mp3` — fetched the first time it is
@@ -161,7 +164,7 @@ plural follows close behind: about 5 KB, mono MP3. One `<audio>` plays
 them all (`src/voice.rs`): a thing tapped while another is speaking cuts
 it short.
 
-`python3 tools/voice.py en` records what is missing: a new thing's names,
+`python3 tools/voice.py <lang>` records what is missing: a new thing's names,
 or one whose name changed since. What each recording says is logged in
 `art/<scene>/voice.<lang>.json`, and `cargo test` fails while a name and
 its recording differ. `--all` records everything again; a new voice in
@@ -273,8 +276,8 @@ logged as saying the name as it now is, and none left over.
 ### Adding a thing, a scene or a language
 
 - **A thing:** add it to `things` with its names, and a region for it to
-  each style it is in; record its names with `python3 tools/voice.py en`;
-  run `cargo test`.
+  each style it is in; record its names in each language with a voice,
+  `python3 tools/voice.py en` and `de`; run `cargo test`.
 - **A scene:** a folder for it, `public/scenes/<id>/`, holding a picture
   and a thumbnail per style (`basic.svg`, `realistic.webp`,
   `realistic.thumb.webp`, …); its file in `scenes/`, named by its id; and a
