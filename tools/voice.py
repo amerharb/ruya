@@ -6,6 +6,7 @@ MP3 the app plays when the thing is tapped with the speaker on.
     python3 tools/voice.py en          # what is missing or out of date
     python3 tools/voice.py en --all    # every recording again
     python3 tools/voice.py en --dry    # say what would be recorded
+    python3 tools/voice.py en kitchen  # one scene's, or a few
 
 For every scene file and each thing in it, its name for one and for many
 (and for two, in a language with a dual) is said with a full stop after it:
@@ -39,12 +40,14 @@ ROOT = Path(__file__).resolve().parent.parent
 VOICES = {
     "en": "en-US-AvaNeural",
     "de": "de-DE-KatjaNeural",
+    "ar": "ar-SA-HamedNeural",
 }
 
 # what to say instead, where a voice reads the written name wrong
 SAY = {
     "en": {},
     "de": {},
+    "ar": {},
 }
 
 # the numbers a language has, as `Lang::numbers` in src/lang.rs, by the code
@@ -52,6 +55,7 @@ SAY = {
 NUMBERS = {
     "en": ["one", "many"],
     "de": ["one", "many"],
+    "ar": ["one", "two", "many"],
 }
 FIELDS = {"one": "name", "two": "dual", "many": "plural"}
 
@@ -92,6 +96,7 @@ def record(text, voice, out):
 def main():
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("lang", choices=sorted(VOICES))
+    parser.add_argument("scenes", nargs="*", help="scene ids; every scene if none")
     parser.add_argument("--all", action="store_true", help="record every name again")
     parser.add_argument("--dry", action="store_true", help="say what would be recorded")
     args = parser.parse_args()
@@ -99,7 +104,13 @@ def main():
 
     made = {}  # what was said this run, by its recording
     count = 0
-    for path in sorted((ROOT / "scenes").glob("*.json")):
+    paths = sorted((ROOT / "scenes").glob("*.json"))
+    if args.scenes:
+        unknown = set(args.scenes) - {p.stem for p in paths}
+        if unknown:
+            sys.exit(f"no scene {', '.join(sorted(unknown))}")
+        paths = [p for p in paths if p.stem in args.scenes]
+    for path in paths:
         scene = json.loads(path.read_text())
         sid = scene["id"]
         out = ROOT / "public" / "scenes" / sid / "voice" / lang

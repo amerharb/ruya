@@ -124,7 +124,8 @@ impl Lang {
         match self {
             Lang::En => Some("Say the names"),
             Lang::De => Some("Namen vorlesen"),
-            Lang::Ar | Lang::Sv | Lang::Es | Lang::Uk | Lang::He | Lang::Ja => None,
+            Lang::Ar => Some("نطق الأسماء"),
+            Lang::Sv | Lang::Es | Lang::Uk | Lang::He | Lang::Ja => None,
         }
     }
 
