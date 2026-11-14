@@ -1,0 +1,23 @@
+{
+	"voice": "ja-JP-KeitaNeural",
+	"said": {
+		"armchair.one": "肘掛け椅子",
+		"book.one": "本",
+		"bookshelf.one": "本棚",
+		"cat.one": "猫",
+		"coffee-table.one": "ローテーブル",
+		"couch.one": "ソファ",
+		"curtain.one": "カーテン",
+		"door.one": "ドア",
+		"flower.one": "花",
+		"lamp.one": "ランプ",
+		"picture.one": "絵",
+		"pillow.one": "クッション",
+		"plant.one": "植物",
+		"rug.one": "ラグ",
+		"tv.one": "テレビ",
+		"tv-stand.one": "テレビ台",
+		"vase.one": "花瓶",
+		"window.one": "窓"
+	}
+}

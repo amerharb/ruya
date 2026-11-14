@@ -45,6 +45,7 @@ VOICES = {
     "es": "es-ES-ElviraNeural",
     "uk": "uk-UA-PolinaNeural",
     "he": "he-IL-HilaNeural",
+    "ja": "ja-JP-KeitaNeural",
 }
 
 # what to say instead, where a voice reads the written name wrong
@@ -56,6 +57,7 @@ SAY = {
     "es": {},
     "uk": {},
     "he": {},
+    "ja": {},
 }
 
 # the numbers a language has, as `Lang::numbers` in src/lang.rs, by the code
@@ -68,6 +70,7 @@ NUMBERS = {
     "es": ["one", "many"],
     "uk": ["one", "many"],
     "he": ["one", "many"],
+    "ja": ["one"],
 }
 FIELDS = {"one": "name", "two": "dual", "many": "plural"}
 

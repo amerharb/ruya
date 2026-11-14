@@ -5,20 +5,19 @@
 ## [0.4.0] (unreleased)
 
 ### Added
-- **The names said aloud** — a speaker button, left of the language list,
-  in a language Ruya has a voice for. Pressed, a thing tapped or clicked
-  says its name in each form shown, "strawberry" then "strawberries"; with
-  the keyboard, Enter or the space bar on a thing says it. Off until
-  pressed, the choice kept in the address as `?v=on`. English, Arabic,
-  German, Swedish, Spanish, Ukrainian and Hebrew have a voice so far. The
-  names are recordings, not the browser's speech, so every device hears
-  the same voice: from Microsoft Edge's text-to-speech, each picked by
-  ear, and where the sawt apps speak the language, theirs — Ava for
-  English, Hamed for Arabic, who says the dual too, Katja for German,
-  Sofie for Swedish, Elvira for Spanish, Polina for Ukrainian and Hila for
-  Hebrew. Each says a name as the label writes it, its article and all,
+- **The names said aloud** — a speaker button, left of the language list.
+  Pressed, a thing tapped or clicked says its name in each form shown,
+  "strawberry" then "strawberries"; with the keyboard, Enter or the space
+  bar on a thing says it. Off until pressed, the choice kept in the
+  address as `?v=on`. Every language has a voice. The names are
+  recordings, not the browser's speech, so every device hears the same
+  voice: from Microsoft Edge's text-to-speech, each picked by ear, and
+  where the sawt apps speak the language, theirs — Ava for English, Hamed
+  for Arabic, who says the dual too, Katja for German, Sofie for Swedish,
+  Elvira for Spanish, Polina for Ukrainian, Hila for Hebrew and Keita for
+  Japanese. Each says a name as the label writes it, its article and all,
   and Arabic and Hebrew without vowel marks. Every thing's name for one,
-  for many where the language has a plural, and in Arabic for two: 1,650
+  for many where the language has a plural, and in Arabic for two: 1,760
   MP3s for the 110 things, made by `tools/voice.py`, each fetched the
   first time it is said.
 

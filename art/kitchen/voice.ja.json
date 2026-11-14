@@ -1,0 +1,23 @@
+{
+	"voice": "ja-JP-KeitaNeural",
+	"said": {
+		"bowl.one": "ボウル",
+		"cabinet.one": "戸棚",
+		"chair.one": "椅子",
+		"clock.one": "時計",
+		"cup.one": "カップ",
+		"faucet.one": "蛇口",
+		"fork.one": "フォーク",
+		"fridge.one": "冷蔵庫",
+		"frying-pan.one": "フライパン",
+		"glass.one": "コップ",
+		"kettle.one": "電気ケトル",
+		"plate.one": "皿",
+		"pot.one": "鍋",
+		"sink.one": "シンク",
+		"spoon.one": "スプーン",
+		"stove.one": "コンロ",
+		"table.one": "テーブル",
+		"window.one": "窓"
+	}
+}
