@@ -1,0 +1,225 @@
+{
+	"id": "farmyard",
+	"name": { "en": "farmyard", "ar": "مزرعة", "de": "der Bauernhof", "sv": "en bondgård", "es": "la granja", "uk": "ферма", "he": "חווה", "ja": "農場" },
+	"things": {
+		"farmhouse": {
+			"name": { "en": "farmhouse", "ar": "بيت ريفي", "de": "das Bauernhaus", "sv": "ett boningshus", "es": "la casa de labranza", "uk": "хата", "he": "בית חווה", "ja": "農家" },
+			"plural": { "en": "farmhouses", "ar": "بيوت ريفية", "de": "die Bauernhäuser", "sv": "boningshus", "es": "las casas de labranza", "uk": "хати", "he": "בתי חווה" },
+			"dual": { "ar": "بيتان ريفيان" },
+			"reading": { "ja": "農家[のうか]" },
+			"note": "the house the farmer lives in: sv boningshus, a bondgård being the whole farm; es casa de labranza, as a farm's house is called; uk хата, a village house; ja 農家, a farmer's house and household"
+		},
+		"barn": {
+			"name": { "en": "barn", "ar": "حظيرة", "de": "die Scheune", "sv": "en ladugård", "es": "el granero", "uk": "стодола", "he": "אסם", "ja": "納屋" },
+			"plural": { "en": "barns", "ar": "حظائر", "de": "die Scheunen", "sv": "ladugårdar", "es": "los graneros", "uk": "стодоли", "he": "אסמים" },
+			"dual": { "ar": "حظيرتان" },
+			"reading": { "ja": "納屋[なや]" },
+			"note": "sv ladugård, a farm's big barn, a lada holding only hay; he אסם, the barn for the crops, a רפת housing cows"
+		},
+		"chicken-coop": {
+			"name": { "en": "chicken coop", "ar": "قن دجاج", "de": "der Hühnerstall", "sv": "ett hönshus", "es": "el gallinero", "uk": "курник", "he": "לול", "ja": "鶏小屋" },
+			"plural": { "en": "chicken coops", "ar": "أقنان دجاج", "de": "die Hühnerställe", "sv": "hönshus", "es": "los gallineros", "uk": "курники", "he": "לולים" },
+			"dual": { "ar": "قنا دجاج" },
+			"reading": { "ja": "鶏小屋[にわとりごや]" }
+		},
+		"beehive": {
+			"name": { "en": "beehive", "ar": "خلية نحل", "de": "der Bienenstock", "sv": "en bikupa", "es": "la colmena", "uk": "вулик", "he": "כוורת", "ja": "巣箱" },
+			"plural": { "en": "beehives", "ar": "خلايا نحل", "de": "die Bienenstöcke", "sv": "bikupor", "es": "las colmenas", "uk": "вулики", "he": "כוורות" },
+			"dual": { "ar": "خليتا نحل" },
+			"reading": { "ja": "巣箱[すばこ]" },
+			"note": "ja 巣箱, the beekeeper's box, 蜂の巣 being the bees' own nest"
+		},
+		"well": {
+			"name": { "en": "well", "ar": "بئر", "de": "der Brunnen", "sv": "en brunn", "es": "el pozo", "uk": "колодязь", "he": "באר", "ja": "井戸" },
+			"plural": { "en": "wells", "ar": "آبار", "de": "die Brunnen", "sv": "brunnar", "es": "los pozos", "uk": "колодязі", "he": "בארות" },
+			"dual": { "ar": "بئران" },
+			"reading": { "ja": "井戸[いど]" }
+		},
+		"bucket": {
+			"name": { "en": "bucket", "ar": "دلو", "de": "der Eimer", "sv": "en hink", "es": "el cubo", "uk": "відро", "he": "דלי", "ja": "バケツ" },
+			"plural": { "en": "buckets", "ar": "دلاء", "de": "die Eimer", "sv": "hinkar", "es": "los cubos", "uk": "відра", "he": "דליים" },
+			"dual": { "ar": "دلوان" },
+			"note": "es cubo, Spain's word, balde in the Americas"
+		},
+		"pitchfork": {
+			"name": { "en": "pitchfork", "ar": "مذراة", "de": "die Heugabel", "sv": "en högaffel", "es": "la horca", "uk": "вила", "he": "קלשון", "ja": "ピッチフォーク" },
+			"plural": { "en": "pitchforks", "ar": "مذار", "de": "die Heugabeln", "sv": "högafflar", "es": "las horcas", "uk": "вила", "he": "קלשונים" },
+			"dual": { "ar": "مذراتان" },
+			"note": "uk: вила has no singular; es horca, the farm's fork, bieldo as often"
+		},
+		"pond": {
+			"name": { "en": "pond", "ar": "بركة", "de": "der Teich", "sv": "en damm", "es": "el estanque", "uk": "ставок", "he": "בריכה", "ja": "池" },
+			"plural": { "en": "ponds", "ar": "برك", "de": "die Teiche", "sv": "dammar", "es": "los estanques", "uk": "ставки", "he": "בריכות" },
+			"dual": { "ar": "بركتان" },
+			"reading": { "ja": "池[いけ]" },
+			"note": "he בריכה, a pond and a pool alike"
+		},
+		"duck": {
+			"name": { "en": "duck", "ar": "بطة", "de": "die Ente", "sv": "en anka", "es": "el pato", "uk": "качка", "he": "ברווז", "ja": "あひる" },
+			"plural": { "en": "ducks", "ar": "بط", "de": "die Enten", "sv": "ankor", "es": "los patos", "uk": "качки", "he": "ברווזים" },
+			"dual": { "ar": "بطتان" },
+			"note": "the farm's duck: sv anka, an and being wild; ja あひる, as かも is wild, written as it usually is"
+		},
+		"duckling": {
+			"name": { "en": "duckling", "ar": "فرخ بط", "de": "das Entenküken", "sv": "en ankunge", "es": "el patito", "uk": "каченя", "he": "ברווזון", "ja": "あひるの子" },
+			"plural": { "en": "ducklings", "ar": "فراخ بط", "de": "die Entenküken", "sv": "ankungar", "es": "los patitos", "uk": "каченята", "he": "ברווזונים" },
+			"dual": { "ar": "فرخا بط" },
+			"reading": { "ja": "あひるの子[こ]" },
+			"note": "ar فرخ, any bird's young, here a duck's; ja あひるの子, a duck's child"
+		},
+		"goose": {
+			"name": { "en": "goose", "ar": "إوزة", "de": "die Gans", "sv": "en gås", "es": "la oca", "uk": "гуска", "he": "אווז", "ja": "がちょう" },
+			"plural": { "en": "geese", "ar": "إوز", "de": "die Gänse", "sv": "gäss", "es": "las ocas", "uk": "гуси", "he": "אווזים" },
+			"dual": { "ar": "إوزتان" },
+			"note": "es oca, the farm goose in Spain, ganso as often; ja がちょう, the farm goose, written as it usually is"
+		},
+		"hen": {
+			"name": { "en": "hen", "ar": "دجاجة", "de": "das Huhn", "sv": "en höna", "es": "la gallina", "uk": "курка", "he": "תרנגולת", "ja": "雌鶏" },
+			"plural": { "en": "hens", "ar": "دجاج", "de": "die Hühner", "sv": "hönor", "es": "las gallinas", "uk": "кури", "he": "תרנגולות" },
+			"dual": { "ar": "دجاجتان" },
+			"reading": { "ja": "雌鶏[めんどり]" },
+			"note": "de Huhn, the everyday word, Henne the hen exactly; ar دجاج, the collective, for many"
+		},
+		"chick": {
+			"name": { "en": "chick", "ar": "كتكوت", "de": "das Küken", "sv": "en kyckling", "es": "el pollito", "uk": "курча", "he": "אפרוח", "ja": "ひよこ" },
+			"plural": { "en": "chicks", "ar": "كتاكيت", "de": "die Küken", "sv": "kycklingar", "es": "los pollitos", "uk": "курчата", "he": "אפרוחים" },
+			"dual": { "ar": "كتكوتان" },
+			"note": "ar كتكوت, a hen's chick, فرخ being any bird's young; ja ひよこ, written as it usually is"
+		},
+		"rooster": {
+			"name": { "en": "rooster", "ar": "ديك", "de": "der Hahn", "sv": "en tupp", "es": "el gallo", "uk": "півень", "he": "תרנגול", "ja": "雄鶏" },
+			"plural": { "en": "roosters", "ar": "ديوك", "de": "die Hähne", "sv": "tuppar", "es": "los gallos", "uk": "півні", "he": "תרנגולים" },
+			"dual": { "ar": "ديكان" },
+			"reading": { "ja": "雄鶏[おんどり]" },
+			"note": "American rooster, British cock"
+		},
+		"turkey": {
+			"name": { "en": "turkey", "ar": "ديك رومي", "de": "der Truthahn", "sv": "en kalkon", "es": "el pavo", "uk": "індик", "he": "תרנגול הודו", "ja": "七面鳥" },
+			"plural": { "en": "turkeys", "ar": "ديوك رومية", "de": "die Truthähne", "sv": "kalkoner", "es": "los pavos", "uk": "індики", "he": "תרנגולי הודו" },
+			"dual": { "ar": "ديكان روميان" },
+			"reading": { "ja": "七面鳥[しちめんちょう]" },
+			"note": "a male, his tail spread: de Truthahn, the hen a Pute; ar ديك رومي, as printed, ديك حبش in the Levant"
+		},
+		"dog": {
+			"name": { "en": "dog", "ar": "كلب", "de": "der Hund", "sv": "en hund", "es": "el perro", "uk": "собака", "he": "כלב", "ja": "犬" },
+			"plural": { "en": "dogs", "ar": "كلاب", "de": "die Hunde", "sv": "hundar", "es": "los perros", "uk": "собаки", "he": "כלבים" },
+			"dual": { "ar": "كلبان" },
+			"reading": { "ja": "犬[いぬ]" }
+		},
+		"cat": {
+			"name": { "en": "cat", "ar": "قطة", "de": "die Katze", "sv": "en katt", "es": "el gato", "uk": "кіт", "he": "חתול", "ja": "猫" },
+			"plural": { "en": "cats", "ar": "قطط", "de": "die Katzen", "sv": "katter", "es": "los gatos", "uk": "коти", "he": "חתולים" },
+			"dual": { "ar": "قطتان" },
+			"reading": { "ja": "猫[ねこ]" }
+		},
+		"rabbit": {
+			"name": { "en": "rabbit", "ar": "أرنب", "de": "das Kaninchen", "sv": "en kanin", "es": "el conejo", "uk": "кролик", "he": "ארנב", "ja": "うさぎ" },
+			"plural": { "en": "rabbits", "ar": "أرانب", "de": "die Kaninchen", "sv": "kaniner", "es": "los conejos", "uk": "кролики", "he": "ארנבים" },
+			"dual": { "ar": "أرنبان" },
+			"note": "the tame rabbit: de Kaninchen and uk кролик, a Hase and a заєць being the wild hare; ja うさぎ, written as it usually is"
+		},
+		"wheelbarrow": {
+			"name": { "en": "wheelbarrow", "ar": "عربة يد", "de": "die Schubkarre", "sv": "en skottkärra", "es": "la carretilla", "uk": "тачка", "he": "מריצה", "ja": "一輪車" },
+			"plural": { "en": "wheelbarrows", "ar": "عربات يد", "de": "die Schubkarren", "sv": "skottkärror", "es": "las carretillas", "uk": "тачки", "he": "מריצות" },
+			"dual": { "ar": "عربتا يد" },
+			"reading": { "ja": "一輪車[いちりんしゃ]" },
+			"note": "ja 一輪車, one wheel, a unicycle too"
+		},
+		"nest": {
+			"name": { "en": "nest", "ar": "عش", "de": "das Nest", "sv": "ett bo", "es": "el nido", "uk": "гніздо", "he": "קן", "ja": "巣" },
+			"plural": { "en": "nests", "ar": "أعشاش", "de": "die Nester", "sv": "bon", "es": "los nidos", "uk": "гнізда", "he": "קנים" },
+			"dual": { "ar": "عشان" },
+			"reading": { "ja": "巣[す]" },
+			"note": "a hen's nest, with her eggs; sv bo, rede as often"
+		}
+	},
+	"styles": {
+		"basic": {
+			"picture": { "src": "scenes/farmyard/basic.svg", "thumb": "scenes/farmyard/basic.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "farmhouse", "d": "M36 346L200 214L300 222L364 346L364 358L340 580L240 588L160 588L60 580L36 358Z" },
+				{ "thing": "cat", "d": "M244 555L257 494L283 494L317 549L320 568L315 579L305 585L270 588L248 576Z" },
+				{ "thing": "beehive", "d": "M380 456L470 456L470 470L466 548L458 580L392 580L384 548L380 470Z" },
+				{ "thing": "well", "d": "M476 406L555 352L634 406L634 416L620 582L490 582L476 416Z" },
+				{ "thing": "bucket", "d": "M644 540L663 521L675 518L687 521L700 531L706 540L698 594L652 594Z" },
+				{ "thing": "barn", "d": "M719 342L722 334L774 244L940 181L1106 244L1158 334L1161 342L1136 582L744 582Z" },
+				{ "thing": "pitchfork", "d": "M1128 329L1162 324L1194 324L1206 389L1216 592L1212 596L1184 596L1180 592L1132 395L1126 333Z" },
+				{ "thing": "chicken-coop", "d": "M1238 444L1368 372L1498 444L1498 454L1484 558L1464 604L1254 606L1238 454Z" },
+				{ "thing": "pond", "d": "M35 815L40 792L54 770L77 749L108 732L146 717L189 706L236 699L285 697L334 699L381 706L424 717L462 732L493 749L516 770L530 792L535 815L530 838L516 860L493 881L462 898L424 913L381 924L334 931L285 933L236 931L189 924L146 913L108 898L77 881L54 860L40 838Z" },
+				{ "thing": "duckling", "d": "M80 838L122 813L138 813L154 827L134 853L120 862L105 863L86 853Z" },
+				{ "thing": "duckling", "d": "M160 830L202 805L218 805L234 819L214 845L200 854L185 855L166 845Z" },
+				{ "thing": "duckling", "d": "M240 838L282 813L298 813L314 827L294 853L280 862L265 863L246 853Z" },
+				{ "thing": "duck", "d": "M330 800L348 782L438 748L453 751L484 768L482 777L449 826L436 835L417 841L395 843L373 841L354 835L341 826Z" },
+				{ "thing": "goose", "d": "M538 714L652 615L667 612L706 633L673 738L633 792L595 792L557 752L547 738Z" },
+				{ "thing": "hen", "d": "M724 712L734 658L839 641L857 650L872 679L844 744L806 788L778 788L736 744Z" },
+				{ "thing": "chick", "d": "M883 745L903 721L917 717L938 733L920 775L907 792L893 792L876 767Z" },
+				{ "thing": "chick", "d": "M948 745L968 721L982 717L1003 733L985 775L972 792L958 792L941 767Z" },
+				{ "thing": "chick", "d": "M1013 745L1033 721L1047 717L1068 733L1050 775L1037 792L1023 792L1006 767Z" },
+				{ "thing": "rooster", "d": "M1075 634L1093 599L1098 597L1208 602L1223 608L1239 640L1214 726L1178 792L1146 792L1090 698L1080 675L1075 655Z" },
+				{ "thing": "turkey", "d": "M1262 698L1269 664L1277 649L1301 625L1316 617L1350 610L1384 617L1399 625L1423 649L1431 664L1438 698L1431 732L1423 747L1368 808L1334 808L1288 760L1269 732Z" },
+				{ "thing": "dog", "d": "M582 838L588 832L784 808L816 862L816 866L758 978L636 978L589 875L583 860Z" },
+				{ "thing": "wheelbarrow", "d": "M857 895L894 874L1086 874L1094 960L1092 971L1077 986L1066 988L924 984L921 983L857 901Z" },
+				{ "thing": "rabbit", "d": "M1146 943L1218 843L1221 840L1253 843L1256 852L1258 914L1246 979L1239 984L1179 980L1165 973L1146 957Z" },
+				{ "thing": "nest", "d": "M1324 946L1363 916L1399 909L1429 918L1466 946L1468 966L1447 975L1423 979L1381 980L1343 975L1322 966Z" }
+			]
+		},
+		"realistic": {
+			"picture": { "src": "scenes/farmyard/realistic.webp", "thumb": "scenes/farmyard/realistic.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "farmhouse", "d": "M140 106L493 140L495 122L551 122L551 195L628 270L612 282L612 492L512 500L70 494L68 280L50 272Z" },
+				{ "thing": "cat", "d": "M424 405L452 405L462 415L462 451L452 461L424 461L414 451L414 415Z" },
+				{ "thing": "beehive", "d": "M532 400L623 400L623 508L538 508L538 420L532 418Z" },
+				{ "thing": "well", "d": "M682 330L730 283L870 289L913 328L900 342L864 342L864 425L890 432L892 520L860 525L720 523L703 515L702 432L728 425L728 342L690 340Z" },
+				{ "thing": "bucket", "d": "M896 486L900 470L920 466L942 472L946 488L938 531L902 532Z" },
+				{ "thing": "barn", "d": "M1168 100L1433 257L1433 265L1402 268L1402 460L1340 466L960 458L960 286L933 286Z" },
+				{ "thing": "pitchfork", "d": "M1262 288L1310 288L1310 338L1292 346L1290 482L1264 482L1266 346L1262 338Z" },
+				{ "thing": "chicken-coop", "d": "M1328 397L1386 346L1462 348L1518 392L1506 402L1506 528L1440 530L1400 535L1330 535L1332 402Z" },
+				{ "thing": "pond", "d": "M0 626L30 610L70 580L74 522L133 514L193 528L200 568L244 562L296 562L393 573L459 592L494 618L497 648L475 686L415 716L341 738L259 753L200 756L111 756L44 738L0 716Z" },
+				{ "thing": "duck", "d": "M290 632L300 622L345 620L352 608L362 604L372 610L380 618L368 620L362 640L358 652L330 658L296 654Z" },
+				{ "thing": "duckling", "d": "M173 629L201 629L211 639L211 667L201 677L173 677L163 667L163 639Z" },
+				{ "thing": "duckling", "d": "M212 626L240 626L250 636L250 664L240 674L212 674L202 664L202 636Z" },
+				{ "thing": "duckling", "d": "M250 622L278 622L288 632L288 660L278 670L250 670L240 660L240 632Z" },
+				{ "thing": "goose", "d": "M534 546L548 520L570 520L575 570L652 600L650 630L620 660L580 660L556 620L556 560Z" },
+				{ "thing": "hen", "d": "M728 560L740 553L760 568L790 575L810 590L830 620L842 632L840 650L822 650L800 640L790 656L760 658L758 640L740 620L730 600Z" },
+				{ "thing": "chick", "d": "M862 606L890 606L900 616L900 644L890 654L862 654L852 644L852 616Z" },
+				{ "thing": "chick", "d": "M780 642L808 642L818 652L818 680L808 690L780 690L770 680L770 652Z" },
+				{ "thing": "chick", "d": "M860 642L888 642L898 652L898 680L888 690L860 690L850 680L850 652Z" },
+				{ "thing": "rooster", "d": "M990 540L995 518L1022 516L1030 540L1050 560L1070 540L1100 530L1130 545L1138 580L1125 600L1090 612L1070 630L1050 640L1052 665L1000 665L1012 640L1000 620L988 590Z" },
+				{ "thing": "turkey", "d": "M1175 580L1190 545L1225 528L1265 526L1300 535L1315 555L1335 565L1345 590L1352 620L1355 650L1340 690L1312 705L1315 716L1270 716L1272 700L1240 700L1215 690L1195 660L1178 630Z" },
+				{ "thing": "dog", "d": "M352 800L358 760L380 742L430 738L480 742L510 730L520 706L525 690L545 700L560 692L590 690L598 706L600 745L592 770L582 790L575 830L572 880L582 912L560 915L536 890L520 880L515 915L488 920L490 870L470 850L420 860L410 880L420 912L390 920L366 912L358 894L346 872L348 820Z" },
+				{ "thing": "wheelbarrow", "d": "M716 733L930 740L958 710L990 703L993 716L968 728L1028 727L1063 726L1064 743L1036 748L950 812L926 826L926 902L904 904L884 866L842 868L838 830L804 830L802 872L786 905L748 911L712 897L700 855L712 812L735 800Z" },
+				{ "thing": "rabbit", "d": "M1052 870L1060 840L1080 818L1110 812L1150 820L1160 800L1164 790L1178 788L1188 795L1190 830L1196 855L1201 872L1185 885L1170 898L1130 903L1090 902L1065 890Z" },
+				{ "thing": "nest", "d": "M1228 880L1255 850L1290 835L1340 830L1380 842L1410 860L1418 885L1400 905L1360 918L1290 920L1250 910Z" }
+			]
+		},
+		"ghibli": {
+			"picture": { "src": "scenes/farmyard/ghibli.webp", "thumb": "scenes/farmyard/ghibli.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "farmhouse", "d": "M140 106L493 140L495 122L551 122L551 195L628 270L612 282L612 492L512 500L70 494L68 280L50 272Z" },
+				{ "thing": "cat", "d": "M424 405L452 405L462 415L462 451L452 461L424 461L414 451L414 415Z" },
+				{ "thing": "beehive", "d": "M532 400L623 400L623 508L538 508L538 420L532 418Z" },
+				{ "thing": "well", "d": "M682 330L730 283L870 289L913 328L900 342L864 342L864 425L890 432L892 520L860 525L720 523L703 515L702 432L728 425L728 342L690 340Z" },
+				{ "thing": "bucket", "d": "M896 486L900 470L920 466L942 472L946 488L938 531L902 532Z" },
+				{ "thing": "barn", "d": "M1168 100L1433 257L1433 265L1402 268L1402 460L1340 466L960 458L960 286L933 286Z" },
+				{ "thing": "pitchfork", "d": "M1262 288L1310 288L1310 338L1292 346L1290 482L1264 482L1266 346L1262 338Z" },
+				{ "thing": "chicken-coop", "d": "M1328 397L1386 346L1462 348L1518 392L1506 402L1506 528L1440 530L1400 535L1330 535L1332 402Z" },
+				{ "thing": "pond", "d": "M0 626L30 610L70 580L74 522L133 514L193 528L200 568L244 562L296 562L393 573L459 592L494 618L497 648L475 686L415 716L341 738L259 753L200 756L111 756L44 738L0 716Z" },
+				{ "thing": "duck", "d": "M290 632L300 622L345 620L352 608L362 604L372 610L380 618L368 620L362 640L358 652L330 658L296 654Z" },
+				{ "thing": "duckling", "d": "M173 629L201 629L211 639L211 667L201 677L173 677L163 667L163 639Z" },
+				{ "thing": "duckling", "d": "M212 626L240 626L250 636L250 664L240 674L212 674L202 664L202 636Z" },
+				{ "thing": "duckling", "d": "M250 622L278 622L288 632L288 660L278 670L250 670L240 660L240 632Z" },
+				{ "thing": "goose", "d": "M534 546L548 520L570 520L575 570L652 600L650 630L620 660L580 660L556 620L556 560Z" },
+				{ "thing": "hen", "d": "M722 560L735 550L760 568L790 578L810 595L830 620L842 632L840 650L822 652L800 645L790 660L755 662L752 640L735 620L725 600Z" },
+				{ "thing": "chick", "d": "M862 610L890 610L900 620L900 648L890 658L862 658L852 648L852 620Z" },
+				{ "thing": "chick", "d": "M780 643L808 643L818 653L818 681L808 691L780 691L770 681L770 653Z" },
+				{ "thing": "chick", "d": "M861 643L889 643L899 653L899 681L889 691L861 691L851 681L851 653Z" },
+				{ "thing": "rooster", "d": "M990 540L995 518L1022 516L1030 540L1050 560L1070 540L1100 530L1130 545L1138 580L1125 600L1090 612L1070 630L1050 640L1052 665L1000 665L1012 640L1000 620L988 590Z" },
+				{ "thing": "turkey", "d": "M1166 580L1190 545L1225 528L1265 526L1300 535L1315 555L1335 565L1345 590L1352 620L1355 650L1340 690L1312 705L1315 716L1270 716L1272 700L1240 700L1215 690L1195 660L1169 630Z" },
+				{ "thing": "dog", "d": "M345 790L360 760L390 740L440 732L490 735L510 720L518 690L530 678L560 684L590 680L600 700L602 740L598 770L580 790L566 830L564 880L570 916L548 925L530 895L520 890L510 922L488 926L490 880L470 860L420 870L408 890L410 918L385 925L360 918L350 900L322 905L308 885L320 860L338 830Z" },
+				{ "thing": "wheelbarrow", "d": "M716 733L930 740L958 710L990 703L993 716L968 728L1028 727L1063 726L1064 743L1036 748L950 812L926 826L926 902L904 904L884 866L842 868L838 830L804 830L802 872L786 905L748 911L712 897L700 855L712 812L735 800Z" },
+				{ "thing": "rabbit", "d": "M1044 870L1060 840L1080 818L1110 812L1150 820L1160 800L1164 790L1178 788L1188 795L1190 830L1196 855L1201 872L1185 885L1170 898L1130 903L1090 902L1065 890Z" },
+				{ "thing": "nest", "d": "M1228 880L1255 850L1290 835L1340 830L1380 842L1410 860L1418 885L1400 905L1360 918L1290 920L1250 910Z" }
+			]
+		}
+	}
+}

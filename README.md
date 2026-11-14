@@ -1,9 +1,10 @@
 # Ruya
 
 Ruya — رؤية, "sight" — is a picture dictionary. A big picture of a place, a
-kitchen, a living room, a street, a fruit stand or a vegetable stand, fills
-the screen; point at a thing in it and its name appears, in the language
-you picked. Change the language and every name changes with it.
+kitchen, a living room, a street, a fruit stand, a vegetable stand or a
+farmyard, fills the screen; point at a thing in it and its name appears,
+in the language you picked. Change the language and every name changes
+with it.
 
 It is written in Rust with [Leptos](https://leptos.dev), compiled to
 WebAssembly and built with [Trunk](https://trunk-rs.github.io/trunk). Nothing
@@ -116,7 +117,9 @@ browser's languages it has, else English.
   (تفاحتان). One with no word for one apart — mostly words from abroad,
   مانجو, بطاطس, بروكلي — has the same word for one and many, and its two are
   counted with the word that fits it: a fruit by ثمرة (ثمرتا مانجو), a
-  vegetable by حبة (حبتا بطاطس), a head by رأس (رأسا بروكلي).
+  vegetable by حبة (حبتا بطاطس), a head by رأس (رأسا بروكلي). The farm's
+  hens, ducks and geese are named the same way: دجاجة, بطة, إوزة for one,
+  دجاج, بط, إوز for many.
 - **Japanese has no plural**: 猫 is one cat or many, so a Japanese name has
   its one form only.
 - Where a word needs explaining, the thing's `note` in the scene file says why
@@ -325,10 +328,12 @@ logged as saying the name as it now is, and none left over.
   a sixteenth to a thirtieth of the bytes, and the same picture to the eye.
 - **Basic** pictures are SVG, drawn by hand in a 1536 × 1024 `viewBox`:
   flat shapes, no text. The fruit and the vegetable stand's, too many heaps
-  to place by hand, are drawn by scripts, `python3 art/<scene>/basic.py`:
-  each says what is in its crates and how to draw it, and the stand around
-  them is `tools/stand.py`'s, which writes the SVG and the regions in the
-  scene file. Change the script and run it again, rather than the SVG.
+  to place by hand, and the farmyard's are drawn by scripts,
+  `python3 art/<scene>/basic.py`, which write the SVG and the regions in
+  the scene file: a stand's says what is in its crates and how to draw it,
+  the stand around them being `tools/stand.py`'s, and the farmyard's draws
+  each thing with the stand's shapes. Change the script and run it again,
+  rather than the SVG.
 - **Thumbnails** are made from the picture with
   `cwebp -q 75 -m 6 -resize 96 64 <picture>.png -o public/scenes/<scene>/<style>.thumb.webp`;
   an SVG is first made a PNG, with
@@ -367,6 +372,9 @@ kept beside it in `art/<scene>/`.
 | vegetable stand | realistic | `art/vegetable-stand/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-10 | `art/vegetable-stand/realistic.prompt.md` |
 | vegetable stand | basic | `public/scenes/vegetable-stand/basic.svg` | drawn by `art/vegetable-stand/basic.py`, 2026-11-09 | — |
 | vegetable stand | ghibli | `art/vegetable-stand/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-10 | `art/vegetable-stand/ghibli.prompt.md` |
+| farmyard | realistic | `art/farmyard/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-14 | `art/farmyard/realistic.prompt.md` |
+| farmyard | basic | `public/scenes/farmyard/basic.svg` | drawn by `art/farmyard/basic.py`, 2026-11-14 | — |
+| farmyard | ghibli | `art/farmyard/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-14 | not recorded |
 
 ChatGPT gave the realistic kitchen's things as boxes too, kept in
 `art/kitchen/realistic.boxes.json`. They were approximate — the fork and
@@ -472,6 +480,42 @@ vegetable they belong to. The Ghibli vegetable stand is the realistic one
 repainted, every crate where it was, so its regions are the realistic ones
 as they are. As WebP they are 276 KB and 386 KB.
 
+The drawn farmyard has no stand to share, so its script draws each thing
+in a function of its own: the farmhouse with the cat on its step, a
+beehive, the well and its bucket, the barn with a pitchfork against it and
+the chicken coop along the back; the pond on the left, a duck and three
+ducklings on it; the goose, the hen and three chicks, the rooster and the
+turkey in the middle; the dog, the wheelbarrow, a rabbit and a nest of eggs
+in front. Each thing's region is the convex hull of its shapes, the
+pitchfork's widened so a finger finds it, and every chick and duckling has
+one of its own. The things are drawn back to front and their regions are
+in that order, so where a nearer thing stands over one behind it, a tap
+there is the nearer one's. Its SVG is 22 KB, 5 KB compressed.
+
+The realistic farmyard's prompt, `art/farmyard/realistic.prompt.md`,
+written 2026-11-14, is the prompt alone, to paste whole into ChatGPT in the
+browser, which sees none of the repo's files: it names every thing in
+words, but leaves the yard's layout to the picture, which need not match
+the drawing, and asks for no boxes, since each region is drawn by eye
+along its thing's outline. The picture goes in `-AmerLocal/` and becomes
+`art/farmyard/realistic.png`.
+
+The realistic farmyard, supplied 2026-11-14, has all 20 things, whole and
+apart, in a layout of its own that happens to be close to the drawing's:
+the farmhouse, the beehive, the well and its bucket, the barn with the
+pitchfork against it and the coop at the back; the pond on the left with
+the duck and the ducklings, the goose, the hen and her chicks, the rooster
+and the turkey across the middle; the dog, the wheelbarrow, the rabbit and
+the nest in front. Each region was drawn by eye along its thing's outline
+over a grid. A chick or a duckling is smaller than a fingertip, so each has
+an octagon 48 units across, centred on it, the three of a kind overlapping
+a little. The Ghibli farmyard, supplied the same day, is the realistic one
+repainted, with its prompt not recorded. Nearly every thing is where it
+was, so its regions are the realistic ones but for five: the dog stands a
+little further left with a fuller tail, and the hen, the chicks, the
+turkey's fan and the rabbit's tail moved a few units. As WebP they are
+475 KB and 510 KB, the biggest pictures in Ruya.
+
 For later scenes, the plan is to paint a flat colour per thing on a mask
 layer, as a PNG — never a lossy format, which smears the colours — and
 trace it into polygons with a script.
@@ -484,7 +528,7 @@ trace it into polygons with a script.
 - `trunk serve` — http://127.0.0.1:8090, rebuilding on every change.
 - `trunk build --release` — the site in `dist/`: `index.html`, the
   WebAssembly, its loader, the stylesheet and `scenes/`. The release
-  WebAssembly is about 447 KB, 177 KB compressed, the scene files
+  WebAssembly is about 468 KB, 183 KB compressed, the scene files
   included.
 - `cargo test`, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`
   — run on the host, no browser needed. CI runs them and a release build.

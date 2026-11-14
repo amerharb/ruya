@@ -1,0 +1,25 @@
+{
+	"voice": "ja-JP-KeitaNeural",
+	"said": {
+		"barn.one": "納屋",
+		"beehive.one": "巣箱",
+		"bucket.one": "バケツ",
+		"cat.one": "猫",
+		"chick.one": "ひよこ",
+		"chicken-coop.one": "鶏小屋",
+		"dog.one": "犬",
+		"duck.one": "あひる",
+		"duckling.one": "あひるの子",
+		"farmhouse.one": "農家",
+		"goose.one": "がちょう",
+		"hen.one": "雌鶏",
+		"nest.one": "巣",
+		"pitchfork.one": "ピッチフォーク",
+		"pond.one": "池",
+		"rabbit.one": "うさぎ",
+		"rooster.one": "雄鶏",
+		"turkey.one": "七面鳥",
+		"well.one": "井戸",
+		"wheelbarrow.one": "一輪車"
+	}
+}
