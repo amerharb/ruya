@@ -5,19 +5,19 @@
 ## [0.4.0] (unreleased)
 
 ### Added
-- **The names said aloud** — in a language Ruya has a voice for, English,
-  German and Arabic so far, a speaker button stands left of the language
-  list. Pressed, a thing tapped or clicked says its name in each form
-  shown, "strawberry" then "strawberries"; with the keyboard, Enter or the
-  space bar on a thing says it. Off until pressed, the choice kept in the
-  address as `?v=on`. The names are recordings, not the browser's speech,
-  so every device hears the same voice: from Microsoft Edge's
-  text-to-speech, each picked by ear from four and the one the sawt apps
-  use for the language — Ava for English; Katja for German, who says each
-  name with its article, as the label shows it; Hamed for Arabic, who says
-  the dual too, as written, without vowel marks. Each of the 110 things
-  has its name and its plural recorded, and in Arabic its dual as well:
-  220 MP3s each for English and German, 330 for Arabic, made by
+- **The names said aloud** — a speaker button, left of the language list,
+  in a language Ruya has a voice for. Pressed, a thing tapped or clicked
+  says its name in each form shown, "strawberry" then "strawberries"; with
+  the keyboard, Enter or the space bar on a thing says it. Off until
+  pressed, the choice kept in the address as `?v=on`. English, Arabic,
+  German and Swedish have a voice so far. The names are recordings, not
+  the browser's speech, so every device hears the same voice: from
+  Microsoft Edge's text-to-speech, each picked by ear, and where the sawt
+  apps speak the language, theirs — Ava for English, Hamed for Arabic, who
+  says the dual too, Katja for German and Sofie for Swedish. Each says a
+  name as the label writes it, its article and all, and Arabic without
+  vowel marks. Every thing's name for one, for many where the language has
+  a plural, and in Arabic for two: 990 MP3s for the 110 things, made by
   `tools/voice.py`, each fetched the first time it is said.
 
 ### Changed

@@ -123,9 +123,10 @@ impl Lang {
     pub fn voice_name(self) -> Option<&'static str> {
         match self {
             Lang::En => Some("Say the names"),
-            Lang::De => Some("Namen vorlesen"),
             Lang::Ar => Some("نطق الأسماء"),
-            Lang::Sv | Lang::Es | Lang::Uk | Lang::He | Lang::Ja => None,
+            Lang::De => Some("Namen vorlesen"),
+            Lang::Sv => Some("Läs upp namnen"),
+            Lang::Es | Lang::Uk | Lang::He | Lang::Ja => None,
         }
     }
 

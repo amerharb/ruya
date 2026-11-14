@@ -52,11 +52,12 @@ start WebAssembly.
   and the tags, so a name can be read aloud by someone who does not know
   its kanji. Katakana words already spell their sound and get none. The
   button is there only in Japanese.
-- **Voice:** in a language Ruya has a voice for — English, German and
-  Arabic, so far — a speaker button stands left of the language list. Pressed, a thing
-  tapped or clicked says its name aloud, in each form shown, singular then
-  plural; with the keyboard, Enter or the space bar on a thing says it.
-  Ruya opens with it off, and tapping without it stays silent.
+- **Voice:** the speaker button, left of the language list, has the names
+  said aloud. Pressed, a thing tapped or clicked says its name in each
+  form shown, singular then plural; with the keyboard, Enter or the space
+  bar on a thing says it. Ruya opens with it off, and tapping without it
+  stays silent. It is there in the languages with a voice: English,
+  Arabic, German and Swedish, so far.
 - On a phone held upright the bar takes two rows: the scene's name, the
   all-names button and the forms or furigana, then the style, the speaker
   and the language.
@@ -150,15 +151,17 @@ The names are said by recordings, one per name and form, made ahead of
 time rather than by the browser's own speech: the same voice on every
 device, and no voice missing on a phone that has none for the language.
 The voices are Microsoft Edge's online text-to-speech, each picked by ear
-from four, and the ones the sawt apps use for the same languages:
+from the two to four Edge has for the language; where the sawt apps speak
+it, theirs. Each says a name as the label writes it, its article and all:
 
 - **English:** Ava, `en-US-AvaNeural`.
-- **German:** Katja, `de-DE-KatjaNeural`, saying each name with its
-  article, as the label shows it (der Kühlschrank, die Kühlschränke).
 - **Arabic:** Hamed, `ar-SA-HamedNeural`, saying the dual too (ثلاجة,
   ثلاجتان, ثلاجات). The names are given him as the labels write them,
   without vowel marks, so he supplies the vowels; a word he gets wrong
   can be given its marks in `SAY`, for his voice alone.
+- **German:** Katja, `de-DE-KatjaNeural` (der Kühlschrank, die
+  Kühlschränke).
+- **Swedish:** Sofie, `sv-SE-SofieNeural` (en stol, stolar).
 
 A recording is `public/scenes/<scene>/voice/<lang>/<thing>.<number>.mp3`
 — `fridge.one.mp3`, `fridge.two.mp3` in Arabic, `fridge.many.mp3` —
@@ -282,8 +285,8 @@ logged as saying the name as it now is, and none left over.
 ### Adding a thing, a scene or a language
 
 - **A thing:** add it to `things` with its names, and a region for it to
-  each style it is in; record its names in each language with a voice,
-  `python3 tools/voice.py en`, `de` and `ar`; run `cargo test`.
+  each style it is in; record its names with `python3 tools/voice.py
+  <lang>` for each language; run `cargo test`.
 - **A scene:** a folder for it, `public/scenes/<id>/`, holding a picture
   and a thumbnail per style (`basic.svg`, `realistic.webp`,
   `realistic.thumb.webp`, …); its file in `scenes/`, named by its id; and a
