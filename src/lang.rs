@@ -128,7 +128,8 @@ impl Lang {
             Lang::Sv => Some("Läs upp namnen"),
             Lang::Es => Some("Leer los nombres en voz alta"),
             Lang::Uk => Some("Озвучити назви"),
-            Lang::He | Lang::Ja => None,
+            Lang::He => Some("הקראת השמות"),
+            Lang::Ja => None,
         }
     }
 

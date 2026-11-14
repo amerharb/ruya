@@ -57,7 +57,7 @@ start WebAssembly.
   form shown, singular then plural; with the keyboard, Enter or the space
   bar on a thing says it. Ruya opens with it off, and tapping without it
   stays silent. It is there in the languages with a voice: English,
-  Arabic, German, Swedish, Spanish and Ukrainian, so far.
+  Arabic, German, Swedish, Spanish, Ukrainian and Hebrew, so far.
 - On a phone held upright the bar takes two rows: the scene's name, the
   all-names button and the forms or furigana, then the style, the speaker
   and the language.
@@ -165,6 +165,8 @@ it, theirs. Each says a name as the label writes it, its article and all:
 - **Spanish:** Elvira, `es-ES-ElviraNeural`, a voice from Spain, as the
   names are Spain's (la nevera, las neveras).
 - **Ukrainian:** Polina, `uk-UA-PolinaNeural`.
+- **Hebrew:** Hila, `he-IL-HilaNeural`, the names without vowel marks,
+  as Arabic's are.
 
 A recording is `public/scenes/<scene>/voice/<lang>/<thing>.<number>.mp3`
 — `fridge.one.mp3`, `fridge.two.mp3` in Arabic, `fridge.many.mp3` —
