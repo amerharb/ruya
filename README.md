@@ -1,9 +1,10 @@
 # Ruya
 
 Ruya — رؤية, "sight" — is a picture dictionary. A big picture of a place, a
-kitchen, a living room, a street, a fruit stand or a vegetable stand, fills
-the screen; point at a thing in it and its name appears, in the language
-you picked. Change the language and every name changes with it.
+kitchen, a living room, a street, a fruit stand, a vegetable stand or a
+farmyard, fills the screen; point at a thing in it and its name appears,
+in the language you picked. Change the language and every name changes
+with it.
 
 It is written in Rust with [Leptos](https://leptos.dev), compiled to
 WebAssembly and built with [Trunk](https://trunk-rs.github.io/trunk). Nothing
@@ -33,8 +34,8 @@ start WebAssembly.
   picture to its end, and the next one that way turns the scene. A scene
   reached by a swipe or an edge slides in from that side, unless the
   device asks for reduced motion.
-- **Style:** the little pictures in the bar switch between the styles the
-  scene comes in (below).
+- **Style:** the little pictures beside the scene's name switch between
+  the styles the scene comes in (below).
 - **All names:** the button with two tags shows every thing's name at once,
   as a small tag on the thing — one per thing, on the biggest of its
   regions, so two chairs get one. Tags that would overlap or run off the
@@ -52,9 +53,14 @@ start WebAssembly.
   and the tags, so a name can be read aloud by someone who does not know
   its kanji. Katakana words already spell their sound and get none. The
   button is there only in Japanese.
+- **Voice:** the speaker button, left of the language list, has the names
+  said aloud. Pressed, a thing tapped or clicked says its name in each
+  form shown, singular then plural; with the keyboard, Enter or the space
+  bar on a thing says it. Ruya opens with it off, and tapping without it
+  stays silent. Every language has a voice.
 - On a phone held upright the bar takes two rows: the scene's name, the
-  all-names button and the forms or furigana, then the style and the
-  language.
+  all-names button and the forms or furigana, then the style, the speaker
+  and the language.
 
 ## Styles
 
@@ -111,7 +117,9 @@ browser's languages it has, else English.
   (تفاحتان). One with no word for one apart — mostly words from abroad,
   مانجو, بطاطس, بروكلي — has the same word for one and many, and its two are
   counted with the word that fits it: a fruit by ثمرة (ثمرتا مانجو), a
-  vegetable by حبة (حبتا بطاطس), a head by رأس (رأسا بروكلي).
+  vegetable by حبة (حبتا بطاطس), a head by رأس (رأسا بروكلي). The farm's
+  hens, ducks and geese are named the same way: دجاجة, بطة, إوزة for one,
+  دجاج, بط, إوز for many.
 - **Japanese has no plural**: 猫 is one cat or many, so a Japanese name has
   its one form only.
 - Where a word needs explaining, the thing's `note` in the scene file says why
@@ -135,6 +143,52 @@ browser's languages it has, else English.
   pressed; absent — or back at the singular alone — the singular alone.
 - `r` — `?r=on` opens with furigana over Japanese kanji. Written when the
   furigana button is pressed, and taken out again when it is released.
+- `v` — `?v=on` opens with the speaker on, so a thing tapped says its name.
+  Written when the speaker button is pressed, and taken out again when it
+  is released.
+
+## Voice
+
+The names are said by recordings, one per name and form, made ahead of
+time rather than by the browser's own speech: the same voice on every
+device, and no voice missing on a phone that has none for the language.
+The voices are Microsoft Edge's online text-to-speech, each picked by ear
+from the two to four Edge has for the language; where the sawt apps speak
+it, theirs. Each says a name as the label writes it, its article and all:
+
+- **English:** Ava, `en-US-AvaNeural`.
+- **Arabic:** Hamed, `ar-SA-HamedNeural`, saying the dual too (ثلاجة,
+  ثلاجتان, ثلاجات). The names are given him as the labels write them,
+  without vowel marks, so he supplies the vowels; a word he gets wrong
+  can be given its marks in `SAY`, for his voice alone.
+- **German:** Katja, `de-DE-KatjaNeural` (der Kühlschrank, die
+  Kühlschränke).
+- **Swedish:** Sofie, `sv-SE-SofieNeural` (en stol, stolar).
+- **Spanish:** Elvira, `es-ES-ElviraNeural`, a voice from Spain, as the
+  names are Spain's (la nevera, las neveras).
+- **Ukrainian:** Polina, `uk-UA-PolinaNeural`.
+- **Hebrew:** Hila, `he-IL-HilaNeural`, the names without vowel marks,
+  as Arabic's are.
+- **Japanese:** Keita, `ja-JP-KeitaNeural`, the name in its one form, as
+  written in kanji and kana; sawt has no Japanese voice to share.
+
+A recording is `public/scenes/<scene>/voice/<lang>/<thing>.<number>.mp3`
+— `fridge.one.mp3`, `fridge.two.mp3` in Arabic, `fridge.many.mp3` —
+fetched the first time it is said. Each is the name with a full stop after
+it, the silence Edge puts around a word trimmed to a breath, so a tap is
+answered at once and the plural follows close behind: about 5 KB, mono
+MP3. One `<audio>` plays
+them all (`src/voice.rs`): a thing tapped while another is speaking cuts
+it short.
+
+`python3 tools/voice.py <lang>` records what is missing: a new thing's names,
+or one whose name changed since; scene ids after the language keep it to
+those scenes. What each recording says is logged in
+`art/<scene>/voice.<lang>.json`, and `cargo test` fails while a name and
+its recording differ. `--all` records everything again; a new voice in
+the script does that too. Edge gives a different recording each time, so
+listen to a new one rather than compare files. A word Edge says wrong
+gets what to say instead in the script's `SAY`.
 
 ## Counting opens
 
@@ -233,12 +287,15 @@ on a phone; every label point on its region; a thing lying on another after
 it; each picture and thumbnail there, an SVG with the scene's `viewBox`
 or a bitmap of the scene's shape — the picture at least its size; and
 every sign worded in every language and in some picture, inside it, with a
-patch for every language but the picture's own, of its rect's shape.
+patch for every language but the picture's own, of its rect's shape; and,
+in a language with a voice, an MP3 of every name in each of its forms,
+logged as saying the name as it now is, and none left over.
 
 ### Adding a thing, a scene or a language
 
 - **A thing:** add it to `things` with its names, and a region for it to
-  each style it is in; run `cargo test`.
+  each style it is in; record its names with `python3 tools/voice.py
+  <lang>` for each language; run `cargo test`.
 - **A scene:** a folder for it, `public/scenes/<id>/`, holding a picture
   and a thumbnail per style (`basic.svg`, `realistic.webp`,
   `realistic.thumb.webp`, …); its file in `scenes/`, named by its id; and a
@@ -256,6 +313,11 @@ patch for every language but the picture's own, of its rect's shape.
   `cargo test` at every scene still missing a name. Then each sign's words
   in the language, and its patches, with `python3 tools/signs.py
   scenes/<scene>.json` (adding the font for a new script to its `FONTS`).
+- **A voice for a language:** pick one of Edge's voices by ear; put it in
+  `VOICES` in `tools/voice.py`, with the language's forms in `NUMBERS`,
+  and run `python3 tools/voice.py <lang>`; then give the speaker button its
+  name in the language, in `Lang::voice_name` (`src/lang.rs`), which is
+  what makes the button show.
 
 ## Pictures and licences
 
@@ -266,10 +328,12 @@ patch for every language but the picture's own, of its rect's shape.
   a sixteenth to a thirtieth of the bytes, and the same picture to the eye.
 - **Basic** pictures are SVG, drawn by hand in a 1536 × 1024 `viewBox`:
   flat shapes, no text. The fruit and the vegetable stand's, too many heaps
-  to place by hand, are drawn by scripts, `python3 art/<scene>/basic.py`:
-  each says what is in its crates and how to draw it, and the stand around
-  them is `tools/stand.py`'s, which writes the SVG and the regions in the
-  scene file. Change the script and run it again, rather than the SVG.
+  to place by hand, and the farmyard's are drawn by scripts,
+  `python3 art/<scene>/basic.py`, which write the SVG and the regions in
+  the scene file: a stand's says what is in its crates and how to draw it,
+  the stand around them being `tools/stand.py`'s, and the farmyard's draws
+  each thing with the stand's shapes. Change the script and run it again,
+  rather than the SVG.
 - **Thumbnails** are made from the picture with
   `cwebp -q 75 -m 6 -resize 96 64 <picture>.png -o public/scenes/<scene>/<style>.thumb.webp`;
   an SVG is first made a PNG, with
@@ -308,6 +372,9 @@ kept beside it in `art/<scene>/`.
 | vegetable stand | realistic | `art/vegetable-stand/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-10 | `art/vegetable-stand/realistic.prompt.md` |
 | vegetable stand | basic | `public/scenes/vegetable-stand/basic.svg` | drawn by `art/vegetable-stand/basic.py`, 2026-11-09 | — |
 | vegetable stand | ghibli | `art/vegetable-stand/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-10 | `art/vegetable-stand/ghibli.prompt.md` |
+| farmyard | realistic | `art/farmyard/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-14 | `art/farmyard/realistic.prompt.md` |
+| farmyard | basic | `public/scenes/farmyard/basic.svg` | drawn by `art/farmyard/basic.py`, 2026-11-14 | — |
+| farmyard | ghibli | `art/farmyard/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-14 | not recorded |
 
 ChatGPT gave the realistic kitchen's things as boxes too, kept in
 `art/kitchen/realistic.boxes.json`. They were approximate — the fork and
@@ -413,6 +480,42 @@ vegetable they belong to. The Ghibli vegetable stand is the realistic one
 repainted, every crate where it was, so its regions are the realistic ones
 as they are. As WebP they are 276 KB and 386 KB.
 
+The drawn farmyard has no stand to share, so its script draws each thing
+in a function of its own: the farmhouse with the cat on its step, a
+beehive, the well and its bucket, the barn with a pitchfork against it and
+the chicken coop along the back; the pond on the left, a duck and three
+ducklings on it; the goose, the hen and three chicks, the rooster and the
+turkey in the middle; the dog, the wheelbarrow, a rabbit and a nest of eggs
+in front. Each thing's region is the convex hull of its shapes, the
+pitchfork's widened so a finger finds it, and every chick and duckling has
+one of its own. The things are drawn back to front and their regions are
+in that order, so where a nearer thing stands over one behind it, a tap
+there is the nearer one's. Its SVG is 22 KB, 5 KB compressed.
+
+The realistic farmyard's prompt, `art/farmyard/realistic.prompt.md`,
+written 2026-11-14, is the prompt alone, to paste whole into ChatGPT in the
+browser, which sees none of the repo's files: it names every thing in
+words, but leaves the yard's layout to the picture, which need not match
+the drawing, and asks for no boxes, since each region is drawn by eye
+along its thing's outline. The picture goes in `-AmerLocal/` and becomes
+`art/farmyard/realistic.png`.
+
+The realistic farmyard, supplied 2026-11-14, has all 20 things, whole and
+apart, in a layout of its own that happens to be close to the drawing's:
+the farmhouse, the beehive, the well and its bucket, the barn with the
+pitchfork against it and the coop at the back; the pond on the left with
+the duck and the ducklings, the goose, the hen and her chicks, the rooster
+and the turkey across the middle; the dog, the wheelbarrow, the rabbit and
+the nest in front. Each region was drawn by eye along its thing's outline
+over a grid. A chick or a duckling is smaller than a fingertip, so each has
+an octagon 48 units across, centred on it, the three of a kind overlapping
+a little. The Ghibli farmyard, supplied the same day, is the realistic one
+repainted, with its prompt not recorded. Nearly every thing is where it
+was, so its regions are the realistic ones but for five: the dog stands a
+little further left with a fuller tail, and the hen, the chicks, the
+turkey's fan and the rabbit's tail moved a few units. As WebP they are
+475 KB and 510 KB, the biggest pictures in Ruya.
+
 For later scenes, the plan is to paint a flat colour per thing on a mask
 layer, as a PNG — never a lossy format, which smears the colours — and
 trace it into polygons with a script.
@@ -425,7 +528,7 @@ trace it into polygons with a script.
 - `trunk serve` — http://127.0.0.1:8090, rebuilding on every change.
 - `trunk build --release` — the site in `dist/`: `index.html`, the
   WebAssembly, its loader, the stylesheet and `scenes/`. The release
-  WebAssembly is about 443 KB, 176 KB compressed, the scene files
+  WebAssembly is about 468 KB, 183 KB compressed, the scene files
   included.
 - `cargo test`, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`
   — run on the host, no browser needed. CI runs them and a release build.

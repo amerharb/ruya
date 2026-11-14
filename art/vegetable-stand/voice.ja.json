@@ -1,0 +1,29 @@
+{
+	"voice": "ja-JP-KeitaNeural",
+	"said": {
+		"artichoke.one": "アーティチョーク",
+		"asparagus.one": "アスパラガス",
+		"beet.one": "ビーツ",
+		"bell-pepper.one": "パプリカ",
+		"broccoli.one": "ブロッコリー",
+		"cabbage.one": "キャベツ",
+		"carrot.one": "人参",
+		"cauliflower.one": "カリフラワー",
+		"chili-pepper.one": "唐辛子",
+		"corn.one": "とうもろこし",
+		"cucumber.one": "きゅうり",
+		"eggplant.one": "なす",
+		"garlic.one": "にんにく",
+		"lettuce.one": "レタス",
+		"mushroom.one": "きのこ",
+		"okra.one": "オクラ",
+		"onion.one": "玉ねぎ",
+		"pea.one": "えんどう豆",
+		"potato.one": "じゃがいも",
+		"pumpkin.one": "かぼちゃ",
+		"radish.one": "ラディッシュ",
+		"sweet-potato.one": "さつまいも",
+		"tomato.one": "トマト",
+		"zucchini.one": "ズッキーニ"
+	}
+}

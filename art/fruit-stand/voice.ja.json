@@ -1,0 +1,29 @@
+{
+	"voice": "ja-JP-KeitaNeural",
+	"said": {
+		"apple.one": "りんご",
+		"apricot.one": "あんず",
+		"banana.one": "バナナ",
+		"blueberry.one": "ブルーベリー",
+		"cherry.one": "さくらんぼ",
+		"coconut.one": "ココナッツ",
+		"date.one": "デーツ",
+		"fig.one": "いちじく",
+		"grape.one": "ぶどう",
+		"kiwi.one": "キウイ",
+		"lemon.one": "レモン",
+		"mango.one": "マンゴー",
+		"melon.one": "メロン",
+		"orange.one": "オレンジ",
+		"papaya.one": "パパイヤ",
+		"peach.one": "桃",
+		"pear.one": "洋梨",
+		"pineapple.one": "パイナップル",
+		"plum.one": "プラム",
+		"pomegranate.one": "ざくろ",
+		"raspberry.one": "ラズベリー",
+		"strawberry.one": "いちご",
+		"tangerine.one": "みかん",
+		"watermelon.one": "すいか"
+	}
+}

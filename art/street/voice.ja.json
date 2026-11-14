@@ -1,0 +1,31 @@
+{
+	"voice": "ja-JP-KeitaNeural",
+	"said": {
+		"bench.one": "ベンチ",
+		"bicycle.one": "自転車",
+		"bird.one": "鳥",
+		"bus.one": "バス",
+		"car.one": "車",
+		"chimney.one": "煙突",
+		"cloud.one": "雲",
+		"crosswalk.one": "横断歩道",
+		"curb.one": "縁石",
+		"dog.one": "犬",
+		"door.one": "ドア",
+		"house.one": "家",
+		"lane.one": "車線",
+		"lane-line.one": "センターライン",
+		"mailbox.one": "ポスト",
+		"motorcycle.one": "バイク",
+		"road.one": "車道",
+		"roof.one": "屋根",
+		"sidewalk.one": "歩道",
+		"store.one": "店",
+		"streetlight.one": "街灯",
+		"sun.one": "太陽",
+		"traffic-light.one": "信号",
+		"trash-can.one": "ゴミ箱",
+		"tree.one": "木",
+		"window.one": "窓"
+	}
+}

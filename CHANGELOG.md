@@ -2,6 +2,44 @@
 
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
+## [0.4.0] 2026-11-14
+
+### Added
+- **The names said aloud** — a speaker button, left of the language list.
+  Pressed, a thing tapped or clicked says its name in each form shown,
+  "strawberry" then "strawberries"; with the keyboard, Enter or the space
+  bar on a thing says it. Off until pressed, the choice kept in the
+  address as `?v=on`. Every language has a voice. The names are
+  recordings, not the browser's speech, so every device hears the same
+  voice: from Microsoft Edge's text-to-speech, each picked by ear, and
+  where the sawt apps speak the language, theirs — Ava for English, Hamed
+  for Arabic, who says the dual too, Katja for German, Sofie for Swedish,
+  Elvira for Spanish, Polina for Ukrainian, Hila for Hebrew and Keita for
+  Japanese. Each says a name as the label writes it, its article and all,
+  and Arabic and Hebrew without vowel marks. Every thing's name for one,
+  for many where the language has a plural, and in Arabic for two: 2,080
+  MP3s for the 130 things, made by `tools/voice.py`, each fetched the
+  first time it is said.
+- **The farmyard** — the sixth scene, and the first of two on a farm, with
+  20 things: at the back the farmhouse with a cat on its step, a beehive,
+  the well and a bucket, the barn with a pitchfork against it, and the
+  chicken coop; the pond with a duck and her ducklings on it; the goose,
+  the hen and her chicks, the rooster and the turkey; in front the dog, the
+  wheelbarrow, a rabbit and a nest. A realistic picture and a Ghibli one,
+  made in ChatGPT (475 KB and 510 KB as WebP), each thing's region drawn
+  along its outline, and a basic one drawn in SVG by a script,
+  `art/farmyard/basic.py`, which writes the drawing's regions too. Named
+  and said in all eight languages; in Arabic the hen, the duck and the
+  goose are named as fruit is, by the word for one and the collective for
+  many (دجاجة, دجاج).
+
+### Changed
+- **The style switch beside the scene's name** — the thumbnails moved from
+  the bar's right end to its left, after the scene's name; the toggles,
+  the speaker and the language keep to the right. On a phone held upright
+  they are a little smaller, so the speaker and the language still fit
+  beside them.
+
 ## [0.3.0] 2026-11-10
 
 ### Added
