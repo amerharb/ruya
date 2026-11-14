@@ -126,7 +126,8 @@ impl Lang {
             Lang::Ar => Some("نطق الأسماء"),
             Lang::De => Some("Namen vorlesen"),
             Lang::Sv => Some("Läs upp namnen"),
-            Lang::Es | Lang::Uk | Lang::He | Lang::Ja => None,
+            Lang::Es => Some("Leer los nombres en voz alta"),
+            Lang::Uk | Lang::He | Lang::Ja => None,
         }
     }
 
