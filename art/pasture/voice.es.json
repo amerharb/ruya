@@ -9,6 +9,8 @@
 		"cow.many": "las vacas",
 		"donkey.one": "el burro",
 		"donkey.many": "los burros",
+		"donkey-foal.one": "el pollino",
+		"donkey-foal.many": "los pollinos",
 		"fence.one": "la valla",
 		"fence.many": "las vallas",
 		"field.one": "el campo",

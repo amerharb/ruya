@@ -9,6 +9,8 @@
 		"cow.many": "kor",
 		"donkey.one": "en åsna",
 		"donkey.many": "åsnor",
+		"donkey-foal.one": "ett åsneföl",
+		"donkey-foal.many": "åsneföl",
 		"fence.one": "ett staket",
 		"fence.many": "staket",
 		"field.one": "en åker",

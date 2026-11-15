@@ -9,6 +9,8 @@
 		"cow.many": "cows",
 		"donkey.one": "donkey",
 		"donkey.many": "donkeys",
+		"donkey-foal.one": "donkey foal",
+		"donkey-foal.many": "donkey foals",
 		"fence.one": "fence",
 		"fence.many": "fences",
 		"field.one": "field",

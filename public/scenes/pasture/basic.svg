@@ -125,108 +125,134 @@
 	<rect x="38" y="672" width="154" height="6" fill="#8fd0ea" />
 
 	<!-- the donkey, grey, beside the trough -->
-	<path d="M367.3 596L375.2 625L373.9 651.4" fill="none" stroke="#9b958c" stroke-width="4.6" stroke-linecap="round" />
-	<ellipse cx="373.9" cy="659.4" rx="5.9" ry="10.6" fill="#5a5650" />
-	<rect x="330.4" y="622.4" width="11.9" height="105.6" fill="#9b958c" />
-	<rect x="330.4" y="622.4" width="11.9" height="105.6" fill="#2f3a44" fill-opacity="0.18" />
-	<rect x="330.4" y="718.8" width="11.9" height="9.2" fill="#5a5650" />
-	<rect x="248.5" y="622.4" width="11.9" height="105.6" fill="#9b958c" />
-	<rect x="248.5" y="622.4" width="11.9" height="105.6" fill="#2f3a44" fill-opacity="0.18" />
-	<rect x="248.5" y="718.8" width="11.9" height="9.2" fill="#5a5650" />
-	<ellipse cx="300" cy="605.2" rx="71.3" ry="34.3" fill="#9b958c" />
-	<ellipse cx="346.2" cy="613.2" rx="26.4" ry="30.4" fill="#9b958c" />
-	<ellipse cx="297.4" cy="625" rx="46.2" ry="11.9" fill="#ece8e1" />
-	<rect x="344.9" y="627.7" width="13.2" height="100.3" fill="#9b958c" />
-	<rect x="344.9" y="718.8" width="13.2" height="9.2" fill="#5a5650" />
-	<rect x="232.7" y="627.7" width="13.2" height="100.3" fill="#9b958c" />
-	<rect x="232.7" y="718.8" width="13.2" height="9.2" fill="#5a5650" />
-	<path d="M260.4 584.1L238 535.3L216.8 539.2L224.8 610.5Z" fill="#9b958c" />
-	<ellipse cx="231.4" cy="508.9" rx="5.9" ry="19.8" fill="#9b958c" transform="rotate(14 231.4 508.9)" />
-	<ellipse cx="219.5" cy="511.5" rx="5.9" ry="19.8" fill="#9b958c" transform="rotate(-12 219.5 511.5)" />
-	<ellipse cx="231.4" cy="508.9" rx="2.6" ry="14.5" fill="#5a5650" transform="rotate(14 231.4 508.9)" />
-	<path d="M244.6 536.6L231.4 531.3L248.5 585.4L257.8 582.8Z" fill="#5a5650" />
-	<ellipse cx="203.6" cy="557.7" rx="35.6" ry="15.2" fill="#9b958c" transform="rotate(-58 203.6 557.7)" />
-	<ellipse cx="188.5" cy="581.5" rx="11.2" ry="9.9" fill="#ece8e1" transform="rotate(-58 188.5 581.5)" />
-	<circle cx="214.2" cy="543.2" r="2.3" fill="#2f3a44" />
-	<circle cx="183.8" cy="585.4" r="1.7" fill="#2f3a44" />
+	<path d="M347.3 596L355.2 625L353.9 651.4" fill="none" stroke="#9b958c" stroke-width="4.6" stroke-linecap="round" />
+	<ellipse cx="353.9" cy="659.4" rx="5.9" ry="10.6" fill="#5a5650" />
+	<rect x="310.4" y="622.4" width="11.9" height="105.6" fill="#9b958c" />
+	<rect x="310.4" y="622.4" width="11.9" height="105.6" fill="#2f3a44" fill-opacity="0.18" />
+	<rect x="310.4" y="718.8" width="11.9" height="9.2" fill="#5a5650" />
+	<rect x="228.5" y="622.4" width="11.9" height="105.6" fill="#9b958c" />
+	<rect x="228.5" y="622.4" width="11.9" height="105.6" fill="#2f3a44" fill-opacity="0.18" />
+	<rect x="228.5" y="718.8" width="11.9" height="9.2" fill="#5a5650" />
+	<ellipse cx="280" cy="605.2" rx="71.3" ry="34.3" fill="#9b958c" />
+	<ellipse cx="326.2" cy="613.2" rx="26.4" ry="30.4" fill="#9b958c" />
+	<ellipse cx="277.4" cy="625" rx="46.2" ry="11.9" fill="#ece8e1" />
+	<rect x="324.9" y="627.7" width="13.2" height="100.3" fill="#9b958c" />
+	<rect x="324.9" y="718.8" width="13.2" height="9.2" fill="#5a5650" />
+	<rect x="212.7" y="627.7" width="13.2" height="100.3" fill="#9b958c" />
+	<rect x="212.7" y="718.8" width="13.2" height="9.2" fill="#5a5650" />
+	<path d="M240.4 584.1L218 535.3L196.8 539.2L204.8 610.5Z" fill="#9b958c" />
+	<ellipse cx="211.4" cy="508.9" rx="5.9" ry="19.8" fill="#9b958c" transform="rotate(14 211.4 508.9)" />
+	<ellipse cx="199.5" cy="511.5" rx="5.9" ry="19.8" fill="#9b958c" transform="rotate(-12 199.5 511.5)" />
+	<ellipse cx="211.4" cy="508.9" rx="2.6" ry="14.5" fill="#5a5650" transform="rotate(14 211.4 508.9)" />
+	<path d="M224.6 536.6L211.4 531.3L228.5 585.4L237.8 582.8Z" fill="#5a5650" />
+	<ellipse cx="183.6" cy="557.7" rx="35.6" ry="15.2" fill="#9b958c" transform="rotate(-58 183.6 557.7)" />
+	<ellipse cx="168.5" cy="581.5" rx="11.2" ry="9.9" fill="#ece8e1" transform="rotate(-58 168.5 581.5)" />
+	<circle cx="194.2" cy="543.2" r="2.3" fill="#2f3a44" />
+	<circle cx="163.8" cy="585.4" r="1.7" fill="#2f3a44" />
+
+	<!-- her foal, following her -->
+	<path d="M483.8 628.8L488.6 646.4L487.8 662.4" fill="none" stroke="#b3ab9f" stroke-width="2.8" stroke-linecap="round" />
+	<ellipse cx="487.8" cy="667.2" rx="3.6" ry="6.4" fill="#6b665f" />
+	<rect x="461.4" y="644.8" width="7.2" height="83.2" fill="#b3ab9f" />
+	<rect x="461.4" y="644.8" width="7.2" height="83.2" fill="#2f3a44" fill-opacity="0.18" />
+	<rect x="461.4" y="722.4" width="7.2" height="5.6" fill="#6b665f" />
+	<rect x="411.8" y="644.8" width="7.2" height="83.2" fill="#b3ab9f" />
+	<rect x="411.8" y="644.8" width="7.2" height="83.2" fill="#2f3a44" fill-opacity="0.18" />
+	<rect x="411.8" y="722.4" width="7.2" height="5.6" fill="#6b665f" />
+	<ellipse cx="443" cy="634.4" rx="43.2" ry="20.8" fill="#b3ab9f" />
+	<ellipse cx="471" cy="639.2" rx="16" ry="18.4" fill="#b3ab9f" />
+	<ellipse cx="441.4" cy="646.4" rx="28" ry="7.2" fill="#f1ede6" />
+	<rect x="470.2" y="648" width="8" height="80" fill="#b3ab9f" />
+	<rect x="470.2" y="722.4" width="8" height="5.6" fill="#6b665f" />
+	<rect x="402.2" y="648" width="8" height="80" fill="#b3ab9f" />
+	<rect x="402.2" y="722.4" width="8" height="5.6" fill="#6b665f" />
+	<path d="M419 621.6L405.4 592L392.6 594.4L397.4 637.6Z" fill="#b3ab9f" />
+	<ellipse cx="401.4" cy="576" rx="3.6" ry="12" fill="#b3ab9f" transform="rotate(14 401.4 576)" />
+	<ellipse cx="394.2" cy="577.6" rx="3.6" ry="12" fill="#b3ab9f" transform="rotate(-12 394.2 577.6)" />
+	<ellipse cx="401.4" cy="576" rx="1.6" ry="8.8" fill="#6b665f" transform="rotate(14 401.4 576)" />
+	<path d="M409.4 592.8L401.4 589.6L411.8 622.4L417.4 620.8Z" fill="#6b665f" />
+	<ellipse cx="384.6" cy="605.6" rx="21.6" ry="9.2" fill="#b3ab9f" transform="rotate(-58 384.6 605.6)" />
+	<ellipse cx="375.4" cy="620" rx="6.8" ry="6" fill="#f1ede6" transform="rotate(-58 375.4 620)" />
+	<circle cx="391" cy="596.8" r="2" fill="#2f3a44" />
+	<circle cx="372.6" cy="622.4" r="1" fill="#2f3a44" />
 
 	<!-- the goat, white, bearded -->
-	<path d="M452 630.4L439.2 611.2L455.2 620.8Z" fill="#f1ece2" />
-	<rect x="464.8" y="654.4" width="8" height="73.6" fill="#f1ece2" />
-	<rect x="464.8" y="654.4" width="8" height="73.6" fill="#2f3a44" fill-opacity="0.18" />
-	<rect x="464.8" y="721.6" width="8" height="6.4" fill="#2f3a44" />
-	<rect x="532" y="654.4" width="8" height="73.6" fill="#f1ece2" />
-	<rect x="532" y="654.4" width="8" height="73.6" fill="#2f3a44" fill-opacity="0.18" />
-	<rect x="532" y="721.6" width="8" height="6.4" fill="#2f3a44" />
-	<ellipse cx="500" cy="635.2" rx="52.8" ry="25.6" fill="#f1ece2" />
-	<rect x="455.2" y="659.2" width="8.8" height="68.8" fill="#f1ece2" />
-	<rect x="455.2" y="721.6" width="8.8" height="6.4" fill="#2f3a44" />
-	<rect x="540" y="659.2" width="8.8" height="68.8" fill="#f1ece2" />
-	<rect x="540" y="721.6" width="8.8" height="6.4" fill="#2f3a44" />
-	<path d="M528.8 622.4L544.8 587.2L562.4 590.4L551.2 640Z" fill="#f1ece2" />
-	<path d="M556 577.6L554.6 573.6L553.1 570L551.3 566.8L549.3 564L547.2 561.6L544.9 559.6L542.3 557.9L539.6 556.6L536.7 555.7L533.6 555.2" fill="none" stroke="#8a7a6a" stroke-width="4.8" stroke-linecap="round" />
-	<path d="M575.2 611.2L573.6 632L584.8 616Z" fill="#b8b0a2" />
-	<ellipse cx="551.2" cy="590.4" rx="12" ry="4.8" fill="#f1ece2" transform="rotate(24 551.2 590.4)" />
-	<ellipse cx="568.8" cy="598.4" rx="22.4" ry="10.4" fill="#f1ece2" transform="rotate(55 568.8 598.4)" />
-	<circle cx="564" cy="590.4" r="2.4" fill="#2f3a44" />
+	<path d="M518 630.4L505.2 611.2L521.2 620.8Z" fill="#f1ece2" />
+	<rect x="530.8" y="654.4" width="8" height="73.6" fill="#f1ece2" />
+	<rect x="530.8" y="654.4" width="8" height="73.6" fill="#2f3a44" fill-opacity="0.18" />
+	<rect x="530.8" y="721.6" width="8" height="6.4" fill="#2f3a44" />
+	<rect x="598" y="654.4" width="8" height="73.6" fill="#f1ece2" />
+	<rect x="598" y="654.4" width="8" height="73.6" fill="#2f3a44" fill-opacity="0.18" />
+	<rect x="598" y="721.6" width="8" height="6.4" fill="#2f3a44" />
+	<ellipse cx="566" cy="635.2" rx="52.8" ry="25.6" fill="#f1ece2" />
+	<rect x="521.2" y="659.2" width="8.8" height="68.8" fill="#f1ece2" />
+	<rect x="521.2" y="721.6" width="8.8" height="6.4" fill="#2f3a44" />
+	<rect x="606" y="659.2" width="8.8" height="68.8" fill="#f1ece2" />
+	<rect x="606" y="721.6" width="8.8" height="6.4" fill="#2f3a44" />
+	<path d="M594.8 622.4L610.8 587.2L628.4 590.4L617.2 640Z" fill="#f1ece2" />
+	<path d="M622 577.6L620.6 573.6L619.1 570L617.3 566.8L615.3 564L613.2 561.6L610.9 559.6L608.3 557.9L605.6 556.6L602.7 555.7L599.6 555.2" fill="none" stroke="#8a7a6a" stroke-width="4.8" stroke-linecap="round" />
+	<path d="M641.2 611.2L639.6 632L650.8 616Z" fill="#b8b0a2" />
+	<ellipse cx="617.2" cy="590.4" rx="12" ry="4.8" fill="#f1ece2" transform="rotate(24 617.2 590.4)" />
+	<ellipse cx="634.8" cy="598.4" rx="22.4" ry="10.4" fill="#f1ece2" transform="rotate(55 634.8 598.4)" />
+	<circle cx="630" cy="590.4" r="2.4" fill="#2f3a44" />
 
 	<!-- her kid, facing her -->
-	<path d="M680 655.5L688 643.5L678 649.5Z" fill="#c69c6d" />
-	<rect x="667" y="670.5" width="5" height="57.5" fill="#c69c6d" />
-	<rect x="667" y="670.5" width="5" height="57.5" fill="#2f3a44" fill-opacity="0.18" />
-	<rect x="667" y="724" width="5" height="4" fill="#2f3a44" />
-	<rect x="625" y="670.5" width="5" height="57.5" fill="#c69c6d" />
-	<rect x="625" y="670.5" width="5" height="57.5" fill="#2f3a44" fill-opacity="0.18" />
-	<rect x="625" y="724" width="5" height="4" fill="#2f3a44" />
-	<ellipse cx="650" cy="658.5" rx="33" ry="16" fill="#c69c6d" />
-	<ellipse cx="654" cy="656.5" rx="15" ry="9" fill="#f1ece2" />
-	<rect x="672.5" y="673.5" width="5.5" height="54.5" fill="#c69c6d" />
-	<rect x="672.5" y="724" width="5.5" height="4" fill="#2f3a44" />
-	<rect x="619.5" y="673.5" width="5.5" height="54.5" fill="#c69c6d" />
-	<rect x="619.5" y="724" width="5.5" height="4" fill="#2f3a44" />
-	<path d="M632 650.5L622 628.5L611 630.5L618 661.5Z" fill="#c69c6d" />
-	<ellipse cx="618" cy="630.5" rx="7.5" ry="3" fill="#c69c6d" transform="rotate(-24 618 630.5)" />
-	<ellipse cx="607" cy="635.5" rx="14" ry="6.5" fill="#c69c6d" transform="rotate(-55 607 635.5)" />
-	<circle cx="610" cy="630.5" r="2" fill="#2f3a44" />
+	<path d="M746 655.5L754 643.5L744 649.5Z" fill="#c69c6d" />
+	<rect x="733" y="670.5" width="5" height="57.5" fill="#c69c6d" />
+	<rect x="733" y="670.5" width="5" height="57.5" fill="#2f3a44" fill-opacity="0.18" />
+	<rect x="733" y="724" width="5" height="4" fill="#2f3a44" />
+	<rect x="691" y="670.5" width="5" height="57.5" fill="#c69c6d" />
+	<rect x="691" y="670.5" width="5" height="57.5" fill="#2f3a44" fill-opacity="0.18" />
+	<rect x="691" y="724" width="5" height="4" fill="#2f3a44" />
+	<ellipse cx="716" cy="658.5" rx="33" ry="16" fill="#c69c6d" />
+	<ellipse cx="720" cy="656.5" rx="15" ry="9" fill="#f1ece2" />
+	<rect x="738.5" y="673.5" width="5.5" height="54.5" fill="#c69c6d" />
+	<rect x="738.5" y="724" width="5.5" height="4" fill="#2f3a44" />
+	<rect x="685.5" y="673.5" width="5.5" height="54.5" fill="#c69c6d" />
+	<rect x="685.5" y="724" width="5.5" height="4" fill="#2f3a44" />
+	<path d="M698 650.5L688 628.5L677 630.5L684 661.5Z" fill="#c69c6d" />
+	<ellipse cx="684" cy="630.5" rx="7.5" ry="3" fill="#c69c6d" transform="rotate(-24 684 630.5)" />
+	<ellipse cx="673" cy="635.5" rx="14" ry="6.5" fill="#c69c6d" transform="rotate(-55 673 635.5)" />
+	<circle cx="676" cy="630.5" r="2" fill="#2f3a44" />
 
 	<!-- a hay bale, tied twice -->
-	<path d="M722 676L742 660L842 660L822 676Z" fill="#f0d277" />
-	<path d="M822 676L842 660L842 712L822 728Z" fill="#cfa640" />
-	<rect x="722" y="676" width="100" height="52" fill="#e6c35c" />
-	<path d="M726 689H818M726 702H818M726 715H818" fill="none" stroke="#d4ab45" stroke-width="2" stroke-linecap="round" />
-	<path d="M750 676V728M794 676V728M750 676L770 660M794 676L814 660" fill="none" stroke="#8a6a4a" stroke-width="3" stroke-linecap="round" />
+	<path d="M772 676L792 660L892 660L872 676Z" fill="#f0d277" />
+	<path d="M872 676L892 660L892 712L872 728Z" fill="#cfa640" />
+	<rect x="772" y="676" width="100" height="52" fill="#e6c35c" />
+	<path d="M776 689H868M776 702H868M776 715H868" fill="none" stroke="#d4ab45" stroke-width="2" stroke-linecap="round" />
+	<path d="M800 676V728M844 676V728M800 676L820 660M844 676L864 660" fill="none" stroke="#8a6a4a" stroke-width="3" stroke-linecap="round" />
 
 	<!-- the pig -->
-	<path d="M889.6 654.4L878.4 648L876.8 638.4L886.4 638.4L884.8 646.4" fill="none" stroke="#e49c9c" stroke-width="3.2" stroke-linecap="round" />
-	<rect x="920" y="680" width="12.8" height="48" fill="#e49c9c" />
-	<rect x="990.4" y="680" width="12.8" height="48" fill="#e49c9c" />
-	<ellipse cx="960" cy="662.4" rx="72" ry="38.4" fill="#f2b3b3" />
-	<rect x="908.8" y="676.8" width="14.4" height="51.2" fill="#f2b3b3" />
-	<rect x="908.8" y="721.6" width="14.4" height="6.4" fill="#b06a6a" />
-	<rect x="1000" y="676.8" width="14.4" height="51.2" fill="#f2b3b3" />
-	<rect x="1000" y="721.6" width="14.4" height="6.4" fill="#b06a6a" />
-	<circle cx="1027.2" cy="652.8" r="25.6" fill="#f2b3b3" />
-	<ellipse cx="1052.8" cy="657.6" rx="8" ry="12.8" fill="#e49c9c" />
-	<ellipse cx="1054.4" cy="652.8" rx="2" ry="3.2" fill="#9a5a5a" />
-	<ellipse cx="1054.4" cy="662.4" rx="2" ry="3.2" fill="#9a5a5a" />
-	<path d="M1012.8 633.6L1024 614.4L1035.2 633.6Z" fill="#e49c9c" />
-	<circle cx="1036.8" cy="644.8" r="2.8" fill="#2f3a44" />
+	<path d="M922.6 654.4L911.4 648L909.8 638.4L919.4 638.4L917.8 646.4" fill="none" stroke="#e49c9c" stroke-width="3.2" stroke-linecap="round" />
+	<rect x="953" y="680" width="12.8" height="48" fill="#e49c9c" />
+	<rect x="1023.4" y="680" width="12.8" height="48" fill="#e49c9c" />
+	<ellipse cx="993" cy="662.4" rx="72" ry="38.4" fill="#f2b3b3" />
+	<rect x="941.8" y="676.8" width="14.4" height="51.2" fill="#f2b3b3" />
+	<rect x="941.8" y="721.6" width="14.4" height="6.4" fill="#b06a6a" />
+	<rect x="1033" y="676.8" width="14.4" height="51.2" fill="#f2b3b3" />
+	<rect x="1033" y="721.6" width="14.4" height="6.4" fill="#b06a6a" />
+	<circle cx="1060.2" cy="652.8" r="25.6" fill="#f2b3b3" />
+	<ellipse cx="1085.8" cy="657.6" rx="8" ry="12.8" fill="#e49c9c" />
+	<ellipse cx="1087.4" cy="652.8" rx="2" ry="3.2" fill="#9a5a5a" />
+	<ellipse cx="1087.4" cy="662.4" rx="2" ry="3.2" fill="#9a5a5a" />
+	<path d="M1045.8 633.6L1057 614.4L1068.2 633.6Z" fill="#e49c9c" />
+	<circle cx="1069.8" cy="644.8" r="2.8" fill="#2f3a44" />
 
 	<!-- her piglet, facing her -->
-	<path d="M1155 689.4L1160.8 686L1161.7 681L1156.6 681L1157.5 685.2" fill="none" stroke="#e49c9c" stroke-width="1.7" stroke-linecap="round" />
-	<rect x="1132.3" y="702.8" width="6.7" height="25.2" fill="#e49c9c" />
-	<rect x="1095.3" y="702.8" width="6.7" height="25.2" fill="#e49c9c" />
-	<ellipse cx="1118" cy="693.6" rx="37.8" ry="20.2" fill="#f2b3b3" />
-	<rect x="1137.3" y="701.1" width="7.6" height="26.9" fill="#f2b3b3" />
-	<rect x="1137.3" y="724.6" width="7.6" height="3.4" fill="#b06a6a" />
-	<rect x="1089.4" y="701.1" width="7.6" height="26.9" fill="#f2b3b3" />
-	<rect x="1089.4" y="724.6" width="7.6" height="3.4" fill="#b06a6a" />
-	<circle cx="1082.7" cy="688.5" r="13.4" fill="#f2b3b3" />
-	<ellipse cx="1069.3" cy="691" rx="4.2" ry="6.7" fill="#e49c9c" />
-	<ellipse cx="1068.4" cy="688.5" rx="1.1" ry="1.7" fill="#9a5a5a" />
-	<ellipse cx="1068.4" cy="693.6" rx="1.1" ry="1.7" fill="#9a5a5a" />
-	<path d="M1090.3 678.4L1084.4 668.4L1078.5 678.4Z" fill="#e49c9c" />
-	<circle cx="1077.7" cy="684.3" r="2" fill="#2f3a44" />
+	<path d="M1188 689.4L1193.8 686L1194.7 681L1189.6 681L1190.5 685.2" fill="none" stroke="#e49c9c" stroke-width="1.7" stroke-linecap="round" />
+	<rect x="1165.3" y="702.8" width="6.7" height="25.2" fill="#e49c9c" />
+	<rect x="1128.3" y="702.8" width="6.7" height="25.2" fill="#e49c9c" />
+	<ellipse cx="1151" cy="693.6" rx="37.8" ry="20.2" fill="#f2b3b3" />
+	<rect x="1170.3" y="701.1" width="7.6" height="26.9" fill="#f2b3b3" />
+	<rect x="1170.3" y="724.6" width="7.6" height="3.4" fill="#b06a6a" />
+	<rect x="1122.4" y="701.1" width="7.6" height="26.9" fill="#f2b3b3" />
+	<rect x="1122.4" y="724.6" width="7.6" height="3.4" fill="#b06a6a" />
+	<circle cx="1115.7" cy="688.5" r="13.4" fill="#f2b3b3" />
+	<ellipse cx="1102.3" cy="691" rx="4.2" ry="6.7" fill="#e49c9c" />
+	<ellipse cx="1101.4" cy="688.5" rx="1.1" ry="1.7" fill="#9a5a5a" />
+	<ellipse cx="1101.4" cy="693.6" rx="1.1" ry="1.7" fill="#9a5a5a" />
+	<path d="M1123.3 678.4L1117.4 668.4L1111.5 678.4Z" fill="#e49c9c" />
+	<circle cx="1110.7" cy="684.3" r="2" fill="#2f3a44" />
 
 	<!-- the sheep, black-faced -->
 	<rect x="1335.5" y="673.6" width="8.5" height="54.4" fill="#2f3a44" />

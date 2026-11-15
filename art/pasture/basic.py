@@ -5,10 +5,10 @@ basic style's regions in scenes/pasture.json.
 The farm's grazing land, beyond the farmyard. Along the back, a field of
 grain with a scarecrow in it, the windmill, a tree, the stable and the
 tractor; across the middle, the fence with its gate. Beyond it, the
-smaller animals and things: the water trough and the donkey beside it, the goat and her
-kid, a hay bale, the pig and her piglet, the sheep and her lamb; and in
-front, the big ones: the horse and her foal, the cow and her calf, and the
-bull.
+smaller animals and things: the water trough, the donkey beside it and
+her foal behind her, the goat and her kid, a hay bale, the pig and her
+piglet, the sheep and her lamb; and in front, the big ones: the horse
+and her foal, the cow and her calf, and the bull.
 
 Each thing's region is the convex hull of its shapes, the fence's two, one
 either side of the gate. The things are drawn back to front, and their
@@ -285,8 +285,13 @@ def foal(p):
 
 
 def donkey(p):
-    equine(Frame(p, 300, FAR, 0.66, -1), "#9b958c", "#5a5650", light="#ece8e1",
+    equine(Frame(p, 280, FAR, 0.66, -1), "#9b958c", "#5a5650", light="#ece8e1",
            ears="long", tuft=True)
+
+
+def donkey_foal(p):
+    equine(Frame(p, 443, FAR, 0.4, -1), "#b3ab9f", "#6b665f", light="#f1ede6",
+           leg=1.3, ears="long", tuft=True)
 
 
 # ── the cattle ──
@@ -346,7 +351,7 @@ def bull(p):
 # ── the goats, the sheep and the pigs ──
 
 def goat(p, fr=None, kid=False):
-    fr = fr or Frame(p, 500, FAR, 0.8, 1)
+    fr = fr or Frame(p, 566, FAR, 0.8, 1)
     body = "#c69c6d" if kid else "#f1ece2"
     leg = 1.25 if kid else 1.0
     top = -92 * leg
@@ -372,7 +377,7 @@ def goat(p, fr=None, kid=False):
 
 
 def kid(p):
-    goat(p, Frame(p, 650, FAR, 0.5, -1), kid=True)
+    goat(p, Frame(p, 716, FAR, 0.5, -1), kid=True)
 
 
 def sheep(p, fr=None, lamb=False):
@@ -404,7 +409,7 @@ def lamb(p):
 
 
 def pig(p, fr=None):
-    fr = fr or Frame(p, 960, FAR, 0.8, 1)
+    fr = fr or Frame(p, 993, FAR, 0.8, 1)
     body, deep = "#f2b3b3", "#e49c9c"
     fr.line([(-88, -92), (-102, -100), (-104, -112), (-92, -112), (-94, -102)], deep, 4)
     for lx in (-50, 38):
@@ -422,7 +427,7 @@ def pig(p, fr=None):
 
 
 def piglet(p):
-    pig(p, Frame(p, 1118, FAR, 0.42, -1))
+    pig(p, Frame(p, 1151, FAR, 0.42, -1))
 
 
 # ── the things beyond the fence ──
@@ -437,11 +442,11 @@ def trough(p):
 
 
 def hay_bale(p):
-    p.poly([(722, 676), (742, 660), (842, 660), (822, 676)], "#f0d277")
-    p.poly([(822, 676), (842, 660), (842, 712), (822, 728)], GOLD_DARK)
-    rect(p, 722, 676, 100, 52, GOLD)
-    p.path("M726 689H818M726 702H818M726 715H818", stroke="#d4ab45", width=2)
-    p.path("M750 676V728M794 676V728M750 676L770 660M794 676L814 660", stroke="#8a6a4a", width=3)
+    p.poly([(772, 676), (792, 660), (892, 660), (872, 676)], "#f0d277")
+    p.poly([(872, 676), (892, 660), (892, 712), (872, 728)], GOLD_DARK)
+    rect(p, 772, 676, 100, 52, GOLD)
+    p.path("M776 689H868M776 702H868M776 715H868", stroke="#d4ab45", width=2)
+    p.path("M800 676V728M844 676V728M800 676L820 660M844 676L864 660", stroke="#8a6a4a", width=3)
 
 
 # back to front, which is also the order of the regions
@@ -456,6 +461,7 @@ THINGS = [
     ("gate", gate, "the gate, shut"),
     ("water-trough", trough, "the water trough"),
     ("donkey", donkey, "the donkey, grey, beside the trough"),
+    ("donkey-foal", donkey_foal, "her foal, following her"),
     ("goat", goat, "the goat, white, bearded"),
     ("kid", kid, "her kid, facing her"),
     ("hay-bale", hay_bale, "a hay bale, tied twice"),

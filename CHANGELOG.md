@@ -6,10 +6,10 @@
 
 ### Added
 - **The pasture** — the seventh scene, and the second on the farm, the
-  farmyard's grazing land, with 22 things: along the back a field of grain
+  farmyard's grazing land, with 23 things: along the back a field of grain
   with a scarecrow in it, the windmill, a tree, the stable and the
   tractor; across the middle the fence and its gate; beyond it the water
-  trough, the donkey, the goat and her kid, a hay bale, the pig and her
+  trough, the donkey and her foal, the goat and her kid, a hay bale, the pig and her
   piglet, the sheep and her lamb; in front the horse and her foal, the cow
   and her calf, and the bull. A realistic picture and a Ghibli one, made
   in ChatGPT (417 KB and 415 KB as WebP), each thing's region drawn along

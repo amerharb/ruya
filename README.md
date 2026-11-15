@@ -526,35 +526,34 @@ turkey's fan and the rabbit's tail moved a few units. As WebP they are
 The drawn pasture is the farmyard's script again, wider: along the back
 the field with the scarecrow in it, the windmill, a tree, the stable and
 the tractor; across the middle the fence, its gate shut; beyond it the
-water trough with the donkey beside it, the goat and her kid, a hay bale,
-the pig and her piglet, the sheep and her lamb, drawn smaller as farther
-off; and in front the horse and her foal, the cow and her calf, and the
+water trough with the donkey beside it and her foal behind her, the goat
+and her kid, a hay bale, the pig and her piglet, the sheep and her lamb,
+drawn smaller as farther off; and in front the horse and her foal, the cow and her calf, and the
 bull. The animals are drawn side on by five functions — the horses and
 the donkey, the cattle, the goats, the sheep, the pigs — the young as
 their mothers, smaller and longer in the leg, each turned to face either
 way. The fence's region is two, one either side of the gate. Its SVG is
-30 KB, 7 KB compressed.
+31 KB, 7 KB compressed.
 
 The realistic pasture's prompt, `art/pasture/realistic.prompt.md`,
 written 2026-11-14, is again the prompt alone: every thing in words, each
 young one beside its mother, the layout left to the picture.
 
-The realistic pasture, supplied 2026-11-14, has all 22 things, whole and
-apart: the field on the hill with the scarecrow in it, the windmill, the
-tree, the tractor and the stable behind the fence and its gate; beyond it
-the pig and her piglet in a patch of mud, the donkey drinking at the
-trough, the sheep and her lamb, the goat and her kid; in front the cow and
-her calf, the horse and her foal, the bull and the hay bale. It added one
-animal the prompt did not ask for, a young donkey beside the donkey. It is
-a donkey still, so it is the donkey's second region, outlined and named
-the donkey when tapped; the name goes on the bigger one. Each region was
-drawn by eye along its thing's outline over a grid, back to front, so the
-nearer of two things wins a tap where they meet. The Ghibli pasture,
-supplied 2026-11-15, is the realistic one repainted, with its prompt not
-recorded. Every thing is where it was, but many grew or shifted: the tree
-is wider and taller, the scarecrow, the bull and the horse's tail bigger,
-so 13 of its regions were drawn again over it and the other ten kept. As
-WebP they are 417 KB and 415 KB.
+The realistic pasture, supplied 2026-11-14, has the 22 things asked for,
+whole and apart: the field on the hill with the scarecrow in it, the
+windmill, the tree, the tractor and the stable behind the fence and its
+gate; beyond it the pig and her piglet in a patch of mud, the donkey
+drinking at the trough, the sheep and her lamb, the goat and her kid; in
+front the cow and her calf, the horse and her foal, the bull and the hay
+bale. It added one animal the prompt did not ask for, a foal beside the
+donkey, and the donkey foal became the scene's 23rd thing, in the drawing
+too. Each region was drawn by eye along its thing's outline over a grid,
+back to front, so the nearer of two things wins a tap where they meet. The
+Ghibli pasture, supplied 2026-11-15, is the realistic one repainted, with
+its prompt not recorded. Every thing is where it was, but many grew or
+shifted: the tree is wider and taller, the scarecrow, the bull and the
+horse's tail bigger, so 13 of its regions were drawn again over it and the
+other ten kept. As WebP they are 417 KB and 415 KB.
 
 For later scenes, the plan is to paint a flat colour per thing on a mask
 layer, as a PNG — never a lossy format, which smears the colours — and
