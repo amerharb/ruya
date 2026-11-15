@@ -2,6 +2,32 @@
 
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
+## [0.5.0] 2026-11-15
+
+### Added
+- **The pasture** — the seventh scene, and the second on the farm, the
+  farmyard's grazing land, with 23 things: along the back a field of grain
+  with a scarecrow in it, the windmill, a tree, the stable and the
+  tractor; across the middle the fence and its gate; beyond it the water
+  trough, the donkey and her foal, the goat and her kid, a hay bale, the pig and her
+  piglet, the sheep and her lamb; in front the horse and her foal, the cow
+  and her calf, and the bull. A realistic picture and a Ghibli one, made
+  in ChatGPT (417 KB and 415 KB as WebP), each thing's region drawn along
+  its outline, and a basic one drawn in SVG by a script,
+  `art/pasture/basic.py`, which writes the drawing's regions too. Named and
+  said in all eight languages; in Arabic the cow and the goat are named as
+  the hen is, by the word for one and the collective for many (بقرة, بقر),
+  and the lamb's two and many, both written حملان, are said apart.
+
+### Changed
+- **A name said once is kept** — each recording is kept in the browser
+  the first time it is said, in IndexedDB as the sawt apps keep theirs,
+  so a thing tapped again plays at once, with no request to the server,
+  later in the visit or on another day. A thing renamed, or a language
+  given a new voice, is fetched afresh by itself; `tools/voice.py` says
+  when a recording made again needs the cache's version raised. Safari
+  is let play a kept recording by a moment of silence on the first tap.
+
 ## [0.4.0] 2026-11-14
 
 ### Added

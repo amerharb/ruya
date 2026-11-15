@@ -356,6 +356,7 @@ pub const SOURCES: &[(&str, &str)] = &[
         include_str!("../scenes/vegetable-stand.json"),
     ),
     ("farmyard", include_str!("../scenes/farmyard.json")),
+    ("pasture", include_str!("../scenes/pasture.json")),
 ];
 
 pub static SCENES: LazyLock<Vec<Scene>> = LazyLock::new(|| {
@@ -818,7 +819,14 @@ mod tests {
                     panic!("{file}: no {} — run tools/voice.py {code}", log.display())
                 });
                 let recorded: Recorded = serde_json::from_str(&json).unwrap();
-                assert!(!recorded.voice.is_empty(), "{}: no voice", log.display());
+                // the voice is part of what the browser keeps a recording
+                // under, so a new one is fetched rather than the old said
+                assert_eq!(
+                    Some(recorded.voice.as_str()),
+                    lang.voice(),
+                    "{}: recorded in another voice than Lang::voice's — run tools/voice.py {code}, or set Lang::voice to the one in VOICES",
+                    log.display()
+                );
                 let mut kept = HashSet::new();
                 for (id, thing) in &scene.things {
                     for &number in lang.numbers() {

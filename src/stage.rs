@@ -122,8 +122,10 @@ pub fn Stage(
             forms
                 .get_untracked()
                 .shown(l)
-                .filter(|&n| thing.name_for(l, n).is_some())
-                .map(|n| scene.clip(id, l, n))
+                .filter_map(|n| {
+                    let name = thing.name_for(l, n)?;
+                    Some(voice::Clip::new(scene.clip(id, l, n), l, name))
+                })
                 .collect(),
         );
     };

@@ -1,0 +1,28 @@
+{
+	"voice": "ja-JP-KeitaNeural",
+	"said": {
+		"bull.one": "雄牛",
+		"calf.one": "子牛",
+		"cow.one": "牛",
+		"donkey.one": "ロバ",
+		"donkey-foal.one": "子ロバ",
+		"fence.one": "柵",
+		"field.one": "畑",
+		"foal.one": "子馬",
+		"gate.one": "門",
+		"goat.one": "ヤギ",
+		"hay-bale.one": "干し草の束",
+		"horse.one": "馬",
+		"kid.one": "子ヤギ",
+		"lamb.one": "子羊",
+		"pig.one": "豚",
+		"piglet.one": "子豚",
+		"scarecrow.one": "かかし",
+		"sheep.one": "羊",
+		"stable.one": "馬小屋",
+		"tractor.one": "トラクター",
+		"tree.one": "木",
+		"water-trough.one": "水桶",
+		"windmill.one": "風車"
+	}
+}

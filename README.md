@@ -1,10 +1,10 @@
 # Ruya
 
 Ruya — رؤية, "sight" — is a picture dictionary. A big picture of a place, a
-kitchen, a living room, a street, a fruit stand, a vegetable stand or a
-farmyard, fills the screen; point at a thing in it and its name appears,
-in the language you picked. Change the language and every name changes
-with it.
+kitchen, a living room, a street, a fruit stand, a vegetable stand, a
+farmyard or a pasture, fills the screen; point at a thing in it and its
+name appears, in the language you picked. Change the language and every
+name changes with it.
 
 It is written in Rust with [Leptos](https://leptos.dev), compiled to
 WebAssembly and built with [Trunk](https://trunk-rs.github.io/trunk). Nothing
@@ -119,7 +119,9 @@ browser's languages it has, else English.
   counted with the word that fits it: a fruit by ثمرة (ثمرتا مانجو), a
   vegetable by حبة (حبتا بطاطس), a head by رأس (رأسا بروكلي). The farm's
   hens, ducks and geese are named the same way: دجاجة, بطة, إوزة for one,
-  دجاج, بط, إوز for many.
+  دجاج, بط, إوز for many; so are its cows and goats, بقرة and عنزة for one,
+  بقر and ماعز for many. The lamb's two and its many are written alike,
+  حملان, and said apart, حَمَلان and حُمْلان.
 - **Japanese has no plural**: 猫 is one cat or many, so a Japanese name has
   its one form only.
 - Where a word needs explaining, the thing's `note` in the scene file says why
@@ -160,7 +162,8 @@ it, theirs. Each says a name as the label writes it, its article and all:
 - **Arabic:** Hamed, `ar-SA-HamedNeural`, saying the dual too (ثلاجة,
   ثلاجتان, ثلاجات). The names are given him as the labels write them,
   without vowel marks, so he supplies the vowels; a word he gets wrong
-  can be given its marks in `SAY`, for his voice alone.
+  can be given its marks in `SAY`, for his voice alone: مهر, which he
+  would say as a dowry, is given him as مُهْر, the foal.
 - **German:** Katja, `de-DE-KatjaNeural` (der Kühlschrank, die
   Kühlschränke).
 - **Swedish:** Sofie, `sv-SE-SofieNeural` (en stol, stolar).
@@ -181,6 +184,20 @@ MP3. One `<audio>` plays
 them all (`src/voice.rs`): a thing tapped while another is speaking cuts
 it short.
 
+A recording once said is kept in the browser, in IndexedDB
+(`src/cache.rs`), as the sawt apps keep their sounds: said again, later in
+the visit or on another day, it plays from there with no request to the
+server. Nothing kept expires or is checked again. It is kept by its
+address, its voice (`Lang::voice`) and the name it says, so a thing
+renamed or a new voice is fetched afresh by itself; a recording made
+again under the same name in the same voice is not, so
+`tools/voice.py` says when it has done that, and then `VERSION` in
+`src/cache.rs` is raised, which drops everything kept. Safari lets an
+element sound only from inside a tap, and a kept recording comes after
+the tap is over, so the first tap plays a moment of silence through the
+`<audio>`, which lets it go on sounding. Without IndexedDB, as in some
+private windows, each recording comes from the server every time.
+
 `python3 tools/voice.py <lang>` records what is missing: a new thing's names,
 or one whose name changed since; scene ids after the language keep it to
 those scenes. What each recording says is logged in
@@ -188,7 +205,8 @@ those scenes. What each recording says is logged in
 its recording differ. `--all` records everything again; a new voice in
 the script does that too. Edge gives a different recording each time, so
 listen to a new one rather than compare files. A word Edge says wrong
-gets what to say instead in the script's `SAY`.
+gets what to say instead in the script's `SAY`, by the word, or by the
+thing and its number (`lamb.two`) where one written word is two.
 
 ## Counting opens
 
@@ -315,9 +333,10 @@ logged as saying the name as it now is, and none left over.
   scenes/<scene>.json` (adding the font for a new script to its `FONTS`).
 - **A voice for a language:** pick one of Edge's voices by ear; put it in
   `VOICES` in `tools/voice.py`, with the language's forms in `NUMBERS`,
-  and run `python3 tools/voice.py <lang>`; then give the speaker button its
-  name in the language, in `Lang::voice_name` (`src/lang.rs`), which is
-  what makes the button show.
+  and run `python3 tools/voice.py <lang>`; then put the same voice in
+  `Lang::voice` (`src/lang.rs`), and give the speaker button its name in
+  the language in `Lang::voice_name`, which is what makes the button
+  show.
 
 ## Pictures and licences
 
@@ -328,12 +347,12 @@ logged as saying the name as it now is, and none left over.
   a sixteenth to a thirtieth of the bytes, and the same picture to the eye.
 - **Basic** pictures are SVG, drawn by hand in a 1536 × 1024 `viewBox`:
   flat shapes, no text. The fruit and the vegetable stand's, too many heaps
-  to place by hand, and the farmyard's are drawn by scripts,
-  `python3 art/<scene>/basic.py`, which write the SVG and the regions in
-  the scene file: a stand's says what is in its crates and how to draw it,
-  the stand around them being `tools/stand.py`'s, and the farmyard's draws
-  each thing with the stand's shapes. Change the script and run it again,
-  rather than the SVG.
+  to place by hand, and the farmyard's and the pasture's are drawn by
+  scripts, `python3 art/<scene>/basic.py`, which write the SVG and the
+  regions in the scene file: a stand's says what is in its crates and how
+  to draw it, the stand around them being `tools/stand.py`'s, and the
+  farm's two draw each thing with the stand's shapes. Change the script
+  and run it again, rather than the SVG.
 - **Thumbnails** are made from the picture with
   `cwebp -q 75 -m 6 -resize 96 64 <picture>.png -o public/scenes/<scene>/<style>.thumb.webp`;
   an SVG is first made a PNG, with
@@ -375,6 +394,9 @@ kept beside it in `art/<scene>/`.
 | farmyard | realistic | `art/farmyard/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-14 | `art/farmyard/realistic.prompt.md` |
 | farmyard | basic | `public/scenes/farmyard/basic.svg` | drawn by `art/farmyard/basic.py`, 2026-11-14 | — |
 | farmyard | ghibli | `art/farmyard/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-14 | not recorded |
+| pasture | realistic | `art/pasture/realistic.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-14 | `art/pasture/realistic.prompt.md` |
+| pasture | basic | `public/scenes/pasture/basic.svg` | drawn by `art/pasture/basic.py`, 2026-11-14 | — |
+| pasture | ghibli | `art/pasture/ghibli.png`, 1536 × 1024 | ChatGPT, supplied 2026-11-15 | not recorded |
 
 ChatGPT gave the realistic kitchen's things as boxes too, kept in
 `art/kitchen/realistic.boxes.json`. They were approximate — the fork and
@@ -516,6 +538,38 @@ little further left with a fuller tail, and the hen, the chicks, the
 turkey's fan and the rabbit's tail moved a few units. As WebP they are
 475 KB and 510 KB, the biggest pictures in Ruya.
 
+The drawn pasture is the farmyard's script again, wider: along the back
+the field with the scarecrow in it, the windmill, a tree, the stable and
+the tractor; across the middle the fence, its gate shut; beyond it the
+water trough with the donkey beside it and her foal behind her, the goat
+and her kid, a hay bale, the pig and her piglet, the sheep and her lamb,
+drawn smaller as farther off; and in front the horse and her foal, the cow and her calf, and the
+bull. The animals are drawn side on by five functions — the horses and
+the donkey, the cattle, the goats, the sheep, the pigs — the young as
+their mothers, smaller and longer in the leg, each turned to face either
+way. The fence's region is two, one either side of the gate. Its SVG is
+31 KB, 7 KB compressed.
+
+The realistic pasture's prompt, `art/pasture/realistic.prompt.md`,
+written 2026-11-14, is again the prompt alone: every thing in words, each
+young one beside its mother, the layout left to the picture.
+
+The realistic pasture, supplied 2026-11-14, has the 22 things asked for,
+whole and apart: the field on the hill with the scarecrow in it, the
+windmill, the tree, the tractor and the stable behind the fence and its
+gate; beyond it the pig and her piglet in a patch of mud, the donkey
+drinking at the trough, the sheep and her lamb, the goat and her kid; in
+front the cow and her calf, the horse and her foal, the bull and the hay
+bale. It added one animal the prompt did not ask for, a foal beside the
+donkey, and the donkey foal became the scene's 23rd thing, in the drawing
+too. Each region was drawn by eye along its thing's outline over a grid,
+back to front, so the nearer of two things wins a tap where they meet. The
+Ghibli pasture, supplied 2026-11-15, is the realistic one repainted, with
+its prompt not recorded. Every thing is where it was, but many grew or
+shifted: the tree is wider and taller, the scarecrow, the bull and the
+horse's tail bigger, so 13 of its regions were drawn again over it and the
+other ten kept. As WebP they are 417 KB and 415 KB.
+
 For later scenes, the plan is to paint a flat colour per thing on a mask
 layer, as a PNG — never a lossy format, which smears the colours — and
 trace it into polygons with a script.
@@ -528,7 +582,7 @@ trace it into polygons with a script.
 - `trunk serve` — http://127.0.0.1:8090, rebuilding on every change.
 - `trunk build --release` — the site in `dist/`: `index.html`, the
   WebAssembly, its loader, the stylesheet and `scenes/`. The release
-  WebAssembly is about 468 KB, 183 KB compressed, the scene files
+  WebAssembly is about 505 KB, 196 KB compressed, the scene files
   included.
 - `cargo test`, `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`
   — run on the host, no browser needed. CI runs them and a release build.

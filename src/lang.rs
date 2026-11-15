@@ -134,6 +134,23 @@ impl Lang {
         }
     }
 
+    /// The voice the names are recorded in, one of Microsoft Edge's, as
+    /// `VOICES` in `tools/voice.py` has it; `cargo test` checks the two
+    /// agree. Part of what a recording is kept under in the browser, so a
+    /// new voice is fetched rather than the old one said.
+    pub fn voice(self) -> Option<&'static str> {
+        match self {
+            Lang::En => Some("en-US-AvaNeural"),
+            Lang::Ar => Some("ar-SA-HamedNeural"),
+            Lang::De => Some("de-DE-KatjaNeural"),
+            Lang::Sv => Some("sv-SE-SofieNeural"),
+            Lang::Es => Some("es-ES-ElviraNeural"),
+            Lang::Uk => Some("uk-UA-PolinaNeural"),
+            Lang::He => Some("he-IL-HilaNeural"),
+            Lang::Ja => Some("ja-JP-KeitaNeural"),
+        }
+    }
+
     /// A language from a BCP 47 tag, ignoring case and region (`sv-SE` is
     /// Swedish), or None when Ruya does not have it. `iw` is the code Hebrew
     /// had before 1989, which some systems still report.
@@ -425,6 +442,13 @@ mod tests {
             assert_eq!(Lang::from_tag(l.code()), Some(l));
             assert!(!l.endonym().trim().is_empty());
             assert!(!l.language_word().trim().is_empty());
+        }
+    }
+
+    #[test]
+    fn a_language_with_a_voice_has_a_speaker_button() {
+        for l in Lang::ALL {
+            assert_eq!(l.voice().is_some(), l.voice_name().is_some(), "{l:?}");
         }
     }
 

@@ -1,4 +1,5 @@
 mod app;
+mod cache;
 mod geometry;
 mod lang;
 mod picker;

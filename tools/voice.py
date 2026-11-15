@@ -19,7 +19,13 @@ the plural follows its singular closely, and ffmpeg writes
 What each recording says is logged in `art/<scene>/voice.<lang>.json`, by
 the name it was made for, so `cargo test` catches a name changed since its
 recording; running this again redoes just that one. A new voice redoes
-them all.
+them all, and goes in `Lang::voice` (src/lang.rs) too.
+
+A browser keeps each recording it has said, by its address, its voice and
+its name (src/cache.rs), and never asks for it again. A recording made
+again under the name and voice it had is one the browser does not know
+has changed, so this says when that happened: then raise `VERSION` in
+src/cache.rs, and every browser fetches the recordings afresh.
 
 Edge gives a different recording of the same text every time, so a
 recording is checked by listening, not by its bytes or its length. Needs
@@ -48,11 +54,25 @@ VOICES = {
     "ja": "ja-JP-KeitaNeural",
 }
 
-# what to say instead, where a voice reads the written name wrong
+# what to say instead, where a voice reads the written name wrong: by the
+# name, or by the thing and its number where one written word is two, as
+# حملان is the lamb's dual and its plural, said apart with their vowels
 SAY = {
     "en": {},
     "de": {},
-    "ar": {},
+    "ar": {
+        # without vowels, a dowry, haste and "my grandfather"
+        "مهر": "مُهْر",
+        "مهران": "مُهْران",
+        "عجل": "عِجْل",
+        "عجلان": "عِجْلان",
+        "جدي": "جَدْي",
+        "جديان": "جَدْيان",
+        # without vowels, a load, carried
+        "حمل": "حَمَل",
+        "lamb.two": "حَمَلان",
+        "lamb.many": "حُمْلان",
+    },
     "sv": {},
     "es": {},
     "uk": {},
@@ -119,6 +139,7 @@ def main():
 
     made = {}  # what was said this run, by its recording
     count = 0
+    redone = 0  # recordings made again under the name and voice they had
     paths = sorted((ROOT / "scenes").glob("*.json"))
     if args.scenes:
         unknown = set(args.scenes) - {p.stem for p in paths}
@@ -142,9 +163,10 @@ def main():
                 clip = out / f"{key}.mp3"
                 if not again and clip.exists() and log["said"].get(key) == name:
                     continue
-                text = SAY[lang].get(name, name)
+                text = SAY[lang].get(key, SAY[lang].get(name, name))
                 print(f"  {sid}/{key}: {text}")
                 count += 1
+                redone += log["voice"] == voice and log["said"].get(key) == name
                 if args.dry:
                     continue
                 out.mkdir(parents=True, exist_ok=True)
@@ -167,6 +189,10 @@ def main():
 
     print(f"{lang}, {voice}: {count} recording{'s' * (count != 1)} "
           f"{'to make' if args.dry else 'made'}")
+    if redone:
+        print(f"{redone} of them {'would be' if args.dry else 'were'} made again under the "
+              f"name and voice they had: raise VERSION in src/cache.rs, or a "
+              f"browser that kept the old one goes on saying it")
 
 
 if __name__ == "__main__":
