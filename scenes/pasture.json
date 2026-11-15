@@ -1,0 +1,237 @@
+{
+	"id": "pasture",
+	"name": { "en": "pasture", "ar": "مرعى", "de": "die Weide", "sv": "en hage", "es": "el prado", "uk": "пасовище", "he": "מרעה", "ja": "牧場" },
+	"things": {
+		"horse": {
+			"name": { "en": "horse", "ar": "حصان", "de": "das Pferd", "sv": "en häst", "es": "el caballo", "uk": "кінь", "he": "סוס", "ja": "馬" },
+			"plural": { "en": "horses", "ar": "أحصنة", "de": "die Pferde", "sv": "hästar", "es": "los caballos", "uk": "коні", "he": "סוסים" },
+			"dual": { "ar": "حصانان" },
+			"reading": { "ja": "馬[うま]" }
+		},
+		"foal": {
+			"name": { "en": "foal", "ar": "مهر", "de": "das Fohlen", "sv": "ett föl", "es": "el potro", "uk": "лоша", "he": "סייח", "ja": "子馬" },
+			"plural": { "en": "foals", "ar": "أمهار", "de": "die Fohlen", "sv": "föl", "es": "los potros", "uk": "лошата", "he": "סייחים" },
+			"dual": { "ar": "مهران" },
+			"reading": { "ja": "子馬[こうま]" },
+			"note": "a horse's young: es potro, till it loses its milk teeth; ja 子馬, a horse's child"
+		},
+		"donkey": {
+			"name": { "en": "donkey", "ar": "حمار", "de": "der Esel", "sv": "en åsna", "es": "el burro", "uk": "віслюк", "he": "חמור", "ja": "ロバ" },
+			"plural": { "en": "donkeys", "ar": "حمير", "de": "die Esel", "sv": "åsnor", "es": "los burros", "uk": "віслюки", "he": "חמורים" },
+			"dual": { "ar": "حماران" },
+			"note": "es burro, asno as often; ja ロバ, written as it usually is"
+		},
+		"cow": {
+			"name": { "en": "cow", "ar": "بقرة", "de": "die Kuh", "sv": "en ko", "es": "la vaca", "uk": "корова", "he": "פרה", "ja": "牛" },
+			"plural": { "en": "cows", "ar": "بقر", "de": "die Kühe", "sv": "kor", "es": "las vacas", "uk": "корови", "he": "פרות" },
+			"dual": { "ar": "بقرتان" },
+			"reading": { "ja": "牛[うし]" },
+			"note": "ar بقر, the collective, for many; ja 牛, cattle, a cow as it is usually called, 雌牛 the cow exactly"
+		},
+		"calf": {
+			"name": { "en": "calf", "ar": "عجل", "de": "das Kalb", "sv": "en kalv", "es": "el ternero", "uk": "теля", "he": "עגל", "ja": "子牛" },
+			"plural": { "en": "calves", "ar": "عجول", "de": "die Kälber", "sv": "kalvar", "es": "los terneros", "uk": "телята", "he": "עגלים" },
+			"dual": { "ar": "عجلان" },
+			"reading": { "ja": "子牛[こうし]" },
+			"note": "a cow's young; ja 子牛, a cow's child"
+		},
+		"bull": {
+			"name": { "en": "bull", "ar": "ثور", "de": "der Stier", "sv": "en tjur", "es": "el toro", "uk": "бик", "he": "פר", "ja": "雄牛" },
+			"plural": { "en": "bulls", "ar": "ثيران", "de": "die Stiere", "sv": "tjurar", "es": "los toros", "uk": "бики", "he": "פרים" },
+			"dual": { "ar": "ثوران" },
+			"reading": { "ja": "雄牛[おうし]" },
+			"note": "de Stier, Bulle as often; he פר, the bull, a שור an ox as often"
+		},
+		"goat": {
+			"name": { "en": "goat", "ar": "عنزة", "de": "die Ziege", "sv": "en get", "es": "la cabra", "uk": "коза", "he": "עז", "ja": "ヤギ" },
+			"plural": { "en": "goats", "ar": "ماعز", "de": "die Ziegen", "sv": "getter", "es": "las cabras", "uk": "кози", "he": "עיזים" },
+			"dual": { "ar": "عنزتان" },
+			"note": "ar ماعز, the collective, for many; ja ヤギ, written as it usually is"
+		},
+		"kid": {
+			"name": { "en": "kid", "ar": "جدي", "de": "das Zicklein", "sv": "en killing", "es": "el cabrito", "uk": "козеня", "he": "גדי", "ja": "子ヤギ" },
+			"plural": { "en": "kids", "ar": "جداء", "de": "die Zicklein", "sv": "killingar", "es": "los cabritos", "uk": "козенята", "he": "גדיים" },
+			"dual": { "ar": "جديان" },
+			"reading": { "ja": "子[こ]ヤギ" },
+			"note": "a goat's young: de Zicklein, Kitz as often; ja 子ヤギ, a goat's child"
+		},
+		"sheep": {
+			"name": { "en": "sheep", "ar": "خروف", "de": "das Schaf", "sv": "ett får", "es": "la oveja", "uk": "вівця", "he": "כבשה", "ja": "羊" },
+			"plural": { "en": "sheep", "ar": "خراف", "de": "die Schafe", "sv": "får", "es": "las ovejas", "uk": "вівці", "he": "כבשות" },
+			"dual": { "ar": "خروفان" },
+			"reading": { "ja": "羊[ひつじ]" },
+			"note": "en sheep and sv får, the same for many; ar خروف, as a sheep is usually called, a نعجة the ewe; he כבשה, the ewe, as a sheep is usually called"
+		},
+		"lamb": {
+			"name": { "en": "lamb", "ar": "حمل", "de": "das Lamm", "sv": "ett lamm", "es": "el cordero", "uk": "ягня", "he": "טלה", "ja": "子羊" },
+			"plural": { "en": "lambs", "ar": "حملان", "de": "die Lämmer", "sv": "lamm", "es": "los corderos", "uk": "ягнята", "he": "טלאים" },
+			"dual": { "ar": "حملان" },
+			"reading": { "ja": "子羊[こひつじ]" },
+			"note": "a sheep's young; ar حملان for two and for many alike, said حَمَلان and حُمْلان; sv lamm, the same for many"
+		},
+		"pig": {
+			"name": { "en": "pig", "ar": "خنزير", "de": "das Schwein", "sv": "en gris", "es": "el cerdo", "uk": "свиня", "he": "חזיר", "ja": "豚" },
+			"plural": { "en": "pigs", "ar": "خنازير", "de": "die Schweine", "sv": "grisar", "es": "los cerdos", "uk": "свині", "he": "חזירים" },
+			"dual": { "ar": "خنزيران" },
+			"reading": { "ja": "豚[ぶた]" }
+		},
+		"piglet": {
+			"name": { "en": "piglet", "ar": "خنزير صغير", "de": "das Ferkel", "sv": "en kulting", "es": "el cerdito", "uk": "порося", "he": "חזרזיר", "ja": "子豚" },
+			"plural": { "en": "piglets", "ar": "خنازير صغيرة", "de": "die Ferkel", "sv": "kultingar", "es": "los cerditos", "uk": "поросята", "he": "חזרזירים" },
+			"dual": { "ar": "خنزيران صغيران" },
+			"reading": { "ja": "子豚[こぶた]" },
+			"note": "a pig's young: ar خنزير صغير, a little pig, خنوص being rare; es cerdito, a little pig, a lechón one still suckling; ja 子豚, a pig's child"
+		},
+		"stable": {
+			"name": { "en": "stable", "ar": "إسطبل", "de": "der Pferdestall", "sv": "ett stall", "es": "la cuadra", "uk": "стайня", "he": "אורווה", "ja": "馬小屋" },
+			"plural": { "en": "stables", "ar": "إسطبلات", "de": "die Pferdeställe", "sv": "stall", "es": "las cuadras", "uk": "стайні", "he": "אורוות" },
+			"dual": { "ar": "إسطبلان" },
+			"reading": { "ja": "馬小屋[うまごや]" },
+			"note": "the horses' house: de Pferdestall, a Stall being any animal's; es cuadra, Spain's word, an establo housing cattle"
+		},
+		"windmill": {
+			"name": { "en": "windmill", "ar": "طاحونة هواء", "de": "die Windmühle", "sv": "en väderkvarn", "es": "el molino de viento", "uk": "вітряк", "he": "טחנת רוח", "ja": "風車" },
+			"plural": { "en": "windmills", "ar": "طواحين هواء", "de": "die Windmühlen", "sv": "väderkvarnar", "es": "los molinos de viento", "uk": "вітряки", "he": "טחנות רוח" },
+			"dual": { "ar": "طاحونتا هواء" },
+			"reading": { "ja": "風車[ふうしゃ]" },
+			"note": "ja 風車, a windmill and a pinwheel alike"
+		},
+		"tractor": {
+			"name": { "en": "tractor", "ar": "جرار", "de": "der Traktor", "sv": "en traktor", "es": "el tractor", "uk": "трактор", "he": "טרקטור", "ja": "トラクター" },
+			"plural": { "en": "tractors", "ar": "جرارات", "de": "die Traktoren", "sv": "traktorer", "es": "los tractores", "uk": "трактори", "he": "טרקטורים" },
+			"dual": { "ar": "جراران" }
+		},
+		"hay-bale": {
+			"name": { "en": "hay bale", "ar": "بالة قش", "de": "der Heuballen", "sv": "en höbal", "es": "la paca de heno", "uk": "тюк сіна", "he": "חבילת חציר", "ja": "干し草の束" },
+			"plural": { "en": "hay bales", "ar": "بالات قش", "de": "die Heuballen", "sv": "höbalar", "es": "las pacas de heno", "uk": "тюки сіна", "he": "חבילות חציר" },
+			"dual": { "ar": "بالتا قش" },
+			"reading": { "ja": "干[ほ]し草[くさ]の束[たば]" },
+			"note": "hay pressed into a block and tied; ja 干し草の束, a bundle of hay"
+		},
+		"fence": {
+			"name": { "en": "fence", "ar": "سياج", "de": "der Zaun", "sv": "ett staket", "es": "la valla", "uk": "паркан", "he": "גדר", "ja": "柵" },
+			"plural": { "en": "fences", "ar": "أسيجة", "de": "die Zäune", "sv": "staket", "es": "las vallas", "uk": "паркани", "he": "גדרות" },
+			"dual": { "ar": "سياجان" },
+			"reading": { "ja": "柵[さく]" },
+			"note": "the pasture's posts and rails; sv staket, the same for many"
+		},
+		"gate": {
+			"name": { "en": "gate", "ar": "بوابة", "de": "das Tor", "sv": "en grind", "es": "la cancela", "uk": "ворота", "he": "שער", "ja": "門" },
+			"plural": { "en": "gates", "ar": "بوابات", "de": "die Tore", "sv": "grindar", "es": "las cancelas", "uk": "ворота", "he": "שערים" },
+			"dual": { "ar": "بوابتان" },
+			"reading": { "ja": "門[もん]" },
+			"note": "the gate in the fence: es cancela, a gate in a fence or a wall, a puerta being a door; uk ворота has no singular"
+		},
+		"water-trough": {
+			"name": { "en": "water trough", "ar": "حوض ماء", "de": "der Wassertrog", "sv": "ett vattentråg", "es": "el abrevadero", "uk": "корито", "he": "שוקת", "ja": "水桶" },
+			"plural": { "en": "water troughs", "ar": "أحواض ماء", "de": "die Wassertröge", "sv": "vattentråg", "es": "los abrevaderos", "uk": "корита", "he": "שקתות" },
+			"dual": { "ar": "حوضا ماء" },
+			"reading": { "ja": "水桶[みずおけ]" },
+			"note": "where the animals drink; ja 水桶, a tub of water"
+		},
+		"scarecrow": {
+			"name": { "en": "scarecrow", "ar": "فزاعة", "de": "die Vogelscheuche", "sv": "en fågelskrämma", "es": "el espantapájaros", "uk": "опудало", "he": "דחליל", "ja": "かかし" },
+			"plural": { "en": "scarecrows", "ar": "فزاعات", "de": "die Vogelscheuchen", "sv": "fågelskrämmor", "es": "los espantapájaros", "uk": "опудала", "he": "דחלילים" },
+			"dual": { "ar": "فزاعتان" },
+			"note": "es espantapájaros, the same for many; ja かかし, written as it usually is"
+		},
+		"tree": {
+			"name": { "en": "tree", "ar": "شجرة", "de": "der Baum", "sv": "ett träd", "es": "el árbol", "uk": "дерево", "he": "עץ", "ja": "木" },
+			"plural": { "en": "trees", "ar": "أشجار", "de": "die Bäume", "sv": "träd", "es": "los árboles", "uk": "дерева", "he": "עצים" },
+			"dual": { "ar": "شجرتان" },
+			"reading": { "ja": "木[き]" }
+		},
+		"field": {
+			"name": { "en": "field", "ar": "حقل", "de": "das Feld", "sv": "en åker", "es": "el campo", "uk": "поле", "he": "שדה", "ja": "畑" },
+			"plural": { "en": "fields", "ar": "حقول", "de": "die Felder", "sv": "åkrar", "es": "los campos", "uk": "поля", "he": "שדות" },
+			"dual": { "ar": "حقلان" },
+			"reading": { "ja": "畑[はたけ]" },
+			"note": "a field of grain: sv åker, a field ploughed and sown; ja 畑, a field of crops"
+		}
+	},
+	"styles": {
+		"basic": {
+			"picture": { "src": "scenes/pasture/basic.svg", "thumb": "scenes/pasture/basic.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "field", "d": "M0 382L300 368L466 392L450 482L0 490Z" },
+				{ "thing": "scarecrow", "d": "M180 350L216 292L234 266L266 266L320 344L320 356L294 414L256 476L244 476L212 428Z" },
+				{ "thing": "windmill", "d": "M453 388L477 139L510 111L759 135L787 168L763 417L762 420L680 522L560 522Z" },
+				{ "thing": "tree", "d": "M760 315L768 295L834 205L850 189L870 181L892 181L912 189L928 205L994 295L1002 315L1002 337L994 357L896 522L866 522L768 357L760 337Z" },
+				{ "thing": "stable", "d": "M1016 406L1062 336L1326 336L1372 406L1372 416L1350 522L1040 522L1016 416Z" },
+				{ "thing": "tractor", "d": "M1380 498L1396 438L1420 404L1444 384L1528 384L1526 480L1518 507L1505 520L1478 528L1410 528L1393 523L1385 515Z" },
+				{ "thing": "fence", "d": "M0 532L33 514L547 514L640 532L640 576L547 602L33 602L0 576ZM780 532L813 514L1527 514L1536 532L1536 576L1527 602L813 602L780 576Z" },
+				{ "thing": "gate", "d": "M640 506L780 506L780 604L640 604Z" },
+				{ "thing": "water-trough", "d": "M28 668L202 668L202 678L186 722L180 734L50 734L44 722L28 678Z" },
+				{ "thing": "donkey", "d": "M182 568L213 494L237 490L359 586L370 596L378 625L379 665L358 728L233 728L178 584Z" },
+				{ "thing": "goat", "d": "M439 611L532 554L551 562L575 589L582 600L585 616L549 728L455 728Z" },
+				{ "thing": "kid", "d": "M597 643L599 636L603 630L607 626L612 623L688 644L678 728L620 728Z" },
+				{ "thing": "hay-bale", "d": "M722 676L742 660L842 660L842 712L822 728L722 728Z" },
+				{ "thing": "pig", "d": "M876 637L932 627L1024 614L1057 647L1058 667L1014 728L909 728L877 649Z" },
+				{ "thing": "piglet", "d": "M1066 686L1084 668L1132 675L1162 680L1162 686L1145 728L1089 728L1066 696Z" },
+				{ "thing": "sheep", "d": "M1226 624L1246 600L1328 602L1362 616L1376 641L1375 652L1354 728L1263 728L1226 644Z" },
+				{ "thing": "lamb", "d": "M1388 660L1401 643L1451 644L1472 653L1481 670L1467 728L1411 728L1388 668Z" },
+				{ "thing": "horse", "d": "M68 839L75 808L94 778L314 658L360 707L375 734L385 765L384 772L302 986L112 986L73 888L70 875Z" },
+				{ "thing": "foal", "d": "M405 806L418 785L442 760L574 832L587 856L589 883L585 902L563 986L449 986L399 827Z" },
+				{ "thing": "cow", "d": "M630 720L634 716L700 714L936 762L948 891L947 903L910 986L698 986L624 838Z" },
+				{ "thing": "calf", "d": "M941 858L948 845L959 839L1111 843L1117 922L1096 986L977 986L936 885Z" },
+				{ "thing": "bull", "d": "M1139 704L1143 699L1213 697L1464 749L1476 882L1473 903L1436 986L1211 986L1133 829Z" }
+			]
+		},
+		"realistic": {
+			"picture": { "src": "scenes/pasture/realistic.webp", "thumb": "scenes/pasture/realistic.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "field", "d": "M0 232L60 229L130 236L200 241L300 250L400 258L470 272L540 285L580 296L640 308L720 328L770 345L770 400L0 400Z" },
+				{ "thing": "scarecrow", "d": "M130 196L150 196L158 205L152 212L172 218L194 222L196 236L182 244L156 244L152 272L146 274L146 304L134 304L134 274L126 272L124 244L98 244L86 238L88 222L108 218L128 212L122 205Z" },
+				{ "thing": "windmill", "d": "M392 28L405 22L474 86L488 95L500 98L565 32L578 40L520 108L515 120L522 138L585 190L576 208L514 158L520 200L537 282L425 282L440 200L446 168L405 212L393 198L446 140L455 120L462 98L392 36Z" },
+				{ "thing": "tree", "d": "M813 10L880 18L940 40L1000 52L1050 55L1080 90L1120 125L1140 165L1113 200L1097 233L1069 261L1024 261L980 278L936 294L892 300L888 345L850 345L846 300L800 290L740 285L680 270L636 261L616 247L625 180L652 97L691 56L747 25Z" },
+				{ "thing": "stable", "d": "M1127 266L1170 220L1485 210L1500 225L1518 278L1508 282L1508 368L1140 370L1140 270Z" },
+				{ "thing": "tractor", "d": "M1008 305L1020 297L1062 297L1063 272L1069 272L1070 295L1082 290L1100 296L1120 300L1133 312L1138 330L1135 350L1120 360L1055 362L1035 358L1010 345Z" },
+				{ "thing": "fence", "d": "M0 342L620 342L620 412L0 412ZM826 342L1536 342L1536 414L826 414Z" },
+				{ "thing": "gate", "d": "M620 334L826 334L826 412L620 412Z" },
+				{ "thing": "pig", "d": "M40 430L70 412L110 412L150 425L165 445L172 470L185 480L194 505L192 525L175 528L150 522L120 520L100 515L65 518L55 505L40 485L32 460Z" },
+				{ "thing": "piglet", "d": "M198 478L215 470L235 466L258 468L270 478L268 500L262 525L230 527L215 520L200 500Z" },
+				{ "thing": "donkey", "d": "M400 412L430 396L480 395L530 405L565 425L580 448L600 445L618 450L612 480L610 515L612 545L595 550L580 535L560 510L540 500L530 520L520 570L505 578L495 570L500 520L480 500L450 505L440 570L425 572L420 510L400 495L392 470L395 430Z" },
+				{ "thing": "donkey", "d": "M350 495L372 482L410 478L425 470L428 452L440 458L452 450L456 466L472 500L468 512L450 512L440 535L438 560L438 602L425 604L418 570L405 560L380 560L372 600L345 602L348 560L345 525Z" },
+				{ "thing": "water-trough", "d": "M512 535L540 528L590 525L640 528L665 538L662 590L640 596L590 600L540 597L518 590Z" },
+				{ "thing": "sheep", "d": "M740 525L760 490L790 460L830 444L870 443L900 458L912 480L905 515L890 535L870 545L865 575L840 578L820 575L800 560L785 565L770 582L750 580L738 560Z" },
+				{ "thing": "lamb", "d": "M868 545L885 528L905 515L930 497L960 497L978 510L980 545L976 578L905 580L875 578Z" },
+				{ "thing": "goat", "d": "M1110 470L1120 452L1150 452L1200 455L1250 458L1272 458L1282 452L1290 455L1305 470L1318 495L1315 515L1305 528L1290 540L1270 535L1255 545L1260 585L1240 588L1230 550L1200 555L1180 560L1160 588L1135 588L1125 540L1115 510Z" },
+				{ "thing": "kid", "d": "M1312 530L1325 518L1345 514L1360 525L1395 515L1410 530L1410 592L1395 594L1375 580L1355 594L1340 590L1340 560L1330 545L1315 542Z" },
+				{ "thing": "cow", "d": "M40 640L60 624L100 618L165 628L205 638L240 660L262 690L270 730L282 778L300 780L322 785L315 800L305 812L305 840L305 875L290 880L270 872L250 845L240 820L225 820L222 870L205 875L185 868L180 820L155 800L120 790L110 815L120 855L100 860L90 830L80 800L70 820L50 860L32 858L30 830L20 825L18 780L25 740L32 700L35 660Z" },
+				{ "thing": "calf", "d": "M335 760L345 735L380 718L405 710L425 718L432 745L430 790L432 850L420 856L405 840L395 810L385 860L370 862L365 830L360 840L350 872L330 870L325 830L312 810L315 802L330 805L335 790Z" },
+				{ "thing": "horse", "d": "M500 640L530 625L570 618L630 615L675 622L712 632L745 665L775 710L800 760L822 758L815 785L812 820L815 860L802 876L790 870L775 840L755 810L720 780L718 860L690 866L686 800L680 770L665 800L668 870L650 875L640 860L645 790L630 750L590 745L580 770L600 855L590 865L575 860L560 790L545 795L548 855L535 865L522 840L510 840L490 830L482 760L485 680Z" },
+				{ "thing": "foal", "d": "M812 712L825 685L840 650L858 652L870 668L895 678L925 688L965 690L988 705L996 740L992 770L980 790L980 850L960 852L950 800L935 780L915 775L912 855L895 860L885 800L880 780L872 856L860 858L858 790L850 750L840 728L820 725Z" },
+				{ "thing": "bull", "d": "M1077 728L1110 735L1140 720L1160 680L1180 645L1220 622L1260 610L1350 605L1445 605L1480 620L1500 645L1505 700L1518 740L1530 790L1522 815L1505 790L1498 820L1490 835L1470 832L1475 790L1460 760L1440 790L1440 828L1418 830L1410 770L1380 775L1350 762L1320 758L1280 765L1265 790L1265 825L1245 830L1235 815L1210 795L1180 800L1150 810L1130 825L1105 827L1100 800L1100 770L1105 750L1080 740Z" },
+				{ "thing": "hay-bale", "d": "M985 860L1000 842L1100 838L1210 845L1225 870L1228 940L1215 970L1100 975L990 968L982 920Z" }
+			]
+		},
+		"ghibli": {
+			"picture": { "src": "scenes/pasture/ghibli.webp", "thumb": "scenes/pasture/ghibli.thumb.webp", "width": 1536, "height": 1024 },
+			"regions": [
+				{ "thing": "field", "d": "M0 226L114 234L229 246L343 260L417 271L480 282L543 288L600 302L641 319L700 340L740 350L800 372L800 400L0 400Z" },
+				{ "thing": "scarecrow", "d": "M128 180L146 178L158 188L167 197L152 204L172 210L200 214L202 236L186 240L158 238L156 268L147 272L147 302L135 302L135 272L125 268L122 238L94 240L76 236L78 212L100 208L122 204L110 197L118 188Z" },
+				{ "thing": "windmill", "d": "M390 34L409 20L472 80L480 86L495 90L557 29L574 46L520 103L513 118L522 135L582 186L565 207L512 160L525 210L539 286L419 286L428 215L436 175L406 209L390 191L440 140L445 120L458 98L390 40Z" },
+				{ "thing": "tree", "d": "M766 2L830 0L998 4L1085 44L1123 94L1179 131L1169 163L1148 200L1110 244L1060 275L998 275L948 294L900 300L894 350L835 350L835 300L766 294L710 275L635 256L594 238L585 188L598 138L641 63L704 25Z" },
+				{ "thing": "stable", "d": "M1124 266L1170 217L1483 207L1500 222L1519 282L1508 284L1508 368L1140 370L1140 270Z" },
+				{ "thing": "tractor", "d": "M1003 310L1012 298L1058 296L1060 262L1068 262L1068 292L1085 288L1110 300L1128 310L1137 330L1134 350L1120 360L1060 366L1035 362L1005 350Z" },
+				{ "thing": "fence", "d": "M0 342L620 342L620 412L0 412ZM826 342L1536 342L1536 414L826 414Z" },
+				{ "thing": "gate", "d": "M620 332L828 332L828 412L620 412Z" },
+				{ "thing": "pig", "d": "M35 425L45 420L70 413L110 413L150 428L165 448L172 470L188 482L192 505L186 530L165 530L140 528L120 522L95 515L70 520L50 518L42 490L28 470L24 450Z" },
+				{ "thing": "piglet", "d": "M198 482L215 474L238 471L258 471L268 478L266 500L262 526L230 528L215 522L200 505Z" },
+				{ "thing": "donkey", "d": "M400 412L430 396L480 395L530 405L565 425L580 448L600 445L618 450L612 480L610 515L612 545L595 550L580 535L560 510L540 500L530 520L520 570L505 578L495 570L500 520L480 500L450 505L440 570L425 572L420 510L400 495L392 470L395 430Z" },
+				{ "thing": "donkey", "d": "M350 495L372 482L410 478L425 470L428 452L440 458L452 450L456 466L472 500L468 512L450 512L440 535L438 560L438 602L425 604L418 570L405 560L380 560L372 600L345 602L348 560L345 525Z" },
+				{ "thing": "water-trough", "d": "M512 535L540 528L590 525L640 528L665 538L662 590L640 596L590 600L540 597L518 590Z" },
+				{ "thing": "sheep", "d": "M740 525L760 490L790 460L830 444L870 443L900 458L912 480L905 515L890 535L870 545L865 575L840 578L820 575L800 560L785 565L770 582L750 580L738 560Z" },
+				{ "thing": "lamb", "d": "M868 545L885 528L905 515L930 497L960 497L978 510L980 545L976 578L905 580L875 578Z" },
+				{ "thing": "goat", "d": "M1110 470L1120 452L1150 452L1200 455L1250 458L1272 458L1282 452L1290 455L1305 470L1318 495L1315 515L1305 528L1290 540L1270 535L1255 545L1260 585L1240 588L1230 550L1200 555L1180 560L1160 588L1135 588L1125 540L1115 510Z" },
+				{ "thing": "kid", "d": "M1312 530L1325 518L1345 514L1360 525L1395 515L1410 530L1410 592L1395 594L1375 580L1355 594L1340 590L1340 560L1330 545L1315 542Z" },
+				{ "thing": "cow", "d": "M40 640L60 624L100 618L165 628L205 638L240 660L262 690L270 730L282 778L300 780L322 785L315 800L305 812L305 840L305 875L290 880L270 872L250 845L240 820L225 820L222 870L205 875L185 868L180 820L155 800L120 790L110 815L120 855L100 860L90 830L80 800L70 820L50 860L32 858L30 830L20 825L18 780L25 740L32 700L35 660Z" },
+				{ "thing": "calf", "d": "M335 760L345 735L380 718L405 710L425 718L432 745L430 790L432 850L420 856L405 840L395 810L385 860L370 862L365 830L360 840L350 872L330 870L325 830L312 810L315 802L330 805L335 790Z" },
+				{ "thing": "horse", "d": "M470 660L490 640L523 630L579 620L640 616L673 622L710 632L745 665L775 710L800 760L823 760L815 785L812 820L812 860L800 876L790 870L775 840L755 810L720 780L718 860L690 866L686 800L680 770L665 800L668 870L650 876L640 860L645 790L630 750L590 745L580 770L600 855L590 865L575 860L560 790L545 795L548 855L535 865L522 845L500 845L480 830L460 780L458 720Z" },
+				{ "thing": "foal", "d": "M812 717L822 680L832 650L852 652L870 668L895 678L925 688L965 690L988 705L998 740L994 770L982 790L980 850L960 852L950 800L935 780L915 775L912 858L895 860L885 800L880 780L872 856L860 858L858 790L850 750L840 730L820 728Z" },
+				{ "thing": "bull", "d": "M1074 727L1105 733L1125 700L1140 672L1177 630L1234 613L1300 610L1417 607L1470 612L1495 630L1505 660L1508 700L1512 740L1525 790L1515 812L1500 800L1495 835L1478 836L1470 790L1450 770L1440 800L1440 832L1415 832L1408 780L1385 786L1360 776L1330 762L1280 765L1268 790L1265 830L1245 834L1232 825L1215 800L1180 808L1150 820L1130 830L1105 832L1100 800L1100 770L1102 750L1078 740Z" },
+				{ "thing": "hay-bale", "d": "M978 870L995 848L1100 842L1200 850L1215 870L1218 945L1205 968L1100 976L985 965L975 920Z" }
+			]
+		}
+	}
+}

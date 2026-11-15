@@ -48,11 +48,25 @@ VOICES = {
     "ja": "ja-JP-KeitaNeural",
 }
 
-# what to say instead, where a voice reads the written name wrong
+# what to say instead, where a voice reads the written name wrong: by the
+# name, or by the thing and its number where one written word is two, as
+# حملان is the lamb's dual and its plural, said apart with their vowels
 SAY = {
     "en": {},
     "de": {},
-    "ar": {},
+    "ar": {
+        # without vowels, a dowry, haste and "my grandfather"
+        "مهر": "مُهْر",
+        "مهران": "مُهْران",
+        "عجل": "عِجْل",
+        "عجلان": "عِجْلان",
+        "جدي": "جَدْي",
+        "جديان": "جَدْيان",
+        # without vowels, a load, carried
+        "حمل": "حَمَل",
+        "lamb.two": "حَمَلان",
+        "lamb.many": "حُمْلان",
+    },
     "sv": {},
     "es": {},
     "uk": {},
@@ -142,7 +156,7 @@ def main():
                 clip = out / f"{key}.mp3"
                 if not again and clip.exists() and log["said"].get(key) == name:
                     continue
-                text = SAY[lang].get(name, name)
+                text = SAY[lang].get(key, SAY[lang].get(name, name))
                 print(f"  {sid}/{key}: {text}")
                 count += 1
                 if args.dry:

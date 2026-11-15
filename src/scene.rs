@@ -356,6 +356,7 @@ pub const SOURCES: &[(&str, &str)] = &[
         include_str!("../scenes/vegetable-stand.json"),
     ),
     ("farmyard", include_str!("../scenes/farmyard.json")),
+    ("pasture", include_str!("../scenes/pasture.json")),
 ];
 
 pub static SCENES: LazyLock<Vec<Scene>> = LazyLock::new(|| {
