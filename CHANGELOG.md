@@ -2,7 +2,7 @@
 
 <!-- https://keepachangelog.com/en/1.0.0/ -->
 
-## [0.5.0] (unreleased)
+## [0.5.0] 2026-11-15
 
 ### Added
 - **The pasture** — the seventh scene, and the second on the farm, the
