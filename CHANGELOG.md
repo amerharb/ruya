@@ -19,6 +19,15 @@
   the hen is, by the word for one and the collective for many (بقرة, بقر),
   and the lamb's two and many, both written حملان, are said apart.
 
+### Changed
+- **A name said once is kept** — each recording is kept in the browser
+  the first time it is said, in IndexedDB as the sawt apps keep theirs,
+  so a thing tapped again plays at once, with no request to the server,
+  later in the visit or on another day. A thing renamed, or a language
+  given a new voice, is fetched afresh by itself; `tools/voice.py` says
+  when a recording made again needs the cache's version raised. Safari
+  is let play a kept recording by a moment of silence on the first tap.
+
 ## [0.4.0] 2026-11-14
 
 ### Added

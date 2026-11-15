@@ -184,6 +184,20 @@ MP3. One `<audio>` plays
 them all (`src/voice.rs`): a thing tapped while another is speaking cuts
 it short.
 
+A recording once said is kept in the browser, in IndexedDB
+(`src/cache.rs`), as the sawt apps keep their sounds: said again, later in
+the visit or on another day, it plays from there with no request to the
+server. Nothing kept expires or is checked again. It is kept by its
+address, its voice (`Lang::voice`) and the name it says, so a thing
+renamed or a new voice is fetched afresh by itself; a recording made
+again under the same name in the same voice is not, so
+`tools/voice.py` says when it has done that, and then `VERSION` in
+`src/cache.rs` is raised, which drops everything kept. Safari lets an
+element sound only from inside a tap, and a kept recording comes after
+the tap is over, so the first tap plays a moment of silence through the
+`<audio>`, which lets it go on sounding. Without IndexedDB, as in some
+private windows, each recording comes from the server every time.
+
 `python3 tools/voice.py <lang>` records what is missing: a new thing's names,
 or one whose name changed since; scene ids after the language keep it to
 those scenes. What each recording says is logged in
@@ -319,9 +333,10 @@ logged as saying the name as it now is, and none left over.
   scenes/<scene>.json` (adding the font for a new script to its `FONTS`).
 - **A voice for a language:** pick one of Edge's voices by ear; put it in
   `VOICES` in `tools/voice.py`, with the language's forms in `NUMBERS`,
-  and run `python3 tools/voice.py <lang>`; then give the speaker button its
-  name in the language, in `Lang::voice_name` (`src/lang.rs`), which is
-  what makes the button show.
+  and run `python3 tools/voice.py <lang>`; then put the same voice in
+  `Lang::voice` (`src/lang.rs`), and give the speaker button its name in
+  the language in `Lang::voice_name`, which is what makes the button
+  show.
 
 ## Pictures and licences
 
